@@ -1,0 +1,18 @@
+{
+    "name": "periscope/tutor-periscope",
+    "description": "Tutor Periscope Training Platform Plugin",
+    "keywords": [
+    "WordPress Plugin",
+    "Periscope"
+    ],
+    "license": "GPL-3.0",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+        "Tutor_Periscope\\": "./inc"
+        },
+        "files": [
+        "./inc/Functions.php"
+        ]
+    }
+}
