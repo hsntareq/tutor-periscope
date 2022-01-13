@@ -1,7 +1,7 @@
 <?php
 /**
  * Handles registering admin pages
- * 
+ *
  * @package Tutor Periscope
  */
 
@@ -26,11 +26,36 @@ class Dashboard {
      */
     public function register_periscope_course_evaluation() {
         add_submenu_page( 'tutor', __( 'Course Evaluation', 'tutor-periscope' ), __( 'Course Evaluation', 'tutor-periscope' ), 'manage_tutor', 'course-evaluation', array( $this, 'course_evaluation_markup' ) );
+        add_submenu_page( 'tutor', __( 'Course Assignment', 'tutor-periscope' ), __( 'Course Assignment', 'tutor-periscope' ), 'manage_tutor', 'course-assignment', array( $this, 'course_assignment_markup' ) );
     }
 
     /**
      * Markup for evaluation
-     * 
+     *
+     * @return void
+     */
+    public function course_assignment_markup() {
+
+        switch ( $action ) {
+
+            case 'list':
+                $template = TUTOR_PERISCOPE_DIR_PATH . 'views/admin/course-assignment-list.php';
+                break;
+
+            default:
+                $template = TUTOR_PERISCOPE_DIR_PATH . 'views/admin/course-assignment-form.php';
+                break;
+        }
+
+        if ( file_exists( $template ) ) {
+            include $template;
+        }
+
+    }
+
+    /**
+     * Markup for evaluation
+     *
      * @return void
      */
     public function course_evaluation_markup() {
