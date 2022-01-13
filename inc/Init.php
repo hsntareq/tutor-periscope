@@ -27,6 +27,7 @@ final class Init {
 			Assessment\Assessment::class,
 			Certificates\Certificates::class,
 			Evaluation\Course_Evaluation::class,
+			Evaluation\Student_Course_Evaluation::class,
 		);
 	}
 
