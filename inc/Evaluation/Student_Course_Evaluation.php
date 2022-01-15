@@ -69,6 +69,15 @@ class Student_Course_Evaluation {
 	 * @since v1.0.0
 	 */
 	public static function course_evaluation() {
-		wp_send_json_success( $_POST );
+		if ( wp_verify_nonce( $_POST['nonce'], 'tp_nonce' ) ) {
+			$post = $_POST;
+
+			//Sanitize each item.
+			$post = array_map( function($item) {
+				return sanitize_text_field( $item );
+			}, $post);
+			
+		}
+		wp_send_json_error( __('Nonce verification failed', 'tutor_periscope' ) );
 	}
 }
