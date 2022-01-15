@@ -30,8 +30,8 @@ class Evaluation_Table {
 		do_action( 'tutor_periscope_before_evaluation_table' );
 		global $wpdb;
 		$charset_collate = $wpdb->get_charset_collate();
-
-		$sql = "CREATE TABLE self::$table_name (
+        $table_name = $wpdb->prefix . self::$table_name;
+		$sql = "CREATE TABLE $table_name (
         id int(9) NOT NULL AUTO_INCREMENT,
         student_id int(9) NOT NULL,
         course_id int(9) NOT NULL,
@@ -44,7 +44,7 @@ class Evaluation_Table {
         promotion_present varchar(255),
         supportive_environment varchar(255),
         number_of_hours varchar(255),
-        apply_in_practice varchar(255)
+        apply_in_practice varchar(255),
         PRIMARY KEY  (id)
         ) $charset_collate;";
 

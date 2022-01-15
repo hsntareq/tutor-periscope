@@ -7,6 +7,8 @@
 
 namespace Tutor_Periscope\Setup;
 
+use Tutor_Periscope\Database\Evaluation_Table;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -37,6 +39,13 @@ class Setup {
         if ( ! $installed_time ) {
             update_option( 'tutor_periscope_installed_at', time() );
         }
+
+        /**
+         * Create tables
+         *
+         * @since v1.0.0
+         */
+        Evaluation_Table::create_table();
 
         update_option( 'tutor_periscope_version', TUTOR_PERISCOPE_VERSION );
 
