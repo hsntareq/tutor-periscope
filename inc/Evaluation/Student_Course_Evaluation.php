@@ -29,6 +29,19 @@ class Student_Course_Evaluation {
 				'tutor_before_rating_textarea',
 			)
 		);
+
+		/**
+		 * Student course evaluation ajax request handle
+		 *
+		 * @since v1.0.0
+		 */
+		add_action(
+			'wp_ajax_tutor_periscope_evaluation',
+			array(
+				__CLASS__,
+				'course_evaluation',
+			)
+		);
 	}
 
 	/**
@@ -46,5 +59,16 @@ class Student_Course_Evaluation {
 		tutor_load_template_from_custom_path(
 			TUTOR_PERISCOPE_DIR_PATH . 'templates/frontend/course-evaluation.php'
 		);
+	}
+
+	/**
+	 * Course evaluation ajax request handle
+	 *
+	 * @return void
+	 *
+	 * @since v1.0.0
+	 */
+	public static function course_evaluation() {
+		wp_send_json_success( $_POST );
 	}
 }

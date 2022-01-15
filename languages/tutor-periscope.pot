@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Tutor Periscope
+# Copyright (C) 2022 Tutor Periscope
 # This file is distributed under the same license as the Tutor Periscope package.
 msgid ""
 msgstr ""
@@ -193,6 +193,58 @@ msgstr ""
 msgid "Course Evaluation"
 msgstr ""
 
+#: templates/frontend/course-evaluation.php:4
+msgid "Course content matched the session description"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:7, templates/frontend/course-evaluation.php:17, templates/frontend/course-evaluation.php:27, templates/frontend/course-evaluation.php:37, templates/frontend/course-evaluation.php:47, templates/frontend/course-evaluation.php:57, templates/frontend/course-evaluation.php:67, templates/frontend/course-evaluation.php:77, templates/frontend/course-evaluation.php:87, templates/frontend/course-evaluation.php:97, views/admin/course-evaluation-edit.php:42, views/admin/course-evaluation-edit.php:54, views/admin/course-evaluation-edit.php:66, views/admin/course-evaluation-edit.php:78, views/admin/course-evaluation-edit.php:90, views/admin/course-evaluation-edit.php:102, views/admin/course-evaluation-edit.php:114, views/admin/course-evaluation-edit.php:126, views/admin/course-evaluation-new.php:40, views/admin/course-evaluation-new.php:52, views/admin/course-evaluation-new.php:64, views/admin/course-evaluation-new.php:76, views/admin/course-evaluation-new.php:88, views/admin/course-evaluation-new.php:100, views/admin/course-evaluation-new.php:112, views/admin/course-evaluation-new.php:124
+msgid "Agree"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:8, templates/frontend/course-evaluation.php:18, templates/frontend/course-evaluation.php:28, templates/frontend/course-evaluation.php:38, templates/frontend/course-evaluation.php:48, templates/frontend/course-evaluation.php:58, templates/frontend/course-evaluation.php:68, templates/frontend/course-evaluation.php:78, templates/frontend/course-evaluation.php:88, templates/frontend/course-evaluation.php:98, views/admin/course-evaluation-edit.php:44, views/admin/course-evaluation-edit.php:56, views/admin/course-evaluation-edit.php:68, views/admin/course-evaluation-edit.php:80, views/admin/course-evaluation-edit.php:92, views/admin/course-evaluation-edit.php:104, views/admin/course-evaluation-edit.php:116, views/admin/course-evaluation-edit.php:128, views/admin/course-evaluation-new.php:42, views/admin/course-evaluation-new.php:54, views/admin/course-evaluation-new.php:66, views/admin/course-evaluation-new.php:78, views/admin/course-evaluation-new.php:90, views/admin/course-evaluation-new.php:102, views/admin/course-evaluation-new.php:114, views/admin/course-evaluation-new.php:126
+msgid "Disagree"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:9, templates/frontend/course-evaluation.php:19, templates/frontend/course-evaluation.php:29, templates/frontend/course-evaluation.php:39, templates/frontend/course-evaluation.php:49, templates/frontend/course-evaluation.php:59, templates/frontend/course-evaluation.php:69, templates/frontend/course-evaluation.php:79, templates/frontend/course-evaluation.php:89, templates/frontend/course-evaluation.php:99, views/admin/course-evaluation-edit.php:43, views/admin/course-evaluation-edit.php:55, views/admin/course-evaluation-edit.php:67, views/admin/course-evaluation-edit.php:79, views/admin/course-evaluation-edit.php:91, views/admin/course-evaluation-edit.php:103, views/admin/course-evaluation-edit.php:115, views/admin/course-evaluation-edit.php:127, views/admin/course-evaluation-new.php:41, views/admin/course-evaluation-new.php:53, views/admin/course-evaluation-new.php:65, views/admin/course-evaluation-new.php:77, views/admin/course-evaluation-new.php:89, views/admin/course-evaluation-new.php:101, views/admin/course-evaluation-new.php:113, views/admin/course-evaluation-new.php:125
+msgid "Neutral"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:14
+msgid "The learning outcome were met"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:24
+msgid "Current evidence was cited for specific content"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:34, views/admin/course-evaluation-edit.php:74, views/admin/course-evaluation-new.php:72
+msgid "Instructional activities added value to my learning experience"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:44, views/admin/course-evaluation-edit.php:86, views/admin/course-evaluation-new.php:84
+msgid "Course content was effectively delivered"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:54
+msgid "Overall course was valuable"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:64
+msgid "Promotion of a product or service was not present"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:74, views/admin/course-evaluation-edit.php:122, views/admin/course-evaluation-new.php:120
+msgid "The environment was supportive of my learning experience"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:84
+msgid "Numbers of hours it took to complete- ONLY online for online courses"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:94
+msgid "How will you apply this in your practice"
+msgstr ""
+
 #: views/admin/course-evaluation-edit.php:10, views/admin/course-evaluation-list.php:11, views/admin/course-evaluation-new.php:10
 msgid "Course Evaluations"
 msgstr ""
@@ -205,18 +257,6 @@ msgstr ""
 msgid "Course content matched the session description:"
 msgstr ""
 
-#: views/admin/course-evaluation-edit.php:42, views/admin/course-evaluation-edit.php:54, views/admin/course-evaluation-edit.php:66, views/admin/course-evaluation-edit.php:78, views/admin/course-evaluation-edit.php:90, views/admin/course-evaluation-edit.php:102, views/admin/course-evaluation-edit.php:114, views/admin/course-evaluation-edit.php:126, views/admin/course-evaluation-new.php:40, views/admin/course-evaluation-new.php:52, views/admin/course-evaluation-new.php:64, views/admin/course-evaluation-new.php:76, views/admin/course-evaluation-new.php:88, views/admin/course-evaluation-new.php:100, views/admin/course-evaluation-new.php:112, views/admin/course-evaluation-new.php:124
-msgid "Agree"
-msgstr ""
-
-#: views/admin/course-evaluation-edit.php:43, views/admin/course-evaluation-edit.php:55, views/admin/course-evaluation-edit.php:67, views/admin/course-evaluation-edit.php:79, views/admin/course-evaluation-edit.php:91, views/admin/course-evaluation-edit.php:103, views/admin/course-evaluation-edit.php:115, views/admin/course-evaluation-edit.php:127, views/admin/course-evaluation-new.php:41, views/admin/course-evaluation-new.php:53, views/admin/course-evaluation-new.php:65, views/admin/course-evaluation-new.php:77, views/admin/course-evaluation-new.php:89, views/admin/course-evaluation-new.php:101, views/admin/course-evaluation-new.php:113, views/admin/course-evaluation-new.php:125
-msgid "Neutral"
-msgstr ""
-
-#: views/admin/course-evaluation-edit.php:44, views/admin/course-evaluation-edit.php:56, views/admin/course-evaluation-edit.php:68, views/admin/course-evaluation-edit.php:80, views/admin/course-evaluation-edit.php:92, views/admin/course-evaluation-edit.php:104, views/admin/course-evaluation-edit.php:116, views/admin/course-evaluation-edit.php:128, views/admin/course-evaluation-new.php:42, views/admin/course-evaluation-new.php:54, views/admin/course-evaluation-new.php:66, views/admin/course-evaluation-new.php:78, views/admin/course-evaluation-new.php:90, views/admin/course-evaluation-new.php:102, views/admin/course-evaluation-new.php:114, views/admin/course-evaluation-new.php:126
-msgid "Disagree"
-msgstr ""
-
 #: views/admin/course-evaluation-edit.php:50, views/admin/course-evaluation-new.php:48
 msgid "The learning outcomes were met:"
 msgstr ""
@@ -225,24 +265,12 @@ msgstr ""
 msgid "Current evidence was cited for specific content:"
 msgstr ""
 
-#: views/admin/course-evaluation-edit.php:74, views/admin/course-evaluation-new.php:72
-msgid "Instructional activities added value to my learning experience"
-msgstr ""
-
-#: views/admin/course-evaluation-edit.php:86, views/admin/course-evaluation-new.php:84
-msgid "Course content was effectively delivered"
-msgstr ""
-
 #: views/admin/course-evaluation-edit.php:98, views/admin/course-evaluation-new.php:96
 msgid "Overall, the course was valuable:"
 msgstr ""
 
 #: views/admin/course-evaluation-edit.php:110, views/admin/course-evaluation-new.php:108
 msgid "Promotion of a product or service was NOT presented"
-msgstr ""
-
-#: views/admin/course-evaluation-edit.php:122, views/admin/course-evaluation-new.php:120
-msgid "The environment was supportive of my learning experience"
 msgstr ""
 
 #: views/admin/course-evaluation-edit.php:134, views/admin/course-evaluation-new.php:132
