@@ -21,7 +21,7 @@ async function ajaxRequest(formData) {
   if (post.ok) {
     return await post.json();
   } else {
-    alert(post.statusText);
+    return false;
   }
 }
 
