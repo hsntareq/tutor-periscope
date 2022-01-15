@@ -33,7 +33,7 @@ abstract class DB_Query {
         }, $data );
 
         $insert = $wpdb->insert(
-            $this->table_name,
+            $this->get_table(),
             $data
         );
         return $insert ? true : false;
@@ -61,7 +61,7 @@ abstract class DB_Query {
         }, $where );
 
         $update = $wpdb->update(
-            $this->table_name,
+            $this->get_table(),
             $data,
             $where
         );
