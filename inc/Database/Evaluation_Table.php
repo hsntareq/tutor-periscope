@@ -37,7 +37,9 @@ class Evaluation_Table {
 		$sql             = "CREATE TABLE $table_name (
         id int(9) NOT NULL AUTO_INCREMENT,
         student_id int(9) NOT NULL,
-        course_id int(9) NOT NULL,
+        tutor_course_id int(9) NOT NULL,
+        tutor_rating_gen_input decimal(1,2),
+		review text,
         content_matched varchar(255),
         outcome_met varchar(255),
         specific_content varchar(255),
