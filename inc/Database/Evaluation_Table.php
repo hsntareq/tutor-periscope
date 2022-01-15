@@ -7,6 +7,9 @@
 
 namespace Tutor_Periscope\Database;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 /**
  * Evaluation_Table
  */
@@ -30,8 +33,8 @@ class Evaluation_Table {
 		do_action( 'tutor_periscope_before_evaluation_table' );
 		global $wpdb;
 		$charset_collate = $wpdb->get_charset_collate();
-        $table_name = $wpdb->prefix . self::$table_name;
-		$sql = "CREATE TABLE $table_name (
+		$table_name      = $wpdb->prefix . self::$table_name;
+		$sql             = "CREATE TABLE $table_name (
         id int(9) NOT NULL AUTO_INCREMENT,
         student_id int(9) NOT NULL,
         course_id int(9) NOT NULL,
