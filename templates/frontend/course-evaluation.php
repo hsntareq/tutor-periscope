@@ -51,16 +51,6 @@
    </div>
    <div class="tutor-form-group">
 	   <label>
-			<?php esc_html_e( 'Course content matched the session description', 'tutor-periscope' ); ?>
-	   </label>
-	   <select name="content_matched" id="" class="tutor-form-control">
-		   <option value="agree"><?php esc_html_e( 'Agree', 'tutor-periscope' ); ?></option>
-		   <option value="disagree"><?php esc_html_e( 'Disagree', 'tutor-periscope' ); ?></option>
-		   <option value="neutral"><?php esc_html_e( 'Neutral', 'tutor-periscope' ); ?></option>
-	   </select>
-   </div>
-   <div class="tutor-form-group">
-	   <label>
 			<?php esc_html_e( 'Overall course was valuable', 'tutor-periscope' ); ?>
 	   </label>
 	   <select name="was_valuable" id="" class="tutor-form-control">
