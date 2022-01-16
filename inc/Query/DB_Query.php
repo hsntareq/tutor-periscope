@@ -17,9 +17,16 @@ namespace Tutor_Periscope\Query;
 abstract class DB_Query {
 
 	/**
+	 * To implement to the derived class
+	 *
+	 * @return void
+	 */
+	abstract public function get_table();
+
+	/**
 	 * Insert data in the instance table
 	 *
-	 * @param array $data, data to insert in the table
+	 * @param array $data | data to insert in the table.
 	 *
 	 * @return bool, true on success false on failure
 	 *
@@ -45,8 +52,8 @@ abstract class DB_Query {
 	/**
 	 * Update data in the instance table
 	 *
-	 * @param array $data, data to update in the table
-	 * @param array $where, condition array
+	 * @param array $data | data to update in the table.
+	 * @param array $where | condition array.
 	 *
 	 * @return bool, true on success false on failure
 	 *

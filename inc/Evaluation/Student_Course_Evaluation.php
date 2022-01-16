@@ -21,7 +21,7 @@ class Student_Course_Evaluation extends DB_Query {
 	public function __construct() {
 		/**
 		 * Init table name
-		 * 
+		 *
 		 * @var $table_name
 		 */
 		global $wpdb;
@@ -113,11 +113,11 @@ class Student_Course_Evaluation extends DB_Query {
 	 *
 	 * It will call the extended class for operation.
 	 *
-	 * @param array $post, post data for insert or update
+	 * @param array $post post data for insert or update.
 	 *
 	 * @return bool, true on success false on failure
 	 *
-	 * @since v1.0.0 
+	 * @since v1.0.0
 	 */
 	public function create_or_update( array $post ): bool {
 		if ( isset( $post['id'] ) ) {

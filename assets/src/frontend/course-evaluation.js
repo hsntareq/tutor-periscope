@@ -16,8 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 const response = await ajaxRequest(formData);
                 if (response.success) {
-                    console.log(response.data);
-                    console.log('course evaluation failed');
+
                 } else {
                     console.log(response);
                 }
