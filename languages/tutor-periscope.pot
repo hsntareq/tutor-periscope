@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Tutor Periscope
+# Copyright (C) 2022 Tutor Periscope
 # This file is distributed under the same license as the Tutor Periscope package.
 msgid ""
 msgstr ""
@@ -193,6 +193,42 @@ msgstr ""
 msgid "Course Evaluation"
 msgstr ""
 
+#: inc/Setup/Dashboard.php:29, inc/Setup/Dashboard.php:29
+msgid "Course Assignment"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:4
+msgid "Course content matched the session description"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:9, views/admin/course-evaluation-edit.php:42, views/admin/course-evaluation-edit.php:54, views/admin/course-evaluation-edit.php:66, views/admin/course-evaluation-edit.php:78, views/admin/course-evaluation-edit.php:90, views/admin/course-evaluation-edit.php:102, views/admin/course-evaluation-edit.php:114, views/admin/course-evaluation-edit.php:126, views/admin/course-evaluation-new.php:40, views/admin/course-evaluation-new.php:52, views/admin/course-evaluation-new.php:64, views/admin/course-evaluation-new.php:76, views/admin/course-evaluation-new.php:88, views/admin/course-evaluation-new.php:100, views/admin/course-evaluation-new.php:112, views/admin/course-evaluation-new.php:124
+msgid "Agree"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:17, views/admin/course-evaluation-edit.php:44, views/admin/course-evaluation-edit.php:56, views/admin/course-evaluation-edit.php:68, views/admin/course-evaluation-edit.php:80, views/admin/course-evaluation-edit.php:92, views/admin/course-evaluation-edit.php:104, views/admin/course-evaluation-edit.php:116, views/admin/course-evaluation-edit.php:128, views/admin/course-evaluation-new.php:42, views/admin/course-evaluation-new.php:54, views/admin/course-evaluation-new.php:66, views/admin/course-evaluation-new.php:78, views/admin/course-evaluation-new.php:90, views/admin/course-evaluation-new.php:102, views/admin/course-evaluation-new.php:114, views/admin/course-evaluation-new.php:126
+msgid "Disagree"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:25, views/admin/course-evaluation-edit.php:43, views/admin/course-evaluation-edit.php:55, views/admin/course-evaluation-edit.php:67, views/admin/course-evaluation-edit.php:79, views/admin/course-evaluation-edit.php:91, views/admin/course-evaluation-edit.php:103, views/admin/course-evaluation-edit.php:115, views/admin/course-evaluation-edit.php:127, views/admin/course-evaluation-new.php:41, views/admin/course-evaluation-new.php:53, views/admin/course-evaluation-new.php:65, views/admin/course-evaluation-new.php:77, views/admin/course-evaluation-new.php:89, views/admin/course-evaluation-new.php:101, views/admin/course-evaluation-new.php:113, views/admin/course-evaluation-new.php:125
+msgid "Neutral"
+msgstr ""
+
+#: views/admin/course-assignment-form.php:8
+msgid "Label"
+msgstr ""
+
+#: views/admin/course-assignment-form.php:9
+msgid "Select"
+msgstr ""
+
+#: views/admin/course-assignment-form.php:14
+msgid "Select a course to assign:"
+msgstr ""
+
+#: views/admin/course-assignment-form.php:28
+msgid "Select User(s) to assign:"
+msgstr ""
+
 #: views/admin/course-evaluation-edit.php:10, views/admin/course-evaluation-list.php:11, views/admin/course-evaluation-new.php:10
 msgid "Course Evaluations"
 msgstr ""
@@ -203,18 +239,6 @@ msgstr ""
 
 #: views/admin/course-evaluation-edit.php:38, views/admin/course-evaluation-new.php:36
 msgid "Course content matched the session description:"
-msgstr ""
-
-#: views/admin/course-evaluation-edit.php:42, views/admin/course-evaluation-edit.php:54, views/admin/course-evaluation-edit.php:66, views/admin/course-evaluation-edit.php:78, views/admin/course-evaluation-edit.php:90, views/admin/course-evaluation-edit.php:102, views/admin/course-evaluation-edit.php:114, views/admin/course-evaluation-edit.php:126, views/admin/course-evaluation-new.php:40, views/admin/course-evaluation-new.php:52, views/admin/course-evaluation-new.php:64, views/admin/course-evaluation-new.php:76, views/admin/course-evaluation-new.php:88, views/admin/course-evaluation-new.php:100, views/admin/course-evaluation-new.php:112, views/admin/course-evaluation-new.php:124
-msgid "Agree"
-msgstr ""
-
-#: views/admin/course-evaluation-edit.php:43, views/admin/course-evaluation-edit.php:55, views/admin/course-evaluation-edit.php:67, views/admin/course-evaluation-edit.php:79, views/admin/course-evaluation-edit.php:91, views/admin/course-evaluation-edit.php:103, views/admin/course-evaluation-edit.php:115, views/admin/course-evaluation-edit.php:127, views/admin/course-evaluation-new.php:41, views/admin/course-evaluation-new.php:53, views/admin/course-evaluation-new.php:65, views/admin/course-evaluation-new.php:77, views/admin/course-evaluation-new.php:89, views/admin/course-evaluation-new.php:101, views/admin/course-evaluation-new.php:113, views/admin/course-evaluation-new.php:125
-msgid "Neutral"
-msgstr ""
-
-#: views/admin/course-evaluation-edit.php:44, views/admin/course-evaluation-edit.php:56, views/admin/course-evaluation-edit.php:68, views/admin/course-evaluation-edit.php:80, views/admin/course-evaluation-edit.php:92, views/admin/course-evaluation-edit.php:104, views/admin/course-evaluation-edit.php:116, views/admin/course-evaluation-edit.php:128, views/admin/course-evaluation-new.php:42, views/admin/course-evaluation-new.php:54, views/admin/course-evaluation-new.php:66, views/admin/course-evaluation-new.php:78, views/admin/course-evaluation-new.php:90, views/admin/course-evaluation-new.php:102, views/admin/course-evaluation-new.php:114, views/admin/course-evaluation-new.php:126
-msgid "Disagree"
 msgstr ""
 
 #: views/admin/course-evaluation-edit.php:50, views/admin/course-evaluation-new.php:48
