@@ -73,6 +73,14 @@ msgstr ""
 msgid "No Agree - How will you apply this in your practice provided."
 msgstr ""
 
+#: inc/Assessment/Assessment.php:39, inc/Evaluation/Course_Evaluation.php:67
+msgid "Are you cheating?"
+msgstr ""
+
+#: inc/Assessment/Assessment.php:42, inc/Evaluation/Course_Evaluation.php:71
+msgid "Permission Denied!"
+msgstr ""
+
 #: inc/Certificates/Certificates.php:38
 msgid "Periscope"
 msgstr ""
@@ -83,14 +91,6 @@ msgstr ""
 
 #: inc/Certificates/Certificates.php:117, inc/Certificates/Certificates.php:119
 msgid "License Number"
-msgstr ""
-
-#: inc/Evaluation/Course_Evaluation.php:67
-msgid "Are you cheating?"
-msgstr ""
-
-#: inc/Evaluation/Course_Evaluation.php:71
-msgid "Permission Denied!"
 msgstr ""
 
 #: inc/Evaluation/Course_Evaluation.php:93
@@ -227,6 +227,10 @@ msgstr ""
 
 #: views/admin/course-assignment-form.php:28
 msgid "Select User(s) to assign:"
+msgstr ""
+
+#: views/admin/course-assignment-form.php:46
+msgid "Assign Course"
 msgstr ""
 
 #: views/admin/course-evaluation-edit.php:10, views/admin/course-evaluation-list.php:11, views/admin/course-evaluation-new.php:10

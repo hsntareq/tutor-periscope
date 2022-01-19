@@ -42,42 +42,50 @@ class Assessment
             wp_die(__('Permission Denied!', 'tutor-periscope'));
         }
 
-        $course_id = sanitize_text_field($_POST['assigned_course']);
+        $course_id = (int) sanitize_text_field($_POST['assigned_course']);
         $user_ids = $_POST['assigned_user'];
+        if(!empty($user_ids)){
+            foreach ($user_ids as $key => $user_id) {
 
-        print_r($user_ids);
-        die;
-        $user_id = $this->get_user_id($user_id);
-        $title   = __('Course Enrolled', 'tutor') . ' &ndash; ' . date(get_option('date_format')) . ' @ ' . date(get_option('time_format'));
+                $is_enrolled = tutils()->is_enrolled($course_id, $user_id);
 
-        if ($course_id && $user_id) {
-            if ($this->is_enrolled($course_id, $user_id)) {
-                return;
+                if ($is_enrolled) {
+                    $this->success_msgs = get_tnotice(__('This user has been already enrolled on this course', 'tutor-pro'), 'Error', 'danger');
+                } else if (tutils()->is_course_fully_booked($course_id)) {
+                    $this->success_msgs = get_tnotice(__('Maximum student is reached!', 'tutor-pro'), 'Error', 'danger');
+                } else {
+                    $title   = __('Course Enrolled', 'tutor') . ' &ndash; ' . date(get_option('date_format')) . ' @ ' . date(get_option('time_format'));
+
+                    $enroll_data =  array(
+                        'post_type'     => 'tutor_enrolled',
+                        'post_title'    => $title,
+                        'post_status'   => 'completed',
+                        'post_author'   => $user_id,
+                        'post_parent'   => $course_id,
+                    );
+
+                    // Insert the post into the database
+                    $is_enrolled = wp_insert_post( $enroll_data );
+                    if ($is_enrolled) {
+                        do_action('tutor_after_enroll', $course_id, $is_enrolled);
+
+                        // Run this hook for only completed enrollment regardless of payment provider and free/paid mode
+                        if ($enroll_data['post_status'] == 'completed') {
+                            do_action('tutor_after_enrolled', $course_id, $user_id, $is_enrolled);
+                        }
+
+                        //Change the enrol status again. to fire complete hook
+                        tutils()->course_enrol_status_change($is_enrolled, 'completed');
+                        //Mark Current User as Students with user meta data
+                        update_user_meta( $user_id, '_is_tutor_student', tutor_time() );
+
+                        do_action('tutor_enrollment/after/complete', $is_enrolled);
+                    }
+
+                    $success_msgs = get_tnotice(__('Enrolment has been done', 'tutor-pro'), 'Success', 'success');
+
+                }
             }
-        }
-
-        $enrolment_status = 'completed';
-
-        if ($this->is_course_purchasable($course_id)) {
-            /**
-             * We need to verify this enrollment, we will change the status later after payment confirmation
-             */
-            $enrolment_status = 'pending';
-        }
-
-        $enroll_data = array(
-            'post_type'   => 'tutor_enrolled',
-            'post_title'  => $title,
-            'post_status' => $enrolment_status,
-            'post_author' => $user_id,
-            'post_parent' => $course_id,
-        );
-
-        // Insert the post into the database
-        $isEnrolled = wp_insert_post($enroll_data);
-        if ($isEnrolled) {
-
-            print_r($_REQUEST);
         }
     }
     /**

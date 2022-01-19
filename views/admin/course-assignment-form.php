@@ -14,7 +14,8 @@
                         <td><?php _e('Select a course to assign:', 'tutor-periscope') ?></td>
                         <td>
                             <select class="select2" name="assigned_course">
-                                <?php
+                                <option>Select Course</option>
+ <?php
                                 $courses = get_posts(array('post_type' => 'courses'));
                                 // Array of WP_User objects.
                                 foreach ($courses as $course) {
@@ -27,7 +28,8 @@
                     <tr>
                         <td><?php _e('Select User(s) to assign:', 'tutor-periscope') ?></td>
                         <td>
-                            <select multiple select2 name="assigned_user[]">
+                            <select multiple name="assigned_user[]" class="select2">
+                                <option>Select users</option>
                                 <?php
                                 $blogusers = get_users(array('role__in' => array('author', 'subscriber')));
                                 // Array of WP_User objects.
