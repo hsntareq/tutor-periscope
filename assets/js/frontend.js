@@ -12,6 +12,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ajaxRequest)
 /* harmony export */ });
+/**
+ * Ajax request for global use
+ *
+ * @param {*} formData | form data for post request
+ * @returns json response on success or false
+ */
 async function ajaxRequest(formData) {
   const post = await fetch(tp_data.url, {
     method: 'POST',
@@ -55,10 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
       try {
         const response = await (0,_ajax__WEBPACK_IMPORTED_MODULE_0__["default"])(formData);
 
-        if (response.success) {
-          console.log(response.data);
-          console.log('course evaluation failed');
-        } else {
+        if (response.success) {} else {
           console.log(response);
         }
       } catch (error) {

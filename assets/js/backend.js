@@ -1,6 +1,57 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./assets/src/backend/student-attempt.js":
+/*!***********************************************!*\
+  !*** ./assets/src/backend/student-attempt.js ***!
+  \***********************************************/
+/***/ (() => {
+
+/**
+ * Student attempt script
+ *
+ * Attempt assignment field add dom manipulation will be managed from here.
+ *
+ * @since v1.0.0
+ */
+const {
+  __
+} = wp.i18n;
+window.document.addEventListener('DOMContentLoaded', function () {
+  const studentTable = document.querySelector('.wp-list-table.students');
+  const theadTr = studentTable.querySelector('thead tr');
+  const tbodyTr = studentTable.querySelector('tbody tr');
+  const tfootTr = studentTable.querySelector('tfoot tr');
+  const theadMarkup = `<th scope="col" id="tp_student_assigned_attempt" class="manage-column column-display_name column-primary">
+        ${__('Assigned Attempt', 'tutor-periscope')}
+    </th>
+    <th scope="col" id="tp_student_available_attempt" class="manage-column column-display_name column-primary">
+        ${__('Attempt Taken', 'tutor-periscope')}
+    </th>
+    <th scope="col" id="tp_student_remaining_attempt" class="manage-column column-display_name column-primary">
+        ${__('Remaining Attempt', 'tutor-periscope')}
+    </th>
+    `; // append th
+
+  theadTr.insertAdjacentHTML('beforeend', theadMarkup); // append td for showing value in table body
+
+  tbodyTr.insertAdjacentHTML('beforeend', `
+        <td scope="col" id="" class="manage-column column-display_name column-primary">
+            <input type="number" id="tp_student_assigned_attempt_value" value="12"/>
+        </td>
+        <td scope="col" id="" class="manage-column column-display_name column-primary">
+            <input type="number" id="tp_student_available_attempt_value" value="12" readonly/>
+        </td>
+        <td scope="col" id="tp_student_remaining_attempt_value" class="manage-column column-display_name column-primary">
+            <input type="number" id="tp_student_remaining_attempt_value" value="4" readonly/>
+        </td>
+        `); // append thead on table footer
+
+  tfootTr.insertAdjacentHTML('beforeend', theadMarkup);
+});
+
+/***/ }),
+
 /***/ "./node_modules/fflate/esm/browser.js":
 /*!********************************************!*\
   !*** ./node_modules/fflate/esm/browser.js ***!
@@ -16203,6 +16254,9 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var html2pdf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! html2pdf.js */ "./node_modules/html2pdf.js/dist/html2pdf.js");
 /* harmony import */ var html2pdf_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(html2pdf_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _student_attempt__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./student-attempt */ "./assets/src/backend/student-attempt.js");
+/* harmony import */ var _student_attempt__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_student_attempt__WEBPACK_IMPORTED_MODULE_1__);
+
 
 jQuery(document).ready(function () {
   this.PrintDiv = () => {
