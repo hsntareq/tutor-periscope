@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 const {
   __
 } = wp.i18n;
-window.document.addEventListener('DOMContentLoaded', function () {
+window.document.addEventListener('DOMContentLoaded', async function () {
   const studentTable = document.querySelector('.wp-list-table.students');
   const theadTr = studentTable.querySelector('thead tr');
   const tbodyTr = studentTable.querySelectorAll('tbody tr');
@@ -47,10 +47,10 @@ window.document.addEventListener('DOMContentLoaded', function () {
                     <input type="number" class="tp_student_assigned_attempt_value" data-email="${userEmail}" value=""/>
                 </td>
                 <td scope="col" id="" class="manage-column column-display_name column-primary">
-                    <input type="number" class="tp_student_available_attempt_value" value="" readonly/>
+                    <input type="number" class="tp_student_attempt_taken_value" value="" readonly/>
                 </td>
-                <td scope="col" class="tp_student_remaining_attempt_value" class="manage-column column-display_name column-primary">
-                    <input type="number" id="tp_student_remaining_attempt_value" value="" readonly/>
+                <td scope="col" class="manage-column column-display_name column-primary">
+                    <input type="number" class="tp_student_remaining_attempt_value" value="" readonly/>
                 </td>
                 `);
   }); // append thead on table footer
@@ -77,6 +77,32 @@ window.document.addEventListener('DOMContentLoaded', function () {
       }
     };
   });
+  /**
+   * get attempt lists
+   */
+
+  const url = new URL(window.location.href);
+  const params = url.searchParams;
+
+  if (params.has('page') && params.get('page') == 'tutor-students') {
+    //if tutor-students page get attempt list
+    const formData = new FormData();
+    formData.set('action', 'tutor_periscope_all_student_attempts');
+    formData.set('nonce', tp_data.nonce);
+    const response = await (0,_frontend_ajax__WEBPACK_IMPORTED_MODULE_0__["default"])(formData);
+    console.log(response);
+
+    if (response.success && response.data.length) {
+      let i = 0;
+      response.data.forEach(item => {
+        const details = item.attempt_details;
+        document.querySelectorAll('.tp_student_assigned_attempt_value')[i].value = details.assigned;
+        document.querySelectorAll('.tp_student_attempt_taken_value')[i].value = details.taken;
+        document.querySelectorAll('.tp_student_remaining_attempt_value')[i].value = details.remaining;
+        i++;
+      });
+    }
+  }
 });
 
 /***/ }),
