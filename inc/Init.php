@@ -28,6 +28,7 @@ final class Init {
 			Certificates\Certificates::class,
 			Evaluation\Course_Evaluation::class,
 			Evaluation\Student_Course_Evaluation::class,
+			Attempt\AttemptManagement::class,
 		);
 	}
 

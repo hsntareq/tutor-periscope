@@ -384,3 +384,15 @@ msgstr ""
 #: templates/certificates/periscope/certificate.php:29
 msgid "minute"
 msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Assigned Attempt"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Attempt Taken"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Remaining Attempt"
+msgstr ""

@@ -5,7 +5,11 @@
 /*!***********************************************!*\
   !*** ./assets/src/backend/student-attempt.js ***!
   \***********************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _frontend_ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../frontend/ajax */ "./assets/src/frontend/ajax.js");
 
 /**
  * Student attempt script
@@ -14,13 +18,14 @@
  *
  * @since v1.0.0
  */
+
 const {
   __
 } = wp.i18n;
 window.document.addEventListener('DOMContentLoaded', function () {
   const studentTable = document.querySelector('.wp-list-table.students');
   const theadTr = studentTable.querySelector('thead tr');
-  const tbodyTr = studentTable.querySelector('tbody tr');
+  const tbodyTr = studentTable.querySelectorAll('tbody tr');
   const tfootTr = studentTable.querySelector('tfoot tr');
   const theadMarkup = `<th scope="col" id="tp_student_assigned_attempt" class="manage-column column-display_name column-primary">
         ${__('Assigned Attempt', 'tutor-periscope')}
@@ -35,20 +40,76 @@ window.document.addEventListener('DOMContentLoaded', function () {
 
   theadTr.insertAdjacentHTML('beforeend', theadMarkup); // append td for showing value in table body
 
-  tbodyTr.insertAdjacentHTML('beforeend', `
-        <td scope="col" id="" class="manage-column column-display_name column-primary">
-            <input type="number" id="tp_student_assigned_attempt_value" value="12"/>
-        </td>
-        <td scope="col" id="" class="manage-column column-display_name column-primary">
-            <input type="number" id="tp_student_available_attempt_value" value="12" readonly/>
-        </td>
-        <td scope="col" id="tp_student_remaining_attempt_value" class="manage-column column-display_name column-primary">
-            <input type="number" id="tp_student_remaining_attempt_value" value="4" readonly/>
-        </td>
-        `); // append thead on table footer
+  tbodyTr.forEach(eachTr => {
+    const userEmail = eachTr.querySelector('.column-user_email').innerHTML;
+    eachTr.insertAdjacentHTML('beforeend', `
+                <td scope="col" id="" class="manage-column column-display_name column-primary">
+                    <input type="number" class="tp_student_assigned_attempt_value" data-email="${userEmail}" value=""/>
+                </td>
+                <td scope="col" id="" class="manage-column column-display_name column-primary">
+                    <input type="number" class="tp_student_available_attempt_value" value="" readonly/>
+                </td>
+                <td scope="col" class="tp_student_remaining_attempt_value" class="manage-column column-display_name column-primary">
+                    <input type="number" id="tp_student_remaining_attempt_value" value="" readonly/>
+                </td>
+                `);
+  }); // append thead on table footer
 
-  tfootTr.insertAdjacentHTML('beforeend', theadMarkup);
+  tfootTr.insertAdjacentHTML('beforeend', theadMarkup); //on change attempt value store in DB
+
+  const assignAttempt = document.querySelectorAll('.tp_student_assigned_attempt_value');
+  assignAttempt.forEach(attempt => {
+    attempt.onchange = async e => {
+      const target = e.currentTarget;
+      const formData = new FormData();
+      formData.set('attempt', target.value);
+      formData.set('user_email', target.dataset.email);
+      formData.set('nonce', tp_data.nonce);
+      formData.set('action', 'tutor_periscope_update_attempt');
+      const response = await (0,_frontend_ajax__WEBPACK_IMPORTED_MODULE_0__["default"])(formData);
+
+      if (!response.success) {
+        if (response.data) {
+          alert(response.data);
+        } else {
+          alert(__('Attempt assign failed, please try again!', 'tutor-periscope'));
+        }
+      }
+    };
+  });
 });
+
+/***/ }),
+
+/***/ "./assets/src/frontend/ajax.js":
+/*!*************************************!*\
+  !*** ./assets/src/frontend/ajax.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ajaxRequest)
+/* harmony export */ });
+/**
+ * Ajax request for global use
+ *
+ * @param {*} formData | form data for post request
+ * @returns json response on success or false
+ */
+async function ajaxRequest(formData) {
+  const post = await fetch(tp_data.url, {
+    method: 'POST',
+    body: formData
+  });
+
+  if (post.ok) {
+    return await post.json();
+  } else {
+    return false;
+  }
+}
 
 /***/ }),
 
@@ -16255,7 +16316,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var html2pdf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! html2pdf.js */ "./node_modules/html2pdf.js/dist/html2pdf.js");
 /* harmony import */ var html2pdf_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(html2pdf_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _student_attempt__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./student-attempt */ "./assets/src/backend/student-attempt.js");
-/* harmony import */ var _student_attempt__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_student_attempt__WEBPACK_IMPORTED_MODULE_1__);
 
 
 jQuery(document).ready(function () {
