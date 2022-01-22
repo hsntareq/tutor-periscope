@@ -38,7 +38,15 @@ class AttemptManagement {
 	 */
 	public function __construct() {
 		add_action( 'wp_ajax_tutor_periscope_update_attempt', array( __CLASS__, 'tutor_periscope_update_attempt' ) );
+
 		add_action( 'wp_ajax_tutor_periscope_all_student_attempts', array( __CLASS__, 'all_student_attempts' ) );
+
+		/**
+		 * Add action after quiz attempt
+		 *
+		 * @since v1.0.0
+		 */
+		add_action( 'tutor_quiz/attempt_ended', array( __CLASS__, 'update_attempt_taken', 10, 3 ) );
 	}
 
 	/**
@@ -122,5 +130,22 @@ class AttemptManagement {
 			);
 		}
 		return array();
+	}
+
+	/**
+	 * Update student attempt taken meta after quiz ended
+	 * action hook is added on Tutor core:tutor/classes/Quiz.php:469
+	 *
+	 * @param int $attempt_id | attempt id.
+	 * @param int $course_id | course id.
+	 * @param int $user_id | student id.
+	 *
+	 * @return void
+	 *
+	 * @since v1.0.0
+	 */
+	public static function update_attempt_taken( $attempt_id, $course_id, $user_id ) {
+		$taken_attempt = (int) get_user_meta( $user_id, self::ATTEMPT_TAKEN_KEY, true );
+		update_user_meta( $user_id, self::ATTEMPT_TAKEN_KEY, $taken_attempt + 1 );
 	}
 }
