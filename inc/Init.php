@@ -7,6 +7,8 @@
 
 namespace Tutor_Periscope;
 
+use Google\Service\Classroom\Assignment;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
