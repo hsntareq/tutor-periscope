@@ -44,7 +44,7 @@ class AttemptEmail extends EmailAbstract {
 	public function email_body() {
 		$user_data = get_userdata( get_current_user_id() );
 		$name = '' !== $user_data->display_name ? $user_data->display_name : $user_data->user_login;
-		$message = __( 'A student named: ' . $name . 'and email: ' . $user_data->user_email . 'is out of attempt' , 'tutor-periscope' );
+		$message = __( 'A student named: ' . $name . ' and email: ' . $user_data->user_email . ' is out of attempt!' , 'tutor-periscope' );
 		return $message;
 	}
 
