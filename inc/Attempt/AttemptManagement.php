@@ -50,6 +50,17 @@ class AttemptManagement {
 		 */
 		add_action( 'tutor_quiz/attempt_ended', array( __CLASS__, 'update_attempt_taken' ), 10, 3 );
 		add_action( 'tutor_quiz/attempt_ended', array( __CLASS__, 'email_notification' ), 10, 3 );
+
+		/**
+		 * Do action on tutor hook
+		 * path: tutor/templates/single/quiz/body.php:461
+		 *
+		 * Hook added for hide start quiz form if user is out of
+		 * attempt.
+		 *
+		 * @since v1.0.0
+		 */
+		add_action( 'tuotr_quiz/start_form/after', array( __CLASS__, 'hide_if_out_of_attempt' ) );
 	}
 
 	/**
@@ -161,15 +172,34 @@ class AttemptManagement {
 	 * @since v1.0.0
 	 */
 	public static function email_notification( $attempt_id, $course_id, $user_id ) {
-		$user_attempt = self::attempt_details( $user_id );
+		$user_attempt      = self::attempt_details( $user_id );
 		$remaining_attempt = $user_attempt['assigned'] - $user_attempt['taken'];
-		$user_data = get_userdata( $user_id );
+		$user_data         = get_userdata( $user_id );
 		if ( 1 > $remaining_attempt && $user_data ) {
 			// send mail.
-			$subject = __( 'A student is out of attempt', 'tutor-periscope' );
-			$email = new AttemptEmail;
+			$subject        = __( 'A student is out of attempt', 'tutor-periscope' );
+			$email          = new AttemptEmail();
 			$email->subject = $subject;
 			$email->send_mail();
+		}
+	}
+
+	/**
+	 * Hide start quiz form if user is out of attempt
+	 *
+	 * @since v1.0.0
+	 */
+	public static function hide_if_out_of_attempt() {
+		$user_attempt = self::attempt_details( get_current_user_id() );
+		if ( 1 > $user_attempt['remaining'] ) {
+			;
+			?>
+		<style>
+			.start-quiz-wrap {
+				display: none;
+			}
+		</style>
+			<?php
 		}
 	}
 }
