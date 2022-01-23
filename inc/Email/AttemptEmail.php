@@ -22,18 +22,7 @@ class AttemptEmail extends EmailAbstract {
 	 *
 	 * @var $subject
 	 */
-	protected $subject;
-
-	/**
-	 * Set property && hook and other dependency
-	 *
-	 * @param string $sub | set subject of email.
-	 *
-	 * @since v1.0.0
-	 */
-	public function __construct( string $sub ) {
-		$this->subject = $sub;
-	}
+	public $subject;
 
 	/**
 	 * To mail to send mail
@@ -44,7 +33,7 @@ class AttemptEmail extends EmailAbstract {
 	 */
 	public function email_to():array {
 		$admin_email = get_option( 'admin_email' );
-		return array( 'shewa12kpi@gmail.com' );
+		return array( $admin_email );
 	}
 
 	/**
@@ -53,7 +42,10 @@ class AttemptEmail extends EmailAbstract {
 	 * @since v1.0.0
 	 */
 	public function email_body() {
-		return 'Hello World';
+		$user_data = get_userdata( get_current_user_id() );
+		$name = '' !== $user_data->display_name ? $user_data->display_name : $user_data->user_login;
+		$message = __( 'A student named: ' . $name . 'and email: ' . $user_data->user_email . 'is out of attempt' , 'tutor-periscope' );
+		return $message;
 	}
 
 	/**

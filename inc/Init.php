@@ -31,6 +31,7 @@ final class Init {
 			Evaluation\Course_Evaluation::class,
 			Evaluation\Student_Course_Evaluation::class,
 			Attempt\AttemptManagement::class,
+			Email\AttemptEmail::class,
 		);
 	}
 

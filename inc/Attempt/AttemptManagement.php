@@ -11,6 +11,8 @@
 
 namespace Tutor_Periscope\Attempt;
 
+use Tutor_Periscope\Email\AttemptEmail;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -46,7 +48,8 @@ class AttemptManagement {
 		 *
 		 * @since v1.0.0
 		 */
-		add_action( 'tutor_quiz/attempt_ended', array( __CLASS__, 'update_attempt_taken', 10, 3 ) );
+		add_action( 'tutor_quiz/attempt_ended', array( __CLASS__, 'update_attempt_taken' ), 10, 3 );
+		add_action( 'tutor_quiz/attempt_ended', array( __CLASS__, 'email_notification' ), 10, 3 );
 	}
 
 	/**
@@ -147,5 +150,26 @@ class AttemptManagement {
 	public static function update_attempt_taken( $attempt_id, $course_id, $user_id ) {
 		$taken_attempt = (int) get_user_meta( $user_id, self::ATTEMPT_TAKEN_KEY, true );
 		update_user_meta( $user_id, self::ATTEMPT_TAKEN_KEY, $taken_attempt + 1 );
+	}
+
+	/**
+	 * If student is out of attempt then send notification to admin
+	 * by listening Tutor hook.
+	 *
+	 * @return void
+	 *
+	 * @since v1.0.0
+	 */
+	public static function email_notification( $attempt_id, $course_id, $user_id ) {
+		$user_attempt = self::attempt_details( $user_id );
+		$remaining_attempt = $user_attempt['assigned'] - $user_attempt['taken'];
+		$user_data = get_userdata( $user_id );
+		if ( 1 > $remaining_attempt && $user_data ) {
+			// send mail.
+			$subject = __( 'A student is out of attempt', 'tutor-periscope' );
+			$email = new AttemptEmail;
+			$email->subject = $subject;
+			$email->send_mail();
+		}
 	}
 }
