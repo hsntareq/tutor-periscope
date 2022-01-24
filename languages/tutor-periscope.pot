@@ -81,12 +81,16 @@ msgstr ""
 msgid "Permission Denied!"
 msgstr ""
 
-#: inc/Attempt/AttemptManagement.php:83, inc/Attempt/AttemptManagement.php:107
+#: inc/Attempt/AttemptManagement.php:97, inc/Attempt/AttemptManagement.php:121
 msgid "Nonce verification failed"
 msgstr ""
 
-#: inc/Attempt/AttemptManagement.php:80
+#: inc/Attempt/AttemptManagement.php:94
 msgid "Invalid user"
+msgstr ""
+
+#: inc/Attempt/AttemptManagement.php:180
+msgid "A student is out of attempt"
 msgstr ""
 
 #: inc/Certificates/Certificates.php:38

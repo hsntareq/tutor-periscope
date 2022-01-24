@@ -191,7 +191,7 @@ class AttemptManagement {
 	 */
 	public static function hide_if_out_of_attempt() {
 		$user_attempt = self::attempt_details( get_current_user_id() );
-		if ( 1 > $user_attempt['remaining'] ) {
+		if ( ! $user_attempt['remaining'] ) {
 			;
 			?>
 		<style>
