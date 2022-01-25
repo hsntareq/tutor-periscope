@@ -50,6 +50,7 @@ class AttemptManagement {
 		 */
 		add_action( 'tutor_quiz/attempt_ended', array( __CLASS__, 'update_attempt_taken' ), 10, 3 );
 		add_action( 'tutor_quiz/attempt_ended', array( __CLASS__, 'email_notification' ), 10, 3 );
+		add_filter( 'tutor_previous_quiz_attempt', array( __CLASS__, 'remove_fail_attempts' ), 10, 2 );
 
 		/**
 		 * Do action on tutor hook
@@ -191,7 +192,8 @@ class AttemptManagement {
 	 */
 	public static function hide_if_out_of_attempt() {
 		$user_attempt = self::attempt_details( get_current_user_id() );
-		if ( ! $user_attempt['remaining'] ) {
+		$attempt      = (int) $user_attempt['remaining'];
+		if ( ! $attempt ) {
 			;
 			?>
 		<style>
@@ -201,5 +203,28 @@ class AttemptManagement {
 		</style>
 			<?php
 		}
+	}
+
+	/**
+	 * Delete attempt if user failed on strict mood
+	 *
+	 * @param array $attempts | attempts list.
+	 * @param int   $quiz_id | quiz id.
+	 *
+	 * @return object
+	 *
+	 * @since v1.0.0
+	 */
+	public static function remove_fail_attempts( $attempts, $quiz_id ) {
+		$filter_attempts = array();
+		foreach ( $attempts as $attempt ) {
+			$earned_percentage = $attempt->earned_marks > 0 ? ( number_format( ( $attempt->earned_marks * 100 ) / $attempt->total_marks ) ) : 0;
+			$passing_grade     = (int) tutor_utils()->get_quiz_option( $attempt->quiz_id, 'passing_grade', 0 );
+			$answers           = tutor_utils()->get_quiz_answers_by_attempt_id( $attempt->attempt_id );
+			if ( $earned_percentage >= $passing_grade ) {
+				array_push( $filter_attempts, $attempt );
+			}
+		}
+		return $filter_attempts;
 	}
 }
