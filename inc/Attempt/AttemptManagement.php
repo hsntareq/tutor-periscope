@@ -216,14 +216,20 @@ class AttemptManagement {
 	 * @since v1.0.0
 	 */
 	public static function remove_fail_attempts( $attempts, $quiz_id ) {
+		$quiz_option     = get_post_meta( $quiz_id, 'tutor_quiz_option', true );
+		$quiz_option     = maybe_unserialize( $quiz_option );
 		$filter_attempts = array();
-		foreach ( $attempts as $attempt ) {
-			$earned_percentage = $attempt->earned_marks > 0 ? ( number_format( ( $attempt->earned_marks * 100 ) / $attempt->total_marks ) ) : 0;
-			$passing_grade     = (int) tutor_utils()->get_quiz_option( $attempt->quiz_id, 'passing_grade', 0 );
-			$answers           = tutor_utils()->get_quiz_answers_by_attempt_id( $attempt->attempt_id );
-			if ( $earned_percentage >= $passing_grade ) {
-				array_push( $filter_attempts, $attempt );
+		if ( isset( $quiz_option['feedback_mode'] ) && 'strict' === $quiz_option['feedback_mode'] ) {
+			foreach ( $attempts as $attempt ) {
+				$earned_percentage = $attempt->earned_marks > 0 ? ( number_format( ( $attempt->earned_marks * 100 ) / $attempt->total_marks ) ) : 0;
+				$passing_grade     = (int) tutor_utils()->get_quiz_option( $attempt->quiz_id, 'passing_grade', 0 );
+				$answers           = tutor_utils()->get_quiz_answers_by_attempt_id( $attempt->attempt_id );
+				if ( $earned_percentage >= $passing_grade ) {
+					array_push( $filter_attempts, $attempt );
+				}
 			}
+		} else {
+			$filter_attempts = $attempts;
 		}
 		return $filter_attempts;
 	}
