@@ -1,3 +1,38 @@
+#tutor-periscope-loader-wrapper {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  opacity: 0.7;
+  background-color: #919191;
+  z-index: 99;
+}
+
+#tutor-periscope-loader-wrapper .tutor-periscope-loading {
+  height: 0;
+  width: 0;
+  padding: 15px;
+  border: 6px solid #ccc;
+  border-right-color: #888;
+  border-radius: 22px;
+  -webkit-animation: rotate 1s infinite linear;
+  /* left, top and position just for the demo! */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+@-webkit-keyframes rotate {
+  /* 100% keyframe for  clockwise. 
+            use 0% instead for anticlockwise */
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
 .single-evaluation-wrapper h2 {
   font-size: 24px;
 }
@@ -10,3 +45,5 @@ table.wp-list-table.students tbody input[type=number] {
   width: 100px;
   text-align: center;
 }
+
+/*# sourceMappingURL=backend.css.map */
