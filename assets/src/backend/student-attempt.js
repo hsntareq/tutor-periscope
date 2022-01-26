@@ -71,10 +71,24 @@ window.document.addEventListener('DOMContentLoaded', async function() {
             const response = await ajaxRequest(formData);
             if (!response.success) {
                 if (response.data) {
-                    alert(response.data);
+                    tutor_toast(
+                        __('Failed', 'tutor-periscope'),
+                        __(response.data, 'tutor-periscope'),
+                        'error',
+                    );
                 } else {
-                    alert(__( 'Attempt assign failed, please try again!', 'tutor-periscope'));
+                    tutor_toast(
+                        __('Failed', 'tutor-periscope'),
+                        __("Attempt assign failed, please try again!", 'tutor-periscope'),
+                        'error',
+                    );
                 }
+            } else {
+                tutor_toast(
+                    __('Success', 'tutor-periscope'),
+                    __("Attempt has been assigned successfully!", 'tutor-periscope'),
+                    'success',
+                );
             }
         }
     });
