@@ -213,23 +213,23 @@ msgstr ""
 msgid "Neutral"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:8
+#: views/admin/course-assignment-form.php:14
 msgid "Label"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:9
+#: views/admin/course-assignment-form.php:15
 msgid "Select"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:14
+#: views/admin/course-assignment-form.php:20
 msgid "Select a course to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:28
+#: views/admin/course-assignment-form.php:35
 msgid "Select User(s) to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:46
+#: views/admin/course-assignment-form.php:54
 msgid "Assign Course"
 msgstr ""
 
