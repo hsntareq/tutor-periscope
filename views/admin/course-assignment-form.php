@@ -1,6 +1,13 @@
 <div class="wrap">
-    <h1>Course Assignment </h1>
-    <div>
+    <?php $_get = $_GET;?>
+    <h1 class="wp-heading-inline">Course Assignment </h1>
+    <hr class="wp-header-end">
+    <ul class="subsubsub">
+        <li class="mine"><a href="<?php echo add_query_arg( array( 'page' => 'course-assignment', 'tab' => 'assignment', ), admin_url( 'admin.php' ) );?>" class="<?php echo $_get['tab'] && 'assignment' == $_get['tab'] ? 'current' : '' ;?>">Assignment Form </a></li> |
+        <li class="publish"><a href="<?php echo add_query_arg( array( 'page' => 'course-assignment', 'tab' => 'bulk-user', ), admin_url( 'admin.php' ) );?>" class="<?php echo $_get['tab'] && 'bulk-user' == $_get['tab'] ? 'current' : '' ;?>">Bulk User import</a></li>
+    </ul>
+    <div id="poststuff">
+    <div >
         <form action="" method="POST">
             <table class="wp-list-table widefat striped table-view-list">
                 <thead>
@@ -51,5 +58,6 @@
                 </tbody>
             </table>
         </form>
+    </div>
     </div>
 </div>
