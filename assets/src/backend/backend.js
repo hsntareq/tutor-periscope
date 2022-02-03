@@ -1,4 +1,5 @@
 import html2pdf from 'html2pdf.js';
+import "./student-attempt";
 jQuery(document).ready(function () {
 
     this.PrintDiv = () => {    

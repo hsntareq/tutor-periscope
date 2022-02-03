@@ -1,3 +1,4 @@
+@import '../common/loader';
 .single-evaluation-wrapper {
     h2 {
         font-size: 24px;
@@ -5,5 +6,15 @@
 
     p {
         font-size: 15px;
+    }
+}
+
+//student table css
+table.wp-list-table.students {
+    tbody {
+        input[type=number] {
+            width:100px;
+            text-align: center;
+        }
     }
 }

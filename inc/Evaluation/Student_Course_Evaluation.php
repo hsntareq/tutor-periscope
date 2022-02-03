@@ -6,16 +6,27 @@
  */
 namespace Tutor_Periscope\Evaluation;
 
+use Tutor_Periscope\Query\DB_Query;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Student_Course_Evaluation {
+class Student_Course_Evaluation extends DB_Query {
 
+	private $table_name;
 	/**
 	 * Handle dependencies hooks
 	 */
 	public function __construct() {
+		/**
+		 * Init table name
+		 *
+		 * @var $table_name
+		 */
+		global $wpdb;
+		$this->table_name = $wpdb->prefix . 'tp_course_evaluation';
+
 		/**
 		 * Do action hook added
 		 * file path: tutor/templates/single/course/review-form.php:33
@@ -29,6 +40,30 @@ class Student_Course_Evaluation {
 				'tutor_before_rating_textarea',
 			)
 		);
+
+		/**
+		 * Student course evaluation ajax request handle
+		 *
+		 * @since v1.0.0
+		 */
+		add_action(
+			'wp_ajax_tutor_periscope_evaluation',
+			array(
+				$this,
+				'course_evaluation',
+			)
+		);
+	}
+
+	/**
+	 * Get table name
+	 *
+	 * @return string
+	 *
+	 * @since v1.0.0
+	 */
+	public function get_table() {
+		return $this->table_name;
 	}
 
 	/**
@@ -47,4 +82,49 @@ class Student_Course_Evaluation {
 			TUTOR_PERISCOPE_DIR_PATH . 'templates/frontend/course-evaluation.php'
 		);
 	}
+
+	/**
+	 * Course evaluation ajax request handle
+	 *
+	 * @return void
+	 *
+	 * @since v1.0.0
+	 */
+	public function course_evaluation() {
+		if ( wp_verify_nonce( $_POST['nonce'], 'tp_nonce' ) ) {
+			$post = $_POST;
+
+			// unset index that won't be store in DB.
+			unset( $post['action'] );
+			unset( $post['nonce'] );
+
+			$create_or_update = $this->create_or_update( $post );
+			if ( $create_or_update ) {
+				wp_send_json_success();
+			} else {
+				wp_send_json_error();
+			}
+		}
+		wp_send_json_error( __( 'Nonce verification failed', 'tutor_periscope' ) );
+	}
+
+	/**
+	 * Create or update course evaluation based on post array
+	 *
+	 * It will call the extended class for operation.
+	 *
+	 * @param array $post post data for insert or update.
+	 *
+	 * @return bool, true on success false on failure
+	 *
+	 * @since v1.0.0
+	 */
+	public function create_or_update( array $post ): bool {
+		if ( isset( $post['id'] ) ) {
+			return $this->update( $post, array( 'id' => $post['id'] ) );
+		} else {
+			return $this->insert( $post );
+		}
+	}
 }
+
