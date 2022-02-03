@@ -6,13 +6,39 @@
         <li class="mine"><a href="<?php echo add_query_arg( array( 'page' => 'course-assignment', 'tab' => 'assignment', ), admin_url( 'admin.php' ) );?>" class="<?php echo $_get['tab'] && 'assignment' == $_get['tab'] ? 'current' : '' ;?>">Assignment Form </a></li> |
         <li class="publish"><a href="<?php echo add_query_arg( array( 'page' => 'course-assignment', 'tab' => 'bulk-user', ), admin_url( 'admin.php' ) );?>" class="<?php echo $_get['tab'] && 'bulk-user' == $_get['tab'] ? 'current' : '' ;?>">Bulk User import</a></li>
     </ul>
-    <div id="poststuff">
-    <div >
-        <form action="" method="POST">
+    <div style="clear:both" id="poststuff">
+    <div>
+        <?php if('bulk-user'===$_get['tab']){ ?>
+            <div class="wp-list-table widefat striped table-view-list" style="max-width:700px">
+                <input type="file" id="bulk_user_import">
+            </div>
             <table class="wp-list-table widefat striped table-view-list">
                 <thead>
                     <tr>
-                        <td><?php _e('Label', 'tutor-periscope') ?></td>
+                        <td>Name</td>
+                        <td>Email</td>
+                        <td width="200">Action</td>
+                    </tr>
+                    </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a href="#">Edit</a>
+                            <a href="#">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        <?php }elseif('assignment'===$_get['tab']){ ?>
+
+        <form action="" method="POST">
+            <table class="wp-list-table widefat striped table-view-list" style="max-width:700px">
+                <thead>
+                    <tr>
+                        <td width="150"><?php _e('Label', 'tutor-periscope') ?></td>
                         <td><?php _e('Select', 'tutor-periscope') ?></td>
                     </tr>
                     </thead>
@@ -22,7 +48,7 @@
                         <td>
                             <select class="select2" name="assigned_course">
                                 <option>Select Course</option>
- <?php
+                                <?php
                                 $courses = get_posts(array('post_type' => 'courses'));
                                 // Array of WP_User objects.
                                 foreach ($courses as $course) {
@@ -58,6 +84,8 @@
                 </tbody>
             </table>
         </form>
+
+        <?php } ?>
     </div>
     </div>
 </div>

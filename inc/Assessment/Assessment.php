@@ -23,8 +23,25 @@ class Assessment
     {
         add_action('tutor_quiz_edit_modal_settings_tab_after', array($this, 'additional_quiz_feedback_mode'), 10, 1);
         add_action('admin_init', array($this, 'handle_assessment_form'));
+        add_action('wp_ajax_periscope_user_import', array($this, 'periscope_user_import'));
     }
 
+    public function periscope_user_import(){
+        verify_nonce();
+        $bulk_users = json_decode( stripslashes( $_POST['bulk_user'] ));//['bulk_user']
+        		// $request = json_decode(stripslashes($request), true);
+
+        wp_send_json( $bulk_users );
+
+        $userdata = array(
+            'user_pass'             => '',
+            'user_login'            => '',
+            'user_nicename'         => '',
+            'user_email'            => '',
+            'role'                  => 'subscriber',
+        );
+
+    }
     /**
      * Handle the Course Evaluation new and edit form
      *
