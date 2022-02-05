@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./assets/src/frontend/ajax.js":
@@ -8,6 +7,7 @@
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ajaxRequest)
@@ -45,6 +45,7 @@ async function ajaxRequest(formData) {
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajax */ "./assets/src/frontend/ajax.js");
 /**
@@ -85,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajax */ "./assets/src/frontend/ajax.js");
 
@@ -164,6 +166,89 @@ async function checkPreviousContentStatus(contentId) {
   }
 }
 
+/***/ }),
+
+/***/ "./assets/src/frontend/video-management.js":
+/*!*************************************************!*\
+  !*** ./assets/src/frontend/video-management.js ***!
+  \*************************************************/
+/***/ (() => {
+
+document.addEventListener('DOMContentLoaded', function () {
+  const lessonSidebar = document.getElementById('tutor-lesson-sidebar-tab-content');
+  const progressClasses = document.getElementsByClassName('plyr__progress__container');
+  const progressBar = progressClasses[0];
+
+  if (progressBar) {
+    progressBar.remove();
+  } //var video = document.getElementById('tutorPlayer');
+
+
+  manageVideoAction();
+
+  if (lessonSidebar) {
+    lessonSidebar.onclick = e => {
+      const target = e.target;
+      let clickedTag = target;
+
+      if (clickedTag.tagName !== 'A') {
+        clickedTag = target.closest('a');
+      }
+
+      if (clickedTag.hasAttribute('data-lesson-id')) {
+        //wait for content loading, after ready then reload page. so that video event can work 
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000); //manageVideoAction();
+
+        var video = document.getElementById('tutorPlayer');
+        console.log(video);
+      }
+    };
+  }
+
+  function manageVideoAction() {
+    var video = document.getElementById('tutorPlayer');
+
+    if (video) {
+      var supposedCurrentTime = 0;
+      video.addEventListener('timeupdate', function () {
+        if (!video.seeking) {
+          supposedCurrentTime = video.currentTime;
+        }
+      }); // prevent user from seeking
+
+      video.addEventListener('seeking', function () {
+        // user seeks, seeking is fired, currentTime is modified, seeking is fired, current time is modified, ....
+        var delta = video.currentTime - supposedCurrentTime; // delta = Math.abs(delta); // disable seeking previous content if you want
+
+        if (delta > 0.01) {
+          video.currentTime = supposedCurrentTime;
+        }
+      });
+      video.addEventListener('ended', function () {
+        // reset state in order to allow for rewind
+        //supposedCurrentTime = 0;
+        //console.log(video.currentTime);
+        tractVideoProgress();
+      });
+      video.addEventListener('pause', function () {
+        tractVideoProgress();
+        console.log(video.currentTime);
+      });
+    }
+  }
+
+  function tractVideoProgress() {
+    const lesson = document.querySelector('.tutor-single-lesson-items.active a[data-lesson-id]');
+
+    if (lesson) {
+      const lessonId = lesson.getAttribute('data-lesson-id');
+      console.log(lessonId);
+    }
+  }
+});
+
 /***/ })
 
 /******/ 	});
@@ -193,6 +278,18 @@ async function checkPreviousContentStatus(contentId) {
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -223,14 +320,18 @@ async function checkPreviousContentStatus(contentId) {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 /*!*****************************************!*\
   !*** ./assets/src/frontend/frontend.js ***!
   \*****************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _course_evaluation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./course-evaluation */ "./assets/src/frontend/course-evaluation.js");
 /* harmony import */ var _linear__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./linear */ "./assets/src/frontend/linear.js");
+/* harmony import */ var _video_management__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./video-management */ "./assets/src/frontend/video-management.js");
+/* harmony import */ var _video_management__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_video_management__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 })();

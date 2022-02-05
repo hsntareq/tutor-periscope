@@ -225,23 +225,59 @@ msgstr ""
 msgid "Neutral"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:14
-msgid "Label"
+#: templates/frontend/course-evaluation.php:14
+msgid "The learning outcome were met"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:24
+msgid "Current evidence was cited for specific content"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:34, views/admin/course-evaluation-edit.php:74, views/admin/course-evaluation-new.php:72
+msgid "Instructional activities added value to my learning experience"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:44, views/admin/course-evaluation-edit.php:86, views/admin/course-evaluation-new.php:84
+msgid "Course content was effectively delivered"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:54
+msgid "Overall course was valuable"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:64
+msgid "Promotion of a product or service was not present"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:74, views/admin/course-evaluation-edit.php:122, views/admin/course-evaluation-new.php:120
+msgid "The environment was supportive of my learning experience"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:84
+msgid "Numbers of hours it took to complete- ONLY online for online courses"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:94
+msgid "How will you apply this in your practice"
 msgstr ""
 
 #: views/admin/course-assignment-form.php:15
+msgid "Label"
+msgstr ""
+
+#: views/admin/course-assignment-form.php:16
 msgid "Select"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:20
+#: views/admin/course-assignment-form.php:21
 msgid "Select a course to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:35
+#: views/admin/course-assignment-form.php:36
 msgid "Select User(s) to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:54
+#: views/admin/course-assignment-form.php:55
 msgid "Assign Course"
 msgstr ""
 
@@ -398,5 +434,25 @@ msgid "Remaining Attempt"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Attempt assign failed, please try again!"
+msgid "Failed"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "tutor-periscope"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Success"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Fail"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Please complete previous lesson first!"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Previous content status check failed!"
 msgstr ""
