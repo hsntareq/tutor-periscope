@@ -210,10 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //wait for content loading, after ready then reload page. so that video event can work 
         setTimeout(() => {
           window.location.reload();
-        }, 2000); //manageVideoAction();
-
-        var video = document.getElementById('tutorPlayer');
-        console.log(video);
+        }, 2000);
       }
     };
   }
@@ -227,7 +224,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var video = document.getElementById('tutorPlayer');
 
     if (video) {
-      var supposedCurrentTime = 0;
+      // if has pause time then start from there
+      var supposedCurrentTime = tp_data.has_lesson_time ? Number(tp_data.has_lesson_time) : 0;
       video.addEventListener('timeupdate', function () {
         if (!video.seeking) {
           supposedCurrentTime = video.currentTime;
@@ -244,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       video.addEventListener('ended', function () {
         // reset state in order to allow for rewind
-        //supposedCurrentTime = 0;
+        supposedCurrentTime = 0;
         tractVideoProgress();
       });
       video.addEventListener('pause', function () {

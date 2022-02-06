@@ -64,7 +64,8 @@ class LessonProgress {
 	public function mark_lesson_complete() {
 		if ( wp_verify_nonce( $_POST['nonce'], 'tp_nonce' ) ) {
 			$lesson_id = isset( $_POST['lesson_id'] ) ? sanitize_text_field( $_POST['lesson_id'] ) : 0;
-
+			// remove if it has pause time.
+			self::remove_lesson_pause_time( $lesson_id, get_current_user_id() );
 			// don't reinvent the wheel, use existing func.
 			tutor_utils()->mark_lesson_complete( $lesson_id, get_current_user_id() );
 			wp_send_json_success();
@@ -72,4 +73,28 @@ class LessonProgress {
 			wp_send_json_error( __( 'Nonce verification failed.', 'tutor-periscope' ) );
 		}
 	}
+
+	/**
+	 * Get lesson pause time. It will be used to resume from end time.
+	 *
+	 * @param  int $lesson_id , lesson id.
+	 * @param  int $user_id , user id.
+	 * @return mixed, string value or false if failed
+	 */
+	public static function get_lesson_pause_time( int $lesson_id, int $user_id ) {
+		return get_user_meta( $user_id, 'lesson_pause_time_' . $lesson_id, true );
+	}
+
+	/**
+	 * Get lesson pause time. It will be used to resume from end time.
+	 *
+	 * @param  int $lesson_id , lesson id.
+	 * @param  int $user_id , user id.
+	 * @return mixed, string value or false if failed
+	 */
+	public static function remove_lesson_pause_time( int $lesson_id, int $user_id ) {
+		return delete_user_meta( $user_id, 'lesson_pause_time_' . $lesson_id );
+	}
+
+
 }

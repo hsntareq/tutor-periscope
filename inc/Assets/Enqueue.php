@@ -7,6 +7,8 @@
 
 namespace Tutor_Periscope\Assets;
 
+use Tutor_Periscope\Lesson\LessonProgress;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -59,10 +61,20 @@ class Enqueue {
 	 * @since v1.0.0
 	 */
 	public function inline_script_data(): array {
-		return array(
-			'url'   => admin_url( 'admin-ajax.php' ),
-			'nonce' => wp_create_nonce( 'tp_nonce' ),
+		$id              = get_the_ID();
+		$user_id         = get_current_user_id();
+		$post_type       = get_post_type( $id );
+		$has_lesson_time = false;
+		if ( 'lesson' === $post_type ) {
+			// get if this user has pause lesson.
+			$has_lesson_time = LessonProgress::get_lesson_pause_time( $id, $user_id );
+		}
+		$data = array(
+			'url'             => admin_url( 'admin-ajax.php' ),
+			'nonce'           => wp_create_nonce( 'tp_nonce' ),
+			'has_lesson_time' => $has_lesson_time,
 		);
+		return apply_filters( 'tutor_periscope_inline_script_data', $data );
 	}
 }
 
