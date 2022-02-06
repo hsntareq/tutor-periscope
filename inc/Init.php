@@ -33,6 +33,7 @@ final class Init {
 			Attempt\AttemptManagement::class,
 			Email\AttemptEmail::class,
 			Lesson\LessonAdjustment::class,
+			Lesson\LessonProgress::class,
 		);
 	}
 

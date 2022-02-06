@@ -1,4 +1,5 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./assets/src/frontend/ajax.js":
@@ -7,7 +8,6 @@
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ajaxRequest)
@@ -45,7 +45,6 @@ async function ajaxRequest(formData) {
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajax */ "./assets/src/frontend/ajax.js");
 /**
@@ -86,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajax */ "./assets/src/frontend/ajax.js");
 
@@ -172,8 +170,21 @@ async function checkPreviousContentStatus(contentId) {
 /*!*************************************************!*\
   !*** ./assets/src/frontend/video-management.js ***!
   \*************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajax */ "./assets/src/frontend/ajax.js");
+
+/**
+ * Video interaction hook. Tract user's interaction with video.
+ * On video pause and end trigger wp hook to store info.
+ *
+ * @since v1.0.0
+ */
+
+const {
+  __
+} = wp.i18n;
 document.addEventListener('DOMContentLoaded', function () {
   const lessonSidebar = document.getElementById('tutor-lesson-sidebar-tab-content');
   const progressClasses = document.getElementsByClassName('plyr__progress__container');
@@ -206,6 +217,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     };
   }
+  /**
+   * Hook up video event. For ex: on video pause, end.
+   * And do required operation 
+   */
+
 
   function manageVideoAction() {
     var video = document.getElementById('tutorPlayer');
@@ -229,22 +245,46 @@ document.addEventListener('DOMContentLoaded', function () {
       video.addEventListener('ended', function () {
         // reset state in order to allow for rewind
         //supposedCurrentTime = 0;
-        //console.log(video.currentTime);
         tractVideoProgress();
       });
       video.addEventListener('pause', function () {
-        tractVideoProgress();
-        console.log(video.currentTime);
+        tractVideoProgress(video.currentTime);
       });
     }
   }
+  /**
+   * Tract user's video progress. Store video pause time to resume from there.
+   * If video end then mark lesson as complete.
+   *
+   * @param currentTime, false means video ended other wise 
+   * video time position.
+   */
 
-  function tractVideoProgress() {
+
+  async function tractVideoProgress(currentTime = false) {
+    //check if it is lesson
     const lesson = document.querySelector('.tutor-single-lesson-items.active a[data-lesson-id]');
 
     if (lesson) {
-      const lessonId = lesson.getAttribute('data-lesson-id');
-      console.log(lessonId);
+      const lessonId = lesson.getAttribute('data-lesson-id'); //setup form data
+
+      const formData = new FormData();
+      formData.set('action', currentTime ? 'tutor_periscope_store_video_time' : 'tutor_periscope_mark_lesson_complete');
+
+      if (currentTime) {
+        //time in sec
+        formData.set('time', currentTime);
+      }
+
+      formData.set('lesson_id', lessonId);
+      formData.set('nonce', tp_data.nonce); //make ajax request
+
+      const response = await (0,_ajax__WEBPACK_IMPORTED_MODULE_0__["default"])(formData);
+      console.log(response); //if response false
+
+      if (!response) {
+        alert(__('Lesson activity tracking failed', 'tutor-periscope'));
+      }
     }
   }
 });
@@ -278,18 +318,6 @@ document.addEventListener('DOMContentLoaded', function () {
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -320,9 +348,8 @@ document.addEventListener('DOMContentLoaded', function () {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-"use strict";
 /*!*****************************************!*\
   !*** ./assets/src/frontend/frontend.js ***!
   \*****************************************/
@@ -330,7 +357,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _course_evaluation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./course-evaluation */ "./assets/src/frontend/course-evaluation.js");
 /* harmony import */ var _linear__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./linear */ "./assets/src/frontend/linear.js");
 /* harmony import */ var _video_management__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./video-management */ "./assets/src/frontend/video-management.js");
-/* harmony import */ var _video_management__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_video_management__WEBPACK_IMPORTED_MODULE_2__);
 
 
 

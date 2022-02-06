@@ -1,3 +1,12 @@
+import ajaxRequest from "./ajax";
+
+/**
+ * Video interaction hook. Tract user's interaction with video.
+ * On video pause and end trigger wp hook to store info.
+ *
+ * @since v1.0.0
+ */
+const {__} = wp.i18n;
 document.addEventListener('DOMContentLoaded', function(){
     const lessonSidebar = document.getElementById('tutor-lesson-sidebar-tab-content');
     const progressClasses = document.getElementsByClassName('plyr__progress__container');
@@ -26,6 +35,11 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         }
     }
+
+    /**
+     * Hook up video event. For ex: on video pause, end.
+     * And do required operation 
+     */
     function manageVideoAction() {
         var video = document.getElementById('tutorPlayer');
         
@@ -46,24 +60,46 @@ document.addEventListener('DOMContentLoaded', function(){
                 }
             });
             video.addEventListener('ended', function() {
-            // reset state in order to allow for rewind
-            //supposedCurrentTime = 0;
-                //console.log(video.currentTime);
+                // reset state in order to allow for rewind
+                //supposedCurrentTime = 0;
                 tractVideoProgress();
             });
         
             video.addEventListener('pause', function(){
-                tractVideoProgress();
-                console.log(video.currentTime);
+                tractVideoProgress(video.currentTime);
             });
         }
     }
 
-    function tractVideoProgress() {
+    /**
+     * Tract user's video progress. Store video pause time to resume from there.
+     * If video end then mark lesson as complete.
+     *
+     * @param currentTime, false means video ended other wise 
+     * video time position.
+     */
+    async function tractVideoProgress(currentTime = false) {
+        //check if it is lesson
         const lesson = document.querySelector('.tutor-single-lesson-items.active a[data-lesson-id]');
         if (lesson) {
             const lessonId = lesson.getAttribute('data-lesson-id');
-            console.log(lessonId);
+            //setup form data
+            const formData = new FormData();
+            formData.set('action', currentTime ? 'tutor_periscope_store_video_time' : 'tutor_periscope_mark_lesson_complete');
+            if (currentTime) {
+                //time in sec
+                formData.set('time', currentTime);
+            }
+            formData.set('lesson_id' , lessonId);
+            formData.set('nonce', tp_data.nonce);
+
+            //make ajax request
+            const response = await ajaxRequest(formData);
+            console.log(response)
+            //if response false
+            if (!response) {
+                alert(__( 'Lesson activity tracking failed', 'tutor-periscope' ) );
+            }
         }
     }
 
