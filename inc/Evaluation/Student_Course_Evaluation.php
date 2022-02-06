@@ -33,13 +33,13 @@ class Student_Course_Evaluation extends DB_Query {
 		 *
 		 * Add custom fields
 		 */
-		add_action(
-			'tutor_before_rating_textarea',
-			array(
-				__CLASS__,
-				'tutor_before_rating_textarea',
-			)
-		);
+		// add_action(
+		// 	'tutor_before_rating_textarea',
+		// 	array(
+		// 		__CLASS__,
+		// 		'tutor_before_rating_textarea',
+		// 	)
+		// );
 
 		/**
 		 * Student course evaluation ajax request handle
@@ -100,7 +100,14 @@ class Student_Course_Evaluation extends DB_Query {
 
 			$create_or_update = $this->create_or_update( $post );
 			if ( $create_or_update ) {
+				// store a identifier that user evaluated course.
+				update_user_meta(
+					get_current_user_id(),
+					'tp_user_evaluated_course_' . $post['tutor_course_id'],
+					true
+				);
 				wp_send_json_success();
+
 			} else {
 				wp_send_json_error();
 			}

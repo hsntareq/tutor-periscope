@@ -93,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
             //make ajax request
             const response = await ajaxRequest(formData);
-            console.log(response)
             //if response false
             if (!response) {
                 alert(__( 'Lesson activity tracking failed', 'tutor-periscope' ) );
