@@ -73,8 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="modal-container" style="padding:20px;">
                 <div class="tutor-periscope-student-course-evaluation-wrapper">
                     <form id="tutor-periscope-evaluation-form">
-                        <div class="tutor-form-group">
-                            <label>
+                        <div class="tutor-form-group mb-3 clearfix">
+                            <label class="d-inline-block">
                                 ${__('Course content matched the session description', 'tutor-periscope')}
                             </label>
                             <select name="content_matched" id="" class="tutor-form-control">
@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
                             </select>
                         </div>
-                        <div class="tutor-form-group">
-                            <label>
+                        <div class="tutor-form-group mb-3 clearfix">
+                            <label class="d-inline-block">
                                 ${__('The learning outcome were met', 'tutor-periscope')}
                             </label>
                             <select name="outcome_met" id="" class="tutor-form-control">
@@ -93,8 +93,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
                             </select>
                         </div>
-                        <div class="tutor-form-group">
-                            <label>
+                        <div class="tutor-form-group mb-3 clearfix">
+                            <label class="d-inline-block">
                                 ${__('Current evidence was cited for specific content', 'tutor-periscope')}
                             </label>
                             <select name="specific_content" id="" class="tutor-form-control">
@@ -103,8 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
                             </select>
                         </div>
-                        <div class="tutor-form-group">
-                            <label>
+                        <div class="tutor-form-group mb-3 clearfix">
+                            <label class="d-inline-block">
                                 ${__('Instructional activities added value to my learning experience', 'tutor-periscope')}
                             </label>
                             <select name="added_value" id="" class="tutor-form-control">
@@ -113,8 +113,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
                             </select>
                         </div>
-                        <div class="tutor-form-group">
-                            <label>
+                        <div class="tutor-form-group mb-3 clearfix">
+                            <label class="d-inline-block">
                                 ${__('Course content was effectively delivered', 'tutor-periscope')}
                             </label>
                             <select name="effectively_delivered" id="" class="tutor-form-control">
@@ -123,8 +123,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
                             </select>
                         </div>
-                        <div class="tutor-form-group">
-                            <label>
+                        <div class="tutor-form-group mb-3 clearfix">
+                            <label class="d-inline-block">
                                 ${__('Overall course was valuable', 'tutor-periscope')}
                             </label>
                             <select name="was_valuable" id="" class="tutor-form-control">
@@ -133,8 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
                             </select>
                         </div>
-                        <div class="tutor-form-group">
-                            <label>
+                        <div class="tutor-form-group mb-3 clearfix">
+                            <label class="d-inline-block">
                                 ${__('Promotion of a product or service was not present', 'tutor-periscope')}
                             </label>
                             <select name="promotion_present" id="" class="tutor-form-control">
@@ -143,8 +143,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
                             </select>
                         </div>
-                        <div class="tutor-form-group">
-                            <label>
+                        <div class="tutor-form-group mb-3 clearfix">
+                            <label class="d-inline-block">
                                 ${__('The environment was supportive of my learning experience', 'tutor-periscope')}
                             </label>
                             <select name="supportive_environment" id="" class="tutor-form-control">
@@ -153,8 +153,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
                             </select>
                         </div>
-                        <div class="tutor-form-group">
-                            <label>
+                        <div class="tutor-form-group mb-3 clearfix">
+                            <label class="d-inline-block">
                                 ${__('Numbers of hours it took to complete- ONLY online for online courses', 'tutor-periscope')}
                             </label>
                             <select name="number_of_hours" id="" class="tutor-form-control">
@@ -163,8 +163,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
                             </select>
                         </div>
-                        <div class="tutor-form-group">
-                            <label>
+                        <div class="tutor-form-group mb-3 clearfix">
+                            <label class="d-inline-block">
                                 ${__('How will you apply this in your practice', 'tutor-periscope')}
                             </label>
                             <select name="apply_in_practice" id="" class="tutor-form-control">
@@ -173,17 +173,18 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
                             </select>
                         </div>
-                        <div class="tutor-form-group">
+                        <div class="tutor-form-group mb-3 clearfix">
                             <button class="tutor-periscope-evaluation-submit-button tutor-button">
                                 ${__('Submit', 'tutor-periscope')}
                             </button>
                         </div>
                     </form>
                 </div>
-         
+
             </div>
         </div>
         </div>
+        <style>.nice-select{float:right;}</style>
       `;
     document.body.insertAdjacentHTML("beforeend", modal);
   }
