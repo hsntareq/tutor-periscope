@@ -1,6 +1,6 @@
 import html2pdf from 'html2pdf.js';
 import "./student-attempt";
-import "./user_import";
+import "./import_bulk_user";
 jQuery(document).ready(function () {
 
     this.PrintDiv = () => {
