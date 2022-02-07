@@ -1,4 +1,5 @@
 import html2pdf from 'html2pdf.js';
+import "./backend_jquery";
 import "./student-attempt";
 import "./import_bulk_user";
 jQuery(document).ready(function () {

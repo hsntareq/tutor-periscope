@@ -1,6 +1,21 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./assets/src/backend/backend_jquery.js":
+/*!**********************************************!*\
+  !*** ./assets/src/backend/backend_jquery.js ***!
+  \**********************************************/
+/***/ (() => {
+
+jQuery(function () {
+  jQuery('.select2').select2({
+    placeholder: 'Select an option',
+    width: '400px'
+  });
+});
+
+/***/ }),
+
 /***/ "./assets/src/backend/import_bulk_user.js":
 /*!************************************************!*\
   !*** ./assets/src/backend/import_bulk_user.js ***!
@@ -16347,9 +16362,12 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var html2pdf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! html2pdf.js */ "./node_modules/html2pdf.js/dist/html2pdf.js");
 /* harmony import */ var html2pdf_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(html2pdf_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _student_attempt__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./student-attempt */ "./assets/src/backend/student-attempt.js");
-/* harmony import */ var _import_bulk_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./import_bulk_user */ "./assets/src/backend/import_bulk_user.js");
-/* harmony import */ var _import_bulk_user__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_import_bulk_user__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _backend_jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./backend_jquery */ "./assets/src/backend/backend_jquery.js");
+/* harmony import */ var _backend_jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_backend_jquery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _student_attempt__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./student-attempt */ "./assets/src/backend/student-attempt.js");
+/* harmony import */ var _import_bulk_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./import_bulk_user */ "./assets/src/backend/import_bulk_user.js");
+/* harmony import */ var _import_bulk_user__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_import_bulk_user__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
