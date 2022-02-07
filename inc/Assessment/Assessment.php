@@ -28,18 +28,26 @@ class Assessment
 
     public function periscope_user_import(){
         verify_nonce();
-        $bulk_users = json_decode( stripslashes( $_POST['bulk_user'] ));//['bulk_user']
-        		// $request = json_decode(stripslashes($request), true);
 
-        wp_send_json( $bulk_users );
+		$data_to_import = json_decode( wp_unslash( $_POST['bulk_user'] ), true );
+		foreach ( $data_to_import as $data_import ) {
+			$users = array();
 
-        $userdata = array(
-            'user_pass'             => '',
-            'user_login'            => '',
-            'user_nicename'         => '',
-            'user_email'            => '',
-            'role'                  => 'subscriber',
-        );
+			$data = array(
+				'user_login' => $data_import['username'],
+				'user_email' => $data_import['email'],
+				'user_pass'  => $data_import['username'],
+			);
+
+			$user_id = wp_insert_user( $data );
+
+			if ( ! is_wp_error( $user_id ) ) {
+
+				$users[] = $user_id;
+
+			}
+		}
+		wp_send_json(  $users );
 
     }
     /**

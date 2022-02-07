@@ -13,71 +13,71 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/Functions.php:15
+#: inc/Functions.php:24
 msgid "Quiz Feedback Mode Extended"
 msgstr ""
 
-#: inc/Functions.php:23
+#: inc/Functions.php:32
 msgid "Strict"
 msgstr ""
 
-#: inc/Functions.php:24
+#: inc/Functions.php:33
 msgid "Answers shown only after 90% mark is achieved"
 msgstr ""
 
-#: inc/Functions.php:62
+#: inc/Functions.php:71
 msgid "No Course Name provided."
 msgstr ""
 
-#: inc/Functions.php:65
+#: inc/Functions.php:74
 msgid "No Course Code provided."
 msgstr ""
 
-#: inc/Functions.php:68
+#: inc/Functions.php:77
 msgid "No Course content matched the session description: provided."
 msgstr ""
 
-#: inc/Functions.php:71
+#: inc/Functions.php:80
 msgid "No The learning outcomes were met: provided."
 msgstr ""
 
-#: inc/Functions.php:74
+#: inc/Functions.php:83
 msgid "No Current evidence was cited for specific content: provided."
 msgstr ""
 
-#: inc/Functions.php:77
+#: inc/Functions.php:86
 msgid "No Instructional activities added value to my learning experience provided."
 msgstr ""
 
-#: inc/Functions.php:80
+#: inc/Functions.php:89
 msgid "No Course content was effectively delivered provided."
 msgstr ""
 
-#: inc/Functions.php:83
+#: inc/Functions.php:92
 msgid "No Overall, the course was valuable: provided."
 msgstr ""
 
-#: inc/Functions.php:86
+#: inc/Functions.php:95
 msgid "No Promotion of a product or service was NOT presented provided."
 msgstr ""
 
-#: inc/Functions.php:89
+#: inc/Functions.php:98
 msgid "No The environment was supportive of my learning experience provided."
 msgstr ""
 
-#: inc/Functions.php:92
+#: inc/Functions.php:101
 msgid "No Number of hours it took to complete - ONLY for Online Courses provided."
 msgstr ""
 
-#: inc/Functions.php:95
+#: inc/Functions.php:104
 msgid "No Agree - How will you apply this in your practice provided."
 msgstr ""
 
-#: inc/Assessment/Assessment.php:39, inc/Evaluation/Course_Evaluation.php:67
+#: inc/Assessment/Assessment.php:64, inc/Evaluation/Course_Evaluation.php:67
 msgid "Are you cheating?"
 msgstr ""
 
-#: inc/Assessment/Assessment.php:42, inc/Evaluation/Course_Evaluation.php:71
+#: inc/Assessment/Assessment.php:67, inc/Evaluation/Course_Evaluation.php:71
 msgid "Permission Denied!"
 msgstr ""
 
@@ -201,6 +201,14 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+#: inc/Lesson/LessonProgress.php:55, inc/Lesson/LessonProgress.php:73
+msgid "Nonce verification failed."
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:52
+msgid "Invalid lesson id."
+msgstr ""
+
 #: inc/Setup/Dashboard.php:28, inc/Setup/Dashboard.php:28
 msgid "Course Evaluation"
 msgstr ""
@@ -261,23 +269,23 @@ msgstr ""
 msgid "How will you apply this in your practice"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:15
+#: views/admin/course-assignment-form.php:41
 msgid "Label"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:16
+#: views/admin/course-assignment-form.php:42
 msgid "Select"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:21
+#: views/admin/course-assignment-form.php:47
 msgid "Select a course to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:36
+#: views/admin/course-assignment-form.php:62
 msgid "Select User(s) to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:55
+#: views/admin/course-assignment-form.php:81
 msgid "Assign Course"
 msgstr ""
 
@@ -446,6 +454,74 @@ msgid "Success"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Please evaluate the course"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Course content matched the session description"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Agree"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Disagree"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Neutral"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "The learning outcome were met"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Current evidence was cited for specific content"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Instructional activities added value to my learning experience"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Course content was effectively delivered"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Overall course was valuable"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Promotion of a product or service was not present"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "The environment was supportive of my learning experience"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Numbers of hours it took to complete- ONLY online for online courses"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "How will you apply this in your practice"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Submit"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Please wait..."
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Thank for evaluating"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
 msgid "Fail"
 msgstr ""
 
@@ -455,4 +531,8 @@ msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
 msgid "Previous content status check failed!"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Lesson activity tracking failed"
 msgstr ""
