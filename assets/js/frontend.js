@@ -205,10 +205,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const response = await (0,_ajax__WEBPACK_IMPORTED_MODULE_0__["default"])(formData);
 
         if (response.success) {
-          submitButton.innerHTML = `${__('Thank for evaluating')}`;
+          submitButton.innerHTML = `${__('Thank you for evaluating')}`;
           window.location.reload();
         } else {
-          console.log(response);
+          alert(__('Evaluate submission failed', 'tutor-periscope'));
         }
       } catch (error) {
         alert(error);
