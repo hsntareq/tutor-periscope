@@ -1,6 +1,78 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./assets/src/backend/backend_jquery.js":
+/*!**********************************************!*\
+  !*** ./assets/src/backend/backend_jquery.js ***!
+  \**********************************************/
+/***/ (() => {
+
+jQuery(function () {
+  jQuery('.select2').select2({
+    placeholder: 'Select an option',
+    width: '400px'
+  });
+});
+
+/***/ }),
+
+/***/ "./assets/src/backend/import_bulk_user.js":
+/*!************************************************!*\
+  !*** ./assets/src/backend/import_bulk_user.js ***!
+  \************************************************/
+/***/ (() => {
+
+const importBulkStudent = document.getElementById('import_bulk_student');
+
+if (null !== importBulkStudent) {
+  importBulkStudent.onchange = e => {
+    console.log('import started');
+    var files = importBulkStudent.files;
+    e.preventDefault();
+    console.log(files);
+
+    if (files.length <= 0) {
+      return false;
+    }
+
+    var fr = new FileReader();
+    fr.readAsText(files.item(0));
+
+    fr.onload = function (e) {
+      var importBulkStudent = e.target.result;
+      var formData = new FormData();
+      formData.append('action', 'periscope_user_import');
+      formData.append(_tutorobject.nonce_key, _tutorobject._tutor_nonce); // formData.append('time', time_now());
+
+      formData.append('bulk_user', JSON.stringify(csvToObjs(importBulkStudent)));
+      const xhttp = new XMLHttpRequest();
+      xhttp.open('POST', _tutorobject.ajaxurl);
+      xhttp.send(formData);
+
+      xhttp.onreadystatechange = function () {
+        if (xhttp.readyState === 4) {
+          console.log(JSON.parse(xhttp.response));
+        }
+      };
+    };
+  };
+}
+
+const csvToObjs = string => {
+  const lines = string.split(/\r\n|\n/);
+  let obj,
+      [headings, ...entries] = lines;
+  headings = headings.split(',');
+  const objs = [];
+  entries.map(entry => {
+    obj = entry.split(',');
+    objs.push(Object.fromEntries(headings.map((head, i) => [head, obj[i]])));
+  });
+  return objs;
+};
+
+/***/ }),
+
 /***/ "./assets/src/backend/student-attempt.js":
 /*!***********************************************!*\
   !*** ./assets/src/backend/student-attempt.js ***!
@@ -16352,7 +16424,13 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var html2pdf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! html2pdf.js */ "./node_modules/html2pdf.js/dist/html2pdf.js");
 /* harmony import */ var html2pdf_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(html2pdf_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _student_attempt__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./student-attempt */ "./assets/src/backend/student-attempt.js");
+/* harmony import */ var _backend_jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./backend_jquery */ "./assets/src/backend/backend_jquery.js");
+/* harmony import */ var _backend_jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_backend_jquery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _student_attempt__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./student-attempt */ "./assets/src/backend/student-attempt.js");
+/* harmony import */ var _import_bulk_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./import_bulk_user */ "./assets/src/backend/import_bulk_user.js");
+/* harmony import */ var _import_bulk_user__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_import_bulk_user__WEBPACK_IMPORTED_MODULE_3__);
+
+
 
 
 jQuery(document).ready(function () {

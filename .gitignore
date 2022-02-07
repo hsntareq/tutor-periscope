@@ -38,6 +38,8 @@ Thumbs.db
 
 # ignore build folder
 build/
+# ignore build .js files
+assets/js/backend.js
 # ignore map files
 assets/css/frontend.css.map
 assets/css/frontend.min.css.map

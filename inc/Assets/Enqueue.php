@@ -47,7 +47,8 @@ class Enqueue {
 
 		wp_enqueue_script( 'select2js', TUTOR_PERISCOPE_DIR_URL . '/assets/js/select2.min.js', array( 'jquery' ), '1.0', true );
 
-		wp_enqueue_script( 'tutor-periscope-scripts', TUTOR_PERISCOPE_DIR_URL . '/assets/js/tp-scripts.js', array( 'jquery' ), TUTOR_PERISCOPE_VERSION, true );
+		// wp_enqueue_script( 'tutor-periscope-scripts', TUTOR_PERISCOPE_DIR_URL . '/assets/js/tp-scripts.js', array( 'jquery' ), TUTOR_PERISCOPE_VERSION, true );
+
 
 		// add data to use in js files.
 		wp_add_inline_script( 'tutor-periscope-backend', 'const tp_data = ' . json_encode( $this->inline_script_data() ), 'before' );

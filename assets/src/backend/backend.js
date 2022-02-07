@@ -1,8 +1,10 @@
 import html2pdf from 'html2pdf.js';
+import "./backend_jquery";
 import "./student-attempt";
+import "./import_bulk_user";
 jQuery(document).ready(function () {
 
-    this.PrintDiv = () => {    
+    this.PrintDiv = () => {
         var divToPrint = document.querySelector('#div-to-print');
         var popupWin = window.open('', '_blank', 'width=800,height=500');
         popupWin.document.open();
@@ -21,7 +23,7 @@ jQuery(document).ready(function () {
             html2canvas:  { scale: 2 },
             jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
             };
-     
+
         if ( null !== element ) {
             html2pdf().set(options).from(element.innerHTML).save();
         }
