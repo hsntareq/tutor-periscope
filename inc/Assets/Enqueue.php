@@ -7,6 +7,8 @@
 
 namespace Tutor_Periscope\Assets;
 
+use Tutor_Periscope\Lesson\LessonProgress;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -59,10 +61,52 @@ class Enqueue {
 	 * @since v1.0.0
 	 */
 	public function inline_script_data(): array {
-		return array(
-			'url'   => admin_url( 'admin-ajax.php' ),
-			'nonce' => wp_create_nonce( 'tp_nonce' ),
+		$id              = get_the_ID();
+		$user_id         = get_current_user_id();
+		$post_type       = get_post_type( $id );
+		$has_lesson_time = false;
+		if ( 'lesson' === $post_type ) {
+			// get if this user has pause lesson.
+			$has_lesson_time = LessonProgress::get_lesson_pause_time( $id, $user_id );
+		}
+
+		/**
+		 * Determine if need to show evaluation form to user
+		 *
+		 * @since v1.0.0
+		 */
+		$tutor_course_id             = 0;
+		$should_show_evaluation_form = false;
+		if ( 'courses' === $post_type ) {
+			$tutor_course_id   = $id;
+			$is_completed      = tutor_utils()->get_course_completed_percent( $id, $user_id );
+			$already_evaluated = get_user_meta( $user_id, 'tp_user_evaluated_course_' . $id );
+
+			if ( $is_completed >= 100 && ! $already_evaluated ) {
+				$should_show_evaluation_form = true;
+			}
+		} else {
+			if ( 'lesson' === $post_type || 'tutor_quiz' === $post_type || 'tutor_assignments' === $post_type ) {
+				$topic             = get_post_parent( $id );
+				$course            = get_post_parent( $topic );
+				$tutor_course_id   = $course->ID;
+				$is_completed      = tutor_utils()->get_course_completed_percent( $tutor_course_id, $user_id );
+				$already_evaluated = get_user_meta( $user_id, 'tp_user_evaluated_course_' . $tutor_course_id );
+
+				if ( $is_completed >= 100 && ! $already_evaluated ) {
+					$should_show_evaluation_form = true;
+				}
+			}
+		}
+
+		$data = array(
+			'url'                         => admin_url( 'admin-ajax.php' ),
+			'nonce'                       => wp_create_nonce( 'tp_nonce' ),
+			'has_lesson_time'             => $has_lesson_time,
+			'should_show_evaluation_form' => $should_show_evaluation_form,
+			'tutor_course_id'             => $tutor_course_id,
 		);
+		return apply_filters( 'tutor_periscope_inline_script_data', $data );
 	}
 }
 

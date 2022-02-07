@@ -53,21 +53,160 @@ __webpack_require__.r(__webpack_exports__);
  * @since v1.0.0
  */
 
-document.addEventListener('DOMContentLoaded', function () {
-  const reviewForm = document.querySelector('.tutor-write-review-form form');
-  const submitButton = document.querySelector('.tutor_submit_review_btn.tutor-button');
+const {
+  __
+} = wp.i18n;
+document.addEventListener("DOMContentLoaded", function () {
+  // show evaluation popup
+  if (tp_data.should_show_evaluation_form) {
+    const modal = `
+        <div class="tutor-modal-wrap tutor-quiz-builder-modal-wrap show">
+        <div class="tutor-modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h1>${__('Please evaluate the course', 'tutor-periscope')}</h1>
+                </div>
+                <div class="modal-close-wrap">
+                    <a href="javascript:;" class="modal-close-btn"><i class="tutor-icon-line-cross"></i> </a>
+                </div>
+            </div>
+            <div class="modal-container" style="padding:20px;">
+                <div class="tutor-periscope-student-course-evaluation-wrapper">
+                    <form id="tutor-periscope-evaluation-form">
+                        <div class="tutor-form-group">
+                            <label>
+                                ${__('Course content matched the session description', 'tutor-periscope')}
+                            </label>
+                            <select name="content_matched" id="" class="tutor-form-control">
+                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
+                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                            </select>
+                        </div>
+                        <div class="tutor-form-group">
+                            <label>
+                                ${__('The learning outcome were met', 'tutor-periscope')}
+                            </label>
+                            <select name="outcome_met" id="" class="tutor-form-control">
+                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
+                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                            </select>
+                        </div>
+                        <div class="tutor-form-group">
+                            <label>
+                                ${__('Current evidence was cited for specific content', 'tutor-periscope')}
+                            </label>
+                            <select name="specific_content" id="" class="tutor-form-control">
+                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
+                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                            </select>
+                        </div>
+                        <div class="tutor-form-group">
+                            <label>
+                                ${__('Instructional activities added value to my learning experience', 'tutor-periscope')}
+                            </label>
+                            <select name="added_value" id="" class="tutor-form-control">
+                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
+                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                            </select>
+                        </div>
+                        <div class="tutor-form-group">
+                            <label>
+                                ${__('Course content was effectively delivered', 'tutor-periscope')}
+                            </label>
+                            <select name="effectively_delivered" id="" class="tutor-form-control">
+                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
+                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                            </select>
+                        </div>
+                        <div class="tutor-form-group">
+                            <label>
+                                ${__('Overall course was valuable', 'tutor-periscope')}
+                            </label>
+                            <select name="was_valuable" id="" class="tutor-form-control">
+                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
+                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                            </select>
+                        </div>
+                        <div class="tutor-form-group">
+                            <label>
+                                ${__('Promotion of a product or service was not present', 'tutor-periscope')}
+                            </label>
+                            <select name="promotion_present" id="" class="tutor-form-control">
+                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
+                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                            </select>
+                        </div>
+                        <div class="tutor-form-group">
+                            <label>
+                                ${__('The environment was supportive of my learning experience', 'tutor-periscope')}
+                            </label>
+                            <select name="supportive_environment" id="" class="tutor-form-control">
+                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
+                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                            </select>
+                        </div>
+                        <div class="tutor-form-group">
+                            <label>
+                                ${__('Numbers of hours it took to complete- ONLY online for online courses', 'tutor-periscope')}
+                            </label>
+                            <select name="number_of_hours" id="" class="tutor-form-control">
+                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
+                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                            </select>
+                        </div>
+                        <div class="tutor-form-group">
+                            <label>
+                                ${__('How will you apply this in your practice', 'tutor-periscope')}
+                            </label>
+                            <select name="apply_in_practice" id="" class="tutor-form-control">
+                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
+                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                            </select>
+                        </div>
+                        <div class="tutor-form-group">
+                            <button class="tutor-periscope-evaluation-submit-button tutor-button">
+                                ${__('Submit', 'tutor-periscope')}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+         
+            </div>
+        </div>
+        </div>
+      `;
+    document.body.insertAdjacentHTML("beforeend", modal);
+  }
+
+  const reviewForm = document.getElementById("tutor-periscope-evaluation-form");
+  const submitButton = document.querySelector(".tutor-periscope-evaluation-submit-button.tutor-button");
 
   if (submitButton) {
     submitButton.onclick = async event => {
       event.preventDefault();
       const formData = new FormData(reviewForm);
-      formData.set('nonce', tp_data.nonce);
-      formData.set('action', 'tutor_periscope_evaluation');
+      formData.set('tutor_course_id', tp_data.tutor_course_id);
+      formData.set("nonce", tp_data.nonce);
+      formData.set("action", "tutor_periscope_evaluation");
+      submitButton.innerHTML = `${__('Please wait...')}`;
 
       try {
         const response = await (0,_ajax__WEBPACK_IMPORTED_MODULE_0__["default"])(formData);
 
-        if (response.success) {} else {
+        if (response.success) {
+          submitButton.innerHTML = `${__('Thank for evaluating')}`;
+          window.location.reload();
+        } else {
           console.log(response);
         }
       } catch (error) {
@@ -164,6 +303,128 @@ async function checkPreviousContentStatus(contentId) {
   }
 }
 
+/***/ }),
+
+/***/ "./assets/src/frontend/video-management.js":
+/*!*************************************************!*\
+  !*** ./assets/src/frontend/video-management.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajax */ "./assets/src/frontend/ajax.js");
+
+/**
+ * Video interaction hook. Tract user's interaction with video.
+ * On video pause and end trigger wp hook to store info.
+ *
+ * @since v1.0.0
+ */
+
+const {
+  __
+} = wp.i18n;
+document.addEventListener('DOMContentLoaded', function () {
+  const lessonSidebar = document.getElementById('tutor-lesson-sidebar-tab-content');
+  const progressClasses = document.getElementsByClassName('plyr__progress__container');
+  const progressBar = progressClasses[0];
+
+  if (progressBar) {
+    progressBar.remove();
+  } //var video = document.getElementById('tutorPlayer');
+
+
+  manageVideoAction();
+
+  if (lessonSidebar) {
+    lessonSidebar.onclick = e => {
+      const target = e.target;
+      let clickedTag = target;
+
+      if (clickedTag.tagName !== 'A') {
+        clickedTag = target.closest('a');
+      }
+
+      if (clickedTag.hasAttribute('data-lesson-id')) {
+        //wait for content loading, after ready then reload page. so that video event can work 
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      }
+    };
+  }
+  /**
+   * Hook up video event. For ex: on video pause, end.
+   * And do required operation 
+   */
+
+
+  function manageVideoAction() {
+    var video = document.getElementById('tutorPlayer');
+
+    if (video) {
+      // if has pause time then start from there
+      var supposedCurrentTime = tp_data.has_lesson_time ? Number(tp_data.has_lesson_time) : 0;
+      video.addEventListener('timeupdate', function () {
+        if (!video.seeking) {
+          supposedCurrentTime = video.currentTime;
+        }
+      }); // prevent user from seeking
+
+      video.addEventListener('seeking', function () {
+        // user seeks, seeking is fired, currentTime is modified, seeking is fired, current time is modified, ....
+        var delta = video.currentTime - supposedCurrentTime; // delta = Math.abs(delta); // disable seeking previous content if you want
+
+        if (delta > 0.01) {
+          video.currentTime = supposedCurrentTime;
+        }
+      });
+      video.addEventListener('ended', function () {
+        // reset state in order to allow for rewind
+        supposedCurrentTime = 0;
+        tractVideoProgress();
+      });
+      video.addEventListener('pause', function () {
+        tractVideoProgress(video.currentTime);
+      });
+    }
+  }
+  /**
+   * Tract user's video progress. Store video pause time to resume from there.
+   * If video end then mark lesson as complete.
+   *
+   * @param currentTime, false means video ended other wise 
+   * video time position.
+   */
+
+
+  async function tractVideoProgress(currentTime = false) {
+    //check if it is lesson
+    const lesson = document.querySelector('.tutor-single-lesson-items.active a[data-lesson-id]');
+
+    if (lesson) {
+      const lessonId = lesson.getAttribute('data-lesson-id'); //setup form data
+
+      const formData = new FormData();
+      formData.set('action', currentTime ? 'tutor_periscope_store_video_time' : 'tutor_periscope_mark_lesson_complete');
+
+      if (currentTime) {
+        //time in sec
+        formData.set('time', currentTime);
+      }
+
+      formData.set('lesson_id', lessonId);
+      formData.set('nonce', tp_data.nonce); //make ajax request
+
+      const response = await (0,_ajax__WEBPACK_IMPORTED_MODULE_0__["default"])(formData); //if response false
+
+      if (!response) {
+        alert(__('Lesson activity tracking failed', 'tutor-periscope'));
+      }
+    }
+  }
+});
+
 /***/ })
 
 /******/ 	});
@@ -231,6 +492,8 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _course_evaluation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./course-evaluation */ "./assets/src/frontend/course-evaluation.js");
 /* harmony import */ var _linear__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./linear */ "./assets/src/frontend/linear.js");
+/* harmony import */ var _video_management__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./video-management */ "./assets/src/frontend/video-management.js");
+
 
 
 })();

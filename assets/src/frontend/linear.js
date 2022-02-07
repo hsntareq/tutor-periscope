@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 clickedTag = target.closest('a');
             }
             if (clickedTag.hasAttribute('data-lesson-id')) {
+               
                 checkPreviousContentStatus(Number(clickedTag.getAttribute('data-lesson-id')));
             }
             if (clickedTag.hasAttribute('data-quiz-id')) {
@@ -68,5 +69,6 @@ async function checkPreviousContentStatus(contentId) {
                 );
             }
         }
+
     }
 }

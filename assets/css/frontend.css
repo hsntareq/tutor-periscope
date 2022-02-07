@@ -13,4 +13,8 @@ body {
   background: #ffffff;
 }
 
+.plyr__progress {
+  display: none;
+}
+
 /*# sourceMappingURL=frontend.css.map */
