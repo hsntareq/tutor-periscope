@@ -22,12 +22,12 @@ jQuery(function () {
   \************************************************/
 /***/ (() => {
 
-const importBulkStudent = document.getElementById('import_bulk_student');
+const bulkUserImport = document.getElementById('bulk_user_import');
 
-if (null !== importBulkStudent) {
-  importBulkStudent.onchange = e => {
+if (null !== bulkUserImport) {
+  bulkUserImport.onchange = e => {
     console.log('import started');
-    var files = importBulkStudent.files;
+    var files = bulkUserImport.files;
     e.preventDefault();
     console.log(files);
 
@@ -39,12 +39,12 @@ if (null !== importBulkStudent) {
     fr.readAsText(files.item(0));
 
     fr.onload = function (e) {
-      var importBulkStudent = e.target.result;
+      var bulkUserImport = e.target.result;
       var formData = new FormData();
       formData.append('action', 'periscope_user_import');
       formData.append(_tutorobject.nonce_key, _tutorobject._tutor_nonce); // formData.append('time', time_now());
 
-      formData.append('bulk_user', JSON.stringify(csvToObjs(importBulkStudent)));
+      formData.append('bulk_user', JSON.stringify(csvToObjs(bulkUserImport)));
       const xhttp = new XMLHttpRequest();
       xhttp.open('POST', _tutorobject.ajaxurl);
       xhttp.send(formData);
@@ -52,6 +52,7 @@ if (null !== importBulkStudent) {
       xhttp.onreadystatechange = function () {
         if (xhttp.readyState === 4) {
           console.log(JSON.parse(xhttp.response));
+          tutor_toast('Success', 'Bulk users added successfully!', 'success');
         }
       };
     };

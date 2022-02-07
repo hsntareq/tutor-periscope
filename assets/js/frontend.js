@@ -330,8 +330,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const progressClasses = document.getElementsByClassName('plyr__progress__container');
   const progressBar = progressClasses[0];
 
-  if (progressBar) {
-    progressBar.remove();
+  if (progressBar) {// progressBar.remove();
   } //var video = document.getElementById('tutorPlayer');
 
 
@@ -347,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (clickedTag.hasAttribute('data-lesson-id')) {
-        //wait for content loading, after ready then reload page. so that video event can work 
+        //wait for content loading, after ready then reload page. so that video event can work
         setTimeout(() => {
           window.location.reload();
         }, 2000);
@@ -356,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   /**
    * Hook up video event. For ex: on video pause, end.
-   * And do required operation 
+   * And do required operation
    */
 
 
@@ -394,7 +393,7 @@ document.addEventListener('DOMContentLoaded', function () {
    * Tract user's video progress. Store video pause time to resume from there.
    * If video end then mark lesson as complete.
    *
-   * @param currentTime, false means video ended other wise 
+   * @param currentTime, false means video ended other wise
    * video time position.
    */
 
