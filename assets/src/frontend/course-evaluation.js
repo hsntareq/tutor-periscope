@@ -150,10 +150,10 @@ document.addEventListener("DOMContentLoaded", function () {
       try {
         const response = await ajaxRequest(formData);
         if (response.success) {
-            submitButton.innerHTML = `${__('Thank for evaluating')}`;
+            submitButton.innerHTML = `${__('Thank you for evaluating')}`;
             window.location.reload();
         } else {
-          console.log(response);
+          alert(__('Evaluate submission failed', 'tutor-periscope'));
         }
       } catch (error) {
         alert(error);

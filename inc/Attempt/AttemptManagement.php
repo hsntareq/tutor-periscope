@@ -220,12 +220,14 @@ class AttemptManagement {
 		$quiz_option     = maybe_unserialize( $quiz_option );
 		$filter_attempts = array();
 		if ( isset( $quiz_option['feedback_mode'] ) && 'strict' === $quiz_option['feedback_mode'] ) {
-			foreach ( $attempts as $attempt ) {
-				$earned_percentage = $attempt->earned_marks > 0 ? ( number_format( ( $attempt->earned_marks * 100 ) / $attempt->total_marks ) ) : 0;
-				$passing_grade     = (int) tutor_utils()->get_quiz_option( $attempt->quiz_id, 'passing_grade', 0 );
-				$answers           = tutor_utils()->get_quiz_answers_by_attempt_id( $attempt->attempt_id );
-				if ( $earned_percentage >= $passing_grade ) {
-					array_push( $filter_attempts, $attempt );
+			if ( is_array( $attempts ) && count( $attempts ) ) {
+				foreach ( $attempts as $attempt ) {
+					$earned_percentage = $attempt->earned_marks > 0 ? ( number_format( ( $attempt->earned_marks * 100 ) / $attempt->total_marks ) ) : 0;
+					$passing_grade     = (int) tutor_utils()->get_quiz_option( $attempt->quiz_id, 'passing_grade', 0 );
+					$answers           = tutor_utils()->get_quiz_answers_by_attempt_id( $attempt->attempt_id );
+					if ( $earned_percentage >= $passing_grade ) {
+						array_push( $filter_attempts, $attempt );
+					}
 				}
 			}
 		} else {

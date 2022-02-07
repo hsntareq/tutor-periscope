@@ -201,6 +201,14 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+#: inc/Lesson/LessonProgress.php:55, inc/Lesson/LessonProgress.php:73
+msgid "Nonce verification failed."
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:52
+msgid "Invalid lesson id."
+msgstr ""
+
 #: inc/Setup/Dashboard.php:28, inc/Setup/Dashboard.php:28
 msgid "Course Evaluation"
 msgstr ""
@@ -446,6 +454,74 @@ msgid "Success"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Please evaluate the course"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Course content matched the session description"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Agree"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Disagree"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Neutral"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "The learning outcome were met"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Current evidence was cited for specific content"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Instructional activities added value to my learning experience"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Course content was effectively delivered"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Overall course was valuable"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Promotion of a product or service was not present"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "The environment was supportive of my learning experience"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Numbers of hours it took to complete- ONLY online for online courses"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "How will you apply this in your practice"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Submit"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Please wait..."
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Thank for evaluating"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
 msgid "Fail"
 msgstr ""
 
@@ -455,4 +531,8 @@ msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
 msgid "Previous content status check failed!"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Lesson activity tracking failed"
 msgstr ""
