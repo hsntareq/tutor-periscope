@@ -73,11 +73,11 @@ msgstr ""
 msgid "No Agree - How will you apply this in your practice provided."
 msgstr ""
 
-#: inc/Assessment/Assessment.php:56, inc/Evaluation/Course_Evaluation.php:67
+#: inc/Assessment/Assessment.php:64, inc/Evaluation/Course_Evaluation.php:67
 msgid "Are you cheating?"
 msgstr ""
 
-#: inc/Assessment/Assessment.php:59, inc/Evaluation/Course_Evaluation.php:71
+#: inc/Assessment/Assessment.php:67, inc/Evaluation/Course_Evaluation.php:71
 msgid "Permission Denied!"
 msgstr ""
 
