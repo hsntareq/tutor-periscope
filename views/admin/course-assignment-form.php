@@ -2,6 +2,12 @@
     <?php $_get = $_GET;?>
     <h1 class="wp-heading-inline">Course Assignment </h1>
     <hr class="wp-header-end">
+    <?php
+    if(get_transient( 'action_message' )){
+        echo get_transient( 'action_message' );
+        delete_transient( 'action_message' );
+    }
+    ?>
     <ul class="subsubsub">
         <li class="mine"><a href="<?php echo add_query_arg( array( 'page' => 'course-assignment', 'tab' => 'assignment', ), admin_url( 'admin.php' ) );?>" class="<?php echo $_get['tab'] && 'assignment' == $_get['tab'] ? 'current' : '' ;?>">Assignment Form </a></li> |
         <li class="publish"><a href="<?php echo add_query_arg( array( 'page' => 'course-assignment', 'tab' => 'bulk-user', ), admin_url( 'admin.php' ) );?>" class="<?php echo $_get['tab'] && 'bulk-user' == $_get['tab'] ? 'current' : '' ;?>">Bulk User import</a></li>
@@ -13,11 +19,6 @@ $args = array( 'role' => 'Subscriber' );
 $user_query = new WP_User_Query( $args );
 $users = $user_query->get_results();
 
-foreach ($users as $key => $user) {
-    // pr($user->display_name);
-}
-// pr($user_query);
-
             ?>
             <div class="wp-list-table widefat striped table-view-list" style="max-width:700px">
                 <input type="file" id="bulk_user_import">
@@ -27,6 +28,7 @@ foreach ($users as $key => $user) {
                     <tr>
                         <td>Name</td>
                         <td>Email</td>
+                        <td>Role</td>
                         <td width="200">Action</td>
                     </tr>
                     </thead>
@@ -35,9 +37,9 @@ foreach ($users as $key => $user) {
                     <tr>
                         <td><?php echo esc_attr($user->display_name);?></td>
                         <td><?php echo esc_attr($user->user_email);?></td>
+                        <td><?php echo ucfirst( implode(', ',$user->roles));?></td>
                         <td>
-                            <a href="#">Edit</a>
-                            <a href="#">Delete</a>
+                            <a href="<?php echo get_edit_user_link($user->ID);?>">Edit</a>
                         </td>
                     </tr>
                     <?php } ?>
@@ -46,7 +48,7 @@ foreach ($users as $key => $user) {
 
         <?php }elseif(empty($_get['tab']) || 'assignment'===$_get['tab']){ ?>
 
-        <form action="" method="POST">
+        <form action="" method="POST" id="course_assignment">
             <table class="wp-list-table widefat striped table-view-list" style="max-width:700px">
                 <thead>
                     <tr>

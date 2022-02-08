@@ -108,7 +108,7 @@ class Assessment
                     }
 
                     $success_msgs = get_tnotice(__('Enrolment has been done', 'tutor-pro'), 'Success', 'success');
-
+                    set_transient( 'action_message', $success_msgs, 1000 );
                 }
             }
         }
