@@ -26,6 +26,7 @@ if (null !== bulkUserImport) {
                 if (xhttp.readyState === 4) {
                     console.log(JSON.parse(xhttp.response));
                     tutor_toast('Success', 'Bulk users added successfully!', 'success');
+                    location.reload();
                 }
             };
         };

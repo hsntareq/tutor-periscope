@@ -7,6 +7,13 @@
 
 defined( 'ABSPATH' ) || exit;
 
+function pr($var){
+    echo '<pre>';
+        print_r($var);
+    echo '</pre>';
+}
+
+
 function verify_nonce(){
     if ( isset( $_POST['_wpnonce'] ) && ! empty( $_POST['_wpnonce'] ) ) {
 

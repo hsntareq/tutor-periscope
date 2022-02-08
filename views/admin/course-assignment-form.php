@@ -8,7 +8,17 @@
     </ul>
     <div style="clear:both" id="poststuff">
     <div>
-        <?php if('bulk-user'===$_get['tab']){ ?>
+        <?php if('bulk-user'===$_get['tab']){
+$args = array( 'role' => 'Subscriber' );
+$user_query = new WP_User_Query( $args );
+$users = $user_query->get_results();
+
+foreach ($users as $key => $user) {
+    // pr($user->display_name);
+}
+// pr($user_query);
+
+            ?>
             <div class="wp-list-table widefat striped table-view-list" style="max-width:700px">
                 <input type="file" id="bulk_user_import">
             </div>
@@ -21,18 +31,20 @@
                     </tr>
                     </thead>
                 <tbody>
+                    <?php foreach ($users as $key => $user) { ?>
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo esc_attr($user->display_name);?></td>
+                        <td><?php echo esc_attr($user->user_email);?></td>
                         <td>
                             <a href="#">Edit</a>
                             <a href="#">Delete</a>
                         </td>
                     </tr>
+                    <?php } ?>
                 </tbody>
             </table>
 
-        <?php }elseif('assignment'===$_get['tab']){ ?>
+        <?php }elseif(empty($_get['tab']) || 'assignment'===$_get['tab']){ ?>
 
         <form action="" method="POST">
             <table class="wp-list-table widefat striped table-view-list" style="max-width:700px">
