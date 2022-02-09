@@ -20,6 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 class AttemptManagement {
 
 	/**
+	 * Default allowed attempt for a student
+	 *
+	 * @var int
+	 */
+	private static $default_attempt = 3;
+
+	/**
 	 * User assigned attempt key
 	 *
 	 * @const ASSIGNED_ATTEMPT_KEY
@@ -62,6 +69,16 @@ class AttemptManagement {
 		 * @since v1.0.0
 		 */
 		add_action( 'tuotr_quiz/start_form/after', array( __CLASS__, 'hide_if_out_of_attempt' ) );
+
+		/**
+		 * Do action on tutor hook
+		 * path: tutor/classes/Utils.php:2260
+		 *
+		 * Hook added for assigning default allowed attempt
+		 *
+		 * @since v1.0.0
+		 */
+		add_action( 'tutor_after_enrolled', array( __CLASS__, 'assign_default_attempt' ), 10, 3 );
 	}
 
 	/**
@@ -234,5 +251,26 @@ class AttemptManagement {
 			$filter_attempts = $attempts;
 		}
 		return $filter_attempts;
+	}
+
+	/**
+	 * Assign default allowed attempt after success enrolment.
+	 * Listening Tutor hook
+	 *
+	 * @since v1.0.0
+	 *
+	 * @param int $course_id  enrolled course.
+	 * @param int $user_id  student id.
+	 * @param int $is_enrolled  enrolled post id.
+	 *
+	 * @return bool true on success false on failure
+	 */
+	public static function assign_default_attempt( int $course_id, int $user_id, int $is_enrolled ) : bool {
+		$assigned = update_user_meta(
+			$user_id,
+			self::ASSIGNED_ATTEMPT_KEY,
+			self::$default_attempt
+		);
+		return $assigned ? true : false;
 	}
 }
