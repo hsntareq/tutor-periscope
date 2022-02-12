@@ -54,18 +54,18 @@ do_action( 'tutor_periscope_course_metabox_before_additional_data' ); ?>
 	<div class="tutor-option-field-label">
 		<label for="course_endorsements">
 			<?php esc_html_e( 'Instructor', 'tutor-periscope' ); ?> 
-			<span id="tutor-periscope-add-more-instructor" style="color: blue;">
+        <span id="tutor-periscope-add-more-instructor" style="color: blue;">
 				<?php esc_html_e( '+ Add', 'tutor-periscope' ); ?>
 			<span>
 		</label>
 	</div>
-	<div class="tutor-option-field tutor-option-tooltip">
+	<div class="tutor-option-field" id="tutor-periscope-instructors-metabox">
 		<div style="display: flex; flex-direction: column; row-gap: 15px;">
-			<input type="text" name="_tp_instructor_name" class="tutor-form-control" placeholder="<?php esc_attr_e( 'Instructor name', 'tutor-periscope' ); ?>" value="" />
+			<input type="text" name="_tp_instructor_name[]" class="tutor-form-control" placeholder="<?php esc_attr_e( 'Instructor name', 'tutor-periscope' ); ?>" value="" />
 			
-			<input type="text" name="_tp_instructor_title" placeholder="<?php esc_attr_e( 'Instructor title', 'tutor-periscope' ); ?>"/>
+			<input type="text" name="_tp_instructor_title[]" placeholder="<?php esc_attr_e( 'Instructor title', 'tutor-periscope' ); ?>"/>
 	   
-			<textarea name="_tp_instructor_bio" rows="2" placeholder="<?php esc_attr_e( 'Instructor bio', 'tutor-periscope' ); ?>"></textarea>
+			<textarea name="_tp_instructor_bio[]" rows="2" placeholder="<?php esc_attr_e( 'Instructor bio', 'tutor-periscope' ); ?>"></textarea>
 		</div>
 	</div>
 </div>

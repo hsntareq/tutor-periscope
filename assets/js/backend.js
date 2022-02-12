@@ -75,6 +75,54 @@ const csvToObjs = string => {
 
 /***/ }),
 
+/***/ "./assets/src/backend/metabox.js":
+/*!***************************************!*\
+  !*** ./assets/src/backend/metabox.js ***!
+  \***************************************/
+/***/ (() => {
+
+/**
+ * Meta box scripts
+ *
+ * Add remove instructor info meta boxes
+ *
+ * @since v1.0.0
+ */
+const {
+  __
+} = wp.i18n;
+document.addEventListener('DOMContentLoaded', function () {
+  const addMore = document.getElementById('tutor-periscope-add-more-instructor');
+  const metaBox = document.getElementById('tutor-periscope-instructors-metabox');
+
+  if (addMore) {
+    addMore.onclick = e => {
+      metaBox.insertAdjacentHTML('beforeend', `<div class="tutor-periscope-each-instructor-box" style="display: flex; flex-direction: column; row-gap: 15px; margin-top: 15px">
+
+                <div style="display: flex; column-gap: 10px;">
+                    <input type="text" name="_tp_instructor_name[]" class="tutor-form-control" placeholder="${__('Instructor name', 'tutor-periscope')}" value="" />
+                    <span class="tutor-periscope-remove-instructor" style="color:tomato; cursor: pointer;">Remove</span>
+                </div>
+                
+                <input type="text" name="_tp_instructor_title[]" placeholder="${__('Instructor title', 'tutor-periscope')}"/>
+           
+                <textarea name="_tp_instructor_bio[]" rows="2" placeholder="${__('Instructor bio', 'tutor-periscope')}"></textarea>
+            </div>`);
+    };
+  } // remove boxes
+
+
+  const periscopeMetaBox = document.getElementById('tutor-periscope-additional-data');
+
+  periscopeMetaBox.onclick = e => {
+    if (e.target.classList.contains('tutor-periscope-remove-instructor')) {
+      e.target.closest('.tutor-periscope-each-instructor-box').remove();
+    }
+  };
+});
+
+/***/ }),
+
 /***/ "./assets/src/backend/student-attempt.js":
 /*!***********************************************!*\
   !*** ./assets/src/backend/student-attempt.js ***!
@@ -16370,6 +16418,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _student_attempt__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./student-attempt */ "./assets/src/backend/student-attempt.js");
 /* harmony import */ var _import_bulk_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./import_bulk_user */ "./assets/src/backend/import_bulk_user.js");
 /* harmony import */ var _import_bulk_user__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_import_bulk_user__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _metabox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./metabox */ "./assets/src/backend/metabox.js");
+/* harmony import */ var _metabox__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_metabox__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 

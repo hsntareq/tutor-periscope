@@ -2,6 +2,7 @@ import html2pdf from 'html2pdf.js';
 import "./backend_jquery";
 import "./student-attempt";
 import "./import_bulk_user";
+import "./metabox";
 // import "./student_assignment";
 jQuery(document).ready(function () {
 
