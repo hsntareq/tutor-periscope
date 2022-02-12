@@ -49,7 +49,6 @@ class Enqueue {
 
 		// wp_enqueue_script( 'tutor-periscope-scripts', TUTOR_PERISCOPE_DIR_URL . '/assets/js/tp-scripts.js', array( 'jquery' ), TUTOR_PERISCOPE_VERSION, true );
 
-
 		// add data to use in js files.
 		wp_add_inline_script( 'tutor-periscope-backend', 'const tp_data = ' . json_encode( $this->inline_script_data() ), 'before' );
 	}
@@ -106,6 +105,8 @@ class Enqueue {
 			'has_lesson_time'             => $has_lesson_time,
 			'should_show_evaluation_form' => $should_show_evaluation_form,
 			'tutor_course_id'             => $tutor_course_id,
+			'current_post_id'             => $id,
+			'current_post_type'           => $post_type,
 		);
 		return apply_filters( 'tutor_periscope_inline_script_data', $data );
 	}

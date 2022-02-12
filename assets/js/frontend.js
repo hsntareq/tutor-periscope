@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const playTime = a.querySelector('.tutor-play-duration');
         const quizTime = a.querySelector('.quiz-time-limit');
 
-        if (lessonTitle != null || lessonTitle !== undefined) {
+        if (lessonTitle) {
           lessonTitle.style.color = '#a4a9b9';
         }
 
