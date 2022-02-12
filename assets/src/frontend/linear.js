@@ -36,7 +36,18 @@ document.addEventListener('DOMContentLoaded', async function() {
                 }
             }
         }
-    })
+    });
+
+    // disable next lesson go link
+    let dynamicDocument = document.getElementById('tutor-single-entry-content');
+    if (dynamicDocument) {
+        dynamicDocument.onclick = (e) => {
+           if (e.target.classList.contains('tutor-next-link')) {
+            e.preventDefault();
+            console.log(e.target.classList);
+           }
+        } 
+    }
 
     const lessonSidebar = document.getElementById('tutor-lesson-sidebar-tab-content');
     if (lessonSidebar) {
