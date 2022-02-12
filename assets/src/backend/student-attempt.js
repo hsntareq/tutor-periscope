@@ -104,6 +104,7 @@ window.document.addEventListener('DOMContentLoaded', async function() {
         formData.set('action', 'tutor_periscope_all_student_attempts');
         formData.set('nonce', tp_data.nonce);
         const response = await ajaxRequest(formData);
+        console.log(response)
         if (response.success && response.data.length) {
             let i = 0;
             response.data.forEach((item) => {

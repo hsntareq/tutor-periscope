@@ -7,6 +7,23 @@ const {__} = wp.i18n;
  * @since v1.0.0
  */
 document.addEventListener('DOMContentLoaded', async function() {
+
+    //disable sidebar lesson link
+    const lessonList = document.querySelectorAll('.tutor-single-lesson-items:not(.active)');
+    lessonList.forEach((lesson) => {
+        if ( lesson.querySelector('.tutor-done')) {
+
+        } else {
+            lesson.style.background = '#dddddd';
+            const a = lesson.querySelector('a');
+            a.setAttribute('class', '');
+            a.style.cursor = 'not-allowed';
+            a.onclick = (e) => {
+                e.preventDefault();
+            }
+        }
+    })
+
     const lessonSidebar = document.getElementById('tutor-lesson-sidebar-tab-content');
     if (lessonSidebar) {
         const hasActiveContent = document.querySelector('.tutor-single-lesson-items.active');

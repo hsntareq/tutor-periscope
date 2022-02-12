@@ -170,6 +170,7 @@ window.document.addEventListener('DOMContentLoaded', async function () {
     formData.set('action', 'tutor_periscope_all_student_attempts');
     formData.set('nonce', tp_data.nonce);
     const response = await (0,_frontend_ajax__WEBPACK_IMPORTED_MODULE_0__["default"])(formData);
+    console.log(response);
 
     if (response.success && response.data.length) {
       let i = 0;
