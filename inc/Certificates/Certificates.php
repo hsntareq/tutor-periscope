@@ -54,7 +54,7 @@ class Certificates {
 			__( 'Tutor Periscope Additional Fields', 'tutor-periscope' ),
 			array( $this, 'generate_tutor_periscope_additional_fields' ),
 			'courses',
-		);	
+		);
 	}
 
     /**
