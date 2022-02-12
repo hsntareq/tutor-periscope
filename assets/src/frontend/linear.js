@@ -16,10 +16,24 @@ document.addEventListener('DOMContentLoaded', async function() {
         } else {
             lesson.style.background = '#dddddd';
             const a = lesson.querySelector('a');
-            a.setAttribute('class', '');
-            a.style.cursor = 'not-allowed';
-            a.onclick = (e) => {
-                e.preventDefault();
+            if (a != null || a != undefined) {
+                a.setAttribute('class', '');
+                a.style.cursor = 'not-allowed';
+                const lessonTitle = a.querySelector('.lesson_title');
+                const playTime = a.querySelector('.tutor-play-duration');
+                const quizTime = a.querySelector('.quiz-time-limit')
+                if ( lessonTitle != null || lessonTitle !== undefined ) {
+                    lessonTitle.style.color = '#a4a9b9';
+                }
+                if ( playTime ) {
+                    playTime.style.color = '#a4a9b9';
+                }
+                if ( quizTime ) {
+                    quizTime.style.color = '#a4a9b9';
+                }
+                a.onclick = (e) => {
+                    e.preventDefault();
+                }
             }
         }
     })
