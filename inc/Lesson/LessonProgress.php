@@ -25,6 +25,9 @@ class LessonProgress {
 
 		// mark a lesson as complete.
 		add_action( 'wp_ajax_tutor_periscope_mark_lesson_complete', array( __CLASS__, 'mark_lesson_complete' ) );
+
+		// check if current lesson is complete.
+		add_action( 'wp_ajax_tutor_periscope_is_done_current_lesson', array( __CLASS__, 'is_done_current_lesson' ) );
 	}
 
 	/**
@@ -96,5 +99,65 @@ class LessonProgress {
 		return delete_user_meta( $user_id, 'lesson_pause_time_' . $lesson_id );
 	}
 
+	/**
+	 * Handle ajax request to check if current lesson or quiz
+	 * is done or not.
+	 *
+	 * Basically this post request has next post id
+	 * so first need to get the current post id and then check whether it's lesson
+	 * or quiz type then check is done or not.
+	 *
+	 * @since v1.0.0
+	 *
+	 * @return void  send wp_json response
+	 */
+	public static function is_done_current_lesson() {
+		$is_done = false;
+		$message = '';
+		if ( wp_verify_nonce( $_POST['nonce'], 'tp_nonce' ) ) {
+			$next_lesson_id = isset( $_POST['next_lesson_id'] ) ? sanitize_text_field( $_POST['next_lesson_id'] ) : 0;
+			if ( $next_lesson_id ) {
+				/**
+				 * Since i have next post id then prev id means the current post
+				 * id
+				 */
+				$current_post_id = tutor_utils()->get_course_previous_content_id( $next_lesson_id );
+				$current_post    = get_post( $current_post_id );
+				if ( $current_post ) {
+					$post_type = get_post_type( $current_post );
+					if ( 'lesson' === $post_type ) {
+						$is_completed_lesson = tutor_utils()->is_completed_lesson( $current_post->ID );
+						if ( $is_completed_lesson ) {
+							$is_done = true;
+							$message = __( 'Lesson is completed', 'tutor-periscope' );
+						} else {
+							$message = __( 'Lesson is not completed', 'tutor-periscope' );
+						}
+					}
+					if ( 'tutor_quiz' === $post_type ) {
+						$has_attempt = tutor_utils()->quiz_attempts( $current_post->ID, get_current_user_id() );
+						if ( $has_attempt ) {
+							$is_done = true;
+							$message = __( 'Quiz attempt taken', 'tutor-periscope' );
+						} else {
+							$message = __( 'Quiz attempt not taken', 'tutor-periscope' );
+						}
+					}
+				} else {
+					$message = __( 'Invalid post', 'tutor-periscope' );
+				}
+			} else {
+				$message = __( 'Invalid lesson id', 'tutor-periscope' );
+			}
 
+			$response = array(
+				'done'    => $is_done,
+				'message' => $message,
+			);
+			wp_send_json_success( $response );
+
+		} else {
+			wp_send_json_error( __( 'Nonce verify failed', 'tutor-periscope' ) );
+		}
+	}
 }

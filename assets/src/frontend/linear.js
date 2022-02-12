@@ -38,13 +38,31 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     });
 
-    // disable next lesson go link
+    /**
+     * Disable next lesson navigation link is current lesson not completed
+     * show alert message to complete current lesson. 
+     */
     let dynamicDocument = document.getElementById('tutor-single-entry-content');
     if (dynamicDocument) {
-        dynamicDocument.onclick = (e) => {
+        dynamicDocument.onclick = async (e) => {
            if (e.target.classList.contains('tutor-next-link')) {
             e.preventDefault();
-            console.log(e.target.classList);
+            //class name with next lesson id: tutor-next-link-4507
+            const linkWithId = e.target.classList[1];
+            //extract id
+            const nextLessonId = linkWithId.split('-')[3];
+            //make ajax request to check if current lesson or quiz is completed
+            const formData = new FormData();
+            formData.set('next_lesson_id', nextLessonId);
+            formData.set('nonce', tp_data.nonce);
+            formData.set('action', 'tutor_periscope_is_done_current_lesson');
+            const response = await ajaxRequest(formData);
+            if (response.success && response.data.done) {
+                window.location.href = e.target.href;
+            }
+            if (response.success && !response.data.done) {
+                alert(__('Please complete current lesson/quiz first to go the next content.', 'tutor-periscope'));
+            }
            }
         } 
     }
@@ -75,12 +93,14 @@ document.addEventListener('DOMContentLoaded', async function() {
             if (clickedTag.tagName !== 'A') {
                 clickedTag = target.closest('a');
             }
-            if (clickedTag.hasAttribute('data-lesson-id')) {
+            if (clickedTag) {
+                if (clickedTag.hasAttribute('data-lesson-id')) {
 
-                checkPreviousContentStatus(Number(clickedTag.getAttribute('data-lesson-id')));
-            }
-            if (clickedTag.hasAttribute('data-quiz-id')) {
-                checkPreviousContentStatus(Number(clickedTag.getAttribute('data-quiz-id')));
+                    checkPreviousContentStatus(Number(clickedTag.getAttribute('data-lesson-id')));
+                }
+                if (clickedTag.hasAttribute('data-quiz-id')) {
+                    checkPreviousContentStatus(Number(clickedTag.getAttribute('data-quiz-id')));
+                }
             }
         }
     }
