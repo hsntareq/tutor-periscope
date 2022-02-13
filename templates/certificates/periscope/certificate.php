@@ -52,10 +52,19 @@
 				   <p><strong>Start Date:</strong> <span class="course-info">05/23/20</span></p>
 				   <p><strong>Completion Date:</strong> <span class="course-info"><?php esc_html_e( $completed_date ); ?></span></p>
 			   </section>
-			   <?php if ( ! empty( $learning_objectives ) ) : ?>
+			   <?php
+				if ( ! empty( $learning_objectives ) ) :
+					$learning_objectives = explode( "\n", $learning_objectives );
+					?>
 			   <section class="learning-objectives">
 				   <h3>Learning Objectives and Goals:</h3>
-					<?php echo $learning_objectives; ?>
+					<?php if ( is_array( $learning_objectives ) && count( $learning_objectives ) ) : ?>
+						<?php foreach ( $learning_objectives as $learning_objective ) : ?>
+						<ol>
+							<?php echo esc_html( $learning_objective ); ?>
+						</ol>
+						<?php endforeach; ?>
+					<?php endif; ?>
 			   </section>
 			   <?php endif; ?>
 			   <?php
@@ -69,31 +78,40 @@
 					if ( is_array( $instructors ) && count( $instructors ) ) :
 						?>
 					<section>
-                        <h3>Instructors</h3>
+						<h3>Instructors</h3>
 						<?php foreach ( $instructors as $instructor ) : ?>
-                            <div style="margin-bottom: 10px;">
-                                <div>
-                                    <span>
-                                        <?php echo esc_html( $instructor['name'] ); ?>,
-                                        <?php echo esc_html( $instructor['title'] ); ?>
-                                    </span>
-                                </div>
-                                <div style="margin-left: 20px">
-                                    <?php echo esc_textarea( $instructor['bio'] ); ?>
-                                </div>
-                            </div>
+							<div style="margin-bottom: 10px;">
+								<div>
+									<span>
+										<?php echo esc_html( $instructor['name'] ); ?>,
+										<?php echo esc_html( $instructor['title'] ); ?>
+									</span>
+								</div>
+								<div style="margin-left: 40px">
+									<?php echo esc_textarea( $instructor['bio'] ); ?>
+								</div>
+							</div>
 						<?php endforeach; ?>
 					</section>
 					<?php endif; ?>
-			   <?php if ( ! empty( $endorsements ) ) : ?>
+			   <?php
+				if ( ! empty( $endorsements ) ) :
+					$endorsements = explode( "\n", $endorsements );
+					?>
 			   <section class="instructors endorsements">
 				   <h3>Endorsements:</h3>
-				   <p><?php echo $endorsements; ?></p>
+					<?php if ( is_array( $endorsements ) && count( $endorsements ) ) : ?>
+						<?php foreach ( $endorsements as $endorsement ) : ?>
+						<ol>
+							<?php echo esc_html( $endorsement ); ?>
+						</ol>
+						<?php endforeach; ?>
+					<?php endif; ?>
 			   </section>
 			   <?php endif; ?>
 			   <section class="instructors">
 				   <h3>Instructors:</h3>
-				   <p><?php esc_html_e( $instructor_name ); ?></p>
+				   <p><?php echo esc_html( $instructor_name ); ?></p>
 			   </section>
 			   <section class="medbridge">
 				   <h3>MedBridge:</h3>
