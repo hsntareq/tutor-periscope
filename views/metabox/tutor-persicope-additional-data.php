@@ -54,7 +54,7 @@ do_action( 'tutor_periscope_course_metabox_before_additional_data' ); ?>
 	<div class="tutor-option-field-label">
 		<label for="course_endorsements">
 			<?php esc_html_e( 'Instructor', 'tutor-periscope' ); ?> 
-        <span id="tutor-periscope-add-more-instructor" style="color: blue;">
+		<span id="tutor-periscope-add-more-instructor" style="color: #1d90d5;">
 				<?php esc_html_e( '+ Add', 'tutor-periscope' ); ?>
 			<span>
 		</label>
