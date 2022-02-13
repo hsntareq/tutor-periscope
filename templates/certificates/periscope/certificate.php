@@ -33,9 +33,22 @@
 					</header>
 			   </section>
 			   <section class="certificate-details">
-				   <h1 class="certificate-title">Certificate of Course Completion</h1>
+				   <h3 align="center" class="certificate-title">
+					   <b>Certificate of Course Completion</b>
+				   </h3>
 				   <p><strong>Course:</strong> <span class="course-info"><?php esc_html_e( $course->post_title ); ?></span></p>
 				   <p><strong>Student:</strong> <span class="course-info"><?php esc_html_e( $user->display_name ); ?></span></p>
+				   <?php
+						$student_profession = get_post_meta( $course->ID, '_tp_student_profession', true );
+					?>
+				   <p>
+					   <strong>
+						   Profession: 
+						   <span class="course-info">
+								<?php echo esc_html( $student_profession ? $student_profession : '' ); ?>
+						   </span>
+					   </strong>
+				   </p>
 				   <p><strong>Start Date:</strong> <span class="course-info">05/23/20</span></p>
 				   <p><strong>Completion Date:</strong> <span class="course-info"><?php esc_html_e( $completed_date ); ?></span></p>
 			   </section>
@@ -45,6 +58,33 @@
 					<?php echo $learning_objectives; ?>
 			   </section>
 			   <?php endif; ?>
+			   <?php
+					$instructors = unserialize(
+						get_post_meta(
+							$course->ID,
+							'_tp_instructors_info',
+							true
+						)
+					);
+					if ( is_array( $instructors ) && count( $instructors ) ) :
+						?>
+					<section>
+                        <h3>Instructors</h3>
+						<?php foreach ( $instructors as $instructor ) : ?>
+                            <div style="margin-bottom: 10px;">
+                                <div>
+                                    <span>
+                                        <?php echo esc_html( $instructor['name'] ); ?>,
+                                        <?php echo esc_html( $instructor['title'] ); ?>
+                                    </span>
+                                </div>
+                                <div style="margin-left: 20px">
+                                    <?php echo esc_textarea( $instructor['bio'] ); ?>
+                                </div>
+                            </div>
+						<?php endforeach; ?>
+					</section>
+					<?php endif; ?>
 			   <?php if ( ! empty( $endorsements ) ) : ?>
 			   <section class="instructors endorsements">
 				   <h3>Endorsements:</h3>
