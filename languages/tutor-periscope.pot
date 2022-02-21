@@ -101,7 +101,7 @@ msgstr ""
 msgid "Tutor Periscope Additional Fields"
 msgstr ""
 
-#: inc/Certificates/Certificates.php:117, inc/Certificates/Certificates.php:119
+#: inc/Certificates/Certificates.php:147, inc/Certificates/Certificates.php:149
 msgid "License Number"
 msgstr ""
 
@@ -201,12 +201,40 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: inc/Lesson/LessonProgress.php:55, inc/Lesson/LessonProgress.php:73
+#: inc/Lesson/LessonProgress.php:58, inc/Lesson/LessonProgress.php:76
 msgid "Nonce verification failed."
 msgstr ""
 
-#: inc/Lesson/LessonProgress.php:52
+#: inc/Lesson/LessonProgress.php:55
 msgid "Invalid lesson id."
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:160
+msgid "Nonce verify failed"
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:150
+msgid "Invalid lesson id"
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:147
+msgid "Invalid post"
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:134
+msgid "Lesson is not completed"
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:132
+msgid "Lesson is completed"
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:143
+msgid "Quiz attempt not taken"
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:141
+msgid "Quiz attempt taken"
 msgstr ""
 
 #: inc/Setup/Dashboard.php:28, inc/Setup/Dashboard.php:28
@@ -397,36 +425,80 @@ msgstr ""
 msgid "Download PDF"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:17
+#: views/metabox/tutor-persicope-additional-data.php:18
 msgid "Learning Objectives"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:23
+#: views/metabox/tutor-persicope-additional-data.php:24
 msgid "List the learning objectives here. (One per line)"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:30
+#: views/metabox/tutor-persicope-additional-data.php:31
 msgid "Endorsements"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:37
+#: views/metabox/tutor-persicope-additional-data.php:38
 msgid "Endorsements or special instructions. (One per line)"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:24
+#: views/metabox/tutor-persicope-additional-data.php:45
+msgid "Profession"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:49
+msgid "Add student profession."
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:55
+msgid "Instructor"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:57
+msgid "+ Add"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:63, views/metabox/tutor-persicope-additional-data.php:79
+msgid "Instructor name"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:65, views/metabox/tutor-persicope-additional-data.php:85
+msgid "Instructor title"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:67, views/metabox/tutor-persicope-additional-data.php:88
+msgid "Instructor bio"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:80
+msgid "Remove"
+msgstr ""
+
+#: templates/certificates/periscope/certificate.php:21
 msgid "hours"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:24
+#: templates/certificates/periscope/certificate.php:21
 msgid "hour"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:29
+#: templates/certificates/periscope/certificate.php:26
 msgid "minutes"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:29
+#: templates/certificates/periscope/certificate.php:26
 msgid "minute"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Instructor name"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Instructor title"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Instructor bio"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
@@ -523,6 +595,10 @@ msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
 msgid "Evaluate submission failed"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Please complete current lesson/quiz first to go the next content."
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1

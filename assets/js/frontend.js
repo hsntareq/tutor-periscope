@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
   });
   /**
-   * Disable next lesson navigation link is current lesson not completed
+   * Disable next lesson navigation link if current lesson not completed
    * show alert message to complete current lesson. 
    */
 

@@ -43,7 +43,7 @@
 					?>
 				   <p>
 					   <strong>
-						   Profession: 
+						   Profession:
 						   <span class="course-info">
 								<?php echo esc_html( $student_profession ? $student_profession : '' ); ?>
 						   </span>
@@ -110,11 +110,10 @@
 			   </section>
 			   <?php endif; ?>
 			   <section class="instructors">
-				   <h3>Instructors:</h3>
+				   <h3>Signature</h3>
 				   <p><?php echo esc_html( $instructor_name ); ?></p>
 			   </section>
 			   <section class="medbridge">
-				   <h3>MedBridge:</h3>
 					<p class="medbridge-info">Andrew Mickus, <em>Director of Course Development</em></p>
 					<p class="medbridge-info">1633 Westlake Avenue North, Suite 200, Seattle, WA 98109</p>
 					<p class="medbridge-info contact"><span class="phone"><img class="phone-icon" src="<?php echo esc_url( TUTOR_PERISCOPE_DIR_URL . 'assets/images/phone.png' ); ?>" /> (206) 216-5003 </span> <span class="email"> <img class="email-icon" src="<?php echo esc_url( TUTOR_PERISCOPE_DIR_URL . 'assets/images/email.png' ); ?>" /> <a href="mailto:support@medbridgeed.com">support@medbridgeed.com</a></span></p>
@@ -125,16 +124,14 @@
 					<p><strong>Contact Hours:</strong> <span class="therapist-info"><?php esc_html_e( $duration_text ); ?></span></p>
 					<p><strong>License:</strong> <span class="therapist-info"><?php esc_html_e( $license_number ); ?></span></p>
 					<p><strong>State:</strong> <span class="therapist-info">Virginia</span></p>
-					<p><strong>Statement:</strong> <span class="therapist-info">The regulating agency in your state has indicated that they will accept continuing education courses approved by organizations
-						such as another state's APTA chapter. This course is approved by the Texas Physical Therapy Association (APS #: 2008024TX) and is valid
-						for Type 1 Continuing Competency credit in Virginia.</span></p>
+					<p>Some state licensing boards do not require course pre-approval. Participant is responsible for understanding their requirements.</p>
 			   </section>
 			   <section class="certificate-footer">
 				   <div class="leftside-content">
 						<p>MedBridge Certificate of Completion </p>
 				   </div>
 				   <div class="rightside-content">
-
+ 
 				   </div>
 			   </section>
 			</div>
