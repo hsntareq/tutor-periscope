@@ -4,13 +4,14 @@
     margin-left: 0;
     margin-right: 0;
 }
-
+*{margin:0;padding: 0;}
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 400;
+    line-height: 1.5;
+    padding-right: 20px;
 }
-
 h1,
 h2,
 h3,
@@ -42,6 +43,10 @@ h4 {
     z-index: -1000;
 }
 
+section{
+    margin-bottom: 30px;
+}
+
 .certificate-wrap {
     width: 800px;
     margin: 0 auto;
@@ -61,21 +66,17 @@ h4 {
     margin: 20px 0;
 }
 
-.certificate-wrap .certificate-content .certificate-details h1.certificate-title {
-    color: #424547;
+.certificate-wrap .certificate-content .certificate-details .certificate-title {
     font-weight: 300;
     line-height: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .certificate-wrap .certificate-content .certificate-details p {
-    margin-bottom: 4px;
+    margin-bottom: 0;
 }
 
 .certificate-wrap .certificate-content .certificate-details p span.course-info {
-    font-size: 13px;
-    color: #424547;
-    font-weight: 300;
     line-height: 1.5em;
 }
 
@@ -89,13 +90,17 @@ h4 {
     margin-bottom: 20px;
 }
 
-.certificate-wrap .certificate-content .learning-objectives ul li {
-    color: #424547;
+.certificate-wrap .certificate-content .learning-objectives .custom-ol {
+    margin-left: 20px;
+    border: none;
+}
+.certificate-wrap .certificate-content .learning-objectives .custom-ol td {
     font-size: 13px;
     font-weight: 300;
     line-height: 1.6em;
     word-wrap: break-word;
     margin-right: 10px;
+    vertical-align: top;
 }
 
 .certificate-wrap .certificate-content .instructors {
@@ -112,7 +117,6 @@ h4 {
 
 .certificate-wrap .certificate-content .medbridge p.medbridge-info {
     font-size: 13px;
-    color: #424547;
     font-weight: 300;
     line-height: 1.5em;
 }
@@ -145,7 +149,6 @@ h4 {
 }
 
 .certificate-wrap .certificate-content .medbridge p.medbridge-info span.email a {
-    color: #424547;
     text-decoration: none;
 }
 
@@ -163,31 +166,41 @@ h4 {
 
 .certificate-wrap .certificate-content .licensor-info p span.therapist-info {
     font-size: 13px;
-    color: #424547;
     font-weight: 300;
     line-height: 1.5em;
 }
+.certificate-wrap .certificate-content .licensor-info u {
+    padding: 0 3px;
+}
 
+.certificate-wrap .certificate-content .certificate-before-footer {
+    margin: 50px 0;
+}
 .certificate-wrap .certificate-content .certificate-footer {
+    bottom: 0;
+    left: 0;
     width: 100%;
-    margin-top: 30px;
-    margin-right: 20px;
-    border-top: 1px solid #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-    font-size: 13px;
-    color: #424547;
-    font-weight: 300;
+    position: relative;
 }
+.certificate-wrap .certificate-content .certificate-footer .full-address::before{
+    position: absolute;
+    background-color: #1c8ee9;
+    left: -100px;
+    content: '';
+    height: 100%;
 
-.certificate-wrap .certificate-content .certificate-footer .leftside-content {
-    flex: 1;
 }
-
-.certificate-wrap .certificate-content .certificate-footer .rightside-content {
-    padding-right: 20px;
+.certificate-wrap .certificate-content .certificate-footer .full-address{
+    background-color: #1c8ee9;
+    padding: 8px 0;
+    color: #ffffff;
+    padding-left: 50px;
+    position: relative;
+}
+.certificate-wrap .certificate-content .certificate-footer img{
+    position: absolute;
+    right: 0;
+    bottom: -10px;
 }
 
 .pagenum:before {
