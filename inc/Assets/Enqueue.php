@@ -76,11 +76,13 @@ class Enqueue {
 		 *
 		 * @since v1.0.0
 		 */
+		$tutor_course_id             = 0;
 		$should_show_evaluation_form = false;
 		if ( 'tutor_quiz' === $post_type ) {
-			$topic        = get_post_parent( get_post( $id ) );
-			$course       = get_post_parent( $topic );
-			$last_attempt = AttemptManagement::get_last_attempt( $id, $user_id );
+			$topic           = get_post_parent( get_post( $id ) );
+			$course          = get_post_parent( $topic );
+			$tutor_course_id = $course->ID;
+			$last_attempt    = AttemptManagement::get_last_attempt( $id, $user_id );
 			if ( $last_attempt ) {
 				$earned_percentage = $last_attempt->earned_marks > 0 ? ( number_format( ( $last_attempt->earned_marks * 100 ) / $last_attempt->total_marks ) ) : 0;
 				$passing_grade     = (int) tutor_utils()->get_quiz_option( $last_attempt->quiz_id, 'passing_grade', 0 );
