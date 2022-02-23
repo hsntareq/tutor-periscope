@@ -116,4 +116,5 @@ window.document.addEventListener('DOMContentLoaded', async function() {
             });
         }
     }
+
 });

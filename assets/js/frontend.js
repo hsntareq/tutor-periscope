@@ -348,6 +348,26 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
       }
     };
+  } //disable view attempt if fail
+
+
+  const fails = document.querySelectorAll('.result-fail');
+
+  if (fails.length) {
+    fails.forEach(item => {
+      if (item) {
+        const tr = item.closest('tr');
+
+        if (tr) {
+          const viewAttempt = tr.querySelector('td:last-child a');
+
+          if (viewAttempt) {
+            viewAttempt.removeAttribute('href');
+            viewAttempt.style.color = '#bdbfc7';
+          }
+        }
+      }
+    });
   }
 });
 

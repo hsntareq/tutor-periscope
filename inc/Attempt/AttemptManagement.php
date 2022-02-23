@@ -57,7 +57,7 @@ class AttemptManagement {
 		 */
 		add_action( 'tutor_quiz/attempt_ended', array( __CLASS__, 'update_attempt_taken' ), 10, 3 );
 		add_action( 'tutor_quiz/attempt_ended', array( __CLASS__, 'email_notification' ), 10, 3 );
-		add_filter( 'tutor_previous_quiz_attempt', array( __CLASS__, 'remove_fail_attempts' ), 10, 2 );
+		// add_filter( 'tutor_previous_quiz_attempt', array( __CLASS__, 'remove_fail_attempts' ), 10, 2 );
 
 		/**
 		 * Do action on tutor hook
