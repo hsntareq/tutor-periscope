@@ -273,4 +273,39 @@ class AttemptManagement {
 		);
 		return $assigned ? true : false;
 	}
+
+	/**
+	 * Get quiz attempt
+	 *
+	 * Retrieve only last quiz attempt, if need full list then use
+	 * Tutor's method from utils.
+	 *
+	 * @since v1.0.0
+	 *
+	 * @param  int $quiz_id  quiz post id.
+	 * @param  int $user_id user id.
+	 *
+	 * @return mixed object on success, null on failure
+	 */
+	public static function get_last_attempt( int $quiz_id, int $user_id ) {
+		global $wpdb;
+
+		$quiz_id = sanitize_text_field( $quiz_id );
+		$user_id = sanitize_text_field( $user_id );
+
+		$attempt = $wpdb->get_row(
+			$wpdb->prepare(
+				"SELECT *
+			FROM 	{$wpdb->prefix}tutor_quiz_attempts
+			WHERE 	quiz_id = %d
+					AND user_id = %d
+					ORDER BY attempt_id  DESC
+					LIMIT 1
+			",
+				$quiz_id,
+				$user_id
+			)
+		);
+		return $attempt;
+	}
 }
