@@ -24,103 +24,116 @@ document.addEventListener("DOMContentLoaded", function () {
                     <form id="tutor-periscope-evaluation-form">
                         <div class="tutor-form-group mb-3 clearfix">
                             <label class="d-inline-block">
-                                ${__('Course content matched the session description', 'tutor-periscope')}
+                                ${__('1. Were the course learning objectives met?', 'tutor-periscope')}
+                            </label>
+                            <select name="objectives_met" id="" class="tutor-form-control">
+                                <option value="agree">${__('Strongly Agree', 'tutor-periscope')}</option>
+                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
+                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Strongly Disagree', 'tutor-periscope')}</option>
+                            </select>
+                        </div>
+                        <div class="tutor-form-group mb-3 clearfix">
+                            <label class="d-inline-block">
+                                ${__('2. Did course content match course description?', 'tutor-periscope')}
                             </label>
                             <select name="content_matched" id="" class="tutor-form-control">
+                                <option value="agree">${__('Strongly Agree', 'tutor-periscope')}</option>
                                 <option value="agree">${__('Agree', 'tutor-periscope')}</option>
                                 <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Strongly Disagree', 'tutor-periscope')}</option>
                             </select>
                         </div>
                         <div class="tutor-form-group mb-3 clearfix">
                             <label class="d-inline-block">
-                                ${__('The learning outcome were met', 'tutor-periscope')}
+                                ${__('3. Was current evidence provided to substantiate material presented? ', 'tutor-periscope')}
                             </label>
-                            <select name="outcome_met" id="" class="tutor-form-control">
+                            <select name="material_presented" id="" class="tutor-form-control">
+                                <option value="agree">${__('Strongly Agree', 'tutor-periscope')}</option>
                                 <option value="agree">${__('Agree', 'tutor-periscope')}</option>
                                 <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Strongly Disagree', 'tutor-periscope')}</option>
                             </select>
                         </div>
                         <div class="tutor-form-group mb-3 clearfix">
                             <label class="d-inline-block">
-                                ${__('Current evidence was cited for specific content', 'tutor-periscope')}
+                                ${__('4. Were the instructors effective and knowledgeable?', 'tutor-periscope')}
                             </label>
-                            <select name="specific_content" id="" class="tutor-form-control">
+                            <select name="instructors_effective" id="" class="tutor-form-control">
+                                <option value="agree">${__('Strongly Agree', 'tutor-periscope')}</option>
                                 <option value="agree">${__('Agree', 'tutor-periscope')}</option>
                                 <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Strongly Disagree', 'tutor-periscope')}</option>
                             </select>
                         </div>
                         <div class="tutor-form-group mb-3 clearfix">
                             <label class="d-inline-block">
-                                ${__('Instructional activities added value to my learning experience', 'tutor-periscope')}
+                                ${__('5. Was the virtual learning platform supportive to learning? ', 'tutor-periscope')}
                             </label>
-                            <select name="added_value" id="" class="tutor-form-control">
+                            <select name="supportive_learning" id="" class="tutor-form-control">
+                                <option value="agree">${__('Strongly Agree', 'tutor-periscope')}</option>
                                 <option value="agree">${__('Agree', 'tutor-periscope')}</option>
                                 <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Strongly Disagree', 'tutor-periscope')}</option>
                             </select>
                         </div>
                         <div class="tutor-form-group mb-3 clearfix">
                             <label class="d-inline-block">
-                                ${__('Course content was effectively delivered', 'tutor-periscope')}
-                            </label>
-                            <select name="effectively_delivered" id="" class="tutor-form-control">
-                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
-                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
-                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
-                            </select>
-                        </div>
-                        <div class="tutor-form-group mb-3 clearfix">
-                            <label class="d-inline-block">
-                                ${__('Overall course was valuable', 'tutor-periscope')}
+                                ${__('6. Overall, the course was valuable.', 'tutor-periscope')}
                             </label>
                             <select name="was_valuable" id="" class="tutor-form-control">
+                                <option value="agree">${__('Strongly Agree', 'tutor-periscope')}</option>
                                 <option value="agree">${__('Agree', 'tutor-periscope')}</option>
                                 <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Strongly Disagree', 'tutor-periscope')}</option>
+                            </select>
+                        </div>
+
+                        <div class="tutor-form-group mb-3 clearfix">
+                            <label class="d-inline-block">
+                                ${__('7. Would you recommend this course to a colleague?', 'tutor-periscope')}
+                            </label>
+                            <select name="recommend" id="" class="tutor-form-control">
+                                <option value="agree">${__('Strongly Agree', 'tutor-periscope')}</option>
+                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
+                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Strongly Disagree', 'tutor-periscope')}</option>
                             </select>
                         </div>
                         <div class="tutor-form-group mb-3 clearfix">
                             <label class="d-inline-block">
-                                ${__('Promotion of a product or service was not present', 'tutor-periscope')}
+                                ${__('8. Were personal experience and observation the primary source of information? ', 'tutor-periscope')}
                             </label>
-                            <select name="promotion_present" id="" class="tutor-form-control">
+                            <select name="information" id="" class="tutor-form-control">
+                                <option value="agree">${__('Strongly Agree', 'tutor-periscope')}</option>
                                 <option value="agree">${__('Agree', 'tutor-periscope')}</option>
                                 <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
                                 <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                                <option value="neutral">${__('Strongly Disagree', 'tutor-periscope')}</option>
                             </select>
                         </div>
                         <div class="tutor-form-group mb-3 clearfix">
                             <label class="d-inline-block">
-                                ${__('The environment was supportive of my learning experience', 'tutor-periscope')}
+                                ${__('9. Was a commercial product promoted? If yes, did you feel that the product promotion was the sole purpose of the course? ', 'tutor-periscope')}
                             </label>
-                            <select name="supportive_environment" id="" class="tutor-form-control">
-                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
-                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
-                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
+                            <select name="product_promoted" id="" class="tutor-form-control">
+                                <option value="No">${__('No', 'tutor-periscope')}</option>
+                                <option value="Yes">${__('Yes', 'tutor-periscope')}</option>
+                                <option value="">${__('', 'tutor-periscope')}</option>
                             </select>
                         </div>
                         <div class="tutor-form-group mb-3 clearfix">
                             <label class="d-inline-block">
-                                ${__('Numbers of hours it took to complete- ONLY online for online courses', 'tutor-periscope')}
+                                ${__('10. What topic(s) would you like more training in? Share any additional comments or questions.', 'tutor-periscope')}
                             </label>
-                            <select name="number_of_hours" id="" class="tutor-form-control">
-                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
-                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
-                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
-                            </select>
-                        </div>
-                        <div class="tutor-form-group mb-3 clearfix">
-                            <label class="d-inline-block">
-                                ${__('How will you apply this in your practice', 'tutor-periscope')}
-                            </label>
-                            <select name="apply_in_practice" id="" class="tutor-form-control">
-                                <option value="agree">${__('Agree', 'tutor-periscope')}</option>
-                                <option value="disagree">${__('Disagree', 'tutor-periscope')}</option>
-                                <option value="neutral">${__('Neutral', 'tutor-periscope')}</option>
-                            </select>
+                            <textarea name="comments"></textarea>
                         </div>
                         <div class="tutor-form-group mb-3 clearfix">
                             <button class="tutor-periscope-evaluation-submit-button tutor-button">
