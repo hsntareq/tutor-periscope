@@ -30,6 +30,9 @@ class Assessment
         verify_nonce();
 
 		$data_to_import = json_decode( wp_unslash( $_POST['bulk_user'] ), true );
+
+        wp_send_json($data_to_import);
+        die;
 		foreach ( $data_to_import as $data_import ) {
 			$users = array();
 
