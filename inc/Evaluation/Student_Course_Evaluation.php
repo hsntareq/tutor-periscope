@@ -34,11 +34,11 @@ class Student_Course_Evaluation extends DB_Query {
 		 * Add custom fields
 		 */
 		// add_action(
-		// 	'tutor_before_rating_textarea',
-		// 	array(
-		// 		__CLASS__,
-		// 		'tutor_before_rating_textarea',
-		// 	)
+		// 'tutor_before_rating_textarea',
+		// array(
+		// __CLASS__,
+		// 'tutor_before_rating_textarea',
+		// )
 		// );
 
 		/**
@@ -97,8 +97,8 @@ class Student_Course_Evaluation extends DB_Query {
 			// unset index that won't be store in DB.
 			unset( $post['action'] );
 			unset( $post['nonce'] );
-
-			$create_or_update = $this->create_or_update( $post );
+			$post['student_id'] = get_current_user_id();
+			$create_or_update   = $this->create_or_update( $post );
 			if ( $create_or_update ) {
 				// store a identifier that user evaluated course.
 				update_user_meta(
