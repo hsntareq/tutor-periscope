@@ -7,6 +7,7 @@
 
 namespace Tutor_Periscope\Assets;
 
+use Tutor_Periscope\Attempt\AttemptManagement;
 use Tutor_Periscope\Lesson\LessonProgress;
 
 defined( 'ABSPATH' ) || exit;
@@ -77,23 +78,22 @@ class Enqueue {
 		 */
 		$tutor_course_id             = 0;
 		$should_show_evaluation_form = false;
-		if ( 'courses' === $post_type ) {
-			$tutor_course_id   = $id;
-			$is_completed      = tutor_utils()->get_course_completed_percent( $id, $user_id );
-			$already_evaluated = get_user_meta( $user_id, 'tp_user_evaluated_course_' . $id );
+		if ( 'tutor_quiz' === $post_type ) {
+			$topic           = get_post_parent( get_post( $id ) );
+			$course          = get_post_parent( $topic );
+			$tutor_course_id = $course->ID;
+			$last_attempt    = AttemptManagement::get_last_attempt( $id, $user_id );
+			if ( $last_attempt ) {
+				$earned_percentage = $last_attempt->earned_marks > 0 ? ( number_format( ( $last_attempt->earned_marks * 100 ) / $last_attempt->total_marks ) ) : 0;
+				$passing_grade     = (int) tutor_utils()->get_quiz_option( $last_attempt->quiz_id, 'passing_grade', 0 );
 
-			if ( $is_completed >= 100 && ! $already_evaluated ) {
-				$should_show_evaluation_form = true;
-			}
-		} else {
-			if ( 'lesson' === $post_type || 'tutor_quiz' === $post_type || 'tutor_assignments' === $post_type ) {
-				$topic             = get_post_parent( $id );
-				$course            = get_post_parent( $topic );
-				$tutor_course_id   = $course->ID;
-				$is_completed      = tutor_utils()->get_course_completed_percent( $tutor_course_id, $user_id );
-				$already_evaluated = get_user_meta( $user_id, 'tp_user_evaluated_course_' . $tutor_course_id );
-
-				if ( $is_completed >= 100 && ! $already_evaluated ) {
+				// if user pass & not already submitted then show evaluation form.
+				$already_evaluated = get_user_meta(
+					$user_id,
+					'tp_user_evaluated_course_' . $course->ID,
+					true
+				);
+				if ( $earned_percentage >= $passing_grade && ! $already_evaluated ) {
 					$should_show_evaluation_form = true;
 				}
 			}

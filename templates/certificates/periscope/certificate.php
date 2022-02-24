@@ -27,23 +27,23 @@
 					$min_text  = $durationMinutes . ' ';
 					$min_text .= ( $durationMinutes > 1 ) ? __( 'minutes', 'tutor-periscope' ) : __( 'minute', 'tutor-periscope' );
 				}
-					$duration_text = $hour_text . ' ' . $min_text;
-					$default_sinature_id = tutor_utils()->get_option('tutor_cert_signature_image_id');
-					$signature_image_url = isset($default_sinature_id) ? wp_get_attachment_url($default_sinature_id) : $signature_image_url;
+					$duration_text       = $hour_text . ' ' . $min_text;
+					$default_sinature_id = tutor_utils()->get_option( 'tutor_cert_signature_image_id' );
+					$signature_image_url = isset( $default_sinature_id ) ? wp_get_attachment_url( $default_sinature_id ) : $signature_image_url;
 				?>
 				<section class="certificate-header">
 					<header class="certificate-logo">
 						<img src="<?php echo esc_url( TUTOR_PERISCOPE_DIR_URL . 'assets/images/periscope-logo-text.png' ); ?>" alt="Periscope Logo" />
 					</header>
-			   	</section>
-			   	<section class="certificate-details">
+				   </section>
+				   <section class="certificate-details">
 				   <h3 align="center" class="certificate-title">
 					   <b>Certificate of Course Completion</b>
 				   </h3>
 				   <p><strong>Course:</strong> <span class="course-info"><?php esc_html_e( $course->post_title ); ?></span></p>
 				   <p><span>Student:</span> <span class="course-info"><?php esc_html_e( $user->display_name ); ?></span></p>
 				   <?php
-						$student_state = get_post_meta( $course->ID, '_tp_student_state', true );
+						$student_state      = get_post_meta( $course->ID, '_tp_student_state', true );
 						$student_profession = get_post_meta( $course->ID, '_tp_student_profession', true );
 					?>
 				   <p>
@@ -64,8 +64,11 @@
 				   </p>
 				   <p><span>Date Completed: </span> <span class="course-info"><?php esc_html_e( $completed_date ); ?></span></p>
 				   <p>
+					   <?php
+							$duration = get_tutor_course_duration_context( $course->ID );
+						?>
 					   <span>
-						   Contact Hours:
+						   Contact Hours: <?php echo esc_html( false !== $duration ? $duration : '' ); ?>
 						   <span class="course-info">
 								<?php echo esc_html( $student_state ? $student_state : '' ); ?>
 						   </span>
@@ -82,7 +85,7 @@
 						<table class="custom-ol">
 						<?php foreach ( $learning_objectives as $key => $learning_objective ) : ?>
 							<tr>
-								<td width="20"><?php echo esc_html( $key+1 ); ?>. </td>
+								<td width="20"><?php echo esc_html( $key + 1 ); ?>. </td>
 								<td><?php echo esc_html( $learning_objective ); ?></td>
 							</tr>
 						<?php endforeach; ?>
@@ -115,12 +118,12 @@
 						<?php endforeach; ?>
 					</section>
 					<?php endif; ?>
-			   	<?php
+				<?php
 				if ( ! empty( $endorsements ) ) :
 					$endorsements = explode( "\n", $endorsements );
 					?>
-			   	<section class="instructors endorsements">
-				   	<h4>Endorsements:</h4>
+				   <section class="instructors endorsements">
+					   <h4>Endorsements:</h4>
 					<?php if ( is_array( $endorsements ) && count( $endorsements ) ) : ?>
 						<?php foreach ( $endorsements as $endorsement ) : ?>
 						<ol>

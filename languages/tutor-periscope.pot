@@ -473,19 +473,19 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:21
+#: templates/certificates/periscope/certificate.php:23
 msgid "hours"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:21
+#: templates/certificates/periscope/certificate.php:23
 msgid "hour"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:26
+#: templates/certificates/periscope/certificate.php:28
 msgid "minutes"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:26
+#: templates/certificates/periscope/certificate.php:28
 msgid "minute"
 msgstr ""
 
@@ -530,7 +530,11 @@ msgid "Please evaluate the course"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Course content matched the session description"
+msgid "1. Were the course learning objectives met?"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Strongly Agree"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
@@ -546,39 +550,51 @@ msgid "Neutral"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "The learning outcome were met"
+msgid "Strongly Disagree"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Current evidence was cited for specific content"
+msgid "2. Did course content match course description?"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Instructional activities added value to my learning experience"
+msgid "3. Was current evidence provided to substantiate material presented? "
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Course content was effectively delivered"
+msgid "4. Were the instructors effective and knowledgeable?"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Overall course was valuable"
+msgid "5. Was the virtual learning platform supportive to learning? "
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Promotion of a product or service was not present"
+msgid "6. Overall, the course was valuable."
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "The environment was supportive of my learning experience"
+msgid "7. Would you recommend this course to a colleague?"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Numbers of hours it took to complete- ONLY online for online courses"
+msgid "8. Were personal experience and observation the primary source of information? "
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "How will you apply this in your practice"
+msgid "9. Was a commercial product promoted? If yes, did you feel that the product promotion was the sole purpose of the course? "
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "No"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Yes"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "10. What topic(s) would you like more training in? Share any additional comments or questions."
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
