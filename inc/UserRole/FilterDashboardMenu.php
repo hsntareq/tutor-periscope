@@ -19,6 +19,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class FilterDashboardMenu {
 
+	/**
+	 * Current user role
+	 *
+	 * @var mixed
+	 */
 	protected $user_role;
 
 	/**
@@ -32,6 +37,7 @@ class FilterDashboardMenu {
 
 		add_filter( 'tutor_dashboard/nav_items', array( $this, 'filter_menu' ), 100, 1 );
 		add_filter( 'load_dashboard_template_part_from_other_location', array( $this, 'load_template' ), 100, 1 );
+		add_action( 'template_redirect', array( $this, 'redirect_to_quiz_attempts' ), 100 );
 	}
 
 	/**
@@ -51,9 +57,18 @@ class FilterDashboardMenu {
 					'review-attempts' => __( 'Review Attempts', 'tutor-periscope' ),
 				)
 			);
-            $menu = $new_menu;
+			$menu     = $new_menu;
 		}
 		return $menu;
+	}
+
+	/**
+	 * Get review attempts template
+	 *
+	 * @return string  file path
+	 */
+	public function template() {
+		return TUTOR_PERISCOPE_DIR_PATH . 'templates/frontend/quiz-attempts.php';
 	}
 
 	/**
@@ -68,15 +83,37 @@ class FilterDashboardMenu {
 	public function load_template( string $template ): string {
 		global $wp_query;
 		$query_vars = $wp_query->query_vars;
+
 		if ( wc_current_user_has_role( $this->user_role ) ) {
-			if ( 'review-attempts' === $query_vars['attachment'] ) {
-				$quiz_attempt_template = TUTOR_PERISCOPE_DIR_PATH . 'templates/frontend/quiz-attempts.php';
+			if ( isset( $query_vars['tutor_dashboard_page'] ) && 'review-attempts' === $query_vars['tutor_dashboard_page'] || ( ! isset( $query_vars['tutor_dashboard_page'] ) && 'dashboard' === $query_vars['pagename'] ) ) {
+				$quiz_attempt_template = $this->template();
+
 				if ( file_exists( $quiz_attempt_template ) ) {
 					$template = apply_filters( 'tutor_periscope_quiz_attempt_template', $quiz_attempt_template );
 				}
 			}
 		}
 		return $template;
+	}
+
+	/**
+	 * Redirect to review-attempts url if current user
+	 * has reviewer role and try to access tutor dashboard page.
+	 *
+	 * @since v1.0.0
+	 *
+	 * @return void
+	 */
+	public function redirect_to_quiz_attempts() {
+		global $wp_query;
+		$query_vars = $wp_query->query_vars;
+
+		if ( wc_current_user_has_role( $this->user_role ) ) {
+			if ( ! isset( $query_vars['tutor_dashboard_page'] ) && 'dashboard' === $query_vars['pagename'] ) {
+				wp_safe_redirect( tutor_utils()->tutor_dashboard_url() . 'review-attempts' );
+				exit;
+			}
+		}
 	}
 
 }
