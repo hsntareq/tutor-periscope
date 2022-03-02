@@ -26,6 +26,8 @@ class FilterDashboardMenu {
 	 */
 	protected $user_role;
 
+	const REVIEW_ATTEMPT_SLUG = 'review-attempts';
+
 	/**
 	 * Register hooks
 	 *
@@ -35,9 +37,27 @@ class FilterDashboardMenu {
 		$reviewer        = new Reviewer();
 		$this->user_role = $reviewer->role;
 
+		add_action( 'generate_rewrite_rules', array( $this, 'add_rewrite_rules' ) );
 		add_filter( 'tutor_dashboard/nav_items', array( $this, 'filter_menu' ), 100, 1 );
 		add_filter( 'load_dashboard_template_part_from_other_location', array( $this, 'load_template' ), 100, 1 );
 		add_action( 'template_redirect', array( $this, 'redirect_to_quiz_attempts' ), 100 );
+	}
+
+	/**
+	 * Add rewrite rules for new url
+	 *
+	 * @param mixed $wp_rewrite  existing rules.
+	 *
+	 * @return void
+	 */
+	public function add_rewrite_rules( $wp_rewrite ) {
+		$dashboard_page_id   = (int) tutor_utils()->get_option( 'tutor_dashboard_page_id' );
+		$dashboard_page_slug = get_post_field( 'post_name', $dashboard_page_id );
+
+		$dashboard_key = self::REVIEW_ATTEMPT_SLUG;
+		$new_rules[ "({$dashboard_page_slug})/{$dashboard_key}/?$" ] = 'index.php?pagename=' . $wp_rewrite->preg_index( 1 ) . '&tutor_dashboard_page=' . $dashboard_key;
+
+		$wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
 	}
 
 	/**
@@ -54,7 +74,7 @@ class FilterDashboardMenu {
 			$new_menu = apply_filters(
 				'tutor_periscope_frontend_dashboard_menu',
 				array(
-					'review-attempts' => __( 'Review Attempts', 'tutor-periscope' ),
+					self::REVIEW_ATTEMPT_SLUG => __( 'Review Attempts', 'tutor-periscope' ),
 				)
 			);
 			$menu     = $new_menu;
@@ -85,7 +105,7 @@ class FilterDashboardMenu {
 		$query_vars = $wp_query->query_vars;
 
 		if ( wc_current_user_has_role( $this->user_role ) ) {
-			if ( isset( $query_vars['tutor_dashboard_page'] ) && 'review-attempts' === $query_vars['tutor_dashboard_page'] || ( ! isset( $query_vars['tutor_dashboard_page'] ) && 'dashboard' === $query_vars['pagename'] ) ) {
+			if ( isset( $query_vars['tutor_dashboard_page'] ) && self::REVIEW_ATTEMPT_SLUG === $query_vars['tutor_dashboard_page'] || ( ! isset( $query_vars['tutor_dashboard_page'] ) && 'dashboard' === $query_vars['pagename'] ) ) {
 				$quiz_attempt_template = $this->template();
 
 				if ( file_exists( $quiz_attempt_template ) ) {
@@ -110,7 +130,7 @@ class FilterDashboardMenu {
 
 		if ( wc_current_user_has_role( $this->user_role ) ) {
 			if ( ! isset( $query_vars['tutor_dashboard_page'] ) && 'dashboard' === $query_vars['pagename'] ) {
-				wp_safe_redirect( tutor_utils()->tutor_dashboard_url() . 'review-attempts' );
+				wp_safe_redirect( tutor_utils()->tutor_dashboard_url() . self::REVIEW_ATTEMPT_SLUG );
 				exit;
 			}
 		}
