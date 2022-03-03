@@ -30,8 +30,41 @@ class Assessment
         verify_nonce();
 
 		$data_to_import = json_decode( wp_unslash( $_POST['bulk_user'] ), true );
+		wp_send_json(  $data_to_import );
 
-        wp_send_json($data_to_import);
+
+        $data_to_export = array();
+        $data_export = array();
+        foreach($data_to_import as $data ){
+
+            // $data_to_export['display_name'] = $data['nameFullFirstLast'];
+            // $display_name = $data_to_export['display_name'];
+            $data_to_export['display_name'] = $data['nameFullFirstLast'];
+            if(!empty($data_to_export['display_name'])){
+                $display_name = $data_to_export['display_name'];
+                $license_number = $data_to_export['license_info'] = $data['license_number'].':'.$data['state'];
+            }
+            if(empty($license_number_data)){
+                $data_to_export['license_info'] = $data['license_number'].':'.$data['state'];
+            }
+            if(empty($data['nameFullFirstLast'])){
+                $data_to_export['display_name'] = $display_name;
+                if($data_to_export['display_name'] == $display_name){
+                    $license_number_data =  $license_number_data .', '.$license_number;
+                    $data_to_export['license_info'] = $license_number_data;
+                }
+
+            }else{
+                $license_number_data = '';
+            }
+            $data_export[] = $data_to_export;
+
+        }
+
+        pr($data_export);
+        // pr($data_to_import);
+
+        // wp_send_json($data_to_export);
         die;
 		foreach ( $data_to_import as $data_import ) {
 			$users = array();
