@@ -245,6 +245,10 @@ msgstr ""
 msgid "Course Assignment"
 msgstr ""
 
+#: inc/UserRole/FilterDashboardMenu.php:77
+msgid "Review Attempts"
+msgstr ""
+
 #: templates/frontend/course-evaluation.php:4
 msgid "Course content matched the session description"
 msgstr ""
@@ -297,23 +301,27 @@ msgstr ""
 msgid "How will you apply this in your practice"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:55
+#: templates/frontend/quiz-attempts.php:131
+msgid "Attempt Details"
+msgstr ""
+
+#: views/admin/course-assignment-form.php:79
 msgid "Label"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:56
+#: views/admin/course-assignment-form.php:80
 msgid "Select"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:61
+#: views/admin/course-assignment-form.php:85
 msgid "Select a course to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:76
+#: views/admin/course-assignment-form.php:100
 msgid "Select User(s) to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:95
+#: views/admin/course-assignment-form.php:119
 msgid "Assign Course"
 msgstr ""
 

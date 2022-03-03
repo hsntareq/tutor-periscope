@@ -41,6 +41,7 @@ class FilterDashboardMenu {
 		add_filter( 'tutor_dashboard/nav_items', array( $this, 'filter_menu' ), 100, 1 );
 		add_filter( 'load_dashboard_template_part_from_other_location', array( $this, 'load_template' ), 100, 1 );
 		add_action( 'template_redirect', array( $this, 'redirect_to_quiz_attempts' ), 100 );
+		add_action( 'wp_ajax_tutor_periscope_attempt_details', array( $this, 'attempt_details' ), 100 );
 	}
 
 	/**
@@ -110,6 +111,7 @@ class FilterDashboardMenu {
 
 				if ( file_exists( $quiz_attempt_template ) ) {
 					$template = apply_filters( 'tutor_periscope_quiz_attempt_template', $quiz_attempt_template );
+
 				}
 			}
 		}
@@ -133,6 +135,20 @@ class FilterDashboardMenu {
 				wp_safe_redirect( tutor_utils()->tutor_dashboard_url() . self::REVIEW_ATTEMPT_SLUG );
 				exit;
 			}
+		}
+	}
+
+	public function attempt_details() {
+		if ( wp_verify_nonce( $_POST['nonce'], 'tp_nonce' ) ) {
+			ob_start();
+			tutor_load_template_from_custom_path(
+				TUTOR_PERISCOPE_DIR_PATH . 'templates/frontend/attempt-details.php',
+				array( 'attempt_id' => sanitize_text_field( $_POST['attempt_id'] ) )
+			);
+			echo ob_get_clean();
+			exit;
+		} else {
+			wp_send_json_error( __( 'Nonce verification failed', 'tutor-periscope' ) );
 		}
 	}
 
