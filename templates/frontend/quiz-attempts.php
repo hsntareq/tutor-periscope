@@ -16,7 +16,7 @@ $current_page = max( 1, tutils()->array_get( 'current_page', tutor_sanitize_data
 $offset       = ( $current_page - 1 ) * $per_page;
 ?>
 
-<h3><?php esc_html_e( 'Quiz Attempts', 'tutor' ); ?></h3>
+<h3><?php esc_html_e( 'Quiz Attempts', 'tutor-periscope' ); ?></h3>
 <?php
 
 $quiz_attempts       = tutor_utils()->get_quiz_attempts( $offset, $per_page, $course_id );
@@ -27,13 +27,15 @@ if ( $quiz_attempts_count ) {
 	<div class="tutor-dashboard-content tutor-quiz-attempt-history">
 		<table class="tutor-table">
 			<tr>
-				<th><?php esc_html_e( 'Course Info', 'tutor' ); ?></th>
-				<th><?php esc_html_e( 'Student', 'tutor' ); ?></th>
-				<th><?php esc_html_e( 'Correct Answer', 'tutor' ); ?></th>
-				<th><?php esc_html_e( 'Incorrect Answer', 'tutor' ); ?></th>
-				<th><?php esc_html_e( 'Earned Mark', 'tutor' ); ?></th>
-				<th><?php esc_html_e( 'Result', 'tutor' ); ?></th>
-				<th></th>
+				<th><?php esc_html_e( 'Course Info', 'tutor-periscope' ); ?></th>
+				<th><?php esc_html_e( 'Student', 'tutor-periscope' ); ?></th>
+				<th><?php esc_html_e( 'Correct Answer', 'tutor-periscope' ); ?></th>
+				<th><?php esc_html_e( 'Incorrect Answer', 'tutor-periscope' ); ?></th>
+				<th><?php esc_html_e( 'Earned Mark', 'tutor-periscope' ); ?></th>
+				<th><?php esc_html_e( 'Result', 'tutor-periscope' ); ?></th>
+				<th><?php esc_html_e( 'Details', 'tutor-periscope' ); ?></th>
+				<th><?php esc_html_e( 'Status', 'tutor-periscope' ); ?></th>
+				<th><?php esc_html_e( 'Action', 'tutor-periscope' ); ?></th>
 				<?php do_action( 'tutor_quiz/student_attempts/table/thead/col' ); ?>
 			</tr>
 			<?php
@@ -50,8 +52,8 @@ if ( $quiz_attempts_count ) {
 						</div>
 						<div class="course-meta">
 							<span><?php echo date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), strtotime( $attempt->attempt_ended_at ) ); ?></span>
-							<span><?php esc_html_e( 'Question: ', 'tutor' ); ?><strong><?php echo esc_attr( count( $answers ) ); ?></strong></span>
-							<span><?php esc_html_e( 'Total Marks: ', 'tutor' ); ?><strong><?php echo esc_attr( $attempt->total_marks ); ?></strong></span>
+							<span><?php esc_html_e( 'Question: ', 'tutor-periscope' ); ?><strong><?php echo esc_attr( count( $answers ) ); ?></strong></span>
+							<span><?php esc_html_e( 'Total Marks: ', 'tutor-periscope' ); ?><strong><?php echo esc_attr( $attempt->total_marks ); ?></strong></span>
 						</div>
 					</td>
 					<td>
@@ -90,16 +92,24 @@ if ( $quiz_attempts_count ) {
 					<td>
 						<?php
 						if ( $attempt->attempt_status === 'review_required' ) {
-							echo '<span class="result-review-required">' . __( 'Under Review', 'tutor' ) . '</span>';
+							echo '<span class="result-review-required">' . __( 'Under Review', 'tutor-periscope' ) . '</span>';
 						} else {
 							echo $earned_percentage >= $passing_grade ?
-								'<span class="result-pass">' . __( 'Pass', 'tutor' ) . '</span>' :
-								'<span class="result-fail">' . __( 'Fail', 'tutor' ) . '</span>';
+								'<span class="result-pass">' . __( 'Pass', 'tutor-periscope' ) . '</span>' :
+								'<span class="result-fail">' . __( 'Fail', 'tutor-periscope' ) . '</span>';
 						}
 						?>
 					</td>
-					<td><a  href="#" class="tutor-periscope-attempt-details" data-id="<?php echo esc_attr( $attempt->attempt_id ); ?>"><?php esc_html_e( 'Details', 'tutor' ); ?></a></td>
+					<td><a  href="#" class="tutor-periscope-attempt-details" data-id="<?php echo esc_attr( $attempt->attempt_id ); ?>"><?php esc_html_e( 'Details', 'tutor-periscope' ); ?></a></td>
 					<?php do_action( 'tutor_quiz/student_attempts/table/tbody/col', $attempt ); ?>
+					<td class="tutor-quiz-attempt-review-wrap">
+						<span class="result-pass">Approved</span>
+					</td>
+					<td>
+						<a href="#" class="tutor-status-approved-context" id="tutor-periscope-allow-download-cert" data-user-id="<?php esc_attr( $attempt->user_id ); ?>" title="<?php esc_attr_e( 'Allow user to download certificate', 'tutor-periscope' ); ?>">
+							<i class="tutor-icon-mark"></i>
+						</a>
+					</td>
 				</tr>
 				<?php
 			}
@@ -119,7 +129,7 @@ if ( $quiz_attempts_count ) {
 	</div>
 	<?php
 } else {
-	esc_html_e( 'No quiz attempt yet.', 'tutor' );
+	esc_html_e( 'No quiz attempt yet.', 'tutor-periscope' );
 }
 ?>
 

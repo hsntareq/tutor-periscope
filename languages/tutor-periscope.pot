@@ -81,7 +81,7 @@ msgstr ""
 msgid "Permission Denied!"
 msgstr ""
 
-#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139
+#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/UserRole/FilterDashboardMenu.php:156
 msgid "Nonce verification failed"
 msgstr ""
 
@@ -157,7 +157,7 @@ msgstr ""
 msgid "No course evaluations found"
 msgstr ""
 
-#: inc/Evaluation/Course_Evaluation_List_Table.php:63, inc/Evaluation/Course_Evaluation_List_Table.php:83
+#: inc/Evaluation/Course_Evaluation_List_Table.php:63, inc/Evaluation/Course_Evaluation_List_Table.php:83, templates/frontend/quiz-attempts.php:36, templates/frontend/quiz-attempts.php:103
 msgid "Details"
 msgstr ""
 
@@ -245,7 +245,7 @@ msgstr ""
 msgid "Course Assignment"
 msgstr ""
 
-#: inc/UserRole/FilterDashboardMenu.php:77
+#: inc/UserRole/FilterDashboardMenu.php:78
 msgid "Review Attempts"
 msgstr ""
 
@@ -301,7 +301,71 @@ msgstr ""
 msgid "How will you apply this in your practice"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:131
+#: templates/frontend/quiz-attempts.php:19
+msgid "Quiz Attempts"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:132
+msgid "No quiz attempt yet."
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:30
+msgid "Course Info"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:31
+msgid "Student"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:32
+msgid "Correct Answer"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:33
+msgid "Incorrect Answer"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:34
+msgid "Earned Mark"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:35
+msgid "Result"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:37
+msgid "Status"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:38
+msgid "Action"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:55
+msgid "Question: "
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:56
+msgid "Total Marks: "
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:98
+msgid "Pass"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:99
+msgid "Fail"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:95
+msgid "Under Review"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:109
+msgid "Allow user to download certificate"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:141
 msgid "Attempt Details"
 msgstr ""
 
@@ -531,6 +595,10 @@ msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
 msgid "Success"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Something went wrong, please try again."
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1

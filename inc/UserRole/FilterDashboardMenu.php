@@ -138,6 +138,11 @@ class FilterDashboardMenu {
 		}
 	}
 
+	/**
+	 * Get attempt details from Tutor
+	 *
+	 * @return void send json response on failure, html on success
+	 */
 	public function attempt_details() {
 		if ( wp_verify_nonce( $_POST['nonce'], 'tp_nonce' ) ) {
 			ob_start();

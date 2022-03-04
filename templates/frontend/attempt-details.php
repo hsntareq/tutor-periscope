@@ -87,12 +87,6 @@ function show_correct_answer( $answers = array() ) {
 $attempt_data = tutor_utils()->get_attempt( $attempt_id );
 ?>
 
-<div>
-	<?php $attempts_page = tutor_utils()->get_tutor_dashboard_page_permalink( 'quiz-attempts' ); ?>
-	<a class="prev-btn" href="<?php echo esc_url( $attempts_page ); ?>"><span>&leftarrow;</span><?php _e( 'Back to Attempt List', 'tutor' ); ?></a>
-</div>
-
-
 	<div class="tutor-quiz-attempt-review-wrap">
 		<div class="attempt-answers-header">
 			<div class="attempt-header-quiz"><?php echo __( 'Quiz:', 'tutor' ) . " <a href='" . get_permalink( $attempt_data->quiz_id ) . "'>" . get_the_title( $attempt_data->quiz_id ) . '</a>'; ?></div>
@@ -400,10 +394,7 @@ $attempt_data = tutor_utils()->get_attempt( $attempt_id );
 							?>
 						</td>
 
-						<td style="white-space: nowrap">
-							<a href="javascript:;" data-attempt-id="<?php echo esc_attr( $attempt_id ); ?>" data-attempt-answer-id="<?php echo esc_attr( $answer->attempt_answer_id ); ?>" data-mark-as="correct" title="<?php _e( 'Mark as correct', 'tutor' ); ?>" class="quiz-manual-review-action"><i class="tutor-icon-mark"></i> </a>
-							<a href="javascript:;" data-attempt-id="<?php echo esc_attr( $attempt_id ); ?>" data-attempt-answer-id="<?php echo esc_attr( $answer->attempt_answer_id ); ?>" data-mark-as="incorrect" title="<?php _e( 'Mark as In correct', 'tutor' ); ?>" class="quiz-manual-review-action"><i class="tutor-icon-line-cross"></i></a>
-						</td>
+
 					</tr>
 					<?php
 				}
