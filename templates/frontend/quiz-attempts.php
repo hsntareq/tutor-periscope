@@ -110,7 +110,7 @@ if ( $quiz_attempts_count ) {
 						</span>
 					</td>
 					<td>
-						<a href="#" class="tutor-status-approved-context" id="tutor-periscope-allow-download-cert" data-user-id="<?php esc_attr( $attempt->user_id ); ?>" title="<?php esc_attr_e( 'Allow user to download certificate', 'tutor-periscope' ); ?>">
+						<a href="#" class="tutor-status-approved-context tutor-periscope-allow-download-cert <?php echo esc_attr( $is_allowed ? 'disabled' : ''); ?>" data-user-id="<?php echo esc_attr( $attempt->user_id ); ?>" data-course-id="<?php echo esc_attr( $attempt->course_id ); ?>" title="<?php esc_attr_e( 'Allow user to download certificate', 'tutor-periscope' ); ?>">
 							<i class="tutor-icon-mark"></i>
 						</a>
 					</td>

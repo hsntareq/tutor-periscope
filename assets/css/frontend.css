@@ -37,6 +37,10 @@
   padding: 5px;
 }
 
+.tutor-dashboard-content.tutor-quiz-attempt-history table .tutor-periscope-allow-download-cert {
+  cursor: pointer;
+}
+
 .tutor-dashboard-content.tutor-quiz-attempt-history .tutor-quiz-attempt-review-wrap span {
   padding: 3px !important;
   font-size: 12px !important;

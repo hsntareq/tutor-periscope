@@ -34,4 +34,40 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
         }
     });
+
+    /**
+     * Allow to download certificate, save meta data against a student id
+     *
+     * @since v1.0.0
+     */
+    const allowToDownload = document.querySelectorAll('.tutor-periscope-allow-download-cert:not(.disabled)');
+    if (allowToDownload.length) {
+      allowToDownload.forEach((item) => {
+        item.onclick = async (e) => {
+          if (confirm(__('Are you sure, want to approve? This action can not be revert!'))) {
+            const target = e.target;
+            const currentTarget = e.currentTarget;
+            const studentId = currentTarget.dataset.userId;
+            const courseId = currentTarget.dataset.courseId;
+            const formData = new FormData();
+            formData.set('course_id', courseId)
+            formData.set('student_id', studentId)
+            formData.set("nonce", tp_data.nonce);
+            formData.set("action", "tutor_periscope_allow_to_download_certificate");
+    
+            const response = await ajaxRequest( formData );
+            if (response.success) {
+              const tr = target.closest('tr');
+              if (tr) {
+                tr.querySelector('.tutor-quiz-attempt-review-wrap span').setAttribute('class', 'result-pass');
+                currentTarget.classList.add('disabled');
+              }
+            } else {
+              alert(__('Download approval failed, please try again!', 'tutor-periscope'));
+            }
+          }
+        }
+      });
+    }
+
 });
