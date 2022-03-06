@@ -27,23 +27,23 @@ $quiz_attempts   = tutor_utils()->get_quiz_attempts( $start = $current_page, $li
  * Filter with user_id & course_id, if the same user_id & course_id
  * already in records then don't store in filter_attempts.
  */
-$filter_attempts = array();
-if ( is_array( $quiz_attempts ) && count( $quiz_attempts ) ) {
-	foreach ( $quiz_attempts as $key => $attempt ) {
-		$user_id   = $attempt->user_id;
-		$course_id = $attempt->course_id;
-		$already_exists = false;
-		if ( count( $filter_attempts ) ) {
-			if ( $user_id === $filter_attempts[ count( $filter_attempts ) - 1 ]->user_id && $course_id === $filter_attempts[ count( $filter_attempts ) - 1 ]->course_id ) {
-				$already_exists = true;
-			}
-		}
-		if ( $already_exists ) {
-			continue;
-		}
-		array_push( $filter_attempts, $attempt );
-	}
-}
+// $filter_attempts = array();
+// if ( is_array( $quiz_attempts ) && count( $quiz_attempts ) ) {
+// 	foreach ( $quiz_attempts as $key => $attempt ) {
+// 		$user_id   = $attempt->user_id;
+// 		$course_id = $attempt->course_id;
+// 		$already_exists = false;
+// 		if ( count( $filter_attempts ) ) {
+// 			if ( $user_id === $filter_attempts[ count( $filter_attempts ) - 1 ]->user_id && $course_id === $filter_attempts[ count( $filter_attempts ) - 1 ]->course_id ) {
+// 				$already_exists = true;
+// 			}
+// 		}
+// 		if ( $already_exists ) {
+// 			continue;
+// 		}
+// 		array_push( $filter_attempts, $attempt );
+// 	}
+// }
 
 
 $quiz_attempts_count = tutor_utils()->get_total_quiz_attempts();
@@ -64,7 +64,7 @@ if ( $quiz_attempts_count ) {
 				<?php do_action( 'tutor_quiz/student_attempts/table/thead/col' ); ?>
 			</tr>
 			<?php
-			foreach ( $filter_attempts as $attempt ) {
+			foreach ( $quiz_attempts as $attempt ) {
 				$attempt_action    = tutor_utils()->get_tutor_dashboard_page_permalink( 'quiz-attempts/quiz-reviews/?attempt_id=' . $attempt->attempt_id );
 				$earned_percentage = $attempt->earned_marks > 0 ? ( number_format( ( $attempt->earned_marks * 100 ) / $attempt->total_marks ) ) : 0;
 				$passing_grade     = tutor_utils()->get_quiz_option( $attempt->quiz_id, 'passing_grade', 0 );
