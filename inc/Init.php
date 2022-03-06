@@ -8,6 +8,7 @@
 namespace Tutor_Periscope;
 
 use Google\Service\Classroom\Assignment;
+use Tutor_Periscope\Certificates\DownloadApproval;
 use Tutor_Periscope\UserRole\FilterDashboardMenu;
 use Tutor_Periscope\UserRole\Reviewer;
 
@@ -38,6 +39,7 @@ final class Init {
 			Lesson\LessonProgress::class,
 			Reviewer::class,
 			FilterDashboardMenu::class,
+			DownloadApproval::class,
 		);
 	}
 

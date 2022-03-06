@@ -19,7 +19,7 @@ $offset       = ( $current_page - 1 ) * $per_page;
 <h3><?php esc_html_e( 'Pending Approvals for Downloading Certificate', 'tutor-periscope' ); ?></h3>
 <?php
 
-$quiz_attempts       = tutor_utils()->get_quiz_attempts( $offset, $per_page, $course_id );
+$quiz_attempts       = tutor_utils()->get_quiz_attempts();
 $quiz_attempts_count = tutor_utils()->get_total_quiz_attempts();
 
 if ( $quiz_attempts_count ) {
@@ -44,7 +44,7 @@ if ( $quiz_attempts_count ) {
 				$passing_grade     = tutor_utils()->get_quiz_option( $attempt->quiz_id, 'passing_grade', 0 );
 				$answers           = tutor_utils()->get_quiz_answers_by_attempt_id( $attempt->attempt_id );
 				// is allowed to download certificate.
-				$is_allowed = get_user_meta( $attempt->student_id, '_tp_allow_user_to_download_certificate', true );
+				$is_allowed = get_user_meta( $attempt->user_id, '_tp_allow_user_to_download_certificate' . $attempt->course_id, true );
 				if ( ! $earned_percentage >= $passing_grade ) {
 					continue;
 				}
@@ -108,7 +108,7 @@ if ( $quiz_attempts_count ) {
 					<?php do_action( 'tutor_quiz/student_attempts/table/tbody/col', $attempt ); ?>
 
 					<td>
-						<a href="#" class="<?php echo esc_attr( $is_allowed ? 'tutor-status-approved-context' : 'tutor-status-pending-approval' ); ?> tutor-periscope-allow-download-cert <?php echo esc_attr( $is_allowed ? 'disabled' : '' ); ?>" data-user-id="<?php echo esc_attr( $attempt->user_id ); ?>" data-course-id="<?php echo esc_attr( $attempt->course_id ); ?>" title="<?php esc_attr_e( 'Allow user to download certificate', 'tutor-periscope' ); ?>">
+						<a href="#" class="<?php echo esc_attr( $is_allowed ? 'tutor-status-approved-context' : 'tutor-status-pending-approval' ); ?> tutor-periscope-allow-download-cert" data-user-id="<?php echo esc_attr( $attempt->user_id ); ?>" data-course-id="<?php echo esc_attr( $attempt->course_id ); ?>" title="<?php esc_attr_e( 'Allow user to download certificate', 'tutor-periscope' ); ?>">
 							<i class="tutor-icon-mark"></i>
 						</a>
 					</td>

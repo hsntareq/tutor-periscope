@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async function () {
    * @since v1.0.0
    */
 
-  const allowToDownload = document.querySelectorAll('.tutor-periscope-allow-download-cert:not(.disabled)');
+  const allowToDownload = document.querySelectorAll('.tutor-periscope-allow-download-cert:not(.tutor-status-approved-context)');
 
   if (allowToDownload.length) {
     allowToDownload.forEach(item => {
@@ -112,20 +112,20 @@ document.addEventListener('DOMContentLoaded', async function () {
           const courseId = currentTarget.dataset.courseId;
           const formData = new FormData();
           formData.set('course_id', courseId);
-          formData.set('student_id', studentId);
+          formData.set('user_id', studentId);
           formData.set("nonce", tp_data.nonce);
           formData.set("action", "tutor_periscope_allow_to_download_certificate");
           const response = await (0,_ajax__WEBPACK_IMPORTED_MODULE_0__["default"])(formData);
 
           if (response.success) {
-            const tr = target.closest('tr');
-
-            if (tr) {
-              tr.querySelector('.tutor-quiz-attempt-review-wrap span').setAttribute('class', 'result-pass');
-              currentTarget.classList.add('disabled');
+            if (currentTarget.classList.contains('tutor-status-pending-approval')) {
+              currentTarget.classList.remove('tutor-status-pending-approval');
+              currentTarget.classList.add('tutor-status-approved-context');
             }
+
+            tutor_toast('Success', __('Certificate Download Approval Success!', 'tutor-periscope'), 'success');
           } else {
-            alert(__('Download approval failed, please try again!', 'tutor-periscope'));
+            tutor_toast('Failed', __('Certificate Download Approval Failed!', 'tutor-periscope'), 'error');
           }
         }
       };
