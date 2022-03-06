@@ -40,34 +40,36 @@ document.addEventListener('DOMContentLoaded', async function() {
      *
      * @since v1.0.0
      */
-    const allowToDownload = document.querySelectorAll('.tutor-periscope-allow-download-cert:not(.tutor-status-approved-context)');
-    if (allowToDownload.length) {
-      allowToDownload.forEach((item) => {
-        item.onclick = async (e) => {
-          if (confirm(__('Are you sure, want to approve? This action can not be revert!'))) {
-            const target = e.target;
-            const currentTarget = e.currentTarget;
-            const studentId = currentTarget.dataset.userId;
-            const courseId = currentTarget.dataset.courseId;
-            const formData = new FormData();
-            formData.set('course_id', courseId)
-            formData.set('user_id', studentId)
-            formData.set("nonce", tp_data.nonce);
-            formData.set("action", "tutor_periscope_allow_to_download_certificate");
-    
-            const response = await ajaxRequest( formData );
-            if (response.success) {
-              if (currentTarget.classList.contains('tutor-status-pending-approval')) {
-                currentTarget.classList.remove('tutor-status-pending-approval');
-                currentTarget.classList.add('tutor-status-approved-context');
-              }
-              tutor_toast('Success', __('Certificate Download Approval Success!', 'tutor-periscope'), 'success');
-            } else {
-              tutor_toast('Failed', __('Certificate Download Approval Failed!', 'tutor-periscope'), 'error');
+    const pendingTable = document.querySelector('.tutor-periscope-pending-approval-list');
+    if (pendingTable) {
+      pendingTable.onclick = async (e) => {
+        const target = e.target;
+        const currentTarget = e.currentTarget;
+        console.log(target.tagName)
+        if (target.tagName === 'I') {
+          target.closest('a').click();
+        }
+        if (target.tagName === 'A' && target.classList.contains('tutor-status-pending-approval')) {
+          const studentId = target.dataset.userId;
+          const courseId = target.dataset.courseId;
+          const formData = new FormData();
+          formData.set('course_id', courseId)
+          formData.set('user_id', studentId)
+          formData.set("nonce", tp_data.nonce);
+          formData.set("action", "tutor_periscope_allow_to_download_certificate");
+  
+          const response = await ajaxRequest( formData );
+          if (response.success) {
+            if (target.classList.contains('tutor-status-pending-approval')) {
+              target.classList.remove('tutor-status-pending-approval');
+              target.classList.add('tutor-status-approved-context');
             }
+            tutor_toast('Success', __('Certificate Download Approval Success!', 'tutor-periscope'), 'success');
+          } else {
+            tutor_toast('Failed', __('Certificate Download Approval Failed!', 'tutor-periscope'), 'error');
           }
         }
-      });
+      }
     }
 
 });

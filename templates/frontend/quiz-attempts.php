@@ -24,7 +24,7 @@ $quiz_attempts_count = tutor_utils()->get_total_quiz_attempts();
 
 if ( $quiz_attempts_count ) {
 	?>
-	<div class="tutor-dashboard-content tutor-quiz-attempt-history">
+	<div class="tutor-dashboard-content tutor-quiz-attempt-history tutor-periscope-pending-approval-list">
 		<table class="tutor-table">
 			<tr>
 				<th><?php esc_html_e( 'Course Info', 'tutor-periscope' ); ?></th>
