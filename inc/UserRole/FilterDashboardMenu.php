@@ -26,7 +26,7 @@ class FilterDashboardMenu {
 	 */
 	protected $user_role;
 
-	const REVIEW_ATTEMPT_SLUG = 'review-attempts';
+	const REVIEW_ATTEMPT_SLUG = 'pending-approvals';
 
 	/**
 	 * Register hooks
@@ -75,7 +75,7 @@ class FilterDashboardMenu {
 			$new_menu = apply_filters(
 				'tutor_periscope_frontend_dashboard_menu',
 				array(
-					self::REVIEW_ATTEMPT_SLUG => __( 'Review Attempts', 'tutor-periscope' ),
+					self::REVIEW_ATTEMPT_SLUG => __( 'Pending Approvals', 'tutor-periscope' ),
 				)
 			);
 			$menu     = $new_menu;

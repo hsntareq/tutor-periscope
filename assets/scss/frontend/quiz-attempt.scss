@@ -6,6 +6,18 @@
         .tutor-periscope-allow-download-cert {
             cursor: pointer;
         }
+        .tutor-status-pending-approval i{
+            font-size: 14px;
+            height: 20px;
+            width: 20px;
+            text-align: center;
+            line-height: 20px;
+            border: 1px solid #e3e3e3;
+            color: #6591bf;
+            display: inline-block;
+            border-radius: 2px;
+            margin-right: 6px;
+        }
     }
     .tutor-quiz-attempt-review-wrap {
         span {

@@ -157,7 +157,7 @@ msgstr ""
 msgid "No course evaluations found"
 msgstr ""
 
-#: inc/Evaluation/Course_Evaluation_List_Table.php:63, inc/Evaluation/Course_Evaluation_List_Table.php:83, templates/frontend/quiz-attempts.php:36, templates/frontend/quiz-attempts.php:103
+#: inc/Evaluation/Course_Evaluation_List_Table.php:63, inc/Evaluation/Course_Evaluation_List_Table.php:83, templates/frontend/quiz-attempts.php:36, templates/frontend/quiz-attempts.php:105
 msgid "Details"
 msgstr ""
 
@@ -305,7 +305,7 @@ msgstr ""
 msgid "Quiz Attempts"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:132
+#: templates/frontend/quiz-attempts.php:136
 msgid "No quiz attempt yet."
 msgstr ""
 
@@ -341,31 +341,39 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:55
+#: templates/frontend/quiz-attempts.php:57
 msgid "Question: "
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:56
+#: templates/frontend/quiz-attempts.php:58
 msgid "Total Marks: "
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:98
+#: templates/frontend/quiz-attempts.php:100
 msgid "Pass"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:99
+#: templates/frontend/quiz-attempts.php:101
 msgid "Fail"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:95
+#: templates/frontend/quiz-attempts.php:97
 msgid "Under Review"
 msgstr ""
 
 #: templates/frontend/quiz-attempts.php:109
+msgid "Approved"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:109
+msgid "Pending"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:113
 msgid "Allow user to download certificate"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:141
+#: templates/frontend/quiz-attempts.php:145
 msgid "Attempt Details"
 msgstr ""
 
@@ -599,6 +607,14 @@ msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
 msgid "Something went wrong, please try again."
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Are you sure, want to approve? This action can not be revert!"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Download approval failed, please try again!"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1

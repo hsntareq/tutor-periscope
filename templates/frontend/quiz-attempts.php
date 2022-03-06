@@ -16,7 +16,7 @@ $current_page = max( 1, tutils()->array_get( 'current_page', tutor_sanitize_data
 $offset       = ( $current_page - 1 ) * $per_page;
 ?>
 
-<h3><?php esc_html_e( 'Quiz Attempts', 'tutor-periscope' ); ?></h3>
+<h3><?php esc_html_e( 'Pending Approvals for Downloading Certificate', 'tutor-periscope' ); ?></h3>
 <?php
 
 $quiz_attempts       = tutor_utils()->get_quiz_attempts( $offset, $per_page, $course_id );
@@ -34,7 +34,6 @@ if ( $quiz_attempts_count ) {
 				<th><?php esc_html_e( 'Earned Mark', 'tutor-periscope' ); ?></th>
 				<th><?php esc_html_e( 'Result', 'tutor-periscope' ); ?></th>
 				<th><?php esc_html_e( 'Details', 'tutor-periscope' ); ?></th>
-				<th><?php esc_html_e( 'Status', 'tutor-periscope' ); ?></th>
 				<th><?php esc_html_e( 'Action', 'tutor-periscope' ); ?></th>
 				<?php do_action( 'tutor_quiz/student_attempts/table/thead/col' ); ?>
 			</tr>
@@ -46,6 +45,9 @@ if ( $quiz_attempts_count ) {
 				$answers           = tutor_utils()->get_quiz_answers_by_attempt_id( $attempt->attempt_id );
 				// is allowed to download certificate.
 				$is_allowed = get_user_meta( $attempt->student_id, '_tp_allow_user_to_download_certificate', true );
+				if ( ! $earned_percentage >= $passing_grade ) {
+					continue;
+				}
 				?>
 				<tr>
 					<td>
@@ -104,13 +106,9 @@ if ( $quiz_attempts_count ) {
 					</td>
 					<td><a  href="#" class="tutor-periscope-attempt-details" data-id="<?php echo esc_attr( $attempt->attempt_id ); ?>"><?php esc_html_e( 'Details', 'tutor-periscope' ); ?></a></td>
 					<?php do_action( 'tutor_quiz/student_attempts/table/tbody/col', $attempt ); ?>
-					<td class="tutor-quiz-attempt-review-wrap">
-						<span class="<?php echo esc_attr( $is_allowed ? 'result-pass' : 'result-fail' ); ?>">
-							<?php echo $is_allowed ? esc_html__( 'Approved', 'tutor-periscope' ) : esc_html__( 'Pending', 'tutor-periscope' ); ?>
-						</span>
-					</td>
+
 					<td>
-						<a href="#" class="tutor-status-approved-context tutor-periscope-allow-download-cert <?php echo esc_attr( $is_allowed ? 'disabled' : ''); ?>" data-user-id="<?php echo esc_attr( $attempt->user_id ); ?>" data-course-id="<?php echo esc_attr( $attempt->course_id ); ?>" title="<?php esc_attr_e( 'Allow user to download certificate', 'tutor-periscope' ); ?>">
+						<a href="#" class="<?php echo esc_attr( $is_allowed ? 'tutor-status-approved-context' : 'tutor-status-pending-approval' ); ?> tutor-periscope-allow-download-cert <?php echo esc_attr( $is_allowed ? 'disabled' : '' ); ?>" data-user-id="<?php echo esc_attr( $attempt->user_id ); ?>" data-course-id="<?php echo esc_attr( $attempt->course_id ); ?>" title="<?php esc_attr_e( 'Allow user to download certificate', 'tutor-periscope' ); ?>">
 							<i class="tutor-icon-mark"></i>
 						</a>
 					</td>
