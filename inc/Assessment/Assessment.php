@@ -29,60 +29,47 @@ class Assessment
     public function periscope_user_import(){
         verify_nonce();
 
-		$data_to_import = json_decode( wp_unslash( $_POST['bulk_user'] ), true );
-		wp_send_json(  $data_to_import );
+		$imported_data = json_decode( wp_unslash( $_POST['bulk_user'] ), true );
+        $user_meta = ['user_login','user_email','display_name'];
 
-
-        $data_to_export = array();
-        $data_export = array();
-        foreach($data_to_import as $data ){
-
-            // $data_to_export['display_name'] = $data['nameFullFirstLast'];
-            // $display_name = $data_to_export['display_name'];
-            $data_to_export['display_name'] = $data['nameFullFirstLast'];
-            if(!empty($data_to_export['display_name'])){
-                $display_name = $data_to_export['display_name'];
-                $license_number = $data_to_export['license_info'] = $data['license_number'].':'.$data['state'];
-            }
-            if(empty($license_number_data)){
-                $data_to_export['license_info'] = $data['license_number'].':'.$data['state'];
-            }
-            if(empty($data['nameFullFirstLast'])){
-                $data_to_export['display_name'] = $display_name;
-                if($data_to_export['display_name'] == $display_name){
-                    $license_number_data =  $license_number_data .', '.$license_number;
-                    $data_to_export['license_info'] = $license_number_data;
+        $user_data_to_import = [];
+        foreach( $imported_data as $imported ) {
+            // pr($imported);
+            foreach ($imported as $key => $value) {
+                if(in_array($key,$user_meta)){
+                    $data_to_import[$key]=$value;
+                }else{
+                    $data_to_import['user_data'][$key]=$value;
                 }
-
-            }else{
-                $license_number_data = '';
             }
-            $data_export[] = $data_to_export;
+            $user_data_to_import [] = $data_to_import;
 
         }
+// pr($user_data_to_import);die;
 
-        pr($data_export);
-        // pr($data_to_import);
-
-        // wp_send_json($data_to_export);
-        die;
-		foreach ( $data_to_import as $data_import ) {
-			$users = array();
+        $users = array();
+        foreach ( $user_data_to_import as $data_import ) {
 
 			$data = array(
-				'user_login' => $data_import['username'],
-				'user_email' => $data_import['email'],
-				'user_pass'  => $data_import['username'],
+				'user_login' => $data_import['user_login'],
+				'user_email' => $data_import['user_email'],
+				'user_pass'  => $data_import['user_login'],
+				'display_name'  => $data_import['display_name'],
 			);
 
 			$user_id = wp_insert_user( $data );
 
 			if ( ! is_wp_error( $user_id ) ) {
 
+                foreach($data_import['user_data'] as $meta_key => $user_additional ){
+                    add_user_meta( $user_id, '__'.$meta_key, $user_additional);
+                }
+
 				$users[] = $user_id;
 
 			}
 		}
+
 		wp_send_json(  $users );
 
     }
