@@ -11,6 +11,8 @@
  * @version 1.6.4
  */
 
+use Tutor_Periscope\Certificates\DownloadApproval;
+
 $per_page     = 20;
 $current_page = max( 1, tutils()->array_get( 'current_page', tutor_sanitize_data( $_GET ) ) );
 $offset       = ( $current_page - 1 ) * $per_page;
@@ -70,7 +72,7 @@ if ( $quiz_attempts_count ) {
 				$passing_grade     = tutor_utils()->get_quiz_option( $attempt->quiz_id, 'passing_grade' );
 				$answers           = tutor_utils()->get_quiz_answers_by_attempt_id( $attempt->attempt_id );
 				// is allowed to download certificate.
-				$is_allowed = get_user_meta( $attempt->user_id, '_tp_allow_user_to_download_certificate' . $attempt->course_id, true );
+				$is_allowed = DownloadApproval::is_approved( $attempt->user_id, $attempt->course_id );
 				if ( ! $earned_percentage >= $passing_grade ) {
 					continue;
 				}

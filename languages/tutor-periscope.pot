@@ -81,7 +81,7 @@ msgstr ""
 msgid "Permission Denied!"
 msgstr ""
 
-#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/UserRole/FilterDashboardMenu.php:156
+#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/Certificates/DownloadApproval.php:124, inc/UserRole/FilterDashboardMenu.php:156
 msgid "Nonce verification failed"
 msgstr ""
 
@@ -103,6 +103,14 @@ msgstr ""
 
 #: inc/Certificates/Certificates.php:147, inc/Certificates/Certificates.php:149
 msgid "License Number"
+msgstr ""
+
+#: inc/Certificates/DownloadApproval.php:104
+msgid "You are not allowed to download certificate yet."
+msgstr ""
+
+#: inc/Certificates/DownloadApproval.php:122
+msgid "Approve failed, please try again."
 msgstr ""
 
 #: inc/Evaluation/Course_Evaluation.php:93
@@ -157,7 +165,7 @@ msgstr ""
 msgid "No course evaluations found"
 msgstr ""
 
-#: inc/Evaluation/Course_Evaluation_List_Table.php:63, inc/Evaluation/Course_Evaluation_List_Table.php:83, templates/frontend/quiz-attempts.php:36, templates/frontend/quiz-attempts.php:105
+#: inc/Evaluation/Course_Evaluation_List_Table.php:63, inc/Evaluation/Course_Evaluation_List_Table.php:83, templates/frontend/quiz-attempts.php:62, templates/frontend/quiz-attempts.php:133
 msgid "Details"
 msgstr ""
 
@@ -246,7 +254,7 @@ msgid "Course Assignment"
 msgstr ""
 
 #: inc/UserRole/FilterDashboardMenu.php:78
-msgid "Review Attempts"
+msgid "Pending Approvals"
 msgstr ""
 
 #: templates/frontend/course-evaluation.php:4
@@ -302,78 +310,66 @@ msgid "How will you apply this in your practice"
 msgstr ""
 
 #: templates/frontend/quiz-attempts.php:19
-msgid "Quiz Attempts"
+msgid "Pending Approvals for Downloading Certificate"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:136
+#: templates/frontend/quiz-attempts.php:160
 msgid "No quiz attempt yet."
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:30
+#: templates/frontend/quiz-attempts.php:56
 msgid "Course Info"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:31
+#: templates/frontend/quiz-attempts.php:57
 msgid "Student"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:32
+#: templates/frontend/quiz-attempts.php:58
 msgid "Correct Answer"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:33
+#: templates/frontend/quiz-attempts.php:59
 msgid "Incorrect Answer"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:34
+#: templates/frontend/quiz-attempts.php:60
 msgid "Earned Mark"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:35
+#: templates/frontend/quiz-attempts.php:61
 msgid "Result"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:37
-msgid "Status"
-msgstr ""
-
-#: templates/frontend/quiz-attempts.php:38
+#: templates/frontend/quiz-attempts.php:63
 msgid "Action"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:57
+#: templates/frontend/quiz-attempts.php:85
 msgid "Question: "
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:58
+#: templates/frontend/quiz-attempts.php:86
 msgid "Total Marks: "
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:100
+#: templates/frontend/quiz-attempts.php:128
 msgid "Pass"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:101
+#: templates/frontend/quiz-attempts.php:129
 msgid "Fail"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:97
+#: templates/frontend/quiz-attempts.php:125
 msgid "Under Review"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:109
-msgid "Approved"
-msgstr ""
-
-#: templates/frontend/quiz-attempts.php:109
-msgid "Pending"
-msgstr ""
-
-#: templates/frontend/quiz-attempts.php:113
+#: templates/frontend/quiz-attempts.php:137
 msgid "Allow user to download certificate"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:145
+#: templates/frontend/quiz-attempts.php:169
 msgid "Attempt Details"
 msgstr ""
 
@@ -610,11 +606,11 @@ msgid "Something went wrong, please try again."
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Are you sure, want to approve? This action can not be revert!"
+msgid "Certificate Download Approval Success!"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Download approval failed, please try again!"
+msgid "Certificate Download Approval Failed!"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1

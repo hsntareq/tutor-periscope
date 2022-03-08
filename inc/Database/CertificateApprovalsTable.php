@@ -20,7 +20,7 @@ if ( ! class_exists( 'CertificateApprovalTable ' ) ) {
 	 */
 	class CertificateApprovalsTable {
 
-		const TABLE_NAME = '_tp_certificate_approvals';
+		const TABLE_NAME = 'tp_certificate_approvals';
 
 		/**
 		 * Certificate table creation

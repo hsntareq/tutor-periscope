@@ -45,28 +45,33 @@ document.addEventListener('DOMContentLoaded', async function() {
       pendingTable.onclick = async (e) => {
         const target = e.target;
         const currentTarget = e.currentTarget;
-        console.log(target.tagName)
         if (target.tagName === 'I') {
           target.closest('a').click();
         }
         if (target.tagName === 'A' && target.classList.contains('tutor-status-pending-approval')) {
-          const studentId = target.dataset.userId;
-          const courseId = target.dataset.courseId;
-          const formData = new FormData();
-          formData.set('course_id', courseId)
-          formData.set('user_id', studentId)
-          formData.set("nonce", tp_data.nonce);
-          formData.set("action", "tutor_periscope_allow_to_download_certificate");
-  
-          const response = await ajaxRequest( formData );
-          if (response.success) {
-            if (target.classList.contains('tutor-status-pending-approval')) {
-              target.classList.remove('tutor-status-pending-approval');
-              target.classList.add('tutor-status-approved-context');
+          let certificate_no = prompt("Certificate Number (unique & >= 5 Character)");
+          if (certificate_no.length >= 5) {
+            const studentId = target.dataset.userId;
+            const courseId = target.dataset.courseId;
+            const formData = new FormData();
+            formData.set('certificate_no', certificate_no);
+            formData.set('course_id', courseId);
+            formData.set('student_id', studentId);
+            formData.set("nonce", tp_data.nonce);
+            formData.set("action", "tutor_periscope_allow_to_download_certificate");
+    
+            const response = await ajaxRequest( formData );
+            if (response.success) {
+              if (target.classList.contains('tutor-status-pending-approval')) {
+                target.classList.remove('tutor-status-pending-approval');
+                target.classList.add('tutor-status-approved-context');
+              }
+              tutor_toast('Success', __('Certificate Download Approval Success!', 'tutor-periscope'), 'success');
+            } else {
+              tutor_toast('Failed', __('Certificate Download Approval Failed!', 'tutor-periscope'), 'error');
             }
-            tutor_toast('Success', __('Certificate Download Approval Success!', 'tutor-periscope'), 'success');
           } else {
-            tutor_toast('Failed', __('Certificate Download Approval Failed!', 'tutor-periscope'), 'error');
+            alert( __( 'Invalid certificate no', 'tutor-periscope') );
           }
         }
       }
