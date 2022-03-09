@@ -126,17 +126,17 @@ if ( ! class_exists( 'DownloadApproval' ) ) {
 			global $wpdb;
 			$course_id  = sanitize_text_field( $course_id );
 			$student_id = sanitize_text_field( $student_id );
-			$table      = self::CERTIFICATE_APPROVALS_TABLE;
+			$table      = ( new self() )->get_table();
 			$get        = $wpdb->get_var(
 				$wpdb->prepare(
-					"SELECT COUNT(*) 
+					"SELECT id 
 					FROM {$table}
 						WHERE course_id = %d
 						AND student_id = %d
-				"
-				),
-				$course_id,
-				$student_id
+				",
+					$course_id,
+					$student_id
+				)
 			);
 			return $get ? true : false;
 		}

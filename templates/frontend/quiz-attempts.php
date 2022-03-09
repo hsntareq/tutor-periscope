@@ -73,6 +73,7 @@ if ( $quiz_attempts_count ) {
 				$answers           = tutor_utils()->get_quiz_answers_by_attempt_id( $attempt->attempt_id );
 				// is allowed to download certificate.
 				$is_allowed = DownloadApproval::is_approved( $attempt->user_id, $attempt->course_id );
+
 				if ( ! $earned_percentage >= $passing_grade ) {
 					continue;
 				}
