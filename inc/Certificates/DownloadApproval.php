@@ -31,13 +31,6 @@ if ( ! class_exists( 'DownloadApproval' ) ) {
 		 */
 		use \Tutor_Periscope\Traits\NonceVerify;
 
-		/**
-		 * Meta key, course id need to be concat at the end
-		 * ex: '_tp_allow_user_to_download_certificate' . $course_id
-		 *
-		 * @var string
-		 */
-		const META_KEY = '_tp_allow_user_to_download_certificate';
 
 		/**
 		 * Register hooks
@@ -55,7 +48,7 @@ if ( ! class_exists( 'DownloadApproval' ) ) {
 
 			/**
 			 * Custom filter hook added.
-			 * Hook path: tutor-pro/addons/tutor-certificate/classes/Certificate.php
+			 * Hook path: tutor-pro/addons/tutor-certificate/classes/Certificate.php:399
 			 */
 			add_filter(
 				'tutor_certificate_button',
@@ -74,11 +67,11 @@ if ( ! class_exists( 'DownloadApproval' ) ) {
 		 * @return string   filter content
 		 */
 		public static function filter_download_button( $content ) {
-			$user_id   = get_current_user_id();
-			$course_id = get_the_ID();
-			$post      = get_post( $course );
+			$student_id = get_current_user_id();
+			$course_id  = get_the_ID();
+			$post       = get_post( $course_id );
 			if ( $post && 'courses' === $post->post_type ) {
-				$is_allowed_download = get_user_meta( $user_id, self::META_KEY . $course_id );
+				$is_allowed_download = self::is_approved( $student_id, $course_id );
 				if ( ! $is_allowed_download ) {
 					ob_start();
 					?>
