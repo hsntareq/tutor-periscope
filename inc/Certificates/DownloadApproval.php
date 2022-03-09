@@ -116,11 +116,24 @@ if ( ! class_exists( 'DownloadApproval' ) ) {
 		 * @return bool
 		 */
 		public static function is_approved( int $student_id, int $course_id ): bool {
+			$get = self::approval_details( $student_id, $course_id );
+			return $get ? true : false;
+		}
+
+		/**
+		 * Get approval details
+		 *
+		 * @param int $student_id  student id.
+		 * @param int $course_id  course id.
+		 *
+		 * @return mixed  on success object containing row, null on failure
+		 */
+		public static function approval_details( int $student_id, int $course_id ) {
 			global $wpdb;
 			$course_id  = sanitize_text_field( $course_id );
 			$student_id = sanitize_text_field( $student_id );
 			$table      = ( new self() )->get_table();
-			$get        = $wpdb->get_var(
+			return $wpdb->get_row(
 				$wpdb->prepare(
 					"SELECT id 
 					FROM {$table}
@@ -131,7 +144,6 @@ if ( ! class_exists( 'DownloadApproval' ) ) {
 					$student_id
 				)
 			);
-			return $get ? true : false;
 		}
 		/**
 		 * Get certificate approvals table name
