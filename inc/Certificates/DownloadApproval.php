@@ -31,7 +31,6 @@ if ( ! class_exists( 'DownloadApproval' ) ) {
 		 */
 		use \Tutor_Periscope\Traits\NonceVerify;
 
-
 		/**
 		 * Register hooks
 		 *
@@ -135,7 +134,7 @@ if ( ! class_exists( 'DownloadApproval' ) ) {
 			$table      = ( new self() )->get_table();
 			return $wpdb->get_row(
 				$wpdb->prepare(
-					"SELECT id 
+					"SELECT * 
 					FROM {$table}
 						WHERE course_id = %d
 						AND student_id = %d

@@ -1,10 +1,19 @@
+<?php
+/**
+ * Certificate Template
+ *
+ * @package TutorPeriscopeCertificate
+ */
+
+use Tutor_Periscope\Certificates\DownloadApproval;
+?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>Periscope Certificate Title</title>
-		<style type="text/css"><?php $this->pdf_style(); ?></style>
-		<style>
+		<style><?php $this->pdf_style(); ?></style>
+		<style type="text/css">
 			.certificate-content p{margin-bottom: 0;}
 		</style>
 	</head>
@@ -27,9 +36,27 @@
 					$min_text  = $durationMinutes . ' ';
 					$min_text .= ( $durationMinutes > 1 ) ? __( 'minutes', 'tutor-periscope' ) : __( 'minute', 'tutor-periscope' );
 				}
-					$duration_text       = $hour_text . ' ' . $min_text;
-					$default_sinature_id = tutor_utils()->get_option( 'tutor_cert_signature_image_id' );
-					$signature_image_url = isset( $default_sinature_id ) ? wp_get_attachment_url( $default_sinature_id ) : $signature_image_url;
+				$duration_text       = $hour_text . ' ' . $min_text;
+				$default_sinature_id = tutor_utils()->get_option( 'tutor_cert_signature_image_id' );
+				$signature_image_url = isset( $default_sinature_id ) ? wp_get_attachment_url( $default_sinature_id ) : $signature_image_url;
+
+				$approval_details = DownloadApproval::approval_details( $user->ID, $course->ID );
+				// approver details.
+				$approver_details = null;
+				if ( $approval_details && isset( $approval_details->approver_id ) ) {
+					$approver_details = get_userdata( $approval_details->approver_id );
+					$approver_details = isset( $approver_details->data ) ? $approver_details->data : null;
+				}
+				$approver_name = '';
+				if ( $approver_details ) {
+					// check if not empty display name.
+					if ( '' !== $approver_details->display_name ) {
+						$approver_name = $approver_details->display_name;
+					} else {
+						$approver_name = $approver_details->user_login;
+					}
+				}
+
 				?>
 				<section class="certificate-header">
 					<header class="certificate-logo">
@@ -146,7 +173,7 @@
 
 			   <section class="licensor-info">
 				   <h4>Continuing Education Approval</h4>
-				   <p>Approved by <u><?php echo $user->display_name; ?></u> Approval number: ______</p>
+				   <p>Approved by <u><?php echo esc_html( $approver_name ); ?></u> Approval number: <?php echo esc_html( $approval_details && isset( $approval_details->certificate_no ) ? $approval_details->certificate_no : '' ); ?></p>
 			   </section>
 			   <section class="certificate-before-footer">
 					<p>Some state licensing boards do not require course pre-approval. Participant is responsible for understanding their requirements.</p>
