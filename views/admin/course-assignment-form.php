@@ -50,18 +50,30 @@
 			<table class="wp-list-table widefat striped table-view-list">
 				<thead>
 					<tr>
-						<td>Name</td>
+						<td>ID</td>
+						<td>Full Name</td>
 						<td>Email</td>
 						<td>Role</td>
+						<td>Primary State</td>
+						<td>Other State</td>
+						<td>License</td>
 						<td width="200">Action</td>
 					</tr>
 					</thead>
 				<tbody>
-					<?php foreach ( $users as $key => $user ) { ?>
+					<?php
+
+					foreach ( $users as $key => $user ) {
+						?>
 					<tr>
+						<td><?php echo esc_attr( $user->ID ); ?></td>
 						<td><?php echo esc_attr( $user->display_name ); ?></td>
 						<td><?php echo esc_attr( $user->user_email ); ?></td>
 						<td><?php echo ucfirst( implode( ', ', $user->roles ) ); ?></td>
+						<td><?php echo esc_attr( get_user_meta( $user->ID, '__primary_state', true ) ); ?></td>
+						<td><?php echo esc_attr( get_user_meta( $user->ID, '__other_states', true ) ); ?></td>
+						
+						<td><?php echo esc_attr( get_user_meta( $user->ID, '__license_number', true ) ); ?></td>
 						<td>
 							<a href="<?php echo get_edit_user_link( $user->ID ); ?>">Edit</a>
 						</td>

@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             lesson.style.background = '#dddddd';
             const a = lesson.querySelector('a');
             if (a != null || a != undefined) {
+
                 a.setAttribute('class', '');
                 a.style.cursor = 'not-allowed';
                 const lessonTitle = a.querySelector('.lesson_title');
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     /**
      * Disable next lesson navigation link if current lesson not completed
-     * show alert message to complete current lesson. 
+     * show alert message to complete current lesson.
      */
     let dynamicDocument = document.getElementById('tutor-single-entry-content');
     if (dynamicDocument) {
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 alert(__('Please complete current lesson/quiz first to go the next content.', 'tutor-periscope'));
             }
            }
-        } 
+        }
     }
 
     const lessonSidebar = document.getElementById('tutor-lesson-sidebar-tab-content');
