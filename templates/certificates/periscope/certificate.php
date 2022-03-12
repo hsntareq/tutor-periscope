@@ -133,9 +133,12 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 						}
 						?>
 							<div style="margin-bottom: 10px;">
+							<?php
+								$job_title = get_user_meta( $instructor->ID, '_tutor_profile_job_title', true );
+							?>
 								<p>
-								<?php echo esc_html( $instructor->display_name ); ?>,
-								<?php echo esc_html( get_user_meta( $instructor->ID, '_tutor_profile_job_title', true ) ); ?>
+								<?php echo esc_html( '' !== $job_title ? $instructor->display_name . ',' : $instructor->display_name ); ?>
+								<?php echo esc_html( $job_title ); ?>
 								</p>
 								<p style="margin-left: 40px">
 								<?php echo wp_kses_post( get_user_meta( $instructor->ID, '_tutor_profile_bio', true ) ); ?>
