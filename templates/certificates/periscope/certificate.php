@@ -121,25 +121,24 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 			   </section>
 			   <?php endif; ?>
 			   <?php
-					$instructors = unserialize(
-						get_post_meta(
-							$course->ID,
-							'_tp_instructors_info',
-							true
-						)
-					);
-					if ( is_array( $instructors ) && count( $instructors ) ) :
-						?>
+					$instructors = tutor_utils()->get_instructors_by_course( $course->ID );
+				if ( is_array( $instructors ) && count( $instructors ) ) :
+					?>
 					<section>
 						<h4>Instructors</h4>
-						<?php foreach ( $instructors as $instructor ) : ?>
+					<?php
+					foreach ( $instructors as $instructor ) :
+						if ( ! isset( $instructor->display_name ) || ! isset( $instructor->ID ) ) {
+							continue;
+						}
+						?>
 							<div style="margin-bottom: 10px;">
 								<p>
-									<?php echo esc_html( $instructor['name'] ); ?>,
-									<?php echo esc_html( $instructor['title'] ); ?>
+								<?php echo esc_html( $instructor->display_name ); ?>,
+								<?php echo esc_html( get_user_meta( $instructor->ID, '_tutor_profile_job_title', true ) ); ?>
 								</p>
 								<p style="margin-left: 40px">
-									<?php echo esc_textarea( $instructor['bio'] ); ?>
+								<?php echo wp_kses_post( get_user_meta( $instructor->ID, '_tutor_profile_bio', true ) ); ?>
 								</p>
 							</div>
 						<?php endforeach; ?>
