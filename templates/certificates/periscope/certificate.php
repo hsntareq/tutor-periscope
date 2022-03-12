@@ -57,6 +57,9 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 					}
 				}
 
+				$student_profession = get_user_meta( $user->ID, '__title', true );
+				$student_state      = get_user_meta( $user->ID, '__primary_state', true );
+
 				?>
 				<section class="certificate-header">
 					<header class="certificate-logo">
@@ -69,13 +72,10 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 				   </h3>
 				   <p><strong>Course:</strong> <span class="course-info"><?php esc_html_e( $course->post_title ); ?></span></p>
 				   <p><span>Student:</span> <span class="course-info"><?php esc_html_e( $user->display_name ); ?></span></p>
-				   <?php
-						$student_state      = get_post_meta( $course->ID, '_tp_student_state', true );
-						$student_profession = get_post_meta( $course->ID, '_tp_student_profession', true );
-					?>
+
 				   <p>
 					   <span>
-						   Profession:
+						   Profession: 
 						   <span class="course-info">
 								<?php echo esc_html( $student_profession ? $student_profession : '' ); ?>
 						   </span>
