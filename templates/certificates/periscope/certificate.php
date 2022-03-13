@@ -43,8 +43,9 @@
 				   <p><strong>Course:</strong> <span class="course-info"><?php esc_html_e( $course->post_title ); ?></span></p>
 				   <p><span>Student:</span> <span class="course-info"><?php esc_html_e( $user->display_name ); ?></span></p>
 				   <?php
-						$student_state      = get_post_meta( $course->ID, '_tp_student_state', true );
-						$student_profession = get_post_meta( $course->ID, '_tp_student_profession', true );
+						$student_state      = get_user_meta( $user->ID, '__primary_state', true );
+						$student_profession = get_user_meta( $user->ID, '__title', true );
+						$student_other_states = get_user_meta( $user->ID, '__other_states', true );
 					?>
 				   <p>
 					   <span>
@@ -59,6 +60,7 @@
 						   State:
 						   <span class="course-info">
 								<?php echo esc_html( $student_state ? $student_state : '' ); ?>
+								<?php echo esc_html( $student_other_states ? $student_other_states : '' ); ?>
 						   </span>
 					   </span>
 				   </p>

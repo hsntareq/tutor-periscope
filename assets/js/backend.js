@@ -255,7 +255,7 @@ __webpack_require__.r(__webpack_exports__);
  * @param {*} formData | form data for post request
  * @returns json response on success or false
  */
-async function ajaxRequest(formData) {
+async function ajaxRequest(formData, jsonResponse = true) {
   const loader = `<div id="tutor-periscope-loader-wrapper">
         <div class="tutor-periscope-loading">
         </div>
@@ -268,7 +268,11 @@ async function ajaxRequest(formData) {
   document.getElementById('tutor-periscope-loader-wrapper').remove();
 
   if (post.ok) {
-    return await post.json();
+    if (jsonResponse) {
+      return await post.json();
+    } else {
+      return await post.text();
+    }
   } else {
     return false;
   }

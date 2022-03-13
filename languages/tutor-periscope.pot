@@ -73,15 +73,15 @@ msgstr ""
 msgid "No Agree - How will you apply this in your practice provided."
 msgstr ""
 
-#: inc/Assessment/Assessment.php:64, inc/Evaluation/Course_Evaluation.php:67
+#: inc/Assessment/Assessment.php:87, inc/Evaluation/Course_Evaluation.php:67
 msgid "Are you cheating?"
 msgstr ""
 
-#: inc/Assessment/Assessment.php:67, inc/Evaluation/Course_Evaluation.php:71
+#: inc/Assessment/Assessment.php:90, inc/Evaluation/Course_Evaluation.php:71
 msgid "Permission Denied!"
 msgstr ""
 
-#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139
+#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/UserRole/FilterDashboardMenu.php:156
 msgid "Nonce verification failed"
 msgstr ""
 
@@ -103,6 +103,10 @@ msgstr ""
 
 #: inc/Certificates/Certificates.php:147, inc/Certificates/Certificates.php:149
 msgid "License Number"
+msgstr ""
+
+#: inc/Certificates/DownloadApproval.php:100
+msgid "You are not allowed to download certificate yet."
 msgstr ""
 
 #: inc/Evaluation/Course_Evaluation.php:93
@@ -157,7 +161,7 @@ msgstr ""
 msgid "No course evaluations found"
 msgstr ""
 
-#: inc/Evaluation/Course_Evaluation_List_Table.php:63, inc/Evaluation/Course_Evaluation_List_Table.php:83
+#: inc/Evaluation/Course_Evaluation_List_Table.php:63, inc/Evaluation/Course_Evaluation_List_Table.php:83, templates/frontend/quiz-attempts.php:62, templates/frontend/quiz-attempts.php:133
 msgid "Details"
 msgstr ""
 
@@ -245,6 +249,10 @@ msgstr ""
 msgid "Course Assignment"
 msgstr ""
 
+#: inc/UserRole/FilterDashboardMenu.php:78
+msgid "Pending Approvals"
+msgstr ""
+
 #: templates/frontend/course-evaluation.php:4
 msgid "Course content matched the session description"
 msgstr ""
@@ -297,23 +305,87 @@ msgstr ""
 msgid "How will you apply this in your practice"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:55
+#: templates/frontend/quiz-attempts.php:19
+msgid "Pending Approvals for Downloading Certificate"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:160
+msgid "No quiz attempt yet."
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:56
+msgid "Course Info"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:57
+msgid "Student"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:58
+msgid "Correct Answer"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:59
+msgid "Incorrect Answer"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:60
+msgid "Earned Mark"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:61
+msgid "Result"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:63
+msgid "Action"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:85
+msgid "Question: "
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:86
+msgid "Total Marks: "
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:128
+msgid "Pass"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:129
+msgid "Fail"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:125
+msgid "Under Review"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:137
+msgid "Allow user to download certificate"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:169
+msgid "Attempt Details"
+msgstr ""
+
+#: views/admin/course-assignment-form.php:89
 msgid "Label"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:56
+#: views/admin/course-assignment-form.php:90
 msgid "Select"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:61
+#: views/admin/course-assignment-form.php:95
 msgid "Select a course to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:76
+#: views/admin/course-assignment-form.php:110
 msgid "Select User(s) to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:95
+#: views/admin/course-assignment-form.php:129
 msgid "Assign Course"
 msgstr ""
 
@@ -523,6 +595,18 @@ msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
 msgid "Success"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Something went wrong, please try again."
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Certificate Download Approval Success!"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Certificate Download Approval Failed!"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1

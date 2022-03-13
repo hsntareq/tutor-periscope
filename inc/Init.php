@@ -8,6 +8,9 @@
 namespace Tutor_Periscope;
 
 use Google\Service\Classroom\Assignment;
+use Tutor_Periscope\Certificates\DownloadApproval;
+use Tutor_Periscope\UserRole\FilterDashboardMenu;
+use Tutor_Periscope\UserRole\Reviewer;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -34,6 +37,9 @@ final class Init {
 			Email\AttemptEmail::class,
 			Lesson\LessonAdjustment::class,
 			Lesson\LessonProgress::class,
+			Reviewer::class,
+			FilterDashboardMenu::class,
+			DownloadApproval::class,
 		);
 	}
 
