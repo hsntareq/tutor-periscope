@@ -81,7 +81,7 @@ msgstr ""
 msgid "Permission Denied!"
 msgstr ""
 
-#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/UserRole/FilterDashboardMenu.php:156
+#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/Certificates/DownloadApproval.php:124, inc/UserRole/FilterDashboardMenu.php:156
 msgid "Nonce verification failed"
 msgstr ""
 
@@ -105,8 +105,12 @@ msgstr ""
 msgid "License Number"
 msgstr ""
 
-#: inc/Certificates/DownloadApproval.php:100
+#: inc/Certificates/DownloadApproval.php:104
 msgid "You are not allowed to download certificate yet."
+msgstr ""
+
+#: inc/Certificates/DownloadApproval.php:122
+msgid "Approve failed, please try again."
 msgstr ""
 
 #: inc/Evaluation/Course_Evaluation.php:93

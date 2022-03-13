@@ -7,6 +7,7 @@
 
 namespace Tutor_Periscope\Setup;
 
+use Tutor_Periscope\Database\CertificateApprovalsTable;
 use Tutor_Periscope\Database\Evaluation_Table;
 
 defined( 'ABSPATH' ) || exit;
@@ -46,7 +47,7 @@ class Setup {
          * @since v1.0.0
          */
         Evaluation_Table::create_table();
-
+        CertificateApprovalsTable::create_table();
         update_option( 'tutor_periscope_version', TUTOR_PERISCOPE_VERSION );
 
         do_action( 'tutor_periscope_after_activation' );

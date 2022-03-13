@@ -1,10 +1,19 @@
+<?php
+/**
+ * Certificate Template
+ *
+ * @package TutorPeriscopeCertificate
+ */
+
+use Tutor_Periscope\Certificates\DownloadApproval;
+?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>Periscope Certificate Title</title>
-		<style type="text/css"><?php $this->pdf_style(); ?></style>
-		<style>
+		<style><?php $this->pdf_style(); ?></style>
+		<style type="text/css">
 			.certificate-content p{margin-bottom: 0;}
 		</style>
 	</head>
@@ -27,9 +36,30 @@
 					$min_text  = $durationMinutes . ' ';
 					$min_text .= ( $durationMinutes > 1 ) ? __( 'minutes', 'tutor-periscope' ) : __( 'minute', 'tutor-periscope' );
 				}
-					$duration_text       = $hour_text . ' ' . $min_text;
-					$default_sinature_id = tutor_utils()->get_option( 'tutor_cert_signature_image_id' );
-					$signature_image_url = isset( $default_sinature_id ) ? wp_get_attachment_url( $default_sinature_id ) : $signature_image_url;
+				$duration_text       = $hour_text . ' ' . $min_text;
+				$default_sinature_id = tutor_utils()->get_option( 'tutor_cert_signature_image_id' );
+				$signature_image_url = isset( $default_sinature_id ) ? wp_get_attachment_url( $default_sinature_id ) : $signature_image_url;
+
+				$approval_details = DownloadApproval::approval_details( $user->ID, $course->ID );
+				// approver details.
+				$approver_details = null;
+				if ( $approval_details && isset( $approval_details->approver_id ) ) {
+					$approver_details = get_userdata( $approval_details->approver_id );
+					$approver_details = isset( $approver_details->data ) ? $approver_details->data : null;
+				}
+				$approver_name = '';
+				if ( $approver_details ) {
+					// check if not empty display name.
+					if ( '' !== $approver_details->display_name ) {
+						$approver_name = $approver_details->display_name;
+					} else {
+						$approver_name = $approver_details->user_login;
+					}
+				}
+
+				$student_profession = get_user_meta( $user->ID, '__title', true );
+				$student_state      = get_user_meta( $user->ID, '__primary_state', true );
+
 				?>
 				<section class="certificate-header">
 					<header class="certificate-logo">
@@ -42,11 +72,6 @@
 				   </h3>
 				   <p><strong>Course:</strong> <span class="course-info"><?php esc_html_e( $course->post_title ); ?></span></p>
 				   <p><span>Student:</span> <span class="course-info"><?php esc_html_e( $user->display_name ); ?></span></p>
-				   <?php
-						$student_state      = get_user_meta( $user->ID, '__primary_state', true );
-						$student_profession = get_user_meta( $user->ID, '__title', true );
-						$student_other_states = get_user_meta( $user->ID, '__other_states', true );
-					?>
 				   <p>
 					   <span>
 						   Profession:
@@ -96,25 +121,27 @@
 			   </section>
 			   <?php endif; ?>
 			   <?php
-					$instructors = unserialize(
-						get_post_meta(
-							$course->ID,
-							'_tp_instructors_info',
-							true
-						)
-					);
-					if ( is_array( $instructors ) && count( $instructors ) ) :
-						?>
+					$instructors = tutor_utils()->get_instructors_by_course( $course->ID );
+				if ( is_array( $instructors ) && count( $instructors ) ) :
+					?>
 					<section>
 						<h4>Instructors</h4>
-						<?php foreach ( $instructors as $instructor ) : ?>
+					<?php
+					foreach ( $instructors as $instructor ) :
+						if ( ! isset( $instructor->display_name ) || ! isset( $instructor->ID ) ) {
+							continue;
+						}
+						?>
 							<div style="margin-bottom: 10px;">
+							<?php
+								$job_title = get_user_meta( $instructor->ID, '_tutor_profile_job_title', true );
+							?>
 								<p>
-									<?php echo esc_html( $instructor['name'] ); ?>,
-									<?php echo esc_html( $instructor['title'] ); ?>
+								<?php echo esc_html( '' !== $job_title ? $instructor->display_name . ',' : $instructor->display_name ); ?>
+								<?php echo esc_html( $job_title ); ?>
 								</p>
 								<p style="margin-left: 40px">
-									<?php echo esc_textarea( $instructor['bio'] ); ?>
+								<?php echo wp_kses_post( get_user_meta( $instructor->ID, '_tutor_profile_bio', true ) ); ?>
 								</p>
 							</div>
 						<?php endforeach; ?>
@@ -148,7 +175,7 @@
 
 			   <section class="licensor-info">
 				   <h4>Continuing Education Approval</h4>
-				   <p>Approved by <u><?php echo $user->display_name; ?></u> Approval number: ______</p>
+				   <p>Approved by <u><?php echo esc_html( $approver_name ); ?></u> Approval number: <?php echo esc_html( $approval_details && isset( $approval_details->certificate_no ) ? $approval_details->certificate_no : '' ); ?></p>
 			   </section>
 			   <section class="certificate-before-footer">
 					<p>Some state licensing boards do not require course pre-approval. Participant is responsible for understanding their requirements.</p>

@@ -83,4 +83,5 @@ abstract class DB_Query {
 		);
 		return $update ? true : false;
 	}
+
 }
