@@ -130,7 +130,7 @@ class FilterDashboardMenu {
 		global $wp_query;
 		$query_vars = $wp_query->query_vars;
 
-		if ( wc_current_user_has_role( $this->user_role ) ) {
+		if ( \wc_current_user_has_role( $this->user_role ) ) {
 			if ( ! isset( $query_vars['tutor_dashboard_page'] ) && 'dashboard' === $query_vars['pagename'] ) {
 				wp_safe_redirect( tutor_utils()->tutor_dashboard_url() . self::REVIEW_ATTEMPT_SLUG );
 				exit;

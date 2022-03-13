@@ -75,7 +75,7 @@ if ( ! class_exists( 'DownloadApproval' ) ) {
 					ob_start();
 					?>
 					<p>
-						<?php esc_html_e( 'You are not allowed to download certificate yet.', 'tutor-periscope' ); ?>
+						<?php esc_html_e( 'Waiting for approval to get the certificate', 'tutor-periscope' ); ?>
 					</p>
 					<?php
 					$content = ob_get_clean();
@@ -134,7 +134,7 @@ if ( ! class_exists( 'DownloadApproval' ) ) {
 			$table      = ( new self() )->get_table();
 			return $wpdb->get_row(
 				$wpdb->prepare(
-					"SELECT * 
+					"SELECT *
 					FROM {$table}
 						WHERE course_id = %d
 						AND student_id = %d

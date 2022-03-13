@@ -51,7 +51,7 @@
 				<thead>
 					<tr>
 						<td>ID</td>
-						<td>Full Name</td>
+						<td>Username</td>
 						<td>Email</td>
 						<td>Role</td>
 						<td>Primary State</td>
@@ -67,7 +67,7 @@
 						?>
 					<tr>
 						<td><?php echo esc_attr( $user->ID ); ?></td>
-						<td><?php echo esc_attr( $user->display_name ); ?></td>
+						<td><?php echo esc_attr( $user->user_login ); ?></td>
 						<td><?php echo esc_attr( $user->user_email ); ?></td>
 						<td><?php echo ucfirst( implode( ', ', $user->roles ) ); ?></td>
 						<td><?php echo esc_attr( get_user_meta( $user->ID, '__primary_state', true ) ); ?></td>

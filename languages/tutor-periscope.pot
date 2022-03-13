@@ -106,7 +106,7 @@ msgid "License Number"
 msgstr ""
 
 #: inc/Certificates/DownloadApproval.php:104
-msgid "You are not allowed to download certificate yet."
+msgid "Waiting for approval to get the certificate."
 msgstr ""
 
 #: inc/Certificates/DownloadApproval.php:122
