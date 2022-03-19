@@ -31,7 +31,7 @@ class AttemptEmail extends EmailAbstract {
 	 *
 	 * @since v1.0.0
 	 */
-	public function email_to():array {
+	public function email_to() {
 		$admin_email = get_option( 'admin_email' );
 		return array( $admin_email );
 	}

@@ -40,6 +40,7 @@ final class Init {
 			Reviewer::class,
 			FilterDashboardMenu::class,
 			DownloadApproval::class,
+			Email\CourseEnrollmentEmail::class,
 		);
 	}
 

@@ -136,7 +136,7 @@ class Assessment {
 						// Mark Current User as Students with user meta data
 						update_user_meta( $user_id, '_is_tutor_student', tutor_time() );
 
-						do_action( 'tutor_enrollment/after/complete', $is_enrolled );
+						do_action( 'tutor_enrollment/after/complete', $is_enrolled, $enroll_data );
 					}
 
 					$success_msgs = get_tnotice( __( 'Enrolment has been done', 'tutor-pro' ), 'Success', 'success' );
