@@ -35,7 +35,7 @@ class Dashboard {
 	 * @return void
 	 */
 	public function course_assignment_markup() {
-
+		$action = isset( $action ) ? $action : '';
 		switch ( $action ) {
 
 			case 'list':

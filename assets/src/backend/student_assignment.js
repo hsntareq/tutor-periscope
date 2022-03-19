@@ -1,3 +1,5 @@
+import { existsSync } from "fs";
+
 const submit_assignment = document.getElementById('submit_assignment');
 const course_assignment = document.getElementById('course_assignment');
 

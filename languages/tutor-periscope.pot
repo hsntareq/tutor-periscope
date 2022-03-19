@@ -81,7 +81,7 @@ msgstr ""
 msgid "Permission Denied!"
 msgstr ""
 
-#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/Certificates/DownloadApproval.php:124, inc/UserRole/FilterDashboardMenu.php:156
+#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/Certificates/DownloadApproval.php:105, inc/UserRole/FilterDashboardMenu.php:156
 msgid "Nonce verification failed"
 msgstr ""
 
@@ -105,11 +105,11 @@ msgstr ""
 msgid "License Number"
 msgstr ""
 
-#: inc/Certificates/DownloadApproval.php:104
-msgid "Waiting for approval to get the certificate."
+#: inc/Certificates/DownloadApproval.php:78
+msgid "Waiting for approval to get the certificate"
 msgstr ""
 
-#: inc/Certificates/DownloadApproval.php:122
+#: inc/Certificates/DownloadApproval.php:103
 msgid "Approve failed, please try again."
 msgstr ""
 
@@ -165,7 +165,7 @@ msgstr ""
 msgid "No course evaluations found"
 msgstr ""
 
-#: inc/Evaluation/Course_Evaluation_List_Table.php:63, inc/Evaluation/Course_Evaluation_List_Table.php:83, templates/frontend/quiz-attempts.php:62, templates/frontend/quiz-attempts.php:133
+#: inc/Evaluation/Course_Evaluation_List_Table.php:63, inc/Evaluation/Course_Evaluation_List_Table.php:83, templates/frontend/quiz-attempts.php:64, templates/frontend/quiz-attempts.php:136
 msgid "Details"
 msgstr ""
 
@@ -309,87 +309,87 @@ msgstr ""
 msgid "How will you apply this in your practice"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:19
+#: templates/frontend/quiz-attempts.php:21
 msgid "Pending Approvals for Downloading Certificate"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:160
+#: templates/frontend/quiz-attempts.php:163
 msgid "No quiz attempt yet."
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:56
+#: templates/frontend/quiz-attempts.php:58
 msgid "Course Info"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:57
+#: templates/frontend/quiz-attempts.php:59
 msgid "Student"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:58
+#: templates/frontend/quiz-attempts.php:60
 msgid "Correct Answer"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:59
+#: templates/frontend/quiz-attempts.php:61
 msgid "Incorrect Answer"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:60
+#: templates/frontend/quiz-attempts.php:62
 msgid "Earned Mark"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:61
+#: templates/frontend/quiz-attempts.php:63
 msgid "Result"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:63
+#: templates/frontend/quiz-attempts.php:65
 msgid "Action"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:85
+#: templates/frontend/quiz-attempts.php:88
 msgid "Question: "
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:86
+#: templates/frontend/quiz-attempts.php:89
 msgid "Total Marks: "
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:128
+#: templates/frontend/quiz-attempts.php:131
 msgid "Pass"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:129
+#: templates/frontend/quiz-attempts.php:132
 msgid "Fail"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:125
+#: templates/frontend/quiz-attempts.php:128
 msgid "Under Review"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:137
+#: templates/frontend/quiz-attempts.php:140
 msgid "Allow user to download certificate"
 msgstr ""
 
-#: templates/frontend/quiz-attempts.php:169
+#: templates/frontend/quiz-attempts.php:172
 msgid "Attempt Details"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:89
+#: views/admin/course-assignment-form.php:91
 msgid "Label"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:90
+#: views/admin/course-assignment-form.php:92
 msgid "Select"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:95
+#: views/admin/course-assignment-form.php:97
 msgid "Select a course to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:110
+#: views/admin/course-assignment-form.php:112
 msgid "Select User(s) to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:129
+#: views/admin/course-assignment-form.php:131
 msgid "Assign Course"
 msgstr ""
 
@@ -549,19 +549,19 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:23
+#: templates/certificates/periscope/certificate.php:32
 msgid "hours"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:23
+#: templates/certificates/periscope/certificate.php:32
 msgid "hour"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:28
+#: templates/certificates/periscope/certificate.php:37
 msgid "minutes"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:28
+#: templates/certificates/periscope/certificate.php:37
 msgid "minute"
 msgstr ""
 
@@ -611,6 +611,10 @@ msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
 msgid "Certificate Download Approval Failed!"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Invalid certificate no"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
