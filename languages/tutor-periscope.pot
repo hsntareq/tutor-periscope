@@ -6,6 +6,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Econdig: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"MIME-Version: 1.0\n"
+"Project-Id-Version: Tutor Periscope\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -73,12 +77,20 @@ msgstr ""
 msgid "No Agree - How will you apply this in your practice provided."
 msgstr ""
 
-#: inc/Assessment/Assessment.php:87, inc/Evaluation/Course_Evaluation.php:67
+#: inc/Assessment/Assessment.php:85, inc/Evaluation/Course_Evaluation.php:67
 msgid "Are you cheating?"
 msgstr ""
 
-#: inc/Assessment/Assessment.php:90, inc/Evaluation/Course_Evaluation.php:71
+#: inc/Assessment/Assessment.php:88, inc/Evaluation/Course_Evaluation.php:71
 msgid "Permission Denied!"
+msgstr ""
+
+#: inc/Assessment/Assessment.php:93
+msgid "Please select course"
+msgstr ""
+
+#: inc/Assessment/Assessment.php:100
+msgid "Please select user"
 msgstr ""
 
 #: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/Certificates/DownloadApproval.php:105, inc/UserRole/FilterDashboardMenu.php:156
@@ -111,6 +123,10 @@ msgstr ""
 
 #: inc/Certificates/DownloadApproval.php:103
 msgid "Approve failed, please try again."
+msgstr ""
+
+#: inc/Email/CourseEnrollmentEmail.php:40
+msgid "Enrollment Success"
 msgstr ""
 
 #: inc/Evaluation/Course_Evaluation.php:93
