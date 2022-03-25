@@ -105,11 +105,11 @@ class Certificates {
 			 *
 			 * @since v1.0.0
 			 */
-			$student_profession = sanitize_text_field( $_POST['_tp_student_profession'] );
+			$certificate_approver = sanitize_text_field( $_POST['_tp_certificate_approver'] );
 			update_post_meta(
 				$post_ID,
-				'_tp_student_profession',
-				$student_profession
+				'_tp_certificate_approver',
+				$certificate_approver
 			);
 			$instructors_info  = array();
 			$instructor_names  = $_POST['_tp_instructor_name'];
@@ -150,7 +150,7 @@ class Certificates {
 				</div>
 			</div>
 		</div>
-		
+
 		<?php
 	}
 

@@ -49,13 +49,13 @@ if ( ! class_exists( 'DownloadApproval' ) ) {
 			 * Custom filter hook added.
 			 * Hook path: tutor-pro/addons/tutor-certificate/classes/Certificate.php:399
 			 */
-			add_filter(
+			/* add_filter(
 				'tutor_certificate_button',
 				array(
 					__CLASS__,
 					'filter_download_button',
 				)
-			);
+			); */
 		}
 
 		/**
@@ -71,7 +71,7 @@ if ( ! class_exists( 'DownloadApproval' ) ) {
 			$post       = get_post( $course_id );
 			if ( $post && 'courses' === $post->post_type ) {
 				$is_allowed_download = self::is_approved( $student_id, $course_id );
-				if ( ! $is_allowed_download ) {
+				if ( $is_allowed_download ) {
 					ob_start();
 					?>
 					<p>

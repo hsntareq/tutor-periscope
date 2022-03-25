@@ -28,6 +28,7 @@ final class Init {
 		return array(
 			Setup\Setup::class,
 			Setup\Dashboard::class,
+			Setup\Options::class,
 			Assets\Enqueue::class,
 			Assessment\Assessment::class,
 			Certificates\Certificates::class,

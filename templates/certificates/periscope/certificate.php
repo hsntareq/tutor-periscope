@@ -40,22 +40,8 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 				$default_sinature_id = tutor_utils()->get_option( 'tutor_cert_signature_image_id' );
 				$signature_image_url = isset( $default_sinature_id ) ? wp_get_attachment_url( $default_sinature_id ) : $signature_image_url;
 
-				$approval_details = DownloadApproval::approval_details( $user->ID, $course->ID );
-				// approver details.
-				$approver_details = null;
-				if ( $approval_details && isset( $approval_details->approver_id ) ) {
-					$approver_details = get_userdata( $approval_details->approver_id );
-					$approver_details = isset( $approver_details->data ) ? $approver_details->data : null;
-				}
-				$approver_name = '';
-				if ( $approver_details ) {
-					// check if not empty display name.
-					if ( '' !== $approver_details->display_name ) {
-						$approver_name = $approver_details->display_name;
-					} else {
-						$approver_name = $approver_details->user_login;
-					}
-				}
+				$approver_id = get_post_meta( '_tp_certificate_approver', $course->ID );
+				$approver_name = get_userdata( $approver_id )->display_name;
 
 				$student_profession = get_user_meta( $user->ID, '__title', true );
 				$student_state      = get_user_meta( $user->ID, '__primary_state', true );
@@ -173,10 +159,10 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 					<p class="medbridge-info"><a href="mailto:admin@periscope365.com">admin@periscope365.com</a></p>
 			   </section>
 
-			   <section class="licensor-info">
-				   <h4>Continuing Education Approval</h4>
-				   <p>Approved by <u><?php echo esc_html( $approver_name ); ?></u> Approval number: <?php echo esc_html( $approval_details && isset( $approval_details->certificate_no ) ? $approval_details->certificate_no : '' ); ?></p>
-			   </section>
+			   <!-- <section class="licensor-info">
+				   <h4>Continuing Education Approval</h4> -->
+				   <!-- <p>Approved by <u><?php //echo esc_html( $approver_name ); ?></u> Approval number: <?php //echo esc_html( $approval_details && isset( $approval_details->certificate_no ) ? $approval_details->certificate_no : '' ); ?></p> -->
+			   <!-- </section> -->
 			   <section class="certificate-before-footer">
 					<p>Some state licensing boards do not require course pre-approval. Participant is responsible for understanding their requirements.</p>
 			   </section>
