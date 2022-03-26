@@ -537,31 +537,31 @@ msgstr ""
 msgid "Profession"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:49
-msgid "Add student profession."
+#: views/metabox/tutor-persicope-additional-data.php:55
+msgid "Certificate Approver"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:55
+#: views/metabox/tutor-persicope-additional-data.php:75
 msgid "Instructor"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:57
+#: views/metabox/tutor-persicope-additional-data.php:77
 msgid "+ Add"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:63, views/metabox/tutor-persicope-additional-data.php:79
+#: views/metabox/tutor-persicope-additional-data.php:83, views/metabox/tutor-persicope-additional-data.php:99
 msgid "Instructor name"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:65, views/metabox/tutor-persicope-additional-data.php:85
+#: views/metabox/tutor-persicope-additional-data.php:85, views/metabox/tutor-persicope-additional-data.php:105
 msgid "Instructor title"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:67, views/metabox/tutor-persicope-additional-data.php:88
+#: views/metabox/tutor-persicope-additional-data.php:87, views/metabox/tutor-persicope-additional-data.php:108
 msgid "Instructor bio"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:80
+#: views/metabox/tutor-persicope-additional-data.php:100
 msgid "Remove"
 msgstr ""
 

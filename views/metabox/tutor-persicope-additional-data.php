@@ -69,24 +69,26 @@ do_action( 'tutor_periscope_course_metabox_before_additional_data' ); ?>
 		</select>
 	</div>
 </div>
+
+<!--
 <div class="tutor-option-field-row">
 	<div class="tutor-option-field-label">
 		<label for="course_endorsements">
-			<?php esc_html_e( 'Instructor', 'tutor-periscope' ); ?>
+			<?php //esc_html_e( 'Instructor', 'tutor-periscope' ); ?>
 		<span id="tutor-periscope-add-more-instructor" style="color: #1d90d5;">
-				<?php esc_html_e( '+ Add', 'tutor-periscope' ); ?>
+				<?php //esc_html_e( '+ Add', 'tutor-periscope' ); ?>
 			<span>
 		</label>
 	</div>
 	<div class="tutor-option-field" id="tutor-periscope-instructors-metabox">
 		<div style="display: flex; flex-direction: column; row-gap: 15px;">
-			<input type="text" name="_tp_instructor_name[]" class="tutor-form-control" placeholder="<?php esc_attr_e( 'Instructor name', 'tutor-periscope' ); ?>" value="<?php echo isset( $instructors_info[0]['name'] ) ? esc_html( $instructors_info[0]['name'] ) : ''; ?>" />
+			<input type="text" name="_tp_instructor_name[]" class="tutor-form-control" placeholder="<?php //esc_attr_e( 'Instructor name', 'tutor-periscope' ); ?>" value="<?php //echo isset( $instructors_info[0]['name'] ) ? esc_html( $instructors_info[0]['name'] ) : ''; ?>" />
 
-			<input type="text" name="_tp_instructor_title[]" placeholder="<?php esc_attr_e( 'Instructor title', 'tutor-periscope' ); ?>" value="<?php echo isset( $instructors_info[0]['title'] ) ? esc_html( $instructors_info[0]['title'] ) : ''; ?>"/>
+			<input type="text" name="_tp_instructor_title[]" placeholder="<?php //esc_attr_e( 'Instructor title', 'tutor-periscope' ); ?>" value="<?php //echo isset( $instructors_info[0]['title'] ) ? esc_html( $instructors_info[0]['title'] ) : ''; ?>"/>
 
-			<textarea name="_tp_instructor_bio[]" rows="2" placeholder="<?php esc_attr_e( 'Instructor bio', 'tutor-periscope' ); ?>"><?php echo isset( $instructors_info[0]['bio'] ) ? esc_textarea( $instructors_info[0]['bio'] ) : ''; ?></textarea>
+			<textarea name="_tp_instructor_bio[]" rows="2" placeholder="<?php //esc_attr_e( 'Instructor bio', 'tutor-periscope' ); ?>"><?php //echo isset( $instructors_info[0]['bio'] ) ? esc_textarea( $instructors_info[0]['bio'] ) : ''; ?></textarea>
 		</div>
-		<?php if ( is_array( $instructors_info ) && count( $instructors_info ) ) : ?>
+		<?php /* if ( is_array( $instructors_info ) && count( $instructors_info ) ) : ?>
 			<?php
 			foreach ( $instructors_info as $k => $instructor ) :
 				if ( 0 === $k ) {
@@ -108,9 +110,10 @@ do_action( 'tutor_periscope_course_metabox_before_additional_data' ); ?>
 					<textarea name="_tp_instructor_bio[]" rows='2' placeholder="<?php esc_html_e( 'Instructor bio', 'tutor-periscope' ); ?>"><?php echo esc_textarea( $instructor['bio'] ); ?></textarea>
 				</div>
 			<?php endforeach; ?>
-		<?php endif; ?>
+		<?php endif; */ ?>
 	</div>
 </div>
+-->
 
 <input type="hidden" name="_tutor_periscope_course_additional_data_edit" value="true" />
 
