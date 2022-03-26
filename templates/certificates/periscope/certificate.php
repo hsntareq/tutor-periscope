@@ -40,8 +40,10 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 				$default_sinature_id = tutor_utils()->get_option( 'tutor_cert_signature_image_id' );
 				$signature_image_url = isset( $default_sinature_id ) ? wp_get_attachment_url( $default_sinature_id ) : $signature_image_url;
 
-				$approver_id = get_post_meta( '_tp_certificate_approver', $course->ID );
-				$approver_name = get_userdata( $approver_id )->display_name;
+
+				$approver_id = get_post_meta($course->ID, '_tp_certificate_approver', true);
+				$approver_name = get_userdata( $approver_id );
+
 
 				$student_profession = get_user_meta( $user->ID, '__title', true );
 				$student_state      = get_user_meta( $user->ID, '__primary_state', true );
@@ -158,11 +160,16 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 					<p class="medbridge-info">1633 Westlake Avenue North, Suite 200, Seattle, WA 98109</p>
 					<p class="medbridge-info"><a href="mailto:admin@periscope365.com">admin@periscope365.com</a></p>
 			   </section>
-
-			   <!-- <section class="licensor-info">
-				   <h4>Continuing Education Approval</h4> -->
-				   <!-- <p>Approved by <u><?php //echo esc_html( $approver_name ); ?></u> Approval number: <?php //echo esc_html( $approval_details && isset( $approval_details->certificate_no ) ? $approval_details->certificate_no : '' ); ?></p> -->
-			   <!-- </section> -->
+			   <section>
+				   <?php
+					pr($approved_by);
+				   ?>
+			   </section>
+				<?php $approval_number = $approver_name->ID.date('y-m-d'); ?>
+			   <section class="licensor-info">
+				   <h4>Continuing Education Approval</h4>
+				   <p>Approved by <u><?php echo esc_html( $approver_name->display_name ); ?></u> Approval number: <?php echo esc_html( base64_encode($approval_number) ); ?></p>
+			   </section>
 			   <section class="certificate-before-footer">
 					<p>Some state licensing boards do not require course pre-approval. Participant is responsible for understanding their requirements.</p>
 			   </section>

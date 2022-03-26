@@ -541,30 +541,6 @@ msgstr ""
 msgid "Certificate Approver"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:75
-msgid "Instructor"
-msgstr ""
-
-#: views/metabox/tutor-persicope-additional-data.php:77
-msgid "+ Add"
-msgstr ""
-
-#: views/metabox/tutor-persicope-additional-data.php:83, views/metabox/tutor-persicope-additional-data.php:99
-msgid "Instructor name"
-msgstr ""
-
-#: views/metabox/tutor-persicope-additional-data.php:85, views/metabox/tutor-persicope-additional-data.php:105
-msgid "Instructor title"
-msgstr ""
-
-#: views/metabox/tutor-persicope-additional-data.php:87, views/metabox/tutor-persicope-additional-data.php:108
-msgid "Instructor bio"
-msgstr ""
-
-#: views/metabox/tutor-persicope-additional-data.php:100
-msgid "Remove"
-msgstr ""
-
 #: templates/certificates/periscope/certificate.php:32
 msgid "hours"
 msgstr ""
