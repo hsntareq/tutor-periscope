@@ -38,7 +38,7 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 				}
 				$duration_text       = $hour_text . ' ' . $min_text;
 				$default_sinature_id = tutor_utils()->get_option( 'tutor_cert_signature_image_id' );
-				$signature_image_url = isset( $default_sinature_id ) ? wp_get_attachment_url( $default_sinature_id ) : $signature_image_url;
+				$signature_url = isset( $default_sinature_id ) ? wp_get_attachment_url( $default_sinature_id ) : '';
 
 
 				$approver_id = get_post_meta($course->ID, '_tp_certificate_approver', true);
@@ -47,6 +47,7 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 
 				$student_profession = get_user_meta( $user->ID, '__title', true );
 				$student_state      = get_user_meta( $user->ID, '__primary_state', true );
+				$student_license_number      = get_user_meta( $user->ID, '__license_number', true );
 
 				?>
 				<section class="certificate-header">
@@ -60,6 +61,7 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 				   </h3>
 				   <p><strong>Course:</strong> <span class="course-info"><?php esc_html_e( $course->post_title ); ?></span></p>
 				   <p><span>Student:</span> <span class="course-info"><?php esc_html_e( $user->display_name ); ?></span></p>
+				   <?php if(!empty($student_state)): ?>
 				   <p>
 					   <span>
 						   Profession:
@@ -68,15 +70,28 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 						   </span>
 					   </span>
 				   </p>
+				   <?php endif;?>
+				   <?php if(!empty($student_state)): ?>
 				   <p>
 					   <span>
 						   State:
 						   <span class="course-info">
-								<?php echo esc_html( $student_state ? $student_state : '' ); ?>
-								<?php echo esc_html( $student_other_states ? $student_other_states : '' ); ?>
+								<?php echo esc_html( $student_state ?: '' ); ?>
+								<?php echo esc_html( $student_other_states ?: '' ); ?>
 						   </span>
 					   </span>
 				   </p>
+				   <?php endif; ?>
+				   <?php if(!empty($student_license_number)): ?>
+				   <p>
+					   <span>
+						   License:
+						   <span class="course-info">
+								<?php echo esc_html( $student_license_number ?: '' ); ?>
+						   </span>
+					   </span>
+				   </p>
+				<?php endif; ?>
 				   <p><span>Date Completed: </span> <span class="course-info"><?php esc_html_e( $completed_date ); ?></span></p>
 				   <p>
 					   <?php
@@ -153,17 +168,25 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 			   <section class="instructors">
 				   <h4>Signature</h4>
 			   </section>
+			   <?php
+				$periscope_owner_name = get_tutor_option('periscope_owner_name') ?: '';
+				$periscope_owner_title = get_tutor_option('periscope_owner_title') ?: '';
+				$periscope_owner_address = get_tutor_option('periscope_owner_address') ?: '';
+				$periscope_owner_email = get_tutor_option('periscope_owner_email') ?: '';
+				$owner_data = [$periscope_owner_name,$periscope_owner_title,$periscope_owner_address];
+
+			   ?>
 			   <section class="medbridge">
-					<img src="<?php echo esc_url( $signature_image_url ); ?>" height="50" alt="signature" />
-					<p class="medbridge-info"><?php echo esc_html( $instructor_name ); ?></p>
-					<p class="medbridge-info">Periscope Founder, CEO</p>
-					<p class="medbridge-info">1633 Westlake Avenue North, Suite 200, Seattle, WA 98109</p>
-					<p class="medbridge-info"><a href="mailto:admin@periscope365.com">admin@periscope365.com</a></p>
-			   </section>
-			   <section>
-				   <?php
-					pr($approved_by);
-				   ?>
+					<img src="<?php echo esc_url( $signature_url ); ?>" height="50" alt="signature" />
+					<?php
+					foreach($owner_data as $owner_info):
+						if(!empty($owner_info)): ?>
+							<p class="medbridge-info"><?php echo $owner_info; ?></p>
+						<?php
+						endif;
+					endforeach;
+					?>
+					<p class="medbridge-info"><a href="mailto:<?php echo $periscope_owner_email; ?>"><?php echo $periscope_owner_email; ?></a></p>
 			   </section>
 				<?php $approval_number = $approver_name->ID.date('y-m-d'); ?>
 			   <section class="licensor-info">

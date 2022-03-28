@@ -38,6 +38,40 @@ class Options {
 						),
 					),
 				),
+				'certificate' => array(
+					'label' => __('Certificate Additional', 'tutor-pro'),
+					'desc' => __('This area is for additional settings of certificate', 'tutor-pro'),
+					'fields' => array(
+						'periscope_owner_name' => array(
+							'type'          => 'text',
+							'label'         => __('Owner\'s Name', 'tutor-pro'),
+							'label_title'   => __('Write the name of the owner for certificate section', 'tutor-pro'),
+							'default' 		=> '0',
+							'desc'          => __('This owner\'s name will appear in the signature section of the certificate.', 'tutor-pro') ,
+						),
+						'periscope_owner_title' => array(
+							'type'          => 'text',
+							'label'         => __('Owner\'s Title', 'tutor-pro'),
+							'label_title'   => __('Write the title of the owner for certificate section', 'tutor-pro'),
+							'default' 		=> 'Periscope Founder, CEO0',
+							'desc'          => __('This owner\'s title will appear in the signature section of the certificate.', 'tutor-pro') ,
+						),
+						'periscope_owner_address' => array(
+							'type'          => 'text',
+							'label'         => __('Owner\'s Address', 'tutor-pro'),
+							'label_title'   => __('Write the address of the owner for certificate section', 'tutor-pro'),
+							'default' 		=> '1633 Westlake Avenue North, Suite 200, Seattle, WA 98109',
+							'desc'          => __('This owner\'s title will appear in the signature section of the certificate.', 'tutor-pro') ,
+						),
+						'periscope_owner_email' => array(
+							'type'          => 'text',
+							'label'         => __('Owner\'s Email', 'tutor-pro'),
+							'label_title'   => __('Write the email of the owner for certificate section', 'tutor-pro'),
+							'default' 		=> 'admin@sitedomain.com',
+							'desc'          => __('This owner\'s title will appear in the signature section of the certificate.', 'tutor-pro') ,
+						),
+					),
+				),
 			),
 		);
 
