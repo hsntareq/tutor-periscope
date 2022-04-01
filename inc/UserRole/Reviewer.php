@@ -15,43 +15,45 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Reviewer
+ */
 class Reviewer extends AbstractRole {
-    
-    /**
-     * Role name
-     *
-     * @var string
-     */
-    public $role = 'periscope_reviewer';
-        
-    /**
-     * Role's display name
-     *
-     * @var string
-     */
-    public $display_name = 'Periscope Reviewer';
-        
-    /**
-     * Register hooks
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        add_action( 'init', array( $this, 'add_role' ) );
-    }
 
-    /**
-     * Capabilities for this role
-     *
-     * @since v1.0.0
-     *
-     * @return array
-     */
-    public function capabilities(): array {
-        return array(
-            'read'  => true
-        );
-    }
-    
+	/**
+	 * Role name
+	 *
+	 * @var string
+	 */
+	public $role = 'periscope_reviewer';
+
+	/**
+	 * Role's display name
+	 *
+	 * @var string
+	 */
+	public $display_name = 'Certificate Approver';
+
+	/**
+	 * Register hooks
+	 *
+	 * @return void
+	 */
+	public function __construct() {
+		add_action( 'init', array( $this, 'add_role' ) );
+	}
+
+	/**
+	 * Capabilities for this role
+	 *
+	 * @since v1.0.0
+	 *
+	 * @return array
+	 */
+	public function capabilities(): array {
+		return array(
+			'read' => true,
+		);
+	}
+
 }
