@@ -517,56 +517,64 @@ msgstr ""
 msgid "Download PDF"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:18
+#: views/metabox/tutor-persicope-additional-data.php:19
 msgid "Learning Objectives"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:24
+#: views/metabox/tutor-persicope-additional-data.php:25
 msgid "List the learning objectives here. (One per line)"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:31
+#: views/metabox/tutor-persicope-additional-data.php:32
 msgid "Endorsements"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:38
+#: views/metabox/tutor-persicope-additional-data.php:39, views/metabox/tutor-persicope-additional-data.php:53
 msgid "Endorsements or special instructions. (One per line)"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:45
+#: views/metabox/tutor-persicope-additional-data.php:46
+msgid "Education Approval"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:60
 msgid "Profession"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:55
+#: views/metabox/tutor-persicope-additional-data.php:70
 msgid "Certificate Approver"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:32
+#: views/metabox/tutor-persicope-additional-data.php:92
+msgid "Approval State"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:94
+msgid "+ Add"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:100, views/metabox/tutor-persicope-additional-data.php:111
+msgid "State Approver"
+msgstr ""
+
+#: templates/certificates/periscope/certificate.php:33
 msgid "hours"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:32
+#: templates/certificates/periscope/certificate.php:33
 msgid "hour"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:37
+#: templates/certificates/periscope/certificate.php:38
 msgid "minutes"
 msgstr ""
 
-#: templates/certificates/periscope/certificate.php:37
+#: templates/certificates/periscope/certificate.php:38
 msgid "minute"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Instructor name"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Instructor title"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Instructor bio"
+msgid "State Approver"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1

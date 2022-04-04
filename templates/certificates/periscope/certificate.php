@@ -101,9 +101,6 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 						?>
 					   <span>
 						   Contact Hours: <?php echo esc_html( false !== $duration ? $duration : '' ); ?>
-						   <span class="course-info">
-								<?php echo esc_html( $student_state ? $student_state : '' ); ?>
-						   </span>
 					   </span>
 				   </p>
 			   </section>
