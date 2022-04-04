@@ -24,6 +24,7 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 					$hour_text           = '';
 					$min_text            = '';
 					$endorsements        = get_post_meta( $course->ID, '_tp_endorsements', true );
+					$education_approval  = get_post_meta( $course->ID, '_tp_education_approval', true );
 					$learning_objectives = get_post_meta( $course->ID, '_tp_learning_objectives', true );
 					$license_number      = get_user_meta( $user->ID, '_tutor_periscope_license_number', true );
 
@@ -48,6 +49,7 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 				$student_profession = get_user_meta( $user->ID, '__title', true );
 				$student_state      = get_user_meta( $user->ID, '__primary_state', true );
 				$student_license_number      = get_user_meta( $user->ID, '__license_number', true );
+				$approver_state_content     = unserialize( get_post_meta( $course_id, '_tp_education_approver', true ) );
 
 				?>
 				<section class="certificate-header">
@@ -174,7 +176,6 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 				$periscope_owner_address = get_tutor_option('periscope_owner_address') ?: '';
 				$periscope_owner_email = get_tutor_option('periscope_owner_email') ?: '';
 				$owner_data = [$periscope_owner_name,$periscope_owner_title,$periscope_owner_address];
-
 			   ?>
 			   <section class="medbridge">
 					<img src="<?php echo esc_url( $signature_url ); ?>" height="50" alt="signature" />
@@ -188,11 +189,20 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 					?>
 					<p class="medbridge-info"><a href="mailto:<?php echo $periscope_owner_email; ?>"><?php echo $periscope_owner_email; ?></a></p>
 			   </section>
-				<?php $approval_number = $approver_name->ID.date('y-m-d'); ?>
-			   <section class="licensor-info">
+
+			   <section class="medbridge">
 				   <h4>Continuing Education Approval</h4>
-				   <p>Approved by <u><?php echo esc_html( $approver_name->display_name ); ?></u> Approval number: <?php echo esc_html( base64_encode($approval_number) ); ?></p>
+				   <?php
+					if ( is_array( $approver_state_content ) && count( $approver_state_content ) ) : ?>
+						<?php
+						foreach ( $approver_state_content as $k => $instructor ) :
+							?>
+							<p class="medbridge-info"><?php echo esc_textarea( $instructor['state_approver'] ); ?></p>
+						<?php endforeach; ?>
+					<?php endif;
+				   ?>
 			   </section>
+
 			   <section class="certificate-before-footer">
 					<p>Some state licensing boards do not require course pre-approval. Participant is responsible for understanding their requirements.</p>
 			   </section>

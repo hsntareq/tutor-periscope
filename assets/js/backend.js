@@ -98,16 +98,13 @@ document.addEventListener('DOMContentLoaded', function () {
     addMore.onclick = e => {
       if (metaBox) {
         metaBox.insertAdjacentHTML('beforeend', `<div class="tutor-periscope-each-instructor-box" style="display: flex; flex-direction: column; row-gap: 15px; margin-top: 15px">
-    
+
                     <div style="display: flex; column-gap: 10px;">
-                        <input type="text" name="_tp_instructor_name[]" class="tutor-form-control" placeholder="${__('Instructor name', 'tutor-periscope')}" value="" />
+                        <textarea name="state_approver[]" rows="2" placeholder="${__('State Approver', 'tutor-periscope')}"></textarea>
                         <span class="tutor-periscope-remove-instructor" style="color:tomato; cursor: pointer;">Remove</span>
                     </div>
-                    
-                    <input type="text" name="_tp_instructor_title[]" placeholder="${__('Instructor title', 'tutor-periscope')}"/>
-               
-                    <textarea name="_tp_instructor_bio[]" rows="2" placeholder="${__('Instructor bio', 'tutor-periscope')}"></textarea>
-                </div>`);
+
+                </div >`);
       }
     };
   } // remove boxes

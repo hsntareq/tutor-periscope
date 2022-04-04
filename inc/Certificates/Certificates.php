@@ -100,37 +100,37 @@ class Certificates {
 			} else {
 				delete_post_meta( $post_ID, '_tp_endorsements' );
 			}
+
+			// Set endorsements meta.
+			/* if ( ! empty( $_POST['education_approval'] ) ) {
+				$education_approval = wp_kses_post( $_POST['education_approval'] );
+				update_post_meta( $post_ID, '_tp_education_approval', $education_approval );
+			} else {
+				delete_post_meta( $post_ID, '_tp_education_approval' );
+			} */
 			/**
 			 * Set profession & instructors info
 			 *
 			 * @since v1.0.0
-			 */
+			 *//*
 			$certificate_approver = sanitize_text_field( $_POST['_tp_certificate_approver'] );
 			update_post_meta(
 				$post_ID,
 				'_tp_certificate_approver',
 				$certificate_approver
-			);
-			$instructors_info  = array();
-			$instructor_names  = $_POST['_tp_instructor_name'];
-			$instructor_titles = $_POST['_tp_instructor_title'];
-			$instructor_bio    = $_POST['_tp_instructor_bio'];
+			); */
 
-			foreach ( $instructor_names as $k => $name ) {
-				array_push(
-					$instructors_info,
-					array(
-						'name'  => sanitize_text_field( $name ),
-						'title' => sanitize_text_field( $instructor_titles[ $k ] ),
-						'bio'   => sanitize_textarea_field( $instructor_bio[ $k ] ),
-					)
-				);
+			$approver_state_content  = array();
+			$education_approver  = $_POST['state_approver'];
+
+			foreach ( $education_approver as $k => $name ) {
+				if(!empty($name)){
+					array_push(
+						$approver_state_content, array( 'state_approver'  => sanitize_text_field( $name ), )
+					);
+				}
 			}
-			update_post_meta(
-				$post_ID,
-				'_tp_instructors_info',
-				serialize( $instructors_info )
-			);
+			update_post_meta( $post_ID, '_tp_education_approver', serialize( $approver_state_content ) );
 		}
 	}
 
