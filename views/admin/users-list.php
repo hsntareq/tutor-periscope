@@ -58,16 +58,16 @@ $total_count = $users_list->total_count;
 		<?php if ( is_array( $users_list->users ) && count( $users_list->users ) ) : ?>
 			<?php foreach ( $users_list->users as $key => $user ) : ?>
 			<tr>
-				<td><?php echo esc_attr( $user->ID ); ?></td>
-				<td><?php echo esc_attr( $user->user_login ); ?></td>
-				<td><?php echo esc_attr( $user->user_email ); ?></td>
+				<td><?php echo esc_html( $user->ID ); ?></td>
+				<td><?php echo esc_html( $user->user_login ); ?></td>
+				<td><?php echo esc_html( $user->user_email ); ?></td>
 				<td><?php echo ucfirst( implode( ', ', $user->roles ) ); ?></td>
-				<td><?php echo esc_attr( get_user_meta( $user->ID, '__primary_state', true ) ); ?></td>
-				<td><?php echo esc_attr( get_user_meta( $user->ID, '__other_states', true ) ); ?></td>
+				<td><?php echo esc_html( get_user_meta( $user->ID, '__primary_state', true ) ); ?></td>
+				<td><?php echo esc_html( get_user_meta( $user->ID, '__other_states', true ) ); ?></td>
 
-				<td><?php echo esc_attr( get_user_meta( $user->ID, '__license_number', true ) ); ?></td>
+				<td><?php echo esc_html( get_user_meta( $user->ID, '__license_number', true ) ); ?></td>
 				<td>
-					<a href="<?php echo get_edit_user_link( $user->ID ); ?>">Edit</a>
+					<a href="<?php echo esc_url( get_edit_user_link( $user->ID ) ); ?>">Edit</a>
 				</td>
 			</tr>
 			<?php endforeach; ?>
