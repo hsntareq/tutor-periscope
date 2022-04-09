@@ -18,6 +18,8 @@ defined( 'ABSPATH' ) || exit;
 define( 'TUTOR_PERISCOPE_VERSION', '1.0.0' );
 define( 'TUTOR_PERISCOPE_DIR_URL', plugin_dir_url( __FILE__ ) );
 define( 'TUTOR_PERISCOPE_DIR_PATH', plugin_dir_path( __FILE__ ) );
+define( 'TUTOR_PERISCOPE_TEMPLATES', trailingslashit( plugin_dir_path( __FILE__ ) . 'templates' ) );
+define( 'TUTOR_PERISCOPE_VIEWS', trailingslashit( plugin_dir_path( __FILE__ ) . 'views' ) );
 
 // Require autoload.
 if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) :
