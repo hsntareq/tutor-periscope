@@ -24,7 +24,8 @@ class UserMetaFields {
 	 * @return void
 	 */
 	public function __construct() {
-		add_action( 'edit_user_profile', array( __CLASS__, 'add_other_state_field' ) );
+		add_action( 'edit_user_profile', array( __CLASS__, 'add_meta_field' ) );
+		add_action( 'edit_user_profile_update', array( __CLASS__, 'update_meta_field' ) );
 	}
 
 	/**
@@ -32,7 +33,7 @@ class UserMetaFields {
 	 *
 	 * @return void
 	 */
-	public static function add_other_state_field() {
+	public static function add_meta_field() {
 		$user_id   = isset( $_GET['user_id'] ) ? sanitize_text_field( $_GET['user_id'] ) : 0;
 		$user_data = get_userdata( $user_id );
 		if ( ! $user_data ) {
@@ -59,5 +60,19 @@ class UserMetaFields {
 			</tr>
 		</table>
 		<?php
+	}
+
+	/**
+	 * Update meta field
+	 *
+	 * @param  mixed $user_id  user id to update meta.
+	 *
+	 * @return void
+	 */
+	public static function update_meta_field( $user_id ) {
+		if ( ! current_user_can( 'edit_user', $user_id ) ) {
+			return;
+		}
+		update_user_meta( $user_id, '__other_states', $_REQUEST['tp-other-state'] );
 	}
 }
