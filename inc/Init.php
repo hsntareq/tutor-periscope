@@ -11,6 +11,8 @@ use Google\Service\Classroom\Assignment;
 use Tutor_Periscope\Certificates\DownloadApproval;
 use Tutor_Periscope\UserRole\FilterDashboardMenu;
 use Tutor_Periscope\UserRole\Reviewer;
+use Tutor_Periscope\Users\UserMetaFields;
+use Tutor_Periscope\Users\Users;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -42,6 +44,8 @@ final class Init {
 			FilterDashboardMenu::class,
 			DownloadApproval::class,
 			Email\CourseEnrollmentEmail::class,
+			Users::class,
+			UserMetaFields::class,
 		);
 	}
 

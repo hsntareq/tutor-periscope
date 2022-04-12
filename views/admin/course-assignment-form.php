@@ -1,5 +1,8 @@
 <div class="wrap">
 	<?php
+
+use Tutor_Periscope\Users\Users;
+
 		$_get = $_GET;
 		$tab  = isset( $_get['tab'] ) ? $_get['tab'] : '';
 	?>
@@ -39,48 +42,8 @@
 	<div>
 		<?php
 		if ( 'bulk-user' === $tab ) {
-			$args       = array( 'role' => 'Subscriber' );
-			$user_query = new WP_User_Query( $args );
-			$users      = $user_query->get_results();
-
+			Users::users_list( true );
 			?>
-			<div class="wp-list-table widefat striped table-view-list" style="max-width:700px">
-				<input type="file" id="bulk_user_import">
-			</div>
-			<table class="wp-list-table widefat striped table-view-list">
-				<thead>
-					<tr>
-						<td>ID</td>
-						<td>Username</td>
-						<td>Email</td>
-						<td>Role</td>
-						<td>Primary State</td>
-						<td>Other State</td>
-						<td>License</td>
-						<td width="200">Action</td>
-					</tr>
-					</thead>
-				<tbody>
-					<?php
-
-					foreach ( $users as $key => $user ) {
-						?>
-					<tr>
-						<td><?php echo esc_attr( $user->ID ); ?></td>
-						<td><?php echo esc_attr( $user->user_login ); ?></td>
-						<td><?php echo esc_attr( $user->user_email ); ?></td>
-						<td><?php echo ucfirst( implode( ', ', $user->roles ) ); ?></td>
-						<td><?php echo esc_attr( get_user_meta( $user->ID, '__primary_state', true ) ); ?></td>
-						<td><?php echo esc_attr( get_user_meta( $user->ID, '__other_states', true ) ); ?></td>
-
-						<td><?php echo esc_attr( get_user_meta( $user->ID, '__license_number', true ) ); ?></td>
-						<td>
-							<a href="<?php echo get_edit_user_link( $user->ID ); ?>">Edit</a>
-						</td>
-					</tr>
-					<?php } ?>
-				</tbody>
-			</table>
 
 		<?php } elseif ( empty( $tab ) || 'assignment' === $tab ) { ?>
 
