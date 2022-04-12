@@ -541,10 +541,6 @@ msgstr ""
 msgid "Profession"
 msgstr ""
 
-#: views/metabox/tutor-persicope-additional-data.php:70
-msgid "Certificate Approver"
-msgstr ""
-
 #: views/metabox/tutor-persicope-additional-data.php:92
 msgid "Approval State"
 msgstr ""
