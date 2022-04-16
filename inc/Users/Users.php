@@ -70,6 +70,19 @@ class Users {
 	private static $count_total = true;
 
 	/**
+	 * Default fields to return
+	 *
+	 * @var array
+	 */
+	private static $fields = array(
+		'ID',
+		'display_name',
+		'user_login',
+		'user_email',
+		'user_url',
+	);
+
+	/**
 	 * Get users list.
 	 *
 	 * @param  array $args  arguments for retrieving users. See this link:
@@ -87,6 +100,7 @@ class Users {
 			'number'      => self::$number,
 			'paged'       => self::$paged,
 			'count_total' => self::$count_total,
+			'fields'      => self::$fields,
 		);
 
 		$args = wp_parse_args( $args, $default_args );

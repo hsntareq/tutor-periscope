@@ -9,6 +9,7 @@ namespace Tutor_Periscope;
 
 use Google\Service\Classroom\Assignment;
 use Tutor_Periscope\Certificates\DownloadApproval;
+use Tutor_Periscope\Instructors\ManageInstructors;
 use Tutor_Periscope\UserRole\FilterDashboardMenu;
 use Tutor_Periscope\UserRole\Reviewer;
 use Tutor_Periscope\Users\UserMetaFields;
@@ -46,6 +47,7 @@ final class Init {
 			Email\CourseEnrollmentEmail::class,
 			Users::class,
 			UserMetaFields::class,
+			ManageInstructors::class,
 		);
 	}
 
