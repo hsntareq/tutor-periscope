@@ -54,7 +54,7 @@ class CourseMetabox extends MetaboxFactory {
 	 * @return void
 	 */
 	public function meta_box_view() {
-		$status = $this->linear_path_status();
+		$status = self::linear_path_status();
 		?>
 		<div class="tutor-periscope-form-group">
 			<label>
@@ -72,7 +72,7 @@ class CourseMetabox extends MetaboxFactory {
 	 *
 	 * @return bool
 	 */
-	public function linear_path_status( $course_id = 0 ): bool {
+	public static function linear_path_status( $course_id = 0 ): bool {
 		if ( 0 === $course_id ) {
 			$course_id = get_the_ID();
 		}

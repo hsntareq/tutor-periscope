@@ -1,7 +1,7 @@
 import ajaxRequest from "./ajax";
 const {__} = wp.i18n;
 /**
- * Check previous lesson complete status and not completed previous lesson
+ * Check previous lesson complete status and if not completed previous lesson
  * then restrict user to start next lesson or quiz
  *
  * @since v1.0.0
@@ -9,35 +9,39 @@ const {__} = wp.i18n;
 document.addEventListener('DOMContentLoaded', async function() {
 
     //disable sidebar lesson link
-    const lessonList = document.querySelectorAll('.tutor-single-lesson-items:not(.active)');
-    lessonList.forEach((lesson) => {
-        if ( lesson.querySelector('.tutor-done')) {
-
-        } else {
-            lesson.style.background = '#dddddd';
-            const a = lesson.querySelector('a');
-            if (a != null || a != undefined) {
-
-                a.setAttribute('class', '');
-                a.style.cursor = 'not-allowed';
-                const lessonTitle = a.querySelector('.lesson_title');
-                const playTime = a.querySelector('.tutor-play-duration');
-                const quizTime = a.querySelector('.quiz-time-limit')
-                if ( lessonTitle ) {
-                    lessonTitle.style.color = '#a4a9b9';
-                }
-                if ( playTime ) {
-                    playTime.style.color = '#a4a9b9';
-                }
-                if ( quizTime ) {
-                    quizTime.style.color = '#a4a9b9';
-                }
-                a.onclick = (e) => {
-                    e.preventDefault();
+    const linearPath = tp_data.linear_path;
+    // linear path active.
+    if (linearPath === true) {
+        const lessonList = document.querySelectorAll('.tutor-single-lesson-items:not(.active)');
+        lessonList.forEach((lesson) => {
+            if ( lesson.querySelector('.tutor-done')) {
+    
+            } else {
+                lesson.style.background = '#dddddd';
+                const a = lesson.querySelector('a');
+                if (a != null || a != undefined) {
+    
+                    a.setAttribute('class', '');
+                    a.style.cursor = 'not-allowed';
+                    const lessonTitle = a.querySelector('.lesson_title');
+                    const playTime = a.querySelector('.tutor-play-duration');
+                    const quizTime = a.querySelector('.quiz-time-limit')
+                    if ( lessonTitle ) {
+                        lessonTitle.style.color = '#a4a9b9';
+                    }
+                    if ( playTime ) {
+                        playTime.style.color = '#a4a9b9';
+                    }
+                    if ( quizTime ) {
+                        quizTime.style.color = '#a4a9b9';
+                    }
+                    a.onclick = (e) => {
+                        e.preventDefault();
+                    }
                 }
             }
-        }
-    });
+        });
+    }
 
     /**
      * Disable next lesson navigation link if current lesson not completed
