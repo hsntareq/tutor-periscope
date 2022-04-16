@@ -9,6 +9,7 @@
 
 namespace Tutor_Periscope\Instructors;
 
+use Tutor_Periscope\Query\DB_Query;
 use Tutor_Periscope\Users\Users;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -18,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Manage multi instructors
  */
-class ManageInstructors {
+class ManageInstructors extends DB_Query {
 
 	/**
 	 * Hold instructors list
@@ -48,8 +49,19 @@ class ManageInstructors {
 	 */
 	public function __construct() {
 		add_action( 'tutor_periscope_before_instructor_meta_box', array( $this, 'main_instructor_view' ) );
+		// update course main instructor.
+		add_action( 'wp_ajax_update_main_instructor', array( $this, 'update_main_instructor' ) );
 	}
 
+	/**
+	 * Get table name
+	 *
+	 * @return string table name
+	 */
+	public function get_table() {
+		global $wpdb;
+		return $wpdb->posts;
+	}
 	/**
 	 * Instructor meta box for showing main author of this course
 	 *
@@ -77,5 +89,41 @@ class ManageInstructors {
 			'number' => $this->number,
 		);
 		return $this->instructors = Users::get( $args );
+	}
+
+	public function update_main_instructor() {
+		if ( wp_verify_nonce( $_POST['nonce'], 'tp_nonce' ) ) {
+
+			if ( current_user_can( 'manage_options' ) ) {
+				$instructor_id = sanitize_text_field( $_POST['instructor_id'] );
+				$course_id     = sanitize_text_field( $_POST['course_id'] );
+
+				$update = $this->update(
+					array(
+						'post_author' => $instructor_id,
+					),
+					array(
+						'ID' => $course_id,
+					)
+				);
+				if ( $update ) {
+					return wp_send_json_success(
+						__( 'Instructor Updated', 'tutor-periscope' )
+					);
+				} else {
+					return wp_send_json_error(
+						__( 'Instructor not updated', 'tutor-periscope' )
+					);
+				}
+			} else {
+				return wp_send_json_error(
+					__( 'Permission denied', 'tutor-periscope' )
+				);
+			}
+		} else {
+			return wp_send_json_error(
+				__( 'Nonce verification failed', 'tutor-periscope' )
+			);
+		}
 	}
 }

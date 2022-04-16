@@ -6,10 +6,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Content-Transfer-Econdig: 8bit\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"MIME-Version: 1.0\n"
-"Project-Id-Version: Tutor Periscope\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -93,7 +89,7 @@ msgstr ""
 msgid "Please select user"
 msgstr ""
 
-#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/Certificates/DownloadApproval.php:105, inc/UserRole/FilterDashboardMenu.php:156
+#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/Certificates/DownloadApproval.php:105, inc/Instructors/ManageInstructors.php:126, inc/UserRole/FilterDashboardMenu.php:156
 msgid "Nonce verification failed"
 msgstr ""
 
@@ -225,6 +221,18 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+#: inc/Instructors/ManageInstructors.php:121
+msgid "Permission denied"
+msgstr ""
+
+#: inc/Instructors/ManageInstructors.php:116
+msgid "Instructor not updated"
+msgstr ""
+
+#: inc/Instructors/ManageInstructors.php:112
+msgid "Instructor Updated"
+msgstr ""
+
 #: inc/Lesson/LessonProgress.php:58, inc/Lesson/LessonProgress.php:76
 msgid "Nonce verification failed."
 msgstr ""
@@ -271,6 +279,18 @@ msgstr ""
 
 #: inc/UserRole/FilterDashboardMenu.php:78
 msgid "Pending Approvals"
+msgstr ""
+
+#: inc/Users/UserMetaFields.php:45
+msgid "Tutor Periscope"
+msgstr ""
+
+#: inc/Users/UserMetaFields.php:51
+msgid "Other State"
+msgstr ""
+
+#: inc/Users/UserMetaFields.php:57
+msgid "Separate each state by semicolon (;)"
 msgstr ""
 
 #: templates/frontend/course-evaluation.php:4
@@ -389,23 +409,23 @@ msgstr ""
 msgid "Attempt Details"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:91
+#: views/admin/course-assignment-form.php:54
 msgid "Label"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:92
+#: views/admin/course-assignment-form.php:55
 msgid "Select"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:97
+#: views/admin/course-assignment-form.php:60
 msgid "Select a course to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:112
+#: views/admin/course-assignment-form.php:75
 msgid "Select User(s) to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:131
+#: views/admin/course-assignment-form.php:94
 msgid "Assign Course"
 msgstr ""
 
@@ -515,6 +535,26 @@ msgstr ""
 
 #: views/admin/course-evaluation-single.php:50
 msgid "Download PDF"
+msgstr ""
+
+#: views/admin/users-list.php:38
+msgid "Search"
+msgstr ""
+
+#: views/admin/users-list.php:77
+msgid "No record found"
+msgstr ""
+
+#: views/metabox/instructor.php:11
+msgid "Invalid instructor list"
+msgstr ""
+
+#: views/metabox/instructor.php:20
+msgid "Update main author of this course"
+msgstr ""
+
+#: views/metabox/instructor.php:24
+msgid "Update Author"
 msgstr ""
 
 #: views/metabox/tutor-persicope-additional-data.php:19
