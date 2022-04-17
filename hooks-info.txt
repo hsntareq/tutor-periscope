@@ -1,0 +1,8 @@
+
+Action Hook
+
+############
+Hook name: tutor_periscope_before_instructor_meta_box
+Hook path: tutor/views/metabox/instructors-metabox.php:38
+
+code: <?php do_action( 'tutor_periscope_before_instructor_meta_box' ); ?>

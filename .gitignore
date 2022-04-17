@@ -74,3 +74,4 @@ tutor-periscope.json
 *.zip
 *.txt
 tests/
+!hooks-info.txt
