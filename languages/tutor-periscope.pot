@@ -93,7 +93,7 @@ msgstr ""
 msgid "Please select user"
 msgstr ""
 
-#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/Certificates/DownloadApproval.php:105, inc/UserRole/FilterDashboardMenu.php:156
+#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/Certificates/DownloadApproval.php:105, inc/Instructors/ManageInstructors.php:136, inc/UserRole/FilterDashboardMenu.php:156
 msgid "Nonce verification failed"
 msgstr ""
 
@@ -123,6 +123,10 @@ msgstr ""
 
 #: inc/Certificates/DownloadApproval.php:103
 msgid "Approve failed, please try again."
+msgstr ""
+
+#: inc/Course/CourseMetabox.php:45
+msgid "Course linear path"
 msgstr ""
 
 #: inc/Email/CourseEnrollmentEmail.php:40
@@ -223,6 +227,18 @@ msgstr ""
 
 #: inc/Evaluation/Course_Evaluation_List_Table.php:102, inc/Evaluation/Course_Evaluation_List_Table.php:127
 msgid "Delete"
+msgstr ""
+
+#: inc/Instructors/ManageInstructors.php:131
+msgid "Permission denied"
+msgstr ""
+
+#: inc/Instructors/ManageInstructors.php:126
+msgid "Instructor not updated"
+msgstr ""
+
+#: inc/Instructors/ManageInstructors.php:122
+msgid "Instructor Updated"
 msgstr ""
 
 #: inc/Lesson/LessonProgress.php:58, inc/Lesson/LessonProgress.php:76
@@ -537,6 +553,18 @@ msgstr ""
 msgid "No record found"
 msgstr ""
 
+#: views/metabox/instructor.php:11
+msgid "Invalid instructor list"
+msgstr ""
+
+#: views/metabox/instructor.php:20
+msgid "Update main author of this course"
+msgstr ""
+
+#: views/metabox/instructor.php:24
+msgid "Update Author"
+msgstr ""
+
 #: views/metabox/tutor-persicope-additional-data.php:19
 msgid "Learning Objectives"
 msgstr ""
@@ -615,6 +643,10 @@ msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
 msgid "Success"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Do you want to update the Instructor?"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1

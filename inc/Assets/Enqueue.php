@@ -8,6 +8,7 @@
 namespace Tutor_Periscope\Assets;
 
 use Tutor_Periscope\Attempt\AttemptManagement;
+use Tutor_Periscope\Course\CourseMetabox;
 use Tutor_Periscope\Lesson\LessonProgress;
 
 defined( 'ABSPATH' ) || exit;
@@ -99,6 +100,12 @@ class Enqueue {
 			}
 		}
 
+		if ( 'lesson' === $post_type ) {
+			$topic           = get_post_parent( get_post( $id ) );
+			$course          = get_post_parent( $topic );
+			$tutor_course_id = $course->ID;
+		}
+
 		$data = array(
 			'url'                         => admin_url( 'admin-ajax.php' ),
 			'nonce'                       => wp_create_nonce( 'tp_nonce' ),
@@ -107,6 +114,7 @@ class Enqueue {
 			'tutor_course_id'             => $tutor_course_id,
 			'current_post_id'             => $id,
 			'current_post_type'           => $post_type,
+			'linear_path'                 => CourseMetabox::linear_path_status( $tutor_course_id ),
 		);
 		return apply_filters( 'tutor_periscope_inline_script_data', $data );
 	}

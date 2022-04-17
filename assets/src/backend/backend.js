@@ -3,6 +3,7 @@ import "./backend_jquery";
 import "./student-attempt";
 import "./import_bulk_user";
 import "./metabox";
+import "./update-instructor";
 // import "./student_assignment";
 jQuery(document).ready(function () {
 

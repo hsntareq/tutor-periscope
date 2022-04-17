@@ -235,6 +235,45 @@ window.document.addEventListener('DOMContentLoaded', async function () {
 
 /***/ }),
 
+/***/ "./assets/src/backend/update-instructor.js":
+/*!*************************************************!*\
+  !*** ./assets/src/backend/update-instructor.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _frontend_ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../frontend/ajax */ "./assets/src/frontend/ajax.js");
+
+const {
+  __
+} = wp.i18n;
+document.addEventListener('DOMContentLoaded', function () {
+  const update_instructor = document.getElementById('tutor_periscope_main_author');
+
+  if (update_instructor) {
+    update_instructor.onchange = async e => {
+      if (confirm(__('Do you want to update the Instructor?', 'tutor-periscope'))) {
+        const formData = new FormData();
+        formData.set('instructor_id', e.currentTarget.value);
+        formData.set('course_id', update_instructor.dataset.courseId);
+        formData.set('action', 'update_main_instructor');
+        formData.set('nonce', tp_data.nonce);
+        console.log(update_instructor.dataset.courseId);
+        const response = await (0,_frontend_ajax__WEBPACK_IMPORTED_MODULE_0__["default"])(formData);
+
+        if (response.success) {
+          tutor_toast(__('Success', 'tutor-periscope'), __(response.data, 'tutor-periscope'), 'success');
+        } else {
+          tutor_toast(__('Failed', 'tutor-periscope'), __(response.data, 'tutor-periscope'), 'error');
+        }
+      }
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./assets/src/frontend/ajax.js":
 /*!*************************************!*\
   !*** ./assets/src/frontend/ajax.js ***!
@@ -16540,6 +16579,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _import_bulk_user__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_import_bulk_user__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _metabox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./metabox */ "./assets/src/backend/metabox.js");
 /* harmony import */ var _metabox__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_metabox__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _update_instructor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./update-instructor */ "./assets/src/backend/update-instructor.js");
+
 
 
 

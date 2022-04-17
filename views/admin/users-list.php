@@ -47,7 +47,6 @@ $total_count = $users_list->total_count;
 			<td>ID</td>
 			<td>Username</td>
 			<td>Email</td>
-			<td>Role</td>
 			<td>Primary State</td>
 			<td>Other State</td>
 			<td>License</td>
@@ -56,12 +55,13 @@ $total_count = $users_list->total_count;
 		</thead>
 	<tbody>
 		<?php if ( is_array( $users_list->users ) && count( $users_list->users ) ) : ?>
-			<?php foreach ( $users_list->users as $key => $user ) : ?>
+			<?php
+			foreach ( $users_list->users as $key => $user ) :
+				?>
 			<tr>
 				<td><?php echo esc_html( $user->ID ); ?></td>
 				<td><?php echo esc_html( $user->user_login ); ?></td>
 				<td><?php echo esc_html( $user->user_email ); ?></td>
-				<td><?php echo ucfirst( implode( ', ', $user->roles ) ); ?></td>
 				<td><?php echo esc_html( get_user_meta( $user->ID, '__primary_state', true ) ); ?></td>
 				<td><?php echo esc_html( get_user_meta( $user->ID, '__other_states', true ) ); ?></td>
 
