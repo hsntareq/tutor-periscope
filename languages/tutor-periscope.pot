@@ -273,6 +273,18 @@ msgstr ""
 msgid "Pending Approvals"
 msgstr ""
 
+#: inc/Users/UserMetaFields.php:45
+msgid "Tutor Periscope"
+msgstr ""
+
+#: inc/Users/UserMetaFields.php:51
+msgid "Other State"
+msgstr ""
+
+#: inc/Users/UserMetaFields.php:57
+msgid "Separate each state by semicolon (;)"
+msgstr ""
+
 #: templates/frontend/course-evaluation.php:4
 msgid "Course content matched the session description"
 msgstr ""
@@ -389,23 +401,23 @@ msgstr ""
 msgid "Attempt Details"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:91
+#: views/admin/course-assignment-form.php:54
 msgid "Label"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:92
+#: views/admin/course-assignment-form.php:55
 msgid "Select"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:97
+#: views/admin/course-assignment-form.php:60
 msgid "Select a course to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:112
+#: views/admin/course-assignment-form.php:75
 msgid "Select User(s) to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:131
+#: views/admin/course-assignment-form.php:94
 msgid "Assign Course"
 msgstr ""
 
@@ -515,6 +527,14 @@ msgstr ""
 
 #: views/admin/course-evaluation-single.php:50
 msgid "Download PDF"
+msgstr ""
+
+#: views/admin/users-list.php:38
+msgid "Search"
+msgstr ""
+
+#: views/admin/users-list.php:77
+msgid "No record found"
 msgstr ""
 
 #: views/metabox/tutor-persicope-additional-data.php:19
