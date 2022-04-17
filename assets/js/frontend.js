@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   //disable sidebar lesson link
   const linearPath = tp_data.linear_path; // linear path active.
 
-  if (linearPath === true) {
+  if (linearPath) {
     const lessonList = document.querySelectorAll('.tutor-single-lesson-items:not(.active)');
     lessonList.forEach(lesson => {
       if (lesson.querySelector('.tutor-done')) {} else {
@@ -430,7 +430,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   const lessonSidebar = document.getElementById('tutor-lesson-sidebar-tab-content');
 
-  if (lessonSidebar) {
+  if (lessonSidebar && linearPath) {
     const hasActiveContent = document.querySelector('.tutor-single-lesson-items.active'); //check if user in on any course material like lesson, quiz etc
 
     if (hasActiveContent) {
@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', async function () {
    */
 
 
-  if (lessonSidebar) {
+  if (lessonSidebar && linearPath) {
     lessonSidebar.onclick = e => {
       const target = e.target;
       let clickedTag = target;

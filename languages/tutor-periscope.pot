@@ -89,7 +89,7 @@ msgstr ""
 msgid "Please select user"
 msgstr ""
 
-#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/Certificates/DownloadApproval.php:105, inc/Instructors/ManageInstructors.php:126, inc/UserRole/FilterDashboardMenu.php:156
+#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/Certificates/DownloadApproval.php:105, inc/Instructors/ManageInstructors.php:125, inc/UserRole/FilterDashboardMenu.php:156
 msgid "Nonce verification failed"
 msgstr ""
 
@@ -119,6 +119,10 @@ msgstr ""
 
 #: inc/Certificates/DownloadApproval.php:103
 msgid "Approve failed, please try again."
+msgstr ""
+
+#: inc/Course/CourseMetabox.php:45
+msgid "Course linear path"
 msgstr ""
 
 #: inc/Email/CourseEnrollmentEmail.php:40
@@ -221,15 +225,15 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: inc/Instructors/ManageInstructors.php:121
+#: inc/Instructors/ManageInstructors.php:120
 msgid "Permission denied"
 msgstr ""
 
-#: inc/Instructors/ManageInstructors.php:116
+#: inc/Instructors/ManageInstructors.php:115
 msgid "Instructor not updated"
 msgstr ""
 
-#: inc/Instructors/ManageInstructors.php:112
+#: inc/Instructors/ManageInstructors.php:111
 msgid "Instructor Updated"
 msgstr ""
 
@@ -639,6 +643,10 @@ msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
 msgid "Success"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Do you want to update the Instructor?"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1

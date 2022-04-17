@@ -107,6 +107,17 @@ class ManageInstructors extends DB_Query {
 					)
 				);
 				if ( $update ) {
+					/**
+					 * Need to update user meta as well since
+					 * utils method retrieve instructors info by joining
+					 * user meta table.
+					 */
+					update_user_meta(
+						$instructor_id,
+						'_tutor_instructor_course_id',
+						$course_id,
+						$course_id
+					);
 					return wp_send_json_success(
 						__( 'Instructor Updated', 'tutor-periscope' )
 					);
