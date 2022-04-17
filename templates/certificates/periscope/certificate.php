@@ -174,7 +174,7 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 				$periscope_owner_email   = get_tutor_option( 'periscope_owner_email' ) ?: '';
 				$owner_data              = array( $periscope_owner_name, $periscope_owner_title, $periscope_owner_address );
 				?>
-			   <section class="medbridge">
+				<section class="medbridge">
 					<img src="<?php echo esc_url( $signature_url ); ?>" style="max-width: 200px" alt="signature" />
 					<?php
 					foreach ( $owner_data as $owner_info ) :
