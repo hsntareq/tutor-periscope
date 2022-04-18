@@ -50,7 +50,8 @@ class ManageInstructors extends DB_Query {
 	public function __construct() {
 		add_action( 'tutor_periscope_before_instructor_meta_box', array( $this, 'main_instructor_view' ) );
 		// update course main instructor.
-		add_action( 'wp_ajax_update_main_instructor', array( $this, 'update_main_instructor' ) );
+		// add_action( 'wp_ajax_update_main_instructor', array( $this, 'update_main_instructor' ) );
+		add_action( 'save_post_courses', array( $this, 'update_main_instructor' ) );
 	}
 
 	/**
@@ -91,49 +92,43 @@ class ManageInstructors extends DB_Query {
 		return $this->instructors = Users::get( $args );
 	}
 
-	public function update_main_instructor() {
-		if ( wp_verify_nonce( $_POST['nonce'], 'tp_nonce' ) ) {
+	/**
+	 * Update main instructor of the course
+	 *
+	 * @param  int $post_id  post id.
+	 *
+	 * @return void  update post author on the user table and add on user meta
+	 * table.
+	 */
+	public function update_main_instructor( int $post_id ) {
+		if ( current_user_can( 'manage_options' ) ) {
+			$instructor_id = sanitize_text_field( $_POST['tutor-periscope-main-author'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$course_id     = $post_id;
 
-			if ( current_user_can( 'manage_options' ) ) {
-				$instructor_id = sanitize_text_field( $_POST['instructor_id'] );
-				$course_id     = sanitize_text_field( $_POST['course_id'] );
-
-				$update = $this->update(
-					array(
-						'post_author' => $instructor_id,
-					),
-					array(
-						'ID' => $course_id,
-					)
-				);
-				if ( $update ) {
-					/**
-					 * Need to update user meta as well since
-					 * utils method retrieve instructors info by joining
-					 * user meta table.
-					 */
-					update_user_meta(
-						$instructor_id,
-						'_tutor_instructor_course_id',
-						$course_id,
-						$course_id
-					);
-					return wp_send_json_success(
-						__( 'Instructor Updated', 'tutor-periscope' )
-					);
-				} else {
-					return wp_send_json_error(
-						__( 'Instructor not updated', 'tutor-periscope' )
-					);
-				}
-			} else {
-				return wp_send_json_error(
-					__( 'Permission denied', 'tutor-periscope' )
+			$update = $this->update(
+				array(
+					'post_author' => $instructor_id,
+				),
+				array(
+					'ID' => $course_id,
+				)
+			);
+			if ( $update ) {
+				/**
+				 * Need to update user meta as well since
+				 * utils method retrieve instructors info by joining
+				 * user meta table.
+				 */
+				update_user_meta(
+					$instructor_id,
+					'_tutor_instructor_course_id',
+					$course_id,
+					$course_id
 				);
 			}
 		} else {
-			return wp_send_json_error(
-				__( 'Nonce verification failed', 'tutor-periscope' )
+			die(
+				esc_html_e( 'Permission denied', 'tutor-periscope' )
 			);
 		}
 	}

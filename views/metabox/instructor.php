@@ -23,7 +23,7 @@ $instructors = $instructors->users;
 			<label for="tutor_periscope_main_author">
 				<?php esc_html_e( 'Update Author', 'tutor-periscope' ); ?>
 			</label>
-			<select name="main_author" id="tutor_periscope_main_author" data-course-id="<?php the_ID(); ?>">
+			<select name="tutor-periscope-main-author" id="tutor_periscope_main_author" data-course-id="<?php the_ID(); ?>">
 				<?php foreach ( $instructors as $instructor ) : ?>
 				<option value="<?php echo esc_attr( $instructor->ID ); ?>" <?php echo ( $instructor->ID == $main_author->ID ) ? esc_attr( 'selected' ) : ''; ?> title="<?php echo esc_attr( $instructor->user_email ); ?>">
 					<?php echo esc_html( '' !== $instructor->display_name ? $instructor->display_name : $instructor->user_login ); ?>
