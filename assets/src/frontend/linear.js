@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     //disable sidebar lesson link
     const linearPath = tp_data.linear_path;
+
     // linear path active.
     if (linearPath) {
         const lessonList = document.querySelectorAll('.tutor-single-lesson-items:not(.active)');

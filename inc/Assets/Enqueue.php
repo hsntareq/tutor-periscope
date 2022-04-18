@@ -116,6 +116,18 @@ class Enqueue {
 			'current_post_type'           => $post_type,
 			'linear_path'                 => CourseMetabox::linear_path_status( $tutor_course_id ),
 		);
+
+		/**
+		 * Add inline css for video player
+		 * if linear path on the hide video progress control.
+		 */
+		if ( $data['linear_path'] ) {
+			$custom_css = "
+			.plyr__progress{
+					display: none;
+			}";
+			wp_add_inline_style( 'tutor-periscope-frontend', $custom_css );
+		}
 		return apply_filters( 'tutor_periscope_inline_script_data', $data );
 	}
 }
