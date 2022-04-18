@@ -64,26 +64,26 @@ do_action( 'tutor_periscope_course_metabox_before_additional_data' ); ?>
 		<input type="text" name="_tp_student_profession" classs="tutor-form-control" value="<?php // echo esc_html( $student_profession ? $student_profession : '' ); ?>" placeholder="<?php // esc_html_e( 'Add student profession.', 'tutor-periscope' ); ?>"/>
 	</div>
 </div> -->
-<div class="tutor-option-field-row">
+<!-- <div class="tutor-option-field-row">
 	<div class="tutor-option-field-label">
 		<label for="course_endorsements">
-			<?php esc_html_e( 'Certificate Approver', 'tutor-periscope' ); ?> <br />
+			<?php //esc_html_e( 'Certificate Approver', 'tutor-periscope' ); ?> <br />
 		</label>
 	</div>
 	<div class="tutor-option-field tutor-option-tooltip">
 		<select class="tutor-select" name="_tp_certificate_approver">
 		<?php
-		$approvers = get_users( array( 'role' => 'periscope_reviewer' ) );
+		/* $approvers = get_users( array( 'role' => 'periscope_reviewer' ) );
 		foreach ( $approvers as $approver ) {
 			$approver = get_userdata( $approver->ID );
 			?>
 					<option value="<?php echo $approver->ID; ?>" <?php echo $approver->ID == $certificate_approver ? 'selected' : ''; ?>><?php echo $approver->display_name; ?></option>
 				<?php
-		}
+		} */
 		?>
 		</select>
 	</div>
-</div>
+</div> -->
 
 
 <div class="tutor-option-field-row">
