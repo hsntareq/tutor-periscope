@@ -21,7 +21,7 @@ $args = array(
 );
 
 if ( ' ' !== $user_search ) {
-	$args['search']         = $user_search;
+	$args['search']         = '*' . sanitize_text_field( $user_search ) . '*';
 	$args['search_columns'] = array( 'user_login', 'user_email', 'user_nicename' );
 }
 
