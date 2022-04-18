@@ -18,6 +18,7 @@ $args = array(
 	'paged'  => $list_paged,
 	'offset' => $offset,
 	'number' => $user_per_page,
+	'fields' => 'all',
 );
 
 if ( ' ' !== $user_search ) {
@@ -44,24 +45,27 @@ $total_count = $users_list->total_count;
 <table class="wp-list-table widefat striped table-view-list">
 	<thead>
 		<tr>
-			<td>ID</td>
-			<td>Username</td>
-			<td>Email</td>
-			<td>Primary State</td>
-			<td>Other State</td>
-			<td>License</td>
-			<td width="200">Action</td>
+			<td><?php esc_html_e( 'ID', 'tutor-periscope' ); ?></td>
+			<td><?php esc_html_e( 'Username', 'tutor-periscope' ); ?></td>
+			<td><?php esc_html_e( 'Email', 'tutor-periscope' ); ?></td>
+			<td><?php esc_html_e( 'Role', 'tutor-periscope' ); ?></td>
+			<td><?php esc_html_e( 'Primary State', 'tutor-periscope' ); ?></td>
+			<td><?php esc_html_e( 'Other State', 'tutor-periscope' ); ?></td>
+			<td><?php esc_html_e( 'License', 'tutor-periscope' ); ?></td>
+			<td width="200"><?php esc_html_e( 'Action', 'tutor-periscope' ); ?></td>
 		</tr>
 		</thead>
 	<tbody>
 		<?php if ( is_array( $users_list->users ) && count( $users_list->users ) ) : ?>
 			<?php
 			foreach ( $users_list->users as $key => $user ) :
+				$roles = is_array( $user->roles ) ? implode( ',', $user->roles ) : $user->roles;
 				?>
 			<tr>
 				<td><?php echo esc_html( $user->ID ); ?></td>
 				<td><?php echo esc_html( $user->user_login ); ?></td>
 				<td><?php echo esc_html( $user->user_email ); ?></td>
+				<td><?php echo esc_html( $roles ); ?></td>
 				<td><?php echo esc_html( get_user_meta( $user->ID, '__primary_state', true ) ); ?></td>
 				<td><?php echo esc_html( get_user_meta( $user->ID, '__other_states', true ) ); ?></td>
 
