@@ -145,12 +145,12 @@ const {
   __
 } = wp.i18n;
 window.document.addEventListener('DOMContentLoaded', async function () {
-  const studentTable = document.querySelector('.wp-list-table.students');
+  const adminPage = tp_data.admin_page;
+  const studentTable = document.querySelector('table');
 
-  if (studentTable) {
+  if (adminPage == 'tutor-students' && studentTable) {
     const theadTr = studentTable.querySelector('thead tr');
     const tbodyTr = studentTable.querySelectorAll('tbody tr');
-    const tfootTr = studentTable.querySelector('tfoot tr');
     const theadMarkup = `<th scope="col" id="tp_student_assigned_attempt" class="manage-column column-display_name column-primary">
             ${__('Assigned Attempt', 'tutor-periscope')}
         </th>
@@ -165,7 +165,12 @@ window.document.addEventListener('DOMContentLoaded', async function () {
     theadTr.insertAdjacentHTML('beforeend', theadMarkup); // append td for showing value in table body
 
     tbodyTr.forEach(eachTr => {
-      const userEmail = eachTr.querySelector('.column-user_email').innerHTML;
+      const userEmail = eachTr.querySelector('.column-user_email') ? eachTr.querySelector('.column-user_email').innerHTML : false;
+
+      if (!userEmail) {
+        return;
+      }
+
       eachTr.insertAdjacentHTML('beforeend', `
                     <td scope="col" id="" class="manage-column column-display_name column-primary">
                         <input type="number" class="tp_student_assigned_attempt_value" data-email="${userEmail}" value=""/>
@@ -177,9 +182,7 @@ window.document.addEventListener('DOMContentLoaded', async function () {
                         <input type="number" class="tp_student_remaining_attempt_value" value="" readonly/>
                     </td>
                     `);
-    }); // append thead on table footer
-
-    tfootTr.insertAdjacentHTML('beforeend', theadMarkup);
+    });
   } //on change attempt value store in DB
 
 

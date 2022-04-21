@@ -34,6 +34,9 @@ class FilterDashboardMenu {
 	 * @return void
 	 */
 	public function __construct() {
+		if ( ! get_current_user_id() ) {
+			return;
+		}
 		$reviewer        = new Reviewer();
 		$this->user_role = $reviewer->role;
 
@@ -71,7 +74,7 @@ class FilterDashboardMenu {
 	 * @return array containing key value pair of menu items
 	 */
 	public function filter_menu( array $menu ): array {
-		if ( wc_current_user_has_role( $this->user_role ) ) {
+		if ( \wc_current_user_has_role( $this->user_role ) ) {
 			$new_menu = apply_filters(
 				'tutor_periscope_frontend_dashboard_menu',
 				array(
@@ -105,7 +108,7 @@ class FilterDashboardMenu {
 		global $wp_query;
 		$query_vars = $wp_query->query_vars;
 
-		if ( wc_current_user_has_role( $this->user_role ) ) {
+		if ( \wc_current_user_has_role( $this->user_role ) ) {
 			if ( isset( $query_vars['tutor_dashboard_page'] ) && self::REVIEW_ATTEMPT_SLUG === $query_vars['tutor_dashboard_page'] || ( ! isset( $query_vars['tutor_dashboard_page'] ) && 'dashboard' === $query_vars['pagename'] ) ) {
 				$quiz_attempt_template = $this->template();
 

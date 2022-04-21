@@ -49,8 +49,6 @@ class Enqueue {
 
 		wp_enqueue_script( 'select2js', TUTOR_PERISCOPE_DIR_URL . '/assets/js/select2.min.js', array( 'jquery' ), '1.0', true );
 
-		// wp_enqueue_script( 'tutor-periscope-scripts', TUTOR_PERISCOPE_DIR_URL . '/assets/js/tp-scripts.js', array( 'jquery' ), TUTOR_PERISCOPE_VERSION, true );
-
 		// add data to use in js files.
 		wp_add_inline_script( 'tutor-periscope-backend', 'const tp_data = ' . json_encode( $this->inline_script_data() ), 'before' );
 	}
@@ -105,8 +103,8 @@ class Enqueue {
 			$course          = get_post_parent( $topic );
 			$tutor_course_id = $course->ID;
 		}
-
-		$data = array(
+		$admin_page = isset( $_GET['page'] ) && is_admin() ? $_GET['page'] : '';
+		$data       = array(
 			'url'                         => admin_url( 'admin-ajax.php' ),
 			'nonce'                       => wp_create_nonce( 'tp_nonce' ),
 			'has_lesson_time'             => $has_lesson_time,
@@ -115,6 +113,7 @@ class Enqueue {
 			'current_post_id'             => $id,
 			'current_post_type'           => $post_type,
 			'linear_path'                 => CourseMetabox::linear_path_status( $tutor_course_id ),
+			'admin_page'                  => $admin_page,
 		);
 
 		/**
@@ -122,10 +121,10 @@ class Enqueue {
 		 * if linear path on the hide video progress control.
 		 */
 		if ( $data['linear_path'] ) {
-			$custom_css = "
+			$custom_css = '
 			.plyr__progress{
 					display: none;
-			}";
+			}';
 			wp_add_inline_style( 'tutor-periscope-frontend', $custom_css );
 		}
 		return apply_filters( 'tutor_periscope_inline_script_data', $data );
