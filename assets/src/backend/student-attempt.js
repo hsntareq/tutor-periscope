@@ -34,7 +34,8 @@ window.document.addEventListener('DOMContentLoaded', async function() {
         );
         // append td for showing value in table body
         tbodyTr.forEach((eachTr) => {
-            const userEmail = eachTr.querySelector('.column-user_email')? eachTr.querySelector('.column-user_email').innerHTML : false;
+            // make sure there is tr exists
+            const userEmail = eachTr.querySelector('td[data-th=Email]')? eachTr.querySelector('td[data-th=Email] span').innerHTML : false;
             if (!userEmail) {
                 return;
             }
