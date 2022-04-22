@@ -17,63 +17,63 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/Functions.php:31
+#: inc/Functions.php:33
 msgid "Quiz Feedback Mode Extended"
 msgstr ""
 
-#: inc/Functions.php:39
+#: inc/Functions.php:41
 msgid "Strict"
 msgstr ""
 
-#: inc/Functions.php:40
+#: inc/Functions.php:42
 msgid "Answers shown only after 90% mark is achieved"
 msgstr ""
 
-#: inc/Functions.php:78
+#: inc/Functions.php:81
 msgid "No Course Name provided."
 msgstr ""
 
-#: inc/Functions.php:81
+#: inc/Functions.php:84
 msgid "No Course Code provided."
 msgstr ""
 
-#: inc/Functions.php:84
+#: inc/Functions.php:87
 msgid "No Course content matched the session description: provided."
 msgstr ""
 
-#: inc/Functions.php:87
+#: inc/Functions.php:90
 msgid "No The learning outcomes were met: provided."
 msgstr ""
 
-#: inc/Functions.php:90
+#: inc/Functions.php:93
 msgid "No Current evidence was cited for specific content: provided."
 msgstr ""
 
-#: inc/Functions.php:93
+#: inc/Functions.php:96
 msgid "No Instructional activities added value to my learning experience provided."
 msgstr ""
 
-#: inc/Functions.php:96
+#: inc/Functions.php:99
 msgid "No Course content was effectively delivered provided."
 msgstr ""
 
-#: inc/Functions.php:99
+#: inc/Functions.php:102
 msgid "No Overall, the course was valuable: provided."
 msgstr ""
 
-#: inc/Functions.php:102
+#: inc/Functions.php:105
 msgid "No Promotion of a product or service was NOT presented provided."
 msgstr ""
 
-#: inc/Functions.php:105
+#: inc/Functions.php:108
 msgid "No The environment was supportive of my learning experience provided."
 msgstr ""
 
-#: inc/Functions.php:108
+#: inc/Functions.php:111
 msgid "No Number of hours it took to complete - ONLY for Online Courses provided."
 msgstr ""
 
-#: inc/Functions.php:111
+#: inc/Functions.php:114
 msgid "No Agree - How will you apply this in your practice provided."
 msgstr ""
 
@@ -93,7 +93,7 @@ msgstr ""
 msgid "Please select user"
 msgstr ""
 
-#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/Certificates/DownloadApproval.php:105, inc/UserRole/FilterDashboardMenu.php:156
+#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/Certificates/DownloadApproval.php:105, inc/UserRole/FilterDashboardMenu.php:159
 msgid "Nonce verification failed"
 msgstr ""
 
@@ -277,7 +277,7 @@ msgstr ""
 msgid "Course Assignment"
 msgstr ""
 
-#: inc/UserRole/FilterDashboardMenu.php:78
+#: inc/UserRole/FilterDashboardMenu.php:81
 msgid "Pending Approvals"
 msgstr ""
 
@@ -631,318 +631,6 @@ msgstr ""
 
 #: templates/certificates/periscope/certificate.php:38
 msgid "minute"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "State Approver"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Assigned Attempt"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Attempt Taken"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Remaining Attempt"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Failed"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "tutor-periscope"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Success"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Do you want to update the Instructor?"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Something went wrong, please try again."
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Certificate Download Approval Success!"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Certificate Download Approval Failed!"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Invalid certificate no"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Please evaluate the course"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "1. Were the course learning objectives met?"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Strongly Agree"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Agree"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Disagree"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Neutral"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Strongly Disagree"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "2. Did course content match course description?"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "3. Was current evidence provided to substantiate material presented? "
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "4. Were the instructors effective and knowledgeable?"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "5. Was the virtual learning platform supportive to learning? "
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "6. Overall, the course was valuable."
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "7. Would you recommend this course to a colleague?"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "8. Were personal experience and observation the primary source of information? "
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "9. Was a commercial product promoted? If yes, did you feel that the product promotion was the sole purpose of the course? "
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "No"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Yes"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "10. What topic(s) would you like more training in? Share any additional comments or questions."
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Submit"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Please wait..."
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Thank you for evaluating"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Evaluate submission failed"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Please complete current lesson/quiz first to go the next content."
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Fail"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Please complete previous lesson first!"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Previous content status check failed!"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Lesson activity tracking failed"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "State Approver"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Assigned Attempt"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Attempt Taken"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Remaining Attempt"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Failed"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "tutor-periscope"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Success"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Do you want to update the Instructor?"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Something went wrong, please try again."
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Certificate Download Approval Success!"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Certificate Download Approval Failed!"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Invalid certificate no"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Please evaluate the course"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "1. Were the course learning objectives met?"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Strongly Agree"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Agree"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Disagree"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Neutral"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Strongly Disagree"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "2. Did course content match course description?"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "3. Was current evidence provided to substantiate material presented? "
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "4. Were the instructors effective and knowledgeable?"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "5. Was the virtual learning platform supportive to learning? "
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "6. Overall, the course was valuable."
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "7. Would you recommend this course to a colleague?"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "8. Were personal experience and observation the primary source of information? "
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "9. Was a commercial product promoted? If yes, did you feel that the product promotion was the sole purpose of the course? "
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "No"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Yes"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "10. What topic(s) would you like more training in? Share any additional comments or questions."
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Submit"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Please wait..."
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Thank you for evaluating"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Evaluate submission failed"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Please complete current lesson/quiz first to go the next content."
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Fail"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Please complete previous lesson first!"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Previous content status check failed!"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Lesson activity tracking failed"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1

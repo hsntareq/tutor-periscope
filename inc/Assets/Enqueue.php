@@ -30,11 +30,12 @@ class Enqueue {
 	 * Enqueue frontend assets
 	 */
 	public function enqueue_frontend_assets() {
-		wp_enqueue_style( 'tutor-periscope-frontend', TUTOR_PERISCOPE_DIR_URL . '/assets/css/frontend.min.css', null, TUTOR_PERISCOPE_VERSION, 'all' );
-		wp_enqueue_script( 'tutor-periscope-frontend', TUTOR_PERISCOPE_DIR_URL . '/assets/js/frontend.js', array( 'wp-i18n' ), TUTOR_PERISCOPE_VERSION, true );
+		if ( ! wp_script_is( 'tutor-periscope-frontend', 'enqueued' ) ) {
+			wp_enqueue_style( 'tutor-periscope-frontend', TUTOR_PERISCOPE_DIR_URL . '/assets/css/frontend.min.css', null, TUTOR_PERISCOPE_VERSION, 'all' );
+			wp_enqueue_script( 'tutor-periscope-frontend', TUTOR_PERISCOPE_DIR_URL . '/assets/js/frontend.js', array( 'wp-i18n' ), TUTOR_PERISCOPE_VERSION, true );
 
-		// add data to use in js files
-		wp_add_inline_script( 'tutor-periscope-frontend', 'const tp_data = ' . json_encode( $this->inline_script_data() ), 'before' );
+			wp_add_inline_script( 'tutor-periscope-frontend', 'const tp_data = ' . json_encode( $this->inline_script_data() ), 'before' );
+		}
 	}
 
 	/**
