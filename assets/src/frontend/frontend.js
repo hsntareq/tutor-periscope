@@ -1,4 +1,4 @@
 import "./course-evaluation";
-import "./linear";
+//import "./linear";
 import "./attempt-details";
 //import "./video-management";
