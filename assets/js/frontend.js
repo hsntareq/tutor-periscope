@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./assets/src/frontend/ajax.js":
@@ -8,6 +7,7 @@
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ajaxRequest)
@@ -49,6 +49,7 @@ async function ajaxRequest(formData, jsonResponse = true) {
   \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajax */ "./assets/src/frontend/ajax.js");
 
@@ -145,12 +146,32 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 /***/ }),
 
+/***/ "./assets/src/frontend/complete-btn-hide.js":
+/*!**************************************************!*\
+  !*** ./assets/src/frontend/complete-btn-hide.js ***!
+  \**************************************************/
+/***/ (() => {
+
+/**
+ * Hide lesson complete button
+ */
+document.addEventListener('DOMContentLoaded', function () {
+  const tutorLessonCompleteBtn = document.querySelector('.tutor-topbar-complete-btn');
+
+  if (tutorLessonCompleteBtn) {
+    tutorLessonCompleteBtn.remove();
+  }
+});
+
+/***/ }),
+
 /***/ "./assets/src/frontend/course-evaluation.js":
 /*!**************************************************!*\
   !*** ./assets/src/frontend/course-evaluation.js ***!
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajax */ "./assets/src/frontend/ajax.js");
 /**
@@ -368,6 +389,18 @@ document.addEventListener("DOMContentLoaded", function () {
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -398,17 +431,22 @@ document.addEventListener("DOMContentLoaded", function () {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 /*!*****************************************!*\
   !*** ./assets/src/frontend/frontend.js ***!
   \*****************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _course_evaluation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./course-evaluation */ "./assets/src/frontend/course-evaluation.js");
 /* harmony import */ var _attempt_details__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./attempt-details */ "./assets/src/frontend/attempt-details.js");
+/* harmony import */ var _complete_btn_hide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./complete-btn-hide */ "./assets/src/frontend/complete-btn-hide.js");
+/* harmony import */ var _complete_btn_hide__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_complete_btn_hide__WEBPACK_IMPORTED_MODULE_2__);
  //import "./linear";
 
  //import "./video-management";
+
+
 })();
 
 /******/ })()
