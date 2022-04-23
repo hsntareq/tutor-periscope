@@ -104,8 +104,11 @@ class Enqueue {
 			$course          = get_post_parent( $topic );
 			$tutor_course_id = $course->ID;
 		}
-		$admin_page = isset( $_GET['page'] ) && is_admin() ? $_GET['page'] : '';
-		$data       = array(
+		$admin_page       = isset( $_GET['page'] ) && is_admin() ? $_GET['page'] : '';
+		$user_attempts    = AttemptManagement::attempt_details( $user_id );
+		$has_quiz_attempt = isset( $user_attempts['remaining'] ) && (int) $user_attempts['remaining'] > 0 ? true : false;
+
+		$data             = array(
 			'url'                         => admin_url( 'admin-ajax.php' ),
 			'nonce'                       => wp_create_nonce( 'tp_nonce' ),
 			'has_lesson_time'             => $has_lesson_time,
@@ -115,6 +118,7 @@ class Enqueue {
 			'current_post_type'           => $post_type,
 			'linear_path'                 => CourseMetabox::linear_path_status( $tutor_course_id ),
 			'admin_page'                  => $admin_page,
+			'has_quiz_attempt'            => (bool) $has_quiz_attempt,
 		);
 
 		/**

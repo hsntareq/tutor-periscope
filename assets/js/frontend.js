@@ -146,25 +146,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 /***/ }),
 
-/***/ "./assets/src/frontend/complete-btn-hide.js":
-/*!**************************************************!*\
-  !*** ./assets/src/frontend/complete-btn-hide.js ***!
-  \**************************************************/
-/***/ (() => {
-
-/**
- * Hide lesson complete button
- */
-document.addEventListener('DOMContentLoaded', function () {
-  const tutorLessonCompleteBtn = document.querySelector('.tutor-topbar-complete-btn');
-
-  if (tutorLessonCompleteBtn) {
-    tutorLessonCompleteBtn.remove();
-  }
-});
-
-/***/ }),
-
 /***/ "./assets/src/frontend/course-evaluation.js":
 /*!**************************************************!*\
   !*** ./assets/src/frontend/course-evaluation.js ***!
@@ -360,6 +341,36 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+/***/ }),
+
+/***/ "./assets/src/frontend/hide-tutor-elements.js":
+/*!****************************************************!*\
+  !*** ./assets/src/frontend/hide-tutor-elements.js ***!
+  \****************************************************/
+/***/ (() => {
+
+/**
+ * Hide lesson complete button
+ *
+ * Hide start quiz button
+ */
+document.addEventListener('DOMContentLoaded', function () {
+  //hide lesson complete button
+  const tutorLessonCompleteBtn = document.querySelector('.tutor-topbar-complete-btn');
+
+  if (tutorLessonCompleteBtn) {
+    tutorLessonCompleteBtn.remove();
+  } //hide start quiz button if student out of attempt
+
+
+  if (!tp_data.has_quiz_attempt) {
+    const startQuizButton = document.querySelectorAll('button[name=start_quiz_btn]');
+    startQuizButton.forEach(button => {
+      button.remove();
+    });
+  }
+});
+
 /***/ })
 
 /******/ 	});
@@ -440,8 +451,8 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _course_evaluation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./course-evaluation */ "./assets/src/frontend/course-evaluation.js");
 /* harmony import */ var _attempt_details__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./attempt-details */ "./assets/src/frontend/attempt-details.js");
-/* harmony import */ var _complete_btn_hide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./complete-btn-hide */ "./assets/src/frontend/complete-btn-hide.js");
-/* harmony import */ var _complete_btn_hide__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_complete_btn_hide__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _hide_tutor_elements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hide-tutor-elements */ "./assets/src/frontend/hide-tutor-elements.js");
+/* harmony import */ var _hide_tutor_elements__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_hide_tutor_elements__WEBPACK_IMPORTED_MODULE_2__);
  //import "./linear";
 
  //import "./video-management";
