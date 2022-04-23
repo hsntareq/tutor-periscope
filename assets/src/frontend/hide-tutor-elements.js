@@ -18,4 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
             button.remove();
         });
     }
+
+    const quizDetails = document.querySelectorAll('td[data-th=Result]');
+    quizDetails.forEach((item) => {
+        if (item.querySelector('.label-danger')) {
+            item.nextSibling.nextSibling.innerHTML = '';
+        }
+    });
 });
