@@ -14,6 +14,10 @@ if ( ! isset( $instructors ) || ! isset( $instructors->users ) ) {
 global $post;
 $main_author = get_userdata( $post->post_author );
 $instructors = $instructors->users;
+if ( ! $main_author ) {
+	esc_html_e( 'Main author not found', 'tutor-periscope' );
+	return;
+}
 ?>
 <div class="tutor-periscope-instructor-meta-box">
 	<h2>
@@ -24,6 +28,9 @@ $instructors = $instructors->users;
 				<?php esc_html_e( 'Update Author', 'tutor-periscope' ); ?>
 			</label>
 			<select name="tutor-periscope-main-author" id="tutor_periscope_main_author" data-course-id="<?php the_ID(); ?>">
+				<option value="">
+					<?php esc_html_e( 'Select', 'tutor-periscope' ); ?>
+				</option>
 				<?php foreach ( $instructors as $instructor ) : ?>
 				<option value="<?php echo esc_attr( $instructor->ID ); ?>" <?php echo ( $instructor->ID == $main_author->ID ) ? esc_attr( 'selected' ) : ''; ?> title="<?php echo esc_attr( $instructor->user_email ); ?>">
 					<?php echo esc_html( '' !== $instructor->display_name ? $instructor->display_name : $instructor->user_login ); ?>
