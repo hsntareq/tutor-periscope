@@ -42,7 +42,7 @@ class CourseMetabox extends MetaboxFactory {
 	public function create_meta_box(): MetaboxInterface {
 		return new Metabox(
 			'tutor-periscope-linear-path',
-			__( 'Course linear path', 'tutor-periscope' ),
+			__( 'Video fast forwarding', 'tutor-periscope' ),
 			tutor()->course_post_type,
 			'side'
 		);
@@ -58,7 +58,7 @@ class CourseMetabox extends MetaboxFactory {
 		?>
 		<div class="tutor-periscope-form-group">
 			<label>
-				<?php esc_html_e( 'Linear Path' ); ?>
+				<?php esc_html_e( 'Allow' ); ?>
 				<input type="checkbox" name="tp-linear-status" <?php echo $status ? 'checked' : ''; ?>>
 			</label>
 		</div>
