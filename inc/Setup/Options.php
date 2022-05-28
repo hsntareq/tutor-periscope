@@ -18,57 +18,71 @@ class Options {
 	 * Register
 	 */
 	public function register() {
-		add_filter('tutor/options/attr', array($this, 'add_options'), 10);
+		add_filter( 'tutor/options/attr', array( $this, 'add_options' ), 10 );
 	}
 
-	public function add_options($attr){
+	public function add_options( $attr ) {
+
 		$attr['periscope'] = array(
-			'label'     => __('Periscope Option', 'tutor-pro'),
-			'sections'    => array(
-				'general' => array(
-					'label' => __('Course Single Page', 'tutor-pro'),
-					'desc' => __('Enable Disable Option to on/off notification on various event', 'tutor-pro'),
-					'fields' => array(
-						'periscope_remove_free' => array(
-							'type'          => 'checkbox',
-							'label'         => __('Free Text of course item', 'tutor-pro'),
-							'label_title'   => __('Remove Free Text', 'tutor-pro'),
-							'default' 		=> '0',
-							'desc'          => __('Enable this to show free text under course enrollment button of single course item.', 'tutor-pro') ,
+			'label'    => __( 'Periscope', 'tutor' ),
+			'slug'     => 'gradebook',
+			'desc'     => __( 'Gradebook Settings', 'tutor-pro' ),
+			'template' => 'basic',
+			'icon'     => 'tutor-icon-gear',
+			'blocks'   => array(
+				array(
+					'slug'       => 'course_single_page',
+					'label'      => __( 'Course Single Page', 'tutor-pro' ),
+					'block_type' => 'uniform',
+					'desc'       => __( 'Enable Disable Option to on/off notification on various event', 'tutor-pro' ),
+					'fields'     => array(
+						array(
+							'key'         => 'periscope_remove_free',
+							'type'        => 'toggle_switch',
+							'label'       => __( 'Free Text of course item', 'tutor' ),
+							'label_title' => __( 'Remove Free Text', 'tutor' ),
+							'default'     => 'off',
+							'desc'        => __( 'Enable this to show free text under course enrollment button of single course item.', 'tutor' ),
 						),
 					),
 				),
-				'certificate' => array(
-					'label' => __('Certificate Additional', 'tutor-pro'),
-					'desc' => __('This area is for additional settings of certificate', 'tutor-pro'),
-					'fields' => array(
-						'periscope_owner_name' => array(
-							'type'          => 'text',
-							'label'         => __('Owner\'s Name', 'tutor-pro'),
-							'label_title'   => __('Write the name of the owner for certificate section', 'tutor-pro'),
-							'default' 		=> '0',
-							'desc'          => __('This owner\'s name will appear in the signature section of the certificate.', 'tutor-pro') ,
+				array(
+					'slug'       => 'certificate',
+					'label'      => __( 'Certificate Additional', 'tutor-pro' ),
+					'block_type' => 'uniform',
+					'desc'       => __( 'This area is for additional settings of certificate', 'tutor-pro' ),
+					'fields'     => array(
+						array(
+							'key'         => 'periscope_owner_name',
+							'type'        => 'text',
+							'label'       => __( 'Owner\'s Name', 'tutor' ),
+							'label_title' => __( 'Write the name of the owner for certificate section', 'tutor-pro' ),
+							'default'     => '',
+							'desc'        => __( 'This owner\'s name will appear in the signature section of the certificate.', 'tutor' ),
 						),
-						'periscope_owner_title' => array(
-							'type'          => 'text',
-							'label'         => __('Owner\'s Title', 'tutor-pro'),
-							'label_title'   => __('Write the title of the owner for certificate section', 'tutor-pro'),
-							'default' 		=> 'Periscope Founder, CEO0',
-							'desc'          => __('This owner\'s title will appear in the signature section of the certificate.', 'tutor-pro') ,
+						array(
+							'key'         => 'periscope_owner_title',
+							'type'        => 'text',
+							'label'       => __( 'Owner\'s Title', 'tutor' ),
+							'label_title' => __( 'Write the title of the owner for certificate section', 'tutor-pro' ),
+							'default'     => '',
+							'desc'        => __( 'This owner\'s title will appear in the signature section of the certificate.', 'tutor' ),
 						),
-						'periscope_owner_address' => array(
-							'type'          => 'text',
-							'label'         => __('Owner\'s Address', 'tutor-pro'),
-							'label_title'   => __('Write the address of the owner for certificate section', 'tutor-pro'),
-							'default' 		=> '1633 Westlake Avenue North, Suite 200, Seattle, WA 98109',
-							'desc'          => __('This owner\'s title will appear in the signature section of the certificate.', 'tutor-pro') ,
+						array(
+							'key'         => 'periscope_owner_address',
+							'type'        => 'text',
+							'label'       => __( 'Owner\'s Address', 'tutor' ),
+							'label_title' => __( 'Write the address of the owner for certificate section', 'tutor-pro' ),
+							'default'     => '',
+							'desc'        => __( 'This owner\'s address will appear in the signature section of the certificate.', 'tutor' ),
 						),
-						'periscope_owner_email' => array(
-							'type'          => 'text',
-							'label'         => __('Owner\'s Email', 'tutor-pro'),
-							'label_title'   => __('Write the email of the owner for certificate section', 'tutor-pro'),
-							'default' 		=> 'admin@sitedomain.com',
-							'desc'          => __('This owner\'s title will appear in the signature section of the certificate.', 'tutor-pro') ,
+						array(
+							'key'         => 'periscope_owner_email',
+							'type'        => 'text',
+							'label'       => __( 'Owner\'s Email', 'tutor' ),
+							'label_title' => __( 'Write the email of the owner for certificate section', 'tutor-pro' ),
+							'default'     => '',
+							'desc'        => __( 'This owner\'s email will appear in the signature section of the certificate.', 'tutor' ),
 						),
 					),
 				),

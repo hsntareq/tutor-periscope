@@ -89,18 +89,18 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 					   <span>
 						   License:
 						   <span class="course-info">
-								<?php echo esc_html( $student_license_number ?: '' ); ?>
+								<?php echo ( $student_license_number ?: '' ); ?>
 						   </span>
 					   </span>
 				   </p>
 				<?php endif; ?>
-				   <p><span>Date Completed: </span> <span class="course-info"><?php esc_html_e( $completed_date ); ?></span></p>
+				   <p><span>Date Completed: </span> <span class="course-info"><?php ( $completed_date ); ?></span></p>
 				   <p>
 					   <?php
 							$duration = get_tutor_course_duration_context( $course->ID );
 						?>
 					   <span>
-						   Contact Hours: <?php echo esc_html( false !== $duration ? $duration : '' ); ?>
+						   Contact Hours: <?php echo ( false !== $duration ? $duration : '' ); ?>
 					   </span>
 				   </p>
 			   </section>

@@ -93,15 +93,15 @@ msgstr ""
 msgid "Please select user"
 msgstr ""
 
-#: inc/Attempt/AttemptManagement.php:115, inc/Attempt/AttemptManagement.php:139, inc/Certificates/DownloadApproval.php:105, inc/UserRole/FilterDashboardMenu.php:159
+#: inc/Attempt/AttemptManagement.php:104, inc/Attempt/AttemptManagement.php:128, inc/Certificates/DownloadApproval.php:105, inc/UserRole/FilterDashboardMenu.php:159
 msgid "Nonce verification failed"
 msgstr ""
 
-#: inc/Attempt/AttemptManagement.php:112
+#: inc/Attempt/AttemptManagement.php:101
 msgid "Invalid user"
 msgstr ""
 
-#: inc/Attempt/AttemptManagement.php:198
+#: inc/Attempt/AttemptManagement.php:187
 msgid "A student is out of attempt"
 msgstr ""
 
@@ -126,7 +126,7 @@ msgid "Approve failed, please try again."
 msgstr ""
 
 #: inc/Course/CourseMetabox.php:45
-msgid "Course linear path"
+msgid "Video fast forwarding"
 msgstr ""
 
 #: inc/Email/CourseEnrollmentEmail.php:40
@@ -229,7 +229,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: inc/Instructors/ManageInstructors.php:131
+#: inc/Instructors/ManageInstructors.php:133
 msgid "Permission denied"
 msgstr ""
 
@@ -413,7 +413,7 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:55
+#: views/admin/course-assignment-form.php:55, views/metabox/instructor.php:32
 msgid "Select"
 msgstr ""
 
@@ -573,11 +573,15 @@ msgstr ""
 msgid "Invalid instructor list"
 msgstr ""
 
-#: views/metabox/instructor.php:20
-msgid "Update main author of this course"
+#: views/metabox/instructor.php:18
+msgid "Main author not found"
 msgstr ""
 
 #: views/metabox/instructor.php:24
+msgid "Update main author of this course"
+msgstr ""
+
+#: views/metabox/instructor.php:28
 msgid "Update Author"
 msgstr ""
 
