@@ -166,7 +166,7 @@ window.document.addEventListener('DOMContentLoaded', async function () {
 
     tbodyTr.forEach(eachTr => {
       // make sure there is tr exists
-      const userEmail = eachTr.querySelector('td[data-th=Email]') ? eachTr.querySelector('td[data-th=Email] span').innerHTML : false;
+      const userEmail = eachTr.cells[2].innerText;
 
       if (!userEmail) {
         return;
@@ -222,7 +222,6 @@ window.document.addEventListener('DOMContentLoaded', async function () {
     formData.set('action', 'tutor_periscope_all_student_attempts');
     formData.set('nonce', tp_data.nonce);
     const response = await (0,_frontend_ajax__WEBPACK_IMPORTED_MODULE_0__["default"])(formData);
-    console.log(response);
 
     if (response.success && response.data.length) {
       let i = 0;

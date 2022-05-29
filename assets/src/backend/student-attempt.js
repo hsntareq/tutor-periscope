@@ -35,7 +35,7 @@ window.document.addEventListener('DOMContentLoaded', async function() {
         // append td for showing value in table body
         tbodyTr.forEach((eachTr) => {
             // make sure there is tr exists
-            const userEmail = eachTr.querySelector('td[data-th=Email]')? eachTr.querySelector('td[data-th=Email] span').innerHTML : false;
+            const userEmail = eachTr.cells[2].innerText;
             if (!userEmail) {
                 return;
             }
@@ -103,7 +103,6 @@ window.document.addEventListener('DOMContentLoaded', async function() {
         formData.set('action', 'tutor_periscope_all_student_attempts');
         formData.set('nonce', tp_data.nonce);
         const response = await ajaxRequest(formData);
-        console.log(response)
         if (response.success && response.data.length) {
             let i = 0;
             response.data.forEach((item) => {
