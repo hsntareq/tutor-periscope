@@ -108,7 +108,7 @@ class Enqueue {
 		$user_attempts    = AttemptManagement::attempt_details( $user_id );
 		$has_quiz_attempt = isset( $user_attempts['remaining'] ) && (int) $user_attempts['remaining'] > 0 ? true : false;
 
-		$data             = array(
+		$data = array(
 			'url'                         => admin_url( 'admin-ajax.php' ),
 			'nonce'                       => wp_create_nonce( 'tp_nonce' ),
 			'has_lesson_time'             => $has_lesson_time,
@@ -132,7 +132,7 @@ class Enqueue {
 			}';
 			wp_add_inline_style( 'tutor-periscope-frontend', $custom_css );
 		}
-		return apply_filters( 'tutor_periscope_inline_script_data', $data );
+		return apply_filters( 'tutor_periscope_inline_style_data', $data );
 	}
 }
 
