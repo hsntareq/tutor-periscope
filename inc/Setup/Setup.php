@@ -48,10 +48,17 @@ class Setup {
 		 *
 		 * @since v1.0.0
 		 */
-		EvaluationForm::create_table();
-		EvaluationFormFields::create_table();
-		EvaluationFormFeedback::create_table();
-		CertificateApprovalsTable::create_table();
+		$tables = array(
+			EvaluationForm::class,
+			EvaluationFormFields::class,
+			EvaluationFormFeedback::class,
+			CertificateApprovalsTable::class,
+		);
+
+		foreach ( $tables as $table ) {
+			$table::create_table();
+		}
+
 		update_option( 'tutor_periscope_version', TUTOR_PERISCOPE_VERSION );
 
 		do_action( 'tutor_periscope_after_activation' );
