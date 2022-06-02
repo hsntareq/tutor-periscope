@@ -52,6 +52,11 @@ class EvaluationMetabox extends MetaboxFactory {
 	 * @return void
 	 */
 	public function meta_box_view() {
-		echo 'hello';
+		$template = TUTOR_PERISCOPE_TEMPLATES . 'backend/evaluation-form.php';
+		if ( file_exists( $template ) ) {
+			tutor_load_template_from_custom_path(
+				$template
+			);
+		}
 	}
 }
