@@ -9,7 +9,7 @@
 ?>
 <div class="tp-evaluation-form-wrapper">
 	<div class="tutor-row tutor-mb-32">
-		<form action="">
+		<form method="post">
 			<div class="tutor-row">
 				<div class="tutor-col-4">
 					<button type="button" class="tutor-mb-24 tutor-mt-12 tutor-btn tutor-btn-outline-primary tutor-btn-sm">
