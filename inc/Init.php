@@ -10,6 +10,7 @@ namespace Tutor_Periscope;
 use Google\Service\Classroom\Assignment;
 use Tutor_Periscope\Certificates\DownloadApproval;
 use Tutor_Periscope\Course\CourseMetabox;
+use Tutor_Periscope\FormBuilder\FormClient;
 use Tutor_Periscope\Instructors\ManageInstructors;
 use Tutor_Periscope\Metabox\EvaluationMetabox;
 use Tutor_Periscope\Metabox\MetaboxInit;
@@ -53,6 +54,7 @@ final class Init {
 			ManageInstructors::class,
 			CourseMetabox::class,
 			MetaboxInit::class,
+			FormClient::class,
 		);
 	}
 

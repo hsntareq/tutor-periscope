@@ -23,9 +23,10 @@ class FormBuilder {
      */
     public static function create( string $type ): FormInterface {
         try {
-            return new $type();
+            $class = "Tutor_Periscope\\FormBuilder\\{$type}";
+            return new $class();
         } catch ( \Throwable $th ) {
-            throw $th;
+            echo $th->getMessage();
         }
     }
 }
