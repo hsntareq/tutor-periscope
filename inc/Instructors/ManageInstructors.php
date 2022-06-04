@@ -101,6 +101,9 @@ class ManageInstructors extends DB_Query {
 	 * table.
 	 */
 	public function update_main_instructor( int $post_id ) {
+		if ( ! isset( $_POST['tutor-periscope-main-author'] ) ) {
+			return;
+		}
 		if ( current_user_can( 'manage_options' ) ) {
 			$instructor_id = (int) sanitize_text_field( $_POST['tutor-periscope-main-author'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			if ( ! $instructor_id > 0 ) {

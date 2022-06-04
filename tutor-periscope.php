@@ -20,6 +20,8 @@ define( 'TUTOR_PERISCOPE_DIR_URL', plugin_dir_url( __FILE__ ) );
 define( 'TUTOR_PERISCOPE_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TUTOR_PERISCOPE_TEMPLATES', trailingslashit( plugin_dir_path( __FILE__ ) . 'templates' ) );
 define( 'TUTOR_PERISCOPE_VIEWS', trailingslashit( plugin_dir_path( __FILE__ ) . 'views' ) );
+define( 'TP_NONCE', 'tp_nonce' );
+define( 'TP_NONCE_ACTION', 'tp_nonce_action' );
 
 // Require autoload.
 if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) :
