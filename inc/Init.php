@@ -18,6 +18,7 @@ use Tutor_Periscope\UserRole\FilterDashboardMenu;
 use Tutor_Periscope\UserRole\Reviewer;
 use Tutor_Periscope\Users\UserMetaFields;
 use Tutor_Periscope\Users\Users;
+use Tutor_Periscope\Utilities\Utilities;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -55,6 +56,7 @@ final class Init {
 			CourseMetabox::class,
 			MetaboxInit::class,
 			FormClient::class,
+			Utilities::class,
 		);
 	}
 
