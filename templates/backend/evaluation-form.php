@@ -17,10 +17,10 @@
 					</button>
 				</div>
 				<div class="tutor-col-12 tutor-mb-24">
-					<input type="text" name="title" class="tutor-form-control" placeholder="<?php echo esc_attr( 'Title', 'tutor-periscope' ); ?>">
+					<input type="text" name="tp_ef_title" class="tutor-form-control" placeholder="<?php echo esc_attr( 'Title', 'tutor-periscope' ); ?>">
 				</div>
 				<div class="tutor-col-12 tutor-mb-24">
-					<textarea name="description" rows="3" placeholder="<?php echo esc_attr( 'Description...', 'tutor-periscope' ); ?>" style="width: 100%;"></textarea>
+					<textarea name="tp_ef_description" rows="3" placeholder="<?php echo esc_attr( 'Description...', 'tutor-periscope' ); ?>" style="width: 100%;"></textarea>
 				</div>
 			</div>
 		</form>

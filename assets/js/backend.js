@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
     addField.onclick = event => {
       const html = `
             <div class="tutor-col-12 tutor-mb-24 tp-remove-able-wrapper tutor-d-flex tutor-justify-between">
-                <input type="text" name="field[]" class="tutor-form-control" placeholder="${__('Add field label', 'tutor-periscope')}">
+                <input type="text" name="tp_ef_field[]" class="tutor-form-control" placeholder="${__('Add field label', 'tutor-periscope')}">
                 <button type="button" class="tp-remove-able tutor-btn tutor-btn-outline-primary tutor-btn-sm" data-tp-ajax="${formData}">
                     ${__('Remove', 'tutor-periscope')}
                 </button>
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       (0,_form_controls__WEBPACK_IMPORTED_MODULE_0__["default"])(html, wrapperSelector);
     };
-  } // remove element
+  } // remove element.
 
 
   const wrapper = document.querySelector('.tp-evaluation-form-wrapper');
