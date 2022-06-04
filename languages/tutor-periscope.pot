@@ -269,6 +269,10 @@ msgstr ""
 msgid "Quiz attempt taken"
 msgstr ""
 
+#: inc/Metabox/EvaluationMetabox.php:40
+msgid "Create Evaluation Form"
+msgstr ""
+
 #: inc/Setup/Dashboard.php:28, inc/Setup/Dashboard.php:28
 msgid "Course Evaluation"
 msgstr ""
@@ -291,6 +295,10 @@ msgstr ""
 
 #: inc/Users/UserMetaFields.php:57
 msgid "Separate each state by semicolon (;)"
+msgstr ""
+
+#: templates/backend/evaluation-form.php:16
+msgid "+ Add Field"
 msgstr ""
 
 #: templates/frontend/course-evaluation.php:4

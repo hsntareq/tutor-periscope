@@ -5,6 +5,9 @@ import "./import_bulk_user";
 import "./metabox";
 //import "./update-instructor";
 // import "./student_assignment";
+import "./form-controls";
+import "./evaluation-meta-box";
+
 jQuery(document).ready(function () {
 
     this.PrintDiv = () => {

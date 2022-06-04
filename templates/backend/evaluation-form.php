@@ -10,9 +10,9 @@
 <div class="tp-evaluation-form-wrapper">
 	<div class="tutor-row tutor-mb-32">
 		<form method="post">
-			<div class="tutor-row">
+			<div class="tutor-row tp-form-controls">
 				<div class="tutor-col-4">
-					<button type="button" class="tutor-mb-24 tutor-mt-12 tutor-btn tutor-btn-outline-primary tutor-btn-sm">
+					<button type="button" class="tutor-mb-24 tutor-mt-12 tutor-btn tutor-btn-outline-primary tutor-btn-sm tp-add-field">
 						<?php esc_html_e( '+ Add Field', 'tutor-periscope' ); ?>
 					</button>
 				</div>

@@ -16,6 +16,146 @@ jQuery(function () {
 
 /***/ }),
 
+/***/ "./assets/src/backend/evaluation-meta-box.js":
+/*!***************************************************!*\
+  !*** ./assets/src/backend/evaluation-meta-box.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _form_controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./form-controls */ "./assets/src/backend/form-controls.js");
+
+/**
+ * Evaluation form controls management
+ *
+ * @since v2.0.0
+ */
+
+const {
+  __
+} = wp.i18n;
+document.addEventListener('DOMContentLoaded', function () {
+  const addField = document.querySelector('.tp-add-field');
+  const formData = {
+    action: 'test'
+  };
+
+  if (addField) {
+    addField.onclick = event => {
+      const html = `
+            <div class="tutor-col-12 tutor-mb-24 tp-remove-able-wrapper tutor-d-flex tutor-justify-between">
+                <input type="text" name="field[]" class="tutor-form-control" placeholder="${__('Add field label', 'tutor-periscope')}">
+                <button type="button" class="tp-remove-able tutor-btn tutor-btn-outline-primary tutor-btn-sm" data-tp-ajax="${formData}">
+                    ${__('Remove', 'tutor-periscope')}
+                </button>
+            </div>
+            `;
+      const wrapperSelector = '.tp-form-controls'; //Add dynamic field.
+
+      (0,_form_controls__WEBPACK_IMPORTED_MODULE_0__["default"])(html, wrapperSelector);
+    };
+  } // remove element
+
+
+  const wrapper = document.querySelector('.tp-evaluation-form-wrapper');
+
+  wrapper.onclick = event => {
+    event.preventDefault();
+    const target = event.target;
+
+    if (event.target.classList.contains('tp-remove-able')) {
+      (0,_form_controls__WEBPACK_IMPORTED_MODULE_0__.removeElement)(target);
+    } else {
+      return;
+    }
+  };
+});
+
+/***/ }),
+
+/***/ "./assets/src/backend/form-controls.js":
+/*!*********************************************!*\
+  !*** ./assets/src/backend/form-controls.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ addDynamicField),
+/* harmony export */   "removeElement": () => (/* binding */ removeElement)
+/* harmony export */ });
+/* harmony import */ var _frontend_ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../frontend/ajax */ "./assets/src/frontend/ajax.js");
+/**
+ * Append/remove form fields
+ * 
+ * @since v2.0.0
+ */
+
+const {
+  __
+} = wp.i18n;
+/**
+ * Add field anywhere needed
+ *
+ * @since v2.0.0
+ *
+ * @param field   html field to add
+ * @param appendAbleElement  selector where it should append.
+ * CSS Selector like: '.class #id' or html tag that is valid.
+ *
+ * @return void
+ */
+
+function addDynamicField(field, appendAbleElement) {
+  document.querySelector(appendAbleElement).insertAdjacentHTML('beforeend', field);
+}
+/**
+ * A global remove-able function to remove field from 
+ * anywhere. Just use class tp-remove-able, it will remove the closest div
+ * of having class tp-remove-able-wrapper
+ * 
+ * If field should make ajax request before removing element then add
+ * attr like: data-tp-ajax={action: 'abc'}
+ * 
+ * So data-tp-ajax should contain valid object as value.
+ *
+ * Note: for dynamically added element it will not work.
+ * In that we can just removeElement function and pass
+ * HTML element like below:
+ *
+ * const a = document.querySelector('.b);
+ * removeElement(a);
+ *
+ * @return void
+ */
+
+const removeAbles = document.querySelectorAll('.tp-remove-able');
+removeAbles.forEach(elem => {
+  elem.onclick = async event => {
+    event.preventDefault(); // if has data attr make ajax request
+
+    removeElement();
+  };
+});
+async function removeElement(elem) {
+  if (elem.hasAttribute('data-tp-ajax')) {
+    const formData = elem.dataset.tpAjax;
+    const response = await (0,_frontend_ajax__WEBPACK_IMPORTED_MODULE_0__["default"])(formData);
+
+    if (response.success) {
+      tutor_toast(__('Success', 'tutor-periscope'), __(response.data, 'tutor-periscope'), 'success');
+    } else {
+      tutor_toast(__('Failed', 'tutor-periscope'), __(response.data, 'tutor-periscope'), 'error');
+    }
+  }
+
+  elem.closest('.tp-remove-able-wrapper').remove();
+}
+
+/***/ }),
+
 /***/ "./assets/src/backend/import_bulk_user.js":
 /*!************************************************!*\
   !*** ./assets/src/backend/import_bulk_user.js ***!
@@ -16543,12 +16683,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _import_bulk_user__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_import_bulk_user__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _metabox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./metabox */ "./assets/src/backend/metabox.js");
 /* harmony import */ var _metabox__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_metabox__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _form_controls__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./form-controls */ "./assets/src/backend/form-controls.js");
+/* harmony import */ var _evaluation_meta_box__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./evaluation-meta-box */ "./assets/src/backend/evaluation-meta-box.js");
 
 
 
 
  //import "./update-instructor";
 // import "./student_assignment";
+
+
 
 jQuery(document).ready(function () {
   this.PrintDiv = () => {
