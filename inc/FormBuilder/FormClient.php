@@ -8,6 +8,7 @@
 
 namespace Tutor_Periscope\FormBuilder;
 
+use Tutor_Periscope\Query\DB_Query;
 use Tutor_Periscope\Utilities\Utilities;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -39,31 +40,49 @@ class FormClient {
 	 * @return void
 	 */
 	public static function manage_form( int $post_id ) {
+		Utilities::verify_nonce();
 		$form = FormBuilder::create( 'Form' );
+
 		$post = $_POST;
 
-		Utilities::verify_nonce();
 		$form_data = array(
 			'tutor_course_id'  => $post_id,
 			'form_title'       => $post['tp_ef_title'],
 			'form_description' => $post['tp_ef_description'],
 		);
 
-		$form_fields = array();
-		if ( isset( $post['tp_ef_fields'] ) ) {
-			foreach ( $post['tp_ef_fields'] as $key => $field ) {
-				$data = array(
-					'form_id'         => '',
-					'tutor_course_id' => $post_id,
-					'field_label'     => $field,
-					'field_type'      => '',
-				);
-				array_push( $form_fields, $data );
+		if ( isset( $post['tp_ef_id'] ) && '' !== $post['tp_ef_id'] ) {
+			$form_data['tp_ef_id'] = $post['tp_ef_id'];
+		}
+
+		/**
+		 * Note: we assume form->create() will always return true because
+		 * if some rows not update
+		 * then wpdb::update may provide false and then this method will not
+		 * proceed for form fields.
+		 */
+		$form_id = 0;
+		if ( isset( $form_data['tp_ef_id'] ) ) {
+			$form->update( $form_data, $form_data['tp_ef_id'] );
+			$form_id = $form_data['tp_ef_id'];
+		} else {
+			$form_id = $form->create( $form_data );
+		}
+
+		if ( $form_id ) {
+			if ( isset( $post['tp_ef_fields'] ) ) {
+				foreach ( $post['tp_ef_fields'] as $key => $field ) {
+					$data = array(
+						'form_id'         => $form_id,
+						'tutor_course_id' => $post_id,
+						'field_label'     => $field,
+						'field_type'      => 'compare',
+					);
+					$form_field_builder = FormBuilder::create( 'FormField');
+					$form_field_builder->create( $data );
+				}
 			}
 		}
 
-		echo '<pre>';
-		print_r( $form_fields );
-		exit;
 	}
 }

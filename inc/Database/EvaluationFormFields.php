@@ -53,7 +53,6 @@ class EvaluationFormFields extends DatabaseTable {
         id INT(9) unsigned NOT NULL AUTO_INCREMENT,
 		form_id INT(9) unsigned NOT NULL,
         tutor_course_id INT(9) NOT NULL,
-        field_id INT(3),
         field_label VARCHAR(255),
         field_type VARCHAR(255),
 

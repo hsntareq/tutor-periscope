@@ -18,8 +18,6 @@ abstract class DB_Query {
 
 	/**
 	 * To implement to the derived class
-	 *
-	 * @return void
 	 */
 	abstract public function get_table();
 
@@ -83,5 +81,4 @@ abstract class DB_Query {
 		);
 		return $update ? true : false;
 	}
-
 }

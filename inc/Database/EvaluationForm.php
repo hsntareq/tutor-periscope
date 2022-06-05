@@ -22,7 +22,7 @@ class EvaluationForm extends DatabaseTable {
 	 *
 	 * @var $table_name
 	 */
-	private static $table_name = 'tp_evaluation_form';
+	private static $table_name = 'tp_evaluation_forms';
 
 	/**
 	 * Get table name
