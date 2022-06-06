@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const html = `
             <div class="tutor-col-12 tutor-mb-24 tp-remove-able-wrapper tutor-d-flex tutor-justify-between">
                 <input type="text" name="tp_ef_fields[]" class="tutor-form-control" placeholder="${__('Add field label', 'tutor-periscope')}">
-                <button type="button" class="tp-remove-able tutor-btn tutor-btn-outline-primary tutor-btn-sm" data-tp-ajax="${formData}">
+                <button type="button" class="tp-remove-able tutor-btn tutor-btn-outline-primary tutor-btn-sm">
                     ${__('Remove', 'tutor-periscope')}
                 </button>
             </div>

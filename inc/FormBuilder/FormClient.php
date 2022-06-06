@@ -107,7 +107,7 @@ class FormClient {
 					WHERE form.tutor_course_id = %d
 				",
 				$course_id
-			);
+			)
 		);
 		return $response;
 	}

@@ -9,6 +9,7 @@
 
 namespace Tutor_Periscope\Metabox;
 
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
