@@ -17,7 +17,7 @@ use Tutor_Periscope\Query\QueryHelper;
 
 class FormField implements FormInterface {
 
-    /**
+	/**
 	 * Get table name
 	 *
 	 * @since v2.0.0
@@ -47,5 +47,22 @@ class FormField implements FormInterface {
 
 	public function delete( int $id ): bool {
 
+	}
+
+	/**
+	 * Delete all form fields by form id
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param int $form_id  form id.
+	 *
+	 * @return bool
+	 */
+	public static function delete_all_fields_by_form( int $form_id ): bool {
+		$form_id = sanitize_text_field( $form_id );
+		return QueryHelper::delete(
+			( new FormField() )->get_table(),
+			array( 'form_id' => $form_id )
+		);
 	}
 }

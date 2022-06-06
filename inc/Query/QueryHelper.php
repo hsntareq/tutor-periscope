@@ -77,4 +77,23 @@ class QueryHelper {
 		);
 		return $update ? true : false;
 	}
+
+	/**
+	 * Delete rows from table
+	 *
+	 * @param string $table  table name.
+	 * @param array  $where  key value pairs.Where key is the name of
+	 * column & value is the value to match.
+	 * For ex: [ 'id' => 1 ].
+	 *
+	 * @since v2.0.0
+	 */
+	public static function delete( string $table, array $where ): bool {
+		global $wpdb;
+		$delete = $wpdb->delete(
+			$table,
+			$where
+		);
+		return $delete ? true : false;
+	}
 }

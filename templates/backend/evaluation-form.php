@@ -12,8 +12,10 @@ use Tutor_Periscope\Utilities\Utilities;
 $form_fields      = FormClient::get_form_fields( get_the_ID() );
 $form_title       = '';
 $form_description = '';
+$form_id          = '';
 
 if ( is_array( $form_fields ) && count( $form_fields ) ) {
+	$form_id          = $form_fields[0]->id;
 	$form_title       = $form_fields[0]->form_title;
 	$form_description = $form_fields[0]->form_description;
 }
@@ -22,6 +24,7 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 	<div class="tutor-row tutor-mb-32">
 		<form method="post">
 			<?php Utilities::create_nonce_field(); ?>
+			<input type="hidden" name="tp_ef_id" value="<?php echo esc_attr( $form_id ); ?>">
 			<div class="tutor-row tp-form-controls">
 				<div class="tutor-col-4">
 					<button type="button" class="tutor-mb-24 tutor-mt-12 tutor-btn tutor-btn-outline-primary tutor-btn-sm tp-add-field">

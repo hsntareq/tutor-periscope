@@ -8,7 +8,6 @@
 
 namespace Tutor_Periscope\FormBuilder;
 
-use Tutor_Periscope\Query\DB_Query;
 use Tutor_Periscope\Utilities\Utilities;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -41,9 +40,9 @@ class FormClient {
 	 */
 	public static function manage_form( int $post_id ) {
 		Utilities::verify_nonce();
-		$form = FormBuilder::create( 'Form' );
-
-		$post = $_POST;
+		$form               = FormBuilder::create( 'Form' );
+		$form_field_builder = FormBuilder::create( 'FormField' );
+		$post               = $_POST;
 
 		$form_data = array(
 			'tutor_course_id'  => $post_id,
@@ -52,7 +51,7 @@ class FormClient {
 		);
 
 		if ( isset( $post['tp_ef_id'] ) && '' !== $post['tp_ef_id'] ) {
-			$form_data['tp_ef_id'] = $post['tp_ef_id'];
+			$form_data['id'] = $post['tp_ef_id'];
 		}
 
 		/**
@@ -62,9 +61,11 @@ class FormClient {
 		 * proceed for form fields.
 		 */
 		$form_id = 0;
-		if ( isset( $form_data['tp_ef_id'] ) ) {
-			$form->update( $form_data, $form_data['tp_ef_id'] );
-			$form_id = $form_data['tp_ef_id'];
+		if ( isset( $form_data['id'] ) ) {
+			$form->update( $form_data, $form_data['id'] );
+			$form_id = $form_data['id'];
+			// Delete form fields since it's going to be updated.
+			FormField::delete_all_fields_by_form( $form_id );
 		} else {
 			$form_id = $form->create( $form_data );
 		}
@@ -72,13 +73,15 @@ class FormClient {
 		if ( $form_id ) {
 			if ( isset( $post['tp_ef_fields'] ) ) {
 				foreach ( $post['tp_ef_fields'] as $key => $field ) {
-					$data               = array(
+					if ( '' === $field ) {
+						continue;
+					}
+					$data = array(
 						'form_id'         => $form_id,
 						'tutor_course_id' => $post_id,
 						'field_label'     => $field,
-						'field_type'      => 'compare',
+						'field_type'      => $post['tp_ef_field_type'][ $key ],
 					);
-					$form_field_builder = FormBuilder::create( 'FormField' );
 					$form_field_builder->create( $data );
 				}
 			}

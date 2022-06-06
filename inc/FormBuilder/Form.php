@@ -55,12 +55,22 @@ class Form implements FormInterface {
 
 	}
 
+	/**
+	 * Update form based on id
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param array $request  form data.
+	 * @param int   $id  form id to delete.
+	 *
+	 * @return bool  true on success otherwise false
+	 */
 	public function update( array $request, int $id ): bool {
 		return QueryHelper::update(
 			$this->get_table(),
 			$request,
 			array(
-				'id' => $request['tp_ef_id'],
+				'id' => $request['id'],
 			)
 		);
 	}
