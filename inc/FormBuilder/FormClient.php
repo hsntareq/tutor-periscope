@@ -116,4 +116,32 @@ class FormClient {
 		);
 		return $response;
 	}
+
+	/**
+	 * Render evaluation form based on course id
+	 * to view on the front-end
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param int  $course_id  course id.
+	 * @param bool $echo  whether it will echo or return.
+	 */
+	public static function render_form( int $course_id, $echo = true ) {
+		ob_start();
+		$template = TUTOR_PERISCOPE_TEMPLATES . 'frontend/evaluation-form-view.php';
+		if ( file_exists( $template ) ) {
+			tutor_load_template_from_custom_path(
+				$template,
+				array(
+					'data' => self::get_form_fields( $course_id )
+				)
+			);
+			$view = apply_filters( 'tp_evaluation_form_view', ob_get_clean() );
+			if ( $echo ) {
+				echo $view;// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			} else {
+				return $view;
+			}
+		}
+	}
 }
