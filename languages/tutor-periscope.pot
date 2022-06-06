@@ -229,7 +229,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: inc/Instructors/ManageInstructors.php:133
+#: inc/Instructors/ManageInstructors.php:136
 msgid "Permission denied"
 msgstr ""
 
@@ -269,7 +269,7 @@ msgstr ""
 msgid "Quiz attempt taken"
 msgstr ""
 
-#: inc/Metabox/EvaluationMetabox.php:40
+#: inc/Metabox/EvaluationMetabox.php:41
 msgid "Create Evaluation Form"
 msgstr ""
 
@@ -297,8 +297,32 @@ msgstr ""
 msgid "Separate each state by semicolon (;)"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:16
+#: inc/Utilities/Utilities.php:42
+msgid "Tutor periscope nonce verification failed"
+msgstr ""
+
+#: templates/backend/evaluation-form.php:28
 msgid "+ Add Field"
+msgstr ""
+
+#: templates/backend/evaluation-form.php:40
+msgid "Add field label"
+msgstr ""
+
+#: templates/backend/evaluation-form.php:43
+msgid "Field type"
+msgstr ""
+
+#: templates/backend/evaluation-form.php:45
+msgid "Compare"
+msgstr ""
+
+#: templates/backend/evaluation-form.php:48
+msgid "Vote"
+msgstr ""
+
+#: templates/backend/evaluation-form.php:53
+msgid "Remove"
 msgstr ""
 
 #: templates/frontend/course-evaluation.php:4
@@ -646,6 +670,30 @@ msgid "minute"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Field type"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Compare"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Vote"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Remove"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Success"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Failed"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
 msgid "State Approver"
 msgstr ""
 
@@ -662,15 +710,7 @@ msgid "Remaining Attempt"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Failed"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
 msgid "tutor-periscope"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Success"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1

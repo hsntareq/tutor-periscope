@@ -45,11 +45,23 @@ document.addEventListener('DOMContentLoaded', function () {
     addField.onclick = event => {
       const html = `
             <div class="tutor-col-12 tutor-mb-24 tp-remove-able-wrapper tutor-d-flex tutor-justify-between">
-                <input type="text" name="tp_ef_fields[]" class="tutor-form-control" placeholder="${__('Add field label', 'tutor-periscope')}">
-                <button type="button" class="tp-remove-able tutor-btn tutor-btn-outline-primary tutor-btn-sm" data-tp-ajax="${formData}">
+            <input type="text" name="tp_ef_fields[]" class="tutor-form-control tutor-mr-24" placeholder="${__('Add new label', 'tutor-periscope')}">
+            <div class="tp-action-btn-wrapper tutor-d-flex">
+                <div class="form-control">
+                    <select name="tp_ef_field_type[]" class="tutor-mr-12" title="${__('Field type', 'tutor-periscope')}">
+                        <option value="compare">
+                            ${__('Compare', 'tutor-periscope')}
+                        </option>
+                        <option value="vote">
+                            ${__('Vote', 'tutor-periscope')}
+                        </option>
+                    </select>
+                </div>
+                <button type="button" class="tp-remove-able tutor-btn tutor-btn-outline-primary tutor-btn-sm">
                     ${__('Remove', 'tutor-periscope')}
                 </button>
             </div>
+        </div>
             `;
       const wrapperSelector = '.tp-form-controls'; //Add dynamic field.
 
