@@ -72,17 +72,43 @@ class FormClient {
 		if ( $form_id ) {
 			if ( isset( $post['tp_ef_fields'] ) ) {
 				foreach ( $post['tp_ef_fields'] as $key => $field ) {
-					$data = array(
+					$data               = array(
 						'form_id'         => $form_id,
 						'tutor_course_id' => $post_id,
 						'field_label'     => $field,
 						'field_type'      => 'compare',
 					);
-					$form_field_builder = FormBuilder::create( 'FormField');
+					$form_field_builder = FormBuilder::create( 'FormField' );
 					$form_field_builder->create( $data );
 				}
 			}
 		}
 
+	}
+
+	/**
+	 * Get form fields by course id
+	 *
+	 * @since v2.0.0
+	 *
+	 * @return mixed  based on wpdb response
+	 */
+	public static function get_form_fields( int $course_id ) {
+		global $wpdb;
+		$course_id    = sanitize_text_field( $course_id );
+		$form_table   = ( new Form() )->get_table();
+		$fields_table = ( new FormField() )->get_table();
+		$response     = $wpdb->get_results(
+			$wpdb->prepare(
+				" SELECT form.*, field.id AS field_id, field_label, field_type
+					FROM {$form_table} AS form
+						INNER JOIN {$fields_table} AS field
+							ON field.form_id = form.id
+					WHERE form.tutor_course_id = %d
+				",
+				$course_id
+			);
+		);
+		return $response;
 	}
 }

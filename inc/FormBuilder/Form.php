@@ -13,7 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Tutor_Periscope\FormBuilder\FormInterface;
-use Tutor_Periscope\Query\DB_Query;
 use Tutor_Periscope\Query\QueryHelper;
 
 /**
