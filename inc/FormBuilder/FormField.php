@@ -15,6 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 use Tutor_Periscope\FormBuilder\FormInterface;
 use Tutor_Periscope\Query\QueryHelper;
 
+/**
+ * Handle form fields. A concrete class.
+ */
 class FormField implements FormInterface {
 
 	/**
@@ -29,6 +32,15 @@ class FormField implements FormInterface {
 		return $wpdb->prefix . 'tp_evaluation_form_fields';
 	}
 
+	/**
+	 * Add form field
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param array $request  form data.
+	 *
+	 * @return int  inserted row id
+	 */
 	public function create( array $request ): int {
 		return QueryHelper::insert( $this->get_table(), $request );
 	}

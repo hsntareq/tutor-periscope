@@ -94,6 +94,8 @@ class FormClient {
 	 *
 	 * @since v2.0.0
 	 *
+	 * @param int $course_id  course id.
+	 *
 	 * @return mixed  based on wpdb response
 	 */
 	public static function get_form_fields( int $course_id ) {
