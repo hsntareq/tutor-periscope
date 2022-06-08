@@ -96,4 +96,43 @@ class QueryHelper {
 		);
 		return $delete ? true : false;
 	}
+
+	/**
+	 * Insert multiple rows without knowing key value
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param string $table  table name.
+	 * @param array  $request two dimensional array
+	 * for ex: [ [id => 1], [id => 2] ].
+	 *
+	 * @return mixed  wpdb response true or int on success,
+	 * false on failure
+	 */
+	public static function insert_multiple_rows( $table, $request ) {
+		global $wpdb;
+		$column_keys   = '';
+		$column_values = '';
+		$sql           = '';
+		foreach ( $request as $k => $value ) {
+			$keys = array_keys( $value );
+
+			// Prepare column keys & values.
+			foreach ( $keys as $v ) {
+				$column_keys   .= sanitize_key( $v ) . ',';
+				$sanitize_value = sanitize_text_field( $value[$v] );
+				$column_values .= "'$sanitize_value'" . ',';
+			}
+			// Trim trailing comma.
+			$column_keys   = rtrim( $column_keys, ',' );
+			$column_values = rtrim( $column_values, ',' );
+			$sql       .= "INSERT INTO {$table} ($column_keys) VALUES ($column_values)";
+			// Reset keys & values to avoid duplication.
+			$column_keys   = '';
+			$column_values = '';
+		}
+		return $wpdb->query(
+			$wpdb->prepare( $sql )
+		);
+	}
 }

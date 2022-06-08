@@ -37,12 +37,13 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 			<form id="tutor-periscope-evaluation-form">
 				<?php if ( is_array( $form_fields ) && count( $form_fields ) ) : ?>
 					<?php foreach ( $form_fields as $key => $field ) : ?>
+						<input type="hidden" name="field_id[]" value="<?php echo esc_attr( $field->field_id ); ?>">
 						<div class="tutor-form-group mb-3 clearfix">
 							<label class="d-inline-block">
 								<?php echo esc_html( $field->field_label ); ?>
 							</label>
 							<?php if ( 'compare' === $field->field_type ) : ?>
-							<select name="objectives_met" id="" class="tutor-form-control">
+							<select name="feedback[]" id="" class="tutor-form-control">
 								<option value="lowest">
 									<?php echo esc_html_e( 'Lowest', 'tutor-periscope' ); ?>
 								</option>
@@ -54,7 +55,7 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 								</option>
 							</select>
 							<?php else : ?>
-							<select name="objectives_met" id="" class="tutor-form-control">
+							<select name="feedback[]" id="" class="tutor-form-control">
 								<option value="yes">
 									<?php echo esc_html_e( 'Yes', 'tutor-periscope' ); ?>
 								</option>
