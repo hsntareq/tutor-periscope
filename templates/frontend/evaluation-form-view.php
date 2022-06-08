@@ -14,7 +14,7 @@ $form_title  = '';
 $description = '';
 if ( is_array( $form_fields ) && count( $form_fields ) ) {
 	$form_title  = $form_fields[0]->form_title;
-	$description = $form_fields[0]->description;
+	$description = $form_fields[0]->form_description;
 }
 
 ?>
@@ -32,7 +32,7 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 	<div class="tutor-modal-body modal-container" style="padding:20px;">
 		<div class="tutor-periscope-student-course-evaluation-wrapper">
 			<p>
-				<?php esc_textarea( $description ); ?>
+				<?php echo esc_textarea( $description ); ?>
 			</p>
 			<form id="tutor-periscope-evaluation-form">
 				<?php if ( is_array( $form_fields ) && count( $form_fields ) ) : ?>
@@ -41,7 +41,7 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 							<label class="d-inline-block">
 								<?php echo esc_html( $field->field_label ); ?>
 							</label>
-							<?php if ( 'compare' === $field_type ) : ?>
+							<?php if ( 'compare' === $field->field_type ) : ?>
 							<select name="objectives_met" id="" class="tutor-form-control">
 								<option value="lowest">
 									<?php echo esc_html_e( 'Lowest', 'tutor-periscope' ); ?>

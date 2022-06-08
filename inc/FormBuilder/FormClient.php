@@ -29,6 +29,12 @@ class FormClient {
 	public function __construct() {
 		$course_post_type = 'courses';
 		add_action( "save_post_{$course_post_type}", __CLASS__ . '::manage_form', 10 );
+		/**
+		 * Dynamically load evaluation form modal.
+		 *
+		 * @since v2.0.0
+		 */
+		add_action( 'wp_ajax_tp_evaluation_form', __CLASS__ . '::evaluation_modal' );
 	}
 
 	/**
@@ -118,6 +124,20 @@ class FormClient {
 	}
 
 	/**
+	 * Render evaluation form and send json response
+	 *
+	 * @since v2.0.0
+	 */
+	public static function evaluation_modal() {
+		Utilities::verify_nonce();
+
+		$course_id = (int) sanitize_text_field( $_POST['course_id'] ); //phpcs:ignore
+		$modal     = self::render_form( $course_id, false );
+		$response  = array( 'template' => $modal );
+		wp_send_json_success( $response );
+	}
+
+	/**
 	 * Render evaluation form based on course id
 	 * to view on the front-end
 	 *
@@ -133,7 +153,7 @@ class FormClient {
 			tutor_load_template_from_custom_path(
 				$template,
 				array(
-					'data' => self::get_form_fields( $course_id )
+					'data' => self::get_form_fields( $course_id ),
 				)
 			);
 			$view = apply_filters( 'tp_evaluation_form_view', ob_get_clean() );

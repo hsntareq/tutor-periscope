@@ -301,27 +301,27 @@ msgstr ""
 msgid "Tutor periscope nonce verification failed"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:28
+#: templates/backend/evaluation-form.php:31
 msgid "+ Add Field"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:40
+#: templates/backend/evaluation-form.php:43
 msgid "Add field label"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:43
+#: templates/backend/evaluation-form.php:46
 msgid "Field type"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:45
+#: templates/backend/evaluation-form.php:48
 msgid "Compare"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:48
+#: templates/backend/evaluation-form.php:51
 msgid "Vote"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:53
+#: templates/backend/evaluation-form.php:56
 msgid "Remove"
 msgstr ""
 
@@ -375,6 +375,38 @@ msgstr ""
 
 #: templates/frontend/course-evaluation.php:94
 msgid "How will you apply this in your practice"
+msgstr ""
+
+#: templates/frontend/evaluation-form-view.php:9
+msgid "Data not set"
+msgstr ""
+
+#: templates/frontend/evaluation-form-view.php:59
+msgid "Yes"
+msgstr ""
+
+#: templates/frontend/evaluation-form-view.php:62
+msgid "No"
+msgstr ""
+
+#: templates/frontend/evaluation-form-view.php:65
+msgid "N/A"
+msgstr ""
+
+#: templates/frontend/evaluation-form-view.php:47, templates/frontend/evaluation-form-view.php:50
+msgid "Lowest"
+msgstr ""
+
+#: templates/frontend/evaluation-form-view.php:53
+msgid "Not Apply"
+msgstr ""
+
+#: templates/frontend/evaluation-form-view.php:75
+msgid "Comments"
+msgstr ""
+
+#: templates/frontend/evaluation-form-view.php:81
+msgid "Submit"
 msgstr ""
 
 #: templates/frontend/quiz-attempts.php:21
@@ -667,6 +699,10 @@ msgstr ""
 
 #: templates/certificates/periscope/certificate.php:38
 msgid "minute"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Add new label"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1

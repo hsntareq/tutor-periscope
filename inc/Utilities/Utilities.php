@@ -42,4 +42,17 @@ class Utilities {
 			die( __( 'Tutor periscope nonce verification failed', 'tutor-periscope' ) );
 		}
 	}
+
+	/**
+	 * Verify ajax nonce
+	 *
+	 * @since v2.0.0
+	 *
+	 * @return void
+	 */
+	public static function verify_ajax_nonce() {
+		if ( isset( $_POST['nonce'] ) && ! wp_verify_nonce( $_POST['nonce'], 'tp_nonce' ) ) {
+			wp_send_json_error( __( 'Tutor periscope nonce verification failed', 'tutor-periscope' ) );
+		}
+	}
 }
