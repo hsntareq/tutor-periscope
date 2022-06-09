@@ -78,6 +78,7 @@ class FormClient {
 
 		if ( $form_id ) {
 			if ( isset( $post['tp_ef_fields'] ) ) {
+				$field_data = array();
 				foreach ( $post['tp_ef_fields'] as $key => $field ) {
 					if ( '' === $field ) {
 						continue;
@@ -88,8 +89,17 @@ class FormClient {
 						'field_label'     => $field,
 						'field_type'      => $post['tp_ef_field_type'][ $key ],
 					);
-					$form_field_builder->create( $data );
+					array_push( $field_data, $data );
 				}
+				// Static comment field.
+				$comment = array(
+					'form_id'         => $form_id,
+					'tutor_course_id' => $post_id,
+					'field_label'     => 'Comments',
+					'field_type'      => 'comment',
+				);
+				array_push( $field_data, $comment );
+				$form_field_builder->create( $field_data );
 			}
 		}
 

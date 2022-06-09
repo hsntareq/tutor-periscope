@@ -39,10 +39,10 @@ class FormField implements FormInterface {
 	 *
 	 * @param array $request  form data.
 	 *
-	 * @return int  inserted row id
+	 * @return mixed wpdb query response
 	 */
-	public function create( array $request ): int {
-		return QueryHelper::insert( $this->get_table(), $request );
+	public function create( array $request ) {
+		return QueryHelper::insert_multiple_rows( $this->get_table(), $request );
 	}
 
 	public function get_one( int $id ): object {
