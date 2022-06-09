@@ -54,7 +54,8 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 									<?php echo esc_html_e( 'Not Apply', 'tutor-periscope' ); ?>
 								</option>
 							</select>
-							<?php else : ?>
+							<?php endif; ?>
+							<?php if ( 'vote' === $field->field_type ) : ?>
 							<select name="feedback[]" id="" class="tutor-form-control">
 								<option value="yes">
 									<?php echo esc_html_e( 'Yes', 'tutor-periscope' ); ?>
@@ -67,16 +68,14 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 								</option>
 							</select>
 							<?php endif; ?>
+							<?php if ( 'comment' === $field->field_type ) : ?>
+							<div class="tutor-form-group mb-3 clearfix">
+								<textarea name="feedback[]"></textarea>
+							</div>
+							<?php endif; ?>
 						</div>
 					<?php endforeach; ?>
 				<?php endif; ?>
-
-				<div class="tutor-form-group mb-3 clearfix">
-					<label class="d-inline-block">
-						<?php esc_html_e( 'Comments', 'tutor-periscope' ); ?>
-					</label>
-					<textarea name="comments"></textarea>
-				</div>
 				<div class="tutor-form-group mb-3 clearfix">
 					<button class="tutor-periscope-evaluation-submit-button tutor-button">
 						<?php esc_html_e( 'Submit', 'tutor-periscope' ); ?>

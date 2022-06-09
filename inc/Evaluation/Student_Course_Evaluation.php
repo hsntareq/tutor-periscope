@@ -6,7 +6,12 @@
  */
 namespace Tutor_Periscope\Evaluation;
 
+use Tutor_Periscope\Database\EvaluationFormFeedback;
+use Tutor_Periscope\FormBuilder\Feedback;
+use Tutor_Periscope\FormBuilder\FormBuilder;
 use Tutor_Periscope\Query\DB_Query;
+use Tutor_Periscope\Query\QueryHelper;
+use Tutor_Periscope\Utilities\Utilities;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -91,28 +96,33 @@ class Student_Course_Evaluation extends DB_Query {
 	 * @since v1.0.0
 	 */
 	public function course_evaluation() {
-		if ( wp_verify_nonce( $_POST['nonce'], 'tp_nonce' ) ) {
-			$post = $_POST;
-
-			// unset index that won't be store in DB.
-			unset( $post['action'] );
-			unset( $post['nonce'] );
-			$post['student_id'] = get_current_user_id();
-			$create_or_update   = $this->create_or_update( $post );
-			if ( $create_or_update ) {
-				// store a identifier that user evaluated course.
-				update_user_meta(
-					get_current_user_id(),
-					'tp_user_evaluated_course_' . $post['tutor_course_id'],
-					true
-				);
-				wp_send_json_success();
-
-			} else {
-				wp_send_json_error();
-			}
+		Utilities::verify_ajax_nonce();
+		$post      = $_POST;
+		$form_data = array();
+		$user_id   = get_current_user_id();
+		foreach ( $post['field_id'] as $key => $id ) {
+			$arr = array(
+				'field_id' => $id,
+				'feedback' => $post['feedback'][ $key ],
+				'user_id'  => $user_id,
+			);
+			array_push( $form_data, $arr );
 		}
-		wp_send_json_error( __( 'Nonce verification failed', 'tutor_periscope' ) );
+		// Create instance of form builder.
+		$form_builder  = FormBuilder::create( 'Feedback' );
+		$save_feedback = $form_builder->create( $form_data );
+		if ( $save_feedback ) {
+			// store a identifier that user evaluated course.
+			update_user_meta(
+				$user_id,
+				'tp_user_evaluated_course_' . $post['course_id'],
+				true
+			);
+			wp_send_json_success();
+
+		} else {
+			wp_send_json_error();
+		}
 	}
 
 	/**
