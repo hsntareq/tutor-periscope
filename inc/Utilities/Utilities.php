@@ -55,4 +55,25 @@ class Utilities {
 			wp_send_json_error( __( 'Tutor periscope nonce verification failed', 'tutor-periscope' ) );
 		}
 	}
+
+	/**
+	 * Load template file
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param string $template  required template file path.
+	 * @param mixed  $data  data that will be available on the file.
+	 * @param bool   $once  if true file will be included once.
+	 *
+	 * @return void
+	 */
+	public static function load_template( string $template, $data, $once = false ) {
+		if ( file_exists( $template ) ) {
+			if ( $once ) {
+				include_once $template;
+			} else {
+				include $template;
+			}
+		}
+	}
 }

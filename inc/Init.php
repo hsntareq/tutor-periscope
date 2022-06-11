@@ -8,6 +8,7 @@
 namespace Tutor_Periscope;
 
 use Google\Service\Classroom\Assignment;
+use Tutor_Periscope\Admin\Admin;
 use Tutor_Periscope\Certificates\DownloadApproval;
 use Tutor_Periscope\Course\CourseMetabox;
 use Tutor_Periscope\FormBuilder\FormClient;
@@ -57,6 +58,7 @@ final class Init {
 			MetaboxInit::class,
 			FormClient::class,
 			Utilities::class,
+			Admin::class,
 		);
 	}
 
