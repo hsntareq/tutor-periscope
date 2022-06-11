@@ -172,7 +172,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     formData.set("action", "tp_evaluation_form");
     formData.set('nonce', tp_data.nonce);
     const response = await (0,_ajax__WEBPACK_IMPORTED_MODULE_0__["default"])(formData);
-    console.log(response);
 
     if (response.success) {
       const html = `
@@ -193,7 +192,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     submitButton.onclick = async event => {
       event.preventDefault();
       const formData = new FormData(reviewForm);
-      formData.set("tutor_course_id", tp_data.tutor_course_id);
+      formData.set("course_id", tp_data.tutor_course_id);
       formData.set("nonce", tp_data.nonce);
       formData.set("action", "tutor_periscope_evaluation");
       submitButton.innerHTML = `${__("Please wait...")}`;

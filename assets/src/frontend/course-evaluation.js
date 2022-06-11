@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         formData.set("action", "tp_evaluation_form");
         formData.set('nonce', tp_data.nonce);
         const response = await ajaxRequest(formData);
-        console.log(response);
         if (response.success) {
             const html = `
                 <div class="tutor-modal tutor-modal-scrollable tutor-lesson-modal-wrap tutor-is-active">
@@ -32,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         submitButton.onclick = async (event) => {
             event.preventDefault();
             const formData = new FormData(reviewForm);
-            formData.set("tutor_course_id", tp_data.tutor_course_id);
+            formData.set("course_id", tp_data.tutor_course_id);
             formData.set("nonce", tp_data.nonce);
             formData.set("action", "tutor_periscope_evaluation");
             submitButton.innerHTML = `${__("Please wait...")}`;

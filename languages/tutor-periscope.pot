@@ -297,7 +297,7 @@ msgstr ""
 msgid "Separate each state by semicolon (;)"
 msgstr ""
 
-#: inc/Utilities/Utilities.php:42
+#: inc/Utilities/Utilities.php:42, inc/Utilities/Utilities.php:55
 msgid "Tutor periscope nonce verification failed"
 msgstr ""
 
@@ -381,28 +381,24 @@ msgstr ""
 msgid "Data not set"
 msgstr ""
 
-#: templates/frontend/evaluation-form-view.php:59
-msgid "Yes"
-msgstr ""
-
-#: templates/frontend/evaluation-form-view.php:62
-msgid "No"
-msgstr ""
-
-#: templates/frontend/evaluation-form-view.php:65
-msgid "N/A"
-msgstr ""
-
-#: templates/frontend/evaluation-form-view.php:47, templates/frontend/evaluation-form-view.php:50
+#: templates/frontend/evaluation-form-view.php:48, templates/frontend/evaluation-form-view.php:51
 msgid "Lowest"
 msgstr ""
 
-#: templates/frontend/evaluation-form-view.php:53
+#: templates/frontend/evaluation-form-view.php:54
 msgid "Not Apply"
 msgstr ""
 
-#: templates/frontend/evaluation-form-view.php:75
-msgid "Comments"
+#: templates/frontend/evaluation-form-view.php:61
+msgid "Yes"
+msgstr ""
+
+#: templates/frontend/evaluation-form-view.php:64
+msgid "No"
+msgstr ""
+
+#: templates/frontend/evaluation-form-view.php:67
+msgid "N/A"
 msgstr ""
 
 #: templates/frontend/evaluation-form-view.php:81
@@ -770,91 +766,15 @@ msgid "Invalid certificate no"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Please evaluate the course"
+msgid "__("Please wait...""
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "1. Were the course learning objectives met?"
+msgid "__("Thank you for evaluating""
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Strongly Agree"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Agree"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Disagree"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Neutral"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Strongly Disagree"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "2. Did course content match course description?"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "3. Was current evidence provided to substantiate material presented? "
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "4. Were the instructors effective and knowledgeable?"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "5. Was the virtual learning platform supportive to learning? "
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "6. Overall, the course was valuable."
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "7. Would you recommend this course to a colleague?"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "8. Were personal experience and observation the primary source of information? "
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "9. Was a commercial product promoted? If yes, did you feel that the product promotion was the sole purpose of the course? "
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "No"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Yes"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "10. What topic(s) would you like more training in? Share any additional comments or questions."
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Submit"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Please wait..."
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Thank you for evaluating"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Evaluate submission failed"
+msgid "__("Evaluate submission failed", "tutor-periscope""
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
