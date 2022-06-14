@@ -7,6 +7,10 @@
  * @package TutorPeriscope\Admin\Page
  */
 
+use Tutor_Periscope\FormBuilder\FormBuilder;
+
+$form_builder = FormBuilder::create( 'Form' );
+$forms        = $form_builder->get_list();
 ?>
 <div class="wrap evaluation-report-wrapper">
 	<h1>
@@ -21,7 +25,7 @@
 				<?php esc_html_e( 'Form Title', 'tutor-periscope' ); ?>
 			</th>
 			<th>
-				<?php esc_html_e( 'Summary', 'tutor-periscope' ); ?>
+				<?php esc_html_e( 'Total Submission', 'tutor-periscope' ); ?>
 			</th>
 			<th>
 				<?php esc_html_e( 'View', 'tutor-periscope' ); ?>
@@ -29,15 +33,47 @@
 			<th>
 				<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
 			</th>
+			<th>
+				<?php esc_html_e( 'Summary', 'tutor-periscope' ); ?>
+			</th>
 		</thead>
 		<tbody>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
+			<?php if ( is_array( $forms ) && count( $forms ) ) : ?>
+				<?php foreach ( $forms as $form ) : ?>
+				<tr>
+					<td>
+						<?php echo esc_html( $form->course ); ?>
+					</td>
+					<td>
+						<?php echo esc_html( $form->form_title ); ?>
+					</td>
+					<td>
+						<?php echo esc_html( $form->total_submission ); ?>
+					</td>
+					<td>
+						<a class="tutor-btn tutor-btn-outline-primary tutor-btn-sm">
+							<?php esc_html_e( 'View', 'tutor-periscope' ); ?>
+						</a>
+					</td>
+					<td>
+						<a class="tutor-btn tutor-btn-outline-primary tutor-btn-sm">
+							<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
+						</a>
+					</td>
+					<td>
+						<a class="tutor-btn tutor-btn-outline-primary tutor-btn-sm">
+							<?php esc_html_e( 'Evaluation Summary', 'tutor-periscope' ); ?>
+						</a>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			<?php else : ?>
+				<tr>
+					<td colspan="100%">
+						<?php esc_html_e( 'No records found.', 'tutor-periscope' ); ?>
+					</td>
+				</tr>
+			<?php endif; ?>
 		</tbody>
 	</table>
 </div>
