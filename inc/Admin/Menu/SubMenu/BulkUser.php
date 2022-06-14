@@ -70,11 +70,17 @@ class Bulkuser implements SubMenuInterface {
 	 * @return void
 	 */
 	public function view() {
-		// @codingStandardsIgnoreStart
-		echo '<h1 class="wp-heading-inline">
-			' . __( 'Bulk User', 'tutor-periscope' ) . '
-		</h1>';
-		// @codingStandardsIgnoreEnd
-		Users::users_list( true );
+		?>
+		<div class="wrap">
+			<?php
+				// @codingStandardsIgnoreStart
+					echo '<h1 class="wp-heading-inline">
+					' . __( 'Bulk User', 'tutor-periscope' ) . '
+				</h1>';
+				// @codingStandardsIgnoreEnd
+				Users::users_list( true );
+			?>
+		</div>
+		<?php
 	}
 }
