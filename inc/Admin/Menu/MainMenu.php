@@ -116,7 +116,21 @@ class MainMenu {
 	 * @return void
 	 */
 	public function view() {
-		echo "main menu";
+		$action = isset( $action ) ? $action : '';
+		switch ( $action ) {
+
+			case 'list':
+				$template = TUTOR_PERISCOPE_DIR_PATH . 'views/admin/course-assignment-list.php';
+				break;
+
+			default:
+				$template = TUTOR_PERISCOPE_DIR_PATH . 'views/admin/course-assignment-form.php';
+				break;
+		}
+
+		if ( file_exists( $template ) ) {
+			include $template;
+		}
 	}
 
 	/**

@@ -11,6 +11,8 @@
 
 namespace Tutor_Periscope\Admin\Menu\SubMenu;
 
+use Tutor_Periscope\Users\Users;
+
 /**
  * BulkUser sub menu
  */
@@ -68,6 +70,6 @@ class Bulkuser implements SubMenuInterface {
 	 * @return void
 	 */
 	public function view() {
-        echo "Bulk User";
+		Users::users_list( true );
 	}
 }

@@ -19,7 +19,6 @@ use Tutor_Periscope\Users\Users;
 		<?php
 		echo add_query_arg(
 			array(
-				'page' => 'course-assignment',
 				'tab'  => 'assignment',
 			),
 			admin_url( 'admin.php' )
@@ -30,7 +29,6 @@ use Tutor_Periscope\Users\Users;
 		<?php
 		echo add_query_arg(
 			array(
-				'page' => 'course-assignment',
 				'tab'  => 'bulk-user',
 			),
 			admin_url( 'admin.php' )
