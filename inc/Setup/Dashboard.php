@@ -25,8 +25,8 @@ class Dashboard {
 	 * Register Course Evaluation
 	 */
 	public function register_periscope_course_evaluation() {
-		add_submenu_page( 'tutor', __( 'Course Evaluation', 'tutor-periscope' ), __( 'Course Evaluation', 'tutor-periscope' ), 'manage_tutor', 'course-evaluation', array( $this, 'course_evaluation_markup' ) );
-		add_submenu_page( 'tutor', __( 'Course Assignment', 'tutor-periscope' ), __( 'Course Assignment', 'tutor-periscope' ), 'manage_tutor', 'course-assignment', array( $this, 'course_assignment_markup' ) );
+		// add_submenu_page( 'tutor', __( 'Course Evaluation', 'tutor-periscope' ), __( 'Course Evaluation', 'tutor-periscope' ), 'manage_tutor', 'course-evaluation', array( $this, 'course_evaluation_markup' ) );
+		// add_submenu_page( 'tutor', __( 'Course Assignment', 'tutor-periscope' ), __( 'Course Assignment', 'tutor-periscope' ), 'manage_tutor', 'course-assignment', array( $this, 'course_assignment_markup' ) );
 	}
 
 	/**
