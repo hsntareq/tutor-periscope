@@ -68,6 +68,6 @@ class EvaluationReport implements SubMenuInterface {
 	 * @return void
 	 */
 	public function view() {
-        echo "Evalution Report";
+		include_once TUTOR_PERISCOPE_VIEWS . 'admin/evaluation-report.php';
 	}
 }
