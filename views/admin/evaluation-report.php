@@ -51,7 +51,7 @@ $forms        = $form_builder->get_list();
 						<?php echo esc_html( $form->total_submission ); ?>
 					</td>
 					<td>
-						<a href="<?php echo esc_url( add_query_arg( 'action', 'report-view' ) ); ?>" class="tutor-btn tutor-btn-outline-primary tutor-btn-sm">
+						<a href="<?php echo esc_url( get_home_url() . '/?action=report-view' ); ?>" class="tutor-btn tutor-btn-outline-primary tutor-btn-sm" target="_blank">
 							<?php esc_html_e( 'View', 'tutor-periscope' ); ?>
 						</a>
 					</td>

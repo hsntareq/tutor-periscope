@@ -1,7 +1,5 @@
-<html>
-    <body>
-        <h3>
-            Hello
-        </h3>
-    </body>
-</html>
+<div>
+    <h3>
+        Hello
+    </h3>
+</div>
