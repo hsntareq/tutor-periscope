@@ -51,17 +51,17 @@ $forms        = $form_builder->get_list();
 						<?php echo esc_html( $form->total_submission ); ?>
 					</td>
 					<td>
-						<a class="tutor-btn tutor-btn-outline-primary tutor-btn-sm">
+						<a href="<?php echo esc_url( add_query_arg( 'action', 'report-view' ) ); ?>" class="tutor-btn tutor-btn-outline-primary tutor-btn-sm">
 							<?php esc_html_e( 'View', 'tutor-periscope' ); ?>
 						</a>
 					</td>
 					<td>
-						<a class="tutor-btn tutor-btn-outline-primary tutor-btn-sm">
+						<a href="<?php echo esc_url( add_query_arg( 'action', 'report-download' ) ); ?>" class="tutor-btn tutor-btn-outline-primary tutor-btn-sm">
 							<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
 						</a>
 					</td>
 					<td>
-						<a class="tutor-btn tutor-btn-outline-primary tutor-btn-sm">
+						<a href="<?php echo esc_url( add_query_arg( 'action', 'report-summary' ) ); ?>" class="tutor-btn tutor-btn-outline-primary tutor-btn-sm">
 							<?php esc_html_e( 'Evaluation Summary', 'tutor-periscope' ); ?>
 						</a>
 					</td>
