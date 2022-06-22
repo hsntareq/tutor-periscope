@@ -11,6 +11,7 @@
 
 namespace Tutor_Periscope\Admin\Menu\SubMenu;
 
+use \Dompdf\Dompdf;
 /**
  * EvaluationReport sub menu
  */
@@ -74,6 +75,23 @@ class EvaluationReport implements SubMenuInterface {
 		$view = '';
 		if ( 'tutor-periscope-evalution-report' === $page && 'report-view' === $action ) {
 			$view = TUTOR_PERISCOPE_VIEWS . 'admin/evaluation-report-view.php';
+			ob_start();
+			tutor_load_template_from_custom_path(
+				$view,
+				array()
+			);
+			$html = ob_get_clean();
+			// instantiate and use the dompdf class.
+			$dompdf = new Dompdf();
+			$dompdf->loadHtml( $html );
+			// (Optional) Setup the paper size and orientation.
+			$dompdf->setPaper( 'A4', 'landscape' );
+			// Render the HTML as PDF.
+			$dompdf->render();
+			// Output the generated PDF to Browser.
+			$dompdf->stream( 'evaluation-report-view.pdf', array( 'Attachment' => 0 ) );
+
+			exit();
 		} elseif ( 'tutor-periscope-evalution-report' === $page && 'report-download' === $action ) {
 			$view = TUTOR_PERISCOPE_VIEWS . 'admin/evaluation-report-download.php';
 		} elseif ( 'tutor-periscope-evalution-report' === $page && 'report-summary' === $action ) {

@@ -1,5 +1,7 @@
-<div class="wrap evaluation-report-view-wrapper">
-    <h2>
-        Report view
-    </h2>
-</div>
+<html>
+    <body>
+        <h3>
+            Hello
+        </h3>
+    </body>
+</html>

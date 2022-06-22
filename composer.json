@@ -14,5 +14,8 @@
         "files": [
         "./inc/Functions.php"
         ]
+    },
+    "require": {
+        "dompdf/dompdf": "^1.2"
     }
 }
