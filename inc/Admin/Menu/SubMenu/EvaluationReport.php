@@ -68,6 +68,26 @@ class EvaluationReport implements SubMenuInterface {
 	 * @return void
 	 */
 	public function view() {
-		include_once TUTOR_PERISCOPE_VIEWS . 'admin/evaluation-report.php';
+		$page   = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : ''; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$action = isset( $_GET['action'] ) ? sanitize_text_field( wp_unslash( $_GET['action'] ) ) : ''; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+		$view = '';
+		if ( 'tutor-periscope-evalution-report' === $page && 'report-view' === $action ) {
+			$view = TUTOR_PERISCOPE_VIEWS . 'admin/evaluation-report-view.php';
+		} elseif ( 'tutor-periscope-evalution-report' === $page && 'report-download' === $action ) {
+			$view = TUTOR_PERISCOPE_VIEWS . 'admin/evaluation-report-download.php';
+		} elseif ( 'tutor-periscope-evalution-report' === $page && 'report-summary' === $action ) {
+			$view = TUTOR_PERISCOPE_VIEWS . 'admin/evaluation-report-summary.php';
+		} else {
+			$view = TUTOR_PERISCOPE_VIEWS . 'admin/evaluation-report.php';
+		}
+		if ( file_exists( $view ) ) {
+			tutor_load_template_from_custom_path(
+				$view,
+				array()
+			);
+		} else {
+			echo esc_html( "$view file not found", 'tutor-periscope' );
+		}
 	}
 }
