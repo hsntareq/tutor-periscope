@@ -29,7 +29,6 @@ class PDFManager {
 	 * @return void
 	 */
 	public static function render( string $content, string $file_name, $download = false ): void {
-		$html = ob_get_clean();
 		// instantiate and use the dompdf class.
 		$dompdf = new Dompdf();
 		$dompdf->loadHtml( $content );
