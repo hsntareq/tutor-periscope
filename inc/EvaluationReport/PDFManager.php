@@ -25,6 +25,8 @@ class PDFManager {
 	 * @param string $content  content for rendering.
 	 * @param string $file_name pdf file name.
 	 * @param bool   $download  if false then it will show pdf.
+	 * @param string $size page size default A4.
+	 * @param string $orientation  page orientation default landscape.
 	 *
 	 * @return void
 	 */

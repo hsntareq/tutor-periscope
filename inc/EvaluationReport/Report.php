@@ -9,6 +9,9 @@
 
 namespace Tutor_Periscope\EvaluationReport;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 /**
  * Handle report
  */
