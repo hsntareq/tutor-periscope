@@ -28,12 +28,12 @@ class PDFManager {
 	 *
 	 * @return void
 	 */
-	public static function render( string $content, string $file_name, $download = false ): void {
+	public static function render( string $content, string $file_name, $download = false, $size = 'A4', $orientation = 'landscape' ): void {
 		// instantiate and use the dompdf class.
 		$dompdf = new Dompdf();
 		$dompdf->loadHtml( $content );
 		// (Optional) Setup the paper size and orientation.
-		$dompdf->setPaper( 'A4', 'landscape' );
+		$dompdf->setPaper( $size, $orientation );
 		// Render the HTML as PDF.
 		$dompdf->render();
 		// Output the generated PDF to Browser.
