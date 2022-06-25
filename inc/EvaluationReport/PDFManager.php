@@ -30,7 +30,7 @@ class PDFManager {
 	 *
 	 * @return void
 	 */
-	public static function render( string $content, string $file_name, $download = false, $size = 'A4', $orientation = 'landscape' ): void {
+	public static function render( string $content, string $file_name, $download = false, $size = 'A4', $orientation = 'portrait' ): void {
 		// instantiate and use the dompdf class.
 		$dompdf = new Dompdf();
 		$dompdf->loadHtml( $content );
