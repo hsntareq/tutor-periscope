@@ -38,22 +38,28 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 					<textarea name="tp_ef_description" rows="3" placeholder="<?php echo esc_attr( 'Description...', 'tutor-periscope' ); ?>" style="width: 100%;"><?php echo esc_attr( $form_description ); ?></textarea>
 				</div>
 				<?php if ( is_array( $form_fields ) && count( $form_fields ) ) : ?>
-					<?php foreach ( $form_fields as $field ) : ?>
+					<?php
+					foreach ( $form_fields as $field ) :
+						// Don't need to show comment field.
+						if ( 'comment' === $field->field_type ) {
+							continue;
+						}
+						?>
 						<div class="tutor-col-12 tutor-mb-24 tp-remove-able-wrapper tutor-d-flex tutor-justify-between">
 							<input type="text" name="tp_ef_fields[]" class="tutor-form-control tutor-mr-24" placeholder="<?php esc_html_e( 'Add field label', 'tutor-periscope' ); ?>" value="<?php echo esc_attr( $field->field_label ); ?>">
 							<div class="tp-action-btn-wrapper tutor-d-flex">
 								<div class="form-control">
 									<select name="tp_ef_field_type[]" class="tutor-mr-12" title="<?php esc_attr_e( 'Field type', 'tutor-periscope' ); ?>">
 										<option value="compare" <?php selected( $field->field_type, 'compare' ); ?>>
-											<?php esc_html_e( 'Compare', 'tutor-periscope' ); ?>
+										<?php esc_html_e( 'Compare', 'tutor-periscope' ); ?>
 										</option>
 										<option value="vote" <?php selected( $field->field_type, 'vote' ); ?>>
-											<?php esc_html_e( 'Vote', 'tutor-periscope' ); ?>
+										<?php esc_html_e( 'Vote', 'tutor-periscope' ); ?>
 										</option>
 									</select>
 								</div>
 								<button type="button" class="tp-remove-able tutor-btn tutor-btn-outline-primary tutor-btn-sm">
-									<?php esc_html_e( 'Remove', 'tutor-periscope' ); ?>
+								<?php esc_html_e( 'Remove', 'tutor-periscope' ); ?>
 								</button>
 							</div>
 						</div>
