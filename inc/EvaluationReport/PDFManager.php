@@ -14,7 +14,9 @@ use Dompdf\Dompdf;
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
+/**
+ * PDF render
+ */
 class PDFManager {
 
 	/**
