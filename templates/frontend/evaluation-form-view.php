@@ -5,6 +5,9 @@
  * @since v2.0.0
  * @package TutorPeriscope\Template
  */
+
+use Tutor_Periscope\FormBuilder\FieldOptions;
+
 if ( ! isset( $data ) ) {
 	die( __( 'Data not set', 'tutor-periscope' ) );
 }
@@ -18,6 +21,7 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 }
 
 ?>
+
 <div class="tutor-modal-content">
 	<div class="tutor-modal-header">
 		<div class="tutor-modal-title">
@@ -44,15 +48,20 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 							</label>
 							<?php if ( 'compare' === $field->field_type ) : ?>
 							<select name="feedback[]" id="" class="tutor-form-control">
-								<option value="lowest">
-									<?php echo esc_html_e( 'Lowest', 'tutor-periscope' ); ?>
-								</option>
-								<option value="highest">
-									<?php echo esc_html_e( 'Lowest', 'tutor-periscope' ); ?>
-								</option>
-								<option value="na">
-									<?php echo esc_html_e( 'Not Apply', 'tutor-periscope' ); ?>
-								</option>
+								<?php foreach ( FieldOptions::compare_field_options() as $key => $option ) : ?>
+									<option value="<?php echo esc_attr( $option['value'] ); ?>"
+									<?php
+									if ( true === $option['selected'] ) {
+										echo 'selected';
+									}
+									?>
+									>
+										<?php echo esc_html( $option['label'] ); ?>
+										<?php if ( '' !== $option['help_text'] ) : ?>
+											(<?php echo esc_html( $option['help_text'] ); ?>)
+										<?php endif; ?>
+									</option>
+								<?php endforeach; ?>
 							</select>
 							<?php endif; ?>
 							<?php if ( 'vote' === $field->field_type ) : ?>

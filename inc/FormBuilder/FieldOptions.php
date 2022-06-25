@@ -26,35 +26,41 @@ class FieldOptions {
 	 */
 	public static function compare_field_options(): array {
 		return array(
-			'option' => array(
+			array(
 				'label'     => 1,
 				'help_text' => __( 'Lowest', 'tutor_periscope' ),
 				'value'     => 1,
+				'selected'  => false,
 			),
-			'option' => array(
+			array(
 				'label'     => 2,
 				'help_text' => '',
 				'value'     => 2,
+				'selected'  => false,
 			),
-			'option' => array(
+			array(
 				'label'     => 3,
 				'help_text' => '',
 				'value'     => 3,
+				'selected'  => false,
 			),
-			'option' => array(
+			array(
 				'label'     => 4,
 				'help_text' => '',
 				'value'     => 4,
+				'selected'  => false,
 			),
-			'option' => array(
+			array(
 				'label'     => 5,
 				'help_text' => __( 'Highest', 'tutor_periscope' ),
 				'value'     => 5,
+				'selected'  => true,
 			),
-			'option' => array(
+			array(
 				'label'     => __( 'Not Apply', 'tutor-periscope' ),
 				'help_text' => '',
 				'value'     => 'Not Apply',
+				'selected'  => false,
 			),
 		);
 	}
