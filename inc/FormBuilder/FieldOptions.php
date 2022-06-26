@@ -7,7 +7,7 @@
  * @package TutorPeriscope\FormBuilder
  */
 
-namespace Tutor_Periscope\FormBuilder;
+namespace tutor - periscope\FormBuilder;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -28,7 +28,7 @@ class FieldOptions {
 		return array(
 			array(
 				'label'     => 1,
-				'help_text' => __( 'Lowest', 'tutor_periscope' ),
+				'help_text' => __( 'Lowest', 'tutor-periscope' ),
 				'value'     => 1,
 				'selected'  => false,
 			),
@@ -52,7 +52,7 @@ class FieldOptions {
 			),
 			array(
 				'label'     => 5,
-				'help_text' => __( 'Highest', 'tutor_periscope' ),
+				'help_text' => __( 'Highest', 'tutor-periscope' ),
 				'value'     => 5,
 				'selected'  => true,
 			),
@@ -60,6 +60,36 @@ class FieldOptions {
 				'label'     => __( 'Not Apply', 'tutor-periscope' ),
 				'help_text' => '',
 				'value'     => 'Not Apply',
+				'selected'  => false,
+			),
+		);
+	}
+
+	/**
+	 * Get voting type field options
+	 *
+	 * @since v2.0.0
+	 *
+	 * @return array options.
+	 */
+	public static function vote_field_options(): array {
+		return array(
+			array(
+				'label'     => __( 'Yes', 'tutor-periscope' ),
+				'help_text' => '',
+				'value'     => 'Yes',
+				'selected'  => false,
+			),
+			array(
+				'label'     => __( 'No', 'tutor-periscope' ),
+				'help_text' => '',
+				'value'     => 'No',
+				'selected'  => false,
+			),
+			array(
+				'label'     => __( 'N/A', 'tutor-periscope' ),
+				'help_text' => '',
+				'value'     => 'N/A',
 				'selected'  => false,
 			),
 		);
