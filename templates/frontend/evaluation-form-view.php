@@ -66,15 +66,20 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 							<?php endif; ?>
 							<?php if ( 'vote' === $field->field_type ) : ?>
 							<select name="feedback[]" id="" class="tutor-form-control">
-								<option value="yes">
-									<?php echo esc_html_e( 'Yes', 'tutor-periscope' ); ?>
-								</option>
-								<option value="no">
-									<?php echo esc_html_e( 'No', 'tutor-periscope' ); ?>
-								</option>
-								<option value="na">
-									<?php echo esc_html_e( 'N/A', 'tutor-periscope' ); ?>
-								</option>
+							<?php foreach ( FieldOptions::vote_field_options() as $key => $option ) : ?>
+									<option value="<?php echo esc_attr( $option['value'] ); ?>"
+									<?php
+									if ( true === $option['selected'] ) {
+										echo 'selected';
+									}
+									?>
+									>
+										<?php echo esc_html( $option['label'] ); ?>
+										<?php if ( '' !== $option['help_text'] ) : ?>
+											(<?php echo esc_html( $option['help_text'] ); ?>)
+										<?php endif; ?>
+									</option>
+								<?php endforeach; ?>
 							</select>
 							<?php endif; ?>
 							<?php if ( 'comment' === $field->field_type ) : ?>

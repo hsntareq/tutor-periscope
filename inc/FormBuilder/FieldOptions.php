@@ -7,7 +7,7 @@
  * @package TutorPeriscope\FormBuilder
  */
 
-namespace tutor - periscope\FormBuilder;
+namespace Tutor_Periscope\FormBuilder;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
