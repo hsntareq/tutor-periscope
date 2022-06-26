@@ -98,6 +98,29 @@ class QueryHelper {
 	}
 
 	/**
+	 * Clean everything from table
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param string $table  table name.
+	 *
+	 * @return bool
+	 */
+	public static function table_clean( string $table ): bool {
+		global $wpdb;
+		$delete = $wpdb->query(
+			$wpdb->prepare(
+				"DELETE FROM
+					{$table}
+					WHERE 1 = %d
+				",
+				1
+			)
+		);
+		return $delete ? true : false;
+	}
+
+	/**
 	 * Insert multiple rows without knowing key value
 	 *
 	 * @since v2.0.0
