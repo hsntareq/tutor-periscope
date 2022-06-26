@@ -51,35 +51,47 @@ class Report {
 		$feedback_table      = $prefix . EvaluationFormFeedback::get_table();
 		$field_options_table = $prefix . EvaluationFieldOptions::get_table();
 
-		$query = "SELECT form.form_title, form.form_description, fields.field_label, fields.field_type, options.option_name,
-			IFNULL(
-				( SELECT COUNT(*)
-						FROM {$feedback_table}
-						WHERE feedback = options.option_name
-							AND field_id = fields.id
-						GROUP BY feedback
-				), 0
+		$query = "SELECT
+			form.form_title,
+			form.form_description,
+			fields.field_label,
+			fields.field_type,
+			GROUP_CONCAT(options.option_name) AS option_name,
+			GROUP_CONCAT(
+				IFNULL(
+					( SELECT COUNT(*)
+							FROM {$feedback_table}
+							WHERE feedback = options.option_name
+								AND field_id = fields.id
+							GROUP BY feedback
+					), 0
+				)
+				SEPARATOR
+				','
 			) AS total_count,
 			
-			CAST(
+			GROUP_CONCAT(
+				CAST(
 					IFNULL(
-					(
-						SELECT COUNT(*) * 100 / 
 						(
-							SELECT COUNT(*)
-							FROM {$feedback_table}
-								WHERE field_id = fields.id
-						)
-
+							SELECT COUNT(*) * 100 / 
+							(
+								SELECT COUNT(*)
 								FROM {$feedback_table}
-								WHERE feedback = options.option_name
-									AND field_id = fields.id
-								GROUP BY feedback
+									WHERE field_id = fields.id
+							)
 
-					), 0
-				) AS decimal (6,2)
-			)
-			AS percent,
+									FROM {$feedback_table}
+									WHERE feedback = options.option_name
+										AND field_id = fields.id
+									GROUP BY feedback
+
+						), 0
+					) AS decimal (6,2)
+				)
+				SEPARATOR
+				','
+			) AS percent,
 			(
 				SELECT GROUP_CONCAT(feedback.feedback SEPARATOR '\n')
 					FROM {$form_table} AS form
@@ -100,6 +112,8 @@ class Report {
 				ON form.id = fields.form_id
 
 			WHERE form.id = %d
+			
+			GROUP BY fields.id
 
 			ORDER BY fields.id
 			
