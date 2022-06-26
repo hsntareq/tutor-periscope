@@ -79,7 +79,17 @@ class Report {
 					), 0
 				) AS decimal (6,2)
 			)
-			AS percent
+			AS percent,
+			(
+				SELECT GROUP_CONCAT(feedback.feedback SEPARATOR '\n')
+					FROM {$form_table} AS form
+					INNER JOIN {$field_table} AS fields
+						ON fields.form_id = form.id
+						AND fields.field_type = 'comment'
+					INNER JOIN {$feedback_table} AS feedback
+						ON feedback.field_id = fields.id
+					WHERE form.id = 3
+			) AS comments
 			
 			FROM {$field_table} AS fields
 
