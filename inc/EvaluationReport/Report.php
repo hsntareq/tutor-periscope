@@ -9,6 +9,11 @@
 
 namespace Tutor_Periscope\EvaluationReport;
 
+use Tutor_Periscope\Database\EvaluationFieldOptions;
+use Tutor_Periscope\Database\EvaluationForm;
+use Tutor_Periscope\Database\EvaluationFormFeedback;
+use Tutor_Periscope\Database\EvaluationFormFields;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -26,6 +31,77 @@ class Report {
 	 */
 	public function __construct() {
 		add_action( 'template_redirect', __CLASS__ . '::render_report' );
+	}
+
+	/**
+	 * Get a particular form submission statistics report
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param int $form_id form id.
+	 *
+	 * @return array wpdb::get_results
+	 */
+	public static function get_statistics( int $form_id ) {
+		global $wpdb;
+		$form_id             = sanitize_text_field( $form_id );
+		$prefix              = $wpdb->prefix;
+		$form_table          = $prefix . EvaluationForm::get_table();
+		$field_table         = $prefix . EvaluationFormFields::get_table();
+		$feedback_table      = $prefix . EvaluationFormFeedback::get_table();
+		$field_options_table = $prefix . EvaluationFieldOptions::get_table();
+
+		$query = "SELECT form.form_title, form.form_description, fields.field_label, fields.field_type, options.option_name,
+			IFNULL(
+				( SELECT COUNT(*)
+						FROM {$feedback_table}
+						WHERE feedback = options.option_name
+							AND field_id = fields.id
+						GROUP BY feedback
+				), 0
+			) AS total_count,
+			
+			CAST(
+					IFNULL(
+					(
+						SELECT COUNT(*) * 100 / 
+						(
+							SELECT COUNT(*)
+							FROM {$feedback_table}
+								WHERE field_id = fields.id
+						)
+
+								FROM {$feedback_table}
+								WHERE feedback = options.option_name
+									AND field_id = fields.id
+								GROUP BY feedback
+
+					), 0
+				) AS decimal (6,2)
+			)
+			AS percent
+			
+			FROM {$field_table} AS fields
+
+			INNER JOIN {$field_options_table} AS options
+				ON options.field_type = fields.field_type
+
+			INNER JOIN {$form_table} AS form
+				ON form.id = fields.form_id
+
+			WHERE form.id = %d
+
+			ORDER BY fields.id
+			
+		";
+
+		$response = $wpdb->get_results(
+			$wpdb->prepare(
+				$query,
+				$form_id
+			)
+		);
+		return $response;
 	}
 
 	/**
