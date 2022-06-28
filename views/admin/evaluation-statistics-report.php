@@ -26,14 +26,14 @@
     <p><strong>Presenter: </strong> Mike, Skyler, Steve</p>
 
     <table>
-        <tr>
+        <tr border='1'>
             <td></td>
             <td align="center">Lowest <br> 1</td>
-            <td align="center">2</td>
-            <td align="center">3</td>
-            <td align="center">4</td>
+            <td align="center"><br> 2</td>
+            <td align="center"><br> 3</td>
+            <td align="center"><br> 4</td>
             <td align="center">Highest <br> 5</td>
-            <td align="center">Not Apply</td>
+            <td align="center" style="white-space:nowrap;">Not Apply</td>
         </tr>
         <tr>
             <td>lorem one two three</td>
