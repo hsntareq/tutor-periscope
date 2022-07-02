@@ -26,9 +26,11 @@ table td {
 
 use Tutor_Periscope\EvaluationReport\Report;
 
-	$form_id = $_GET['form-id'] ?? 0;
-if ( ! $form_id ) {
-	die( 'Invalid Form ID' );
+//phpcs:ignore WordPress.Security.NonceVerification.Recommended
+$form_id   = $_GET['form-id'] ?? 0;
+$course_id = $_GET['course-id'] ?? 0;
+if ( ! $form_id || ! $course_id ) {
+	die( 'Invalid Form or Course ID' );
 } else {
 	$statistics = Report::get_statistics( $form_id );
 }
@@ -37,8 +39,32 @@ if ( ! $form_id ) {
 	<h2 class="pdf_title">
 		Periscope Evaluation Statistics Report
 	</h2>
-	<p><strong>Title: </strong> We are eager to hear your opinion . Please use the scale below to grade the following areas.</p>
-	<p><strong>Presenter: </strong> Mike, Skyler, Steve</p>
+	<p>
+		<strong>Title:</strong>
+		<?php echo esc_html( get_the_title( $course_id ) ); ?>
+	</p>
+	<p>
+		<strong>Presenter: </strong>
+		<?php
+			$instructors = tutor_utils()->get_instructors_by_course( $course_id );
+		if ( is_array( $instructors ) && count( $instructors ) ) :
+			?>
+			<?php
+			$instructor_string = '';
+			$last_elem = end( $instructors );
+			foreach ( $instructors as $instructor ) :
+				$comma = ', ';
+				if ( ! isset( $instructor->display_name ) || ! isset( $instructor->ID ) ) {
+					continue;
+				}
+				if ( $instructor === $last_elem ) {
+					$comma = '';
+				}
+				echo esc_html( $instructor->display_name . $comma );
+				?>
+			<?php endforeach; ?>
+		<?php endif; ?>
+	</p>
 
 	<table>
 		<tr>
