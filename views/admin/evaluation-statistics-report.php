@@ -112,9 +112,17 @@ if ( ! $form_id ) {
 	<ol>
 		<?php if ( is_array( $evaluation_comments ) && count( $evaluation_comments ) ) : ?>
 			<?php foreach ( $evaluation_comments as $comment ) : ?>
+
+				<?php
+					// Split group comments by _.
+					$arr_comment = explode( '_', $comment );
+				foreach ( $arr_comment as $value ) :
+					?>
 				<li>
-					<?php echo esc_textarea( $comment ); ?>
+					<?php echo esc_textarea( $value ); ?>
 				</li>
+				<?php endforeach; ?>
+
 			<?php endforeach; ?>
 		<?php endif; ?>
 	</ol>
