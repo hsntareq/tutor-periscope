@@ -25,6 +25,25 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 		<form method="post">
 			<?php Utilities::create_nonce_field(); ?>
 			<input type="hidden" name="tp_ef_id" value="<?php echo esc_attr( $form_id ); ?>">
+			<div class="tutor-row tp-evaluation-form-logo">
+				<div class="tutor-col-4">
+					<button id="tp_upload_button" class="tutor-btn tutor-btn-primary tutor-btn-sm tutor-mb-24 tutor-mt-12">
+						<?php esc_html_e( 'Upload Media', 'tutor-periscope' ); ?>
+					</button>
+				</div>
+				<div class="tutor-col-4"></div>
+				<input type="hidden" id="tp_form_media_url" name="tp_form_media_url">
+			</div>
+			<div class="tutor-row tutor-mb-24">
+				<div class="tutor-row-12">
+					<input type="text" name="tp_ef_con_ed" class="tutor-form-control" placeholder="<?php echo esc_attr( 'Con-ED', 'tutor-periscope' ); ?>" value="<?php echo esc_attr( '' ); ?>">
+				</div>
+			</div>
+			<div class="tutor-row tutor-mb-24">
+				<div class="tutor-row-12">
+					<input class="tutor-form-control" name="tp_ef_heading" rows="3" placeholder="<?php echo esc_attr( 'Heading...', 'tutor-periscope' ); ?>"/>
+				</div>
+			</div>
 			<div class="tutor-row tp-form-controls">
 				<div class="tutor-col-4">
 					<button type="button" class="tutor-mb-24 tutor-mt-12 tutor-btn tutor-btn-outline-primary tutor-btn-sm tp-add-field">
@@ -35,7 +54,7 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 					<input type="text" name="tp_ef_title" class="tutor-form-control" placeholder="<?php echo esc_attr( 'Title', 'tutor-periscope' ); ?>" value="<?php echo esc_attr( $form_title ); ?>">
 				</div>
 				<div class="tutor-col-12 tutor-mb-24">
-					<textarea name="tp_ef_description" rows="3" placeholder="<?php echo esc_attr( 'Description...', 'tutor-periscope' ); ?>" style="width: 100%;"><?php echo esc_attr( $form_description ); ?></textarea>
+					<textarea name="tp_ef_description" rows="3" placeholder="<?php echo esc_attr( 'Description...', 'tutor-periscope' ); ?>" style="width: 100%;"><?php echo esc_textarea( $form_description ); ?></textarea>
 				</div>
 				<?php if ( is_array( $form_fields ) && count( $form_fields ) ) : ?>
 					<?php

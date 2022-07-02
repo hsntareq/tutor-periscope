@@ -318,26 +318,30 @@ msgid "Tutor periscope nonce verification failed"
 msgstr ""
 
 #: templates/backend/evaluation-form.php:31
+msgid "Upload Logo"
+msgstr ""
+
+#: templates/backend/evaluation-form.php:50
 msgid "+ Add Field"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:49
+#: templates/backend/evaluation-form.php:68
 msgid "Add field label"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:52
+#: templates/backend/evaluation-form.php:71
 msgid "Field type"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:54
+#: templates/backend/evaluation-form.php:73
 msgid "Compare"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:57
+#: templates/backend/evaluation-form.php:76
 msgid "Vote"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:62
+#: templates/backend/evaluation-form.php:81
 msgid "Remove"
 msgstr ""
 

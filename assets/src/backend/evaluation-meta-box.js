@@ -41,14 +41,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // remove element.
     const wrapper = document.querySelector('.tp-evaluation-form-wrapper');
-    wrapper.onclick = (event) => {
-        event.preventDefault();
-        const target = event.target;
-        if (event.target.classList.contains('tp-remove-able')) {
-            removeElement(target);
-        } else {
+    if (wrapper) {
+        wrapper.onclick = (event) => {
+            event.preventDefault();
+            const target = event.target;
+            if (event.target.classList.contains('tp-remove-able')) {
+                removeElement(target);
+            } else {
+                return;
+            }
+        }
+    }
+
+    var file_frame;
+    const uploadBtn = document.getElementById('tp_upload_button');
+    uploadBtn.onclick = () => {
+        if ( file_frame ) {
+            file_frame.open();
             return;
         }
+        // Create the media frame.
+        file_frame = wp.media.frames.file_frame = wp.media({
+            title: __('Select or Upload Media', 'tutor-periscope'),
+            button: {
+              text: __('Use this media', 'tutor-periscope')
+            },
+            multiple: false  // Set to true to allow multiple files to be selected
+        });
+        file_frame.on( 'select', function() {
+            var attachment = file_frame.state().get('selection').first().toJSON();
+            console.log(attachment)
+        });
     }
      
 });
