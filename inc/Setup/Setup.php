@@ -8,6 +8,8 @@
 namespace Tutor_Periscope\Setup;
 
 use Tutor_Periscope\Database\CertificateApprovalsTable;
+use Tutor_Periscope\Database\DBOperation;
+use Tutor_Periscope\Database\EvaluationFieldOptions;
 use Tutor_Periscope\Database\EvaluationForm;
 use Tutor_Periscope\Database\EvaluationFormFeedback;
 use Tutor_Periscope\Database\EvaluationFormFields;
@@ -52,6 +54,7 @@ class Setup {
 			EvaluationForm::class,
 			EvaluationFormFields::class,
 			EvaluationFormFeedback::class,
+			EvaluationFieldOptions::class,
 			CertificateApprovalsTable::class,
 		);
 
@@ -62,6 +65,14 @@ class Setup {
 		update_option( 'tutor_periscope_version', TUTOR_PERISCOPE_VERSION );
 
 		do_action( 'tutor_periscope_after_activation' );
+
+		/**
+		 * Clean & insert default options on the field_options table
+		 *
+		 * @since v2.0.0
+		 */
+		DBOperation::clean_field_options_table();
+		DBOperation::insert_field_options();
 	}
 
 	/**

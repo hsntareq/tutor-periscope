@@ -51,17 +51,17 @@ $forms        = $form_builder->get_list();
 						<?php echo esc_html( $form->total_submission ); ?>
 					</td>
 					<td>
-						<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-view' ); ?>" class="tutor-btn tutor-btn-outline-primary tutor-btn-sm" target="_blank">
+						<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id ); ?>" class="tutor-btn tutor-btn-outline-primary tutor-btn-sm" target="_blank">
 							<?php esc_html_e( 'View', 'tutor-periscope' ); ?>
 						</a>
 					</td>
 					<td>
-						<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-download' ); ?>" class="tutor-btn tutor-btn-outline-primary tutor-btn-sm" target="_blank">
+						<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id ); ?>" class="tutor-btn tutor-btn-outline-primary tutor-btn-sm" target="_blank">
 							<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
 						</a>
 					</td>
 					<td>
-						<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-summary' ); ?>" class="tutor-btn tutor-btn-outline-primary tutor-btn-sm" target="_blank">
+						<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-summary&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id ); ?>" class="tutor-btn tutor-btn-outline-primary tutor-btn-sm" target="_blank">
 							<?php esc_html_e( 'Evaluation Summary', 'tutor-periscope' ); ?>
 						</a>
 					</td>

@@ -209,7 +209,7 @@ msgstr ""
 msgid "View this item"
 msgstr ""
 
-#: inc/Evaluation/Course_Evaluation_List_Table.php:100
+#: inc/Evaluation/Course_Evaluation_List_Table.php:100, views/admin/evaluation-report.php:31, views/admin/evaluation-report.php:55
 msgid "View"
 msgstr ""
 
@@ -227,6 +227,30 @@ msgstr ""
 
 #: inc/Evaluation/Course_Evaluation_List_Table.php:102, inc/Evaluation/Course_Evaluation_List_Table.php:127
 msgid "Delete"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:34
+msgid "Lowest"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:62
+msgid "Highest"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:68
+msgid "Not Apply"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:91
+msgid "Yes"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:98
+msgid "No"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:105
+msgid "N/A"
 msgstr ""
 
 #: inc/Instructors/ManageInstructors.php:136
@@ -273,19 +297,11 @@ msgstr ""
 msgid "Create Evaluation Form"
 msgstr ""
 
-#: inc/Setup/Dashboard.php:28, inc/Setup/Dashboard.php:28
-msgid "Course Evaluation"
-msgstr ""
-
-#: inc/Setup/Dashboard.php:29, inc/Setup/Dashboard.php:29
-msgid "Course Assignment"
-msgstr ""
-
 #: inc/UserRole/FilterDashboardMenu.php:81
 msgid "Pending Approvals"
 msgstr ""
 
-#: inc/Users/UserMetaFields.php:45
+#: inc/Users/UserMetaFields.php:45, inc/Admin/Menu/MainMenu.php:74
 msgid "Tutor Periscope"
 msgstr ""
 
@@ -305,23 +321,23 @@ msgstr ""
 msgid "+ Add Field"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:43
+#: templates/backend/evaluation-form.php:49
 msgid "Add field label"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:46
+#: templates/backend/evaluation-form.php:52
 msgid "Field type"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:48
+#: templates/backend/evaluation-form.php:54
 msgid "Compare"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:51
+#: templates/backend/evaluation-form.php:57
 msgid "Vote"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:56
+#: templates/backend/evaluation-form.php:62
 msgid "Remove"
 msgstr ""
 
@@ -377,31 +393,11 @@ msgstr ""
 msgid "How will you apply this in your practice"
 msgstr ""
 
-#: templates/frontend/evaluation-form-view.php:9
+#: templates/frontend/evaluation-form-view.php:12
 msgid "Data not set"
 msgstr ""
 
-#: templates/frontend/evaluation-form-view.php:48, templates/frontend/evaluation-form-view.php:51
-msgid "Lowest"
-msgstr ""
-
-#: templates/frontend/evaluation-form-view.php:54
-msgid "Not Apply"
-msgstr ""
-
-#: templates/frontend/evaluation-form-view.php:61
-msgid "Yes"
-msgstr ""
-
-#: templates/frontend/evaluation-form-view.php:64
-msgid "No"
-msgstr ""
-
-#: templates/frontend/evaluation-form-view.php:67
-msgid "N/A"
-msgstr ""
-
-#: templates/frontend/evaluation-form-view.php:81
+#: templates/frontend/evaluation-form-view.php:95
 msgid "Submit"
 msgstr ""
 
@@ -597,6 +593,38 @@ msgstr ""
 msgid "Download PDF"
 msgstr ""
 
+#: views/admin/evaluation-report.php:17
+msgid "Evaluation Report"
+msgstr ""
+
+#: views/admin/evaluation-report.php:22
+msgid "Course"
+msgstr ""
+
+#: views/admin/evaluation-report.php:25
+msgid "Form Title"
+msgstr ""
+
+#: views/admin/evaluation-report.php:28
+msgid "Total Submission"
+msgstr ""
+
+#: views/admin/evaluation-report.php:34, views/admin/evaluation-report.php:60
+msgid "Download"
+msgstr ""
+
+#: views/admin/evaluation-report.php:37
+msgid "Summary"
+msgstr ""
+
+#: views/admin/evaluation-report.php:73
+msgid "No records found."
+msgstr ""
+
+#: views/admin/evaluation-report.php:65
+msgid "Evaluation Summary"
+msgstr ""
+
 #: views/admin/users-list.php:39
 msgid "Search"
 msgstr ""
@@ -681,6 +709,10 @@ msgstr ""
 msgid "State Approver"
 msgstr ""
 
+#: inc/Admin/Menu/MainMenu.php:65
+msgid "Tutor Periscope - Users List "
+msgstr ""
+
 #: templates/certificates/periscope/certificate.php:33
 msgid "hours"
 msgstr ""
@@ -695,6 +727,18 @@ msgstr ""
 
 #: templates/certificates/periscope/certificate.php:38
 msgid "minute"
+msgstr ""
+
+#: inc/Admin/Menu/SubMenu/Assignment.php:29, inc/Admin/Menu/SubMenu/Assignment.php:40
+msgid "Assignment"
+msgstr ""
+
+#: inc/Admin/Menu/SubMenu/BulkUser.php:29, inc/Admin/Menu/SubMenu/BulkUser.php:40, inc/Admin/Menu/SubMenu/BulkUser.php:78
+msgid "Bulk User"
+msgstr ""
+
+#: inc/Admin/Menu/SubMenu/EvaluationReport.php:27, inc/Admin/Menu/SubMenu/EvaluationReport.php:38
+msgid "Evalution Report"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
