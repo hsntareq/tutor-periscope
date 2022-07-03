@@ -45,7 +45,7 @@ class FormField implements FormInterface {
 		return QueryHelper::insert_multiple_rows( $this->get_table(), $request );
 	}
 
-	public function get_one( int $id ): object {
+	public function get_one( int $id ) {
 
 	}
 

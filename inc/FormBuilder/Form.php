@@ -49,8 +49,20 @@ class Form implements FormInterface {
 		return QueryHelper::insert( $this->get_table(), $request );
 	}
 
-	public function get_one( int $id ): object {
-
+	/**
+	 * Get form details by id
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param int $id form id.
+	 *
+	 * @return mixed wpdb::get_row response
+	 */
+	public function get_one( int $id ) {
+		return QueryHelper::get_one(
+			( new self() )->get_table(),
+			array( 'id' => $id )
+		);
 	}
 
 	/**
