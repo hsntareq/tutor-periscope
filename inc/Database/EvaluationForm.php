@@ -52,6 +52,8 @@ class EvaluationForm extends DatabaseTable {
         tutor_course_id INT(9) NOT NULL,
         form_title VARCHAR(255),
         form_description TEXT,
+		heading TEXT,
+		con_ed VARCHAR(255),
 		media_name VARCHAR(255),
 		media_url VARCHAR(255),
         created_at datetime default CURRENT_TIMESTAMP,

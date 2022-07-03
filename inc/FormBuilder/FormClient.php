@@ -54,10 +54,14 @@ class FormClient {
 			'tutor_course_id'  => $post_id,
 			'form_title'       => $post['tp_ef_title'],
 			'form_description' => $post['tp_ef_description'],
+			'media_name'       => $post['tp_ef_media_name'],
+			'media_url'        => $post['tp_ef_media_url'],
+			'con_ed'           => $post['tp_ef_con_ed'],
+			'heading'          => $post['tp_ef_heading'],
 		);
 
-		if ( isset( $post['tp_ef_id'] ) && '' !== $post['tp_ef_id'] ) {
-			$form_data['id'] = $post['tp_ef_id'];
+		if ( isset( $post['tp_ef_id'] ) && (int) $post['tp_ef_id'] ) {
+			$form_data['id'] = (int) $post['tp_ef_id'];
 		}
 
 		/**

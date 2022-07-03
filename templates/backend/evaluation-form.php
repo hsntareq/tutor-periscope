@@ -13,12 +13,18 @@ $form_fields      = FormClient::get_form_fields( get_the_ID() );
 $form_title       = '';
 $form_description = '';
 $form_id          = '';
-$media_url		  = '';
+$media_name       = '';
+$media_url        = '';
+$con_ed_no        = '';
+$heading          = '';
 if ( is_array( $form_fields ) && count( $form_fields ) ) {
 	$form_id          = $form_fields[0]->id;
 	$form_title       = $form_fields[0]->form_title;
 	$form_description = $form_fields[0]->form_description;
+	$media_name       = $form_fields[0]->media_name;
 	$media_url        = $form_fields[0]->media_url;
+	$con_ed_no        = $form_fields[0]->con_ed;
+	$heading          = $form_fields[0]->heading;
 }
 $img_display = '' === $media_url ? 'display: none;' : '';
 ?>
@@ -33,8 +39,8 @@ $img_display = '' === $media_url ? 'display: none;' : '';
 						<?php esc_html_e( 'Upload Media', 'tutor-periscope' ); ?>
 					</button>
 				</div>
-				<input type="hidden" id="tp_form_media_url" name="tp_form_media_url">
-				<input type="hidden" id="tp_form_media_name" name="tp_form_media_name">
+				<input type="hidden" id="tp_form_media_url" name="tp_ef_media_url" value="<?php echo esc_url( $media_url ); ?>">
+				<input type="hidden" id="tp_form_media_name" name="tp_ef_media_name" value="<?php echo esc_attr( $media_name ); ?>">
 			</div>
 			<div id="tp_media_wrapper" class="tutor-row tutor-mb-24" style="<?php echo esc_attr( $img_display ); ?>">
 				<div class="tutor-d-flex tutor-align-center">
@@ -50,12 +56,12 @@ $img_display = '' === $media_url ? 'display: none;' : '';
 			</div>
 			<div class="tutor-row tutor-mb-24">
 				<div class="tutor-row-12">
-					<input type="text" name="tp_ef_con_ed" class="tutor-form-control" placeholder="<?php echo esc_attr( 'Con-ED', 'tutor-periscope' ); ?>" value="<?php echo esc_attr( '' ); ?>">
+					<input type="text" name="tp_ef_con_ed" class="tutor-form-control" placeholder="<?php echo esc_attr( 'Con-ED', 'tutor-periscope' ); ?>" value="<?php echo esc_attr( $con_ed_no ); ?>">
 				</div>
 			</div>
 			<div class="tutor-row tutor-mb-24">
 				<div class="tutor-row-12">
-					<input class="tutor-form-control" name="tp_ef_heading" rows="3" placeholder="<?php echo esc_attr( 'Heading...', 'tutor-periscope' ); ?>"/>
+					<input class="tutor-form-control" name="tp_ef_heading" rows="3" placeholder="<?php echo esc_attr( 'Heading...', 'tutor-periscope' ); ?>" value="<?php echo esc_attr( $heading ); ?>"/>
 				</div>
 			</div>
 			<div class="tutor-row tp-form-controls">

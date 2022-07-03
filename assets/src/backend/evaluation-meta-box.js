@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     if (removeBtn) {
         removeBtn.onclick = () => {
-            removeMedia(mediaURLField, mediaImg, mediaWrapper);
+            removeMedia(mediaURLField, mediaImg, mediaWrapper, mediaNameField);
         };
     }
 
@@ -140,9 +140,12 @@ document.addEventListener("DOMContentLoaded", function () {
      *
      * @returns void
      */
-    function removeMedia(urlField, imgTag, wrapper) {
+    function removeMedia(urlField, imgTag, wrapper, nameField = '') {
         urlField.value = "";
         imgTag.src = "";
         wrapper.style = "display:none;";
+        if (nameField !== '') {
+            nameField.value = '';
+        }
     }
 });
