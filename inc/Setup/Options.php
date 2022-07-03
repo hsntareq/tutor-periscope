@@ -47,6 +47,22 @@ class Options {
 					),
 				),
 				array(
+					'slug'       => 'report_info',
+					'label'      => __( 'Report Info', 'tutor-pro' ),
+					'block_type' => 'uniform',
+					'desc'       => __( 'This area is for additional settings of evaluation report', 'tutor-pro' ),
+					'fields'     => array(
+						array(
+							'key'         => 'periscope_provider_name',
+							'type'        => 'text',
+							'label'       => __( 'Providers\'s Name', 'tutor' ),
+							'label_title' => __( 'Write the name of the provider for evaluation report', 'tutor-pro' ),
+							'default'     => 'Periscope 360',
+							'desc'        => __( 'This providers\'s name will  be appeared in the evaluation form report.', 'tutor' ),
+						),
+					),
+				),
+				array(
 					'slug'       => 'certificate',
 					'label'      => __( 'Certificate Additional', 'tutor-pro' ),
 					'block_type' => 'uniform',

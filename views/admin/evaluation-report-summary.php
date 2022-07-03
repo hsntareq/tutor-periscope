@@ -52,7 +52,9 @@ if ( ! $form_id || ! $course_id ) {
 		$heading   = $details->heading;
 		$image_url = $details->media_url;
 	}
-	$course_date = date( 'd M, Y', strtotime( $course->post_date ) );
+	$course_date   = date( 'd M, Y', strtotime( $course->post_date ) );
+	$total_enroll  = tutor_utils()->count_enrolled_users_by_course( $course_id );
+	$provider_name = tutor_utils()->get_option( 'periscope_provider_name' );
 }
 ?>
 <div class="report_template evaluation_report">
@@ -63,7 +65,7 @@ if ( ! $form_id || ! $course_id ) {
 					<img src="<?php echo esc_url( $image_url ); ?>">
 				<?php endif; ?>
 			</td>
-			<td>
+			<td style="text-align:right">
 				<strong>
 					<?php echo esc_html( $con_ed ); ?>
 				</strong>
@@ -73,7 +75,10 @@ if ( ! $form_id || ! $course_id ) {
 	<h2 class="pdf_title">
 		<?php echo esc_html( $heading ); ?>
 	</h2>
-	<p><strong>Provider Name:: </strong> We are eager to hear</p>
+	<p>
+		<strong>Provider Name: </strong>
+		<?php echo esc_html( $provider_name ); ?>
+	</p>
 	<p><strong>Course Title: </strong> <?php echo esc_html( $course->post_title ); ?></p>
 	<p><strong>Speaker: </strong>
 	<?php
@@ -98,7 +103,10 @@ if ( ! $form_id || ! $course_id ) {
 	</p>
 	<p><strong>Course Date: </strong> <?php echo esc_html( $course_date ); ?></p>
 	<p><strong>Course Location: </strong> Online</p>
-	<p><strong>Total # of participants: </strong> Online</p>
+	<p>
+		<strong>Total # of participants: </strong>
+		<?php echo esc_html( $total_enroll ); ?>
+	</p>
 	<p><strong>Total # of PTs: </strong> Online</p>
 	<p><strong>Total # of PTAs: </strong> Online</p>
 	<p><strong>Total # of SPTs: </strong> Online</p>

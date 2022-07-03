@@ -35,6 +35,10 @@ class PDFManager {
 	public static function render( string $content, string $file_name, $download = false, $size = 'A4', $orientation = 'portrait' ): void {
 		// instantiate and use the dompdf class.
 		$dompdf = new Dompdf();
+
+		$options = $dompdf->getOptions();
+		$options->setIsRemoteEnabled( 'true ' );
+
 		$dompdf->loadHtml( $content );
 		// (Optional) Setup the paper size and orientation.
 		$dompdf->setPaper( $size, $orientation );
