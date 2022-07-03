@@ -35,49 +35,49 @@ __webpack_require__.r(__webpack_exports__);
 const {
   __
 } = wp.i18n;
-document.addEventListener('DOMContentLoaded', function () {
-  const addField = document.querySelector('.tp-add-field');
+document.addEventListener("DOMContentLoaded", function () {
+  const addField = document.querySelector(".tp-add-field");
   const formData = {
-    action: 'test'
+    action: "test"
   };
 
   if (addField) {
     addField.onclick = event => {
       const html = `
             <div class="tutor-col-12 tutor-mb-24 tp-remove-able-wrapper tutor-d-flex tutor-justify-between">
-            <input type="text" name="tp_ef_fields[]" class="tutor-form-control tutor-mr-24" placeholder="${__('Add new label', 'tutor-periscope')}">
+            <input type="text" name="tp_ef_fields[]" class="tutor-form-control tutor-mr-24" placeholder="${__("Add new label", "tutor-periscope")}">
             <div class="tp-action-btn-wrapper tutor-d-flex">
                 <div class="form-control">
-                    <select name="tp_ef_field_type[]" class="tutor-mr-12" title="${__('Field type', 'tutor-periscope')}">
+                    <select name="tp_ef_field_type[]" class="tutor-mr-12" title="${__("Field type", "tutor-periscope")}">
                         <option value="compare">
-                            ${__('Compare', 'tutor-periscope')}
+                            ${__("Compare", "tutor-periscope")}
                         </option>
                         <option value="vote">
-                            ${__('Vote', 'tutor-periscope')}
+                            ${__("Vote", "tutor-periscope")}
                         </option>
                     </select>
                 </div>
                 <button type="button" class="tp-remove-able tutor-btn tutor-btn-outline-primary tutor-btn-sm">
-                    ${__('Remove', 'tutor-periscope')}
+                    ${__("Remove", "tutor-periscope")}
                 </button>
             </div>
         </div>
             `;
-      const wrapperSelector = '.tp-form-controls'; //Add dynamic field.
+      const wrapperSelector = ".tp-form-controls"; //Add dynamic field.
 
       (0,_form_controls__WEBPACK_IMPORTED_MODULE_0__["default"])(html, wrapperSelector);
     };
   } // remove element.
 
 
-  const wrapper = document.querySelector('.tp-evaluation-form-wrapper');
+  const wrapper = document.querySelector(".tp-evaluation-form-wrapper");
 
   if (wrapper) {
     wrapper.onclick = event => {
       event.preventDefault();
       const target = event.target;
 
-      if (event.target.classList.contains('tp-remove-able')) {
+      if (event.target.classList.contains("tp-remove-able")) {
         (0,_form_controls__WEBPACK_IMPORTED_MODULE_0__.removeElement)(target);
       } else {
         return;
@@ -85,10 +85,39 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   }
 
-  var file_frame;
-  const uploadBtn = document.getElementById('tp_upload_button');
+  const uploadBtn = document.getElementById("tp_upload_button");
+  const removeBtn = document.getElementById("tp_media_remove");
+  const mediaWrapper = document.getElementById("tp_media_wrapper");
+  const mediaImg = document.getElementById("tp_form_media_img");
+  const mediaURLField = document.getElementById("tp_form_media_url");
+  const allowedMimeTypes = ['image/png', 'image/jpg', 'image/jpeg'];
 
-  uploadBtn.onclick = () => {
+  if (uploadBtn) {
+    uploadBtn.onclick = () => {
+      wpMediaManager(mediaURLField, mediaImg, mediaWrapper, allowedMimeTypes);
+    };
+  }
+
+  if (removeBtn) {
+    removeBtn.onclick = () => {
+      removeMedia(mediaURLField, mediaImg, mediaWrapper);
+    };
+  }
+  /**
+   * Open wp media manager & set media as per param
+   *
+   * @param string urlField  where media url should put, expect el id
+   * @param string imgTag    for setting img src value, expect el id
+   * @param string wrapper   to set display none or block, expect el id
+   *
+   * @returns
+   */
+  // Need to make this var global;
+
+
+  var file_frame;
+
+  function wpMediaManager(urlField, imgTag, wrapper, mimeTypes = []) {
     if (file_frame) {
       file_frame.open();
       return;
@@ -96,18 +125,49 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     file_frame = wp.media.frames.file_frame = wp.media({
-      title: __('Select or Upload Media', 'tutor-periscope'),
+      title: __("Select or Upload Media", "tutor-periscope"),
       button: {
-        text: __('Use this media', 'tutor-periscope')
+        text: __("Use this media", "tutor-periscope")
       },
       multiple: false // Set to true to allow multiple files to be selected
 
     });
-    file_frame.on('select', function () {
-      var attachment = file_frame.state().get('selection').first().toJSON();
-      console.log(attachment);
+    file_frame.on("select", function () {
+      const attachment = file_frame.state().get("selection").first().toJSON();
+      console.dir(attachment);
+      const mime = attachment.mime;
+      let isAllowed = true;
+
+      if (mimeTypes.length) {
+        isAllowed = mimeTypes.includes(mime);
+      }
+
+      if (!isAllowed) {
+        alert(`${mime} is not allowed to select`);
+        file_frame.open();
+      } else {
+        urlField.value = attachment.url;
+        imgTag.src = attachment.url;
+        wrapper.style = "display: block;";
+      }
     });
-  };
+  }
+  /**
+   * Remove media
+   *
+   * @param string urlField  remove field value, expect el id
+   * @param string imgTag    remove img src value, expect el id
+   * @param string wrapper   set wrapper display none, expect el id
+   *
+   * @returns void
+   */
+
+
+  function removeMedia(urlField, imgTag, wrapper) {
+    urlField.value = "";
+    imgTag.src = "";
+    wrapper.style = "display:none;";
+  }
 });
 
 /***/ }),

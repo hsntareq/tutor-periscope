@@ -317,32 +317,32 @@ msgstr ""
 msgid "Tutor periscope nonce verification failed"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:31
-msgid "Upload Logo"
+#: templates/backend/evaluation-form.php:33
+msgid "Upload Media"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:50
+#: templates/backend/evaluation-form.php:45, templates/backend/evaluation-form.php:94
+msgid "Remove"
+msgstr ""
+
+#: templates/backend/evaluation-form.php:63
 msgid "+ Add Field"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:68
+#: templates/backend/evaluation-form.php:81
 msgid "Add field label"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:71
+#: templates/backend/evaluation-form.php:84
 msgid "Field type"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:73
+#: templates/backend/evaluation-form.php:86
 msgid "Compare"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:76
+#: templates/backend/evaluation-form.php:89
 msgid "Vote"
-msgstr ""
-
-#: templates/backend/evaluation-form.php:81
-msgid "Remove"
 msgstr ""
 
 #: templates/frontend/course-evaluation.php:4
@@ -763,6 +763,14 @@ msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
 msgid "Remove"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Select or Upload Media"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Use this media"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1

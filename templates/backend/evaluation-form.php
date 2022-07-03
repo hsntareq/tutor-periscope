@@ -13,12 +13,14 @@ $form_fields      = FormClient::get_form_fields( get_the_ID() );
 $form_title       = '';
 $form_description = '';
 $form_id          = '';
-
+$media_url		  = '';
 if ( is_array( $form_fields ) && count( $form_fields ) ) {
 	$form_id          = $form_fields[0]->id;
 	$form_title       = $form_fields[0]->form_title;
 	$form_description = $form_fields[0]->form_description;
+	$media_url        = $form_fields[0]->media_url;
 }
+$img_display = '' === $media_url ? 'display: none;' : '';
 ?>
 <div class="tp-evaluation-form-wrapper">
 	<div class="tutor-row tutor-mb-32">
@@ -26,13 +28,24 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 			<?php Utilities::create_nonce_field(); ?>
 			<input type="hidden" name="tp_ef_id" value="<?php echo esc_attr( $form_id ); ?>">
 			<div class="tutor-row tp-evaluation-form-logo">
-				<div class="tutor-col-4">
-					<button id="tp_upload_button" class="tutor-btn tutor-btn-primary tutor-btn-sm tutor-mb-24 tutor-mt-12">
+				<div class="tutor-col-4 tutor-mb-12" id="tp_upload_button">
+					<button class="tutor-btn tutor-btn-primary tutor-btn-sm tutor-mt-12">
 						<?php esc_html_e( 'Upload Media', 'tutor-periscope' ); ?>
 					</button>
 				</div>
-				<div class="tutor-col-4"></div>
 				<input type="hidden" id="tp_form_media_url" name="tp_form_media_url">
+			</div>
+			<div class="tutor-row tutor-mb-24">
+				<div class="tutor-flex" id="tp_media_wrapper" style="<?php echo esc_attr( $img_display ); ?>">
+					<div>
+						<img src="<?php echo esc_url( $media_url ); ?>" id="tp_form_media_img" class="tutor-radius-6" alt="media" width="76px" height="76px">
+					</div>
+					<div id="tp_media_remove">
+						<button class="tutor-btn tutor-button-primary-outline">
+							<?php esc_html_e( 'Remove', 'tutor-periscope' ); ?>
+						</button>
+					</div>
+				</div>
 			</div>
 			<div class="tutor-row tutor-mb-24">
 				<div class="tutor-row-12">
