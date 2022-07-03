@@ -90,11 +90,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const mediaWrapper = document.getElementById("tp_media_wrapper");
   const mediaImg = document.getElementById("tp_form_media_img");
   const mediaURLField = document.getElementById("tp_form_media_url");
-  const allowedMimeTypes = ['image/png', 'image/jpg', 'image/jpeg'];
+  const mediaNameField = document.getElementById("tp_form_media_name");
+  const allowedMimeTypes = ["image/png", "image/jpg", "image/jpeg"];
 
   if (uploadBtn) {
     uploadBtn.onclick = () => {
-      wpMediaManager(mediaURLField, mediaImg, mediaWrapper, allowedMimeTypes);
+      wpMediaManager(mediaURLField, mediaImg, mediaWrapper, allowedMimeTypes, mediaNameField);
     };
   }
 
@@ -117,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var file_frame;
 
-  function wpMediaManager(urlField, imgTag, wrapper, mimeTypes = []) {
+  function wpMediaManager(urlField, imgTag, wrapper, mimeTypes = [], nameField = '') {
     if (file_frame) {
       file_frame.open();
       return;
@@ -136,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const attachment = file_frame.state().get("selection").first().toJSON();
       console.dir(attachment);
       const mime = attachment.mime;
+      const name = attachment.name;
       let isAllowed = true;
 
       if (mimeTypes.length) {
@@ -146,6 +148,10 @@ document.addEventListener("DOMContentLoaded", function () {
         alert(`${mime} is not allowed to select`);
         file_frame.open();
       } else {
+        if (nameField !== '') {
+          nameField.value = name;
+        }
+
         urlField.value = attachment.url;
         imgTag.src = attachment.url;
         wrapper.style = "display: block;";

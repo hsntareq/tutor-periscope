@@ -34,14 +34,15 @@ $img_display = '' === $media_url ? 'display: none;' : '';
 					</button>
 				</div>
 				<input type="hidden" id="tp_form_media_url" name="tp_form_media_url">
+				<input type="hidden" id="tp_form_media_name" name="tp_form_media_name">
 			</div>
-			<div class="tutor-row tutor-mb-24">
-				<div class="tutor-flex" id="tp_media_wrapper" style="<?php echo esc_attr( $img_display ); ?>">
+			<div id="tp_media_wrapper" class="tutor-row tutor-mb-24" style="<?php echo esc_attr( $img_display ); ?>">
+				<div class="tutor-d-flex tutor-align-center">
 					<div>
 						<img src="<?php echo esc_url( $media_url ); ?>" id="tp_form_media_img" class="tutor-radius-6" alt="media" width="76px" height="76px">
 					</div>
 					<div id="tp_media_remove">
-						<button class="tutor-btn tutor-button-primary-outline">
+						<button class="tutor-btn tutor-btn-outline-primary tutor-btn-sm" style="color: tomato;">
 							<?php esc_html_e( 'Remove', 'tutor-periscope' ); ?>
 						</button>
 					</div>
