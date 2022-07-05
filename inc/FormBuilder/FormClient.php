@@ -127,7 +127,7 @@ class FormClient {
 			$wpdb->prepare(
 				" SELECT form.*, field.id AS field_id, field_label, field_type
 					FROM {$form_table} AS form
-						INNER JOIN {$fields_table} AS field
+						LEFT JOIN {$fields_table} AS field
 							ON field.form_id = form.id
 					WHERE form.tutor_course_id = %d
 				",
