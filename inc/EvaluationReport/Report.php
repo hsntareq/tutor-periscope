@@ -136,20 +136,27 @@ class Report {
 	 * @return void
 	 */
 	public static function render_report(): void {
-		$action = $_GET['action'] ?? '';
-
+		$action    = $_GET['action'] ?? '';
+		$course_id = $_GET['course-id'] ?? 0;
+		if ( ! $course_id ) {
+			die( esc_html_e( 'Invalid course id', 'tutor-periscope' ) );
+		}
+		$course_id = sanitize_text_field( $course_id );
 		$should_download = false;
 		if ( 'tp-evaluation-report-download' === $action ) {
 			$should_download = true;
 		}
 
 		// Prepare view file.
-		$view = '';
+		$view          = '';
+		$pdf_file_name = str_replace( ' ', '-', strtolower( get_the_title( $course_id ) ) );
 		if ( 'tp-evaluation-report-download' === $action || 'tp-evaluation-report-view' === $action ) {
 			$view = trailingslashit( TUTOR_PERISCOPE_VIEWS . 'admin' ) . 'evaluation-statistics-report.php';
+			$pdf_file_name = $pdf_file_name . '-evaluation-statistics-report';
 		}
 		if ( 'tp-evaluation-report-summary' === $action ) {
 			$view = trailingslashit( TUTOR_PERISCOPE_VIEWS . 'admin' ) . 'evaluation-report-summary.php';
+			$pdf_file_name = $pdf_file_name . '-evaluation-summary-report';
 		}
 
 		/**
@@ -162,8 +169,7 @@ class Report {
 			tutor_load_template_from_custom_path(
 				$view
 			);
-			$content       = apply_filters( 'tutor_periscope_evaluation_statistics', ob_get_clean() );
-			$pdf_file_name = 'periscope-evaluation-report.pdf';
+			$content = apply_filters( 'tutor_periscope_evaluation_statistics', ob_get_clean() );
 			PDFManager::render( $content, $pdf_file_name, $should_download );
 			exit;
 		}
