@@ -65,11 +65,6 @@ $img_display = '' === $media_url ? 'display: none;' : '';
 				</div>
 			</div>
 			<div class="tutor-row tp-form-controls">
-				<div class="tutor-col-4">
-					<button type="button" class="tutor-mb-24 tutor-mt-12 tutor-btn tutor-btn-outline-primary tutor-btn-sm tp-add-field">
-						<?php esc_html_e( '+ Add Field', 'tutor-periscope' ); ?>
-					</button>
-				</div>
 				<div class="tutor-col-12 tutor-mb-24">
 					<input type="text" name="tp_ef_title" class="tutor-form-control" placeholder="<?php echo esc_attr( 'Title', 'tutor-periscope' ); ?>" value="<?php echo esc_attr( $form_title ); ?>">
 				</div>
@@ -104,6 +99,11 @@ $img_display = '' === $media_url ? 'display: none;' : '';
 						</div>
 					<?php endforeach; ?>
 				<?php endif; ?>
+			</div>
+			<div class="tutor-col-4">
+				<button type="button" class="tutor-mb-24 tutor-btn tutor-btn-outline-primary tutor-btn-sm tp-add-field">
+					<?php esc_html_e( '+ Add Field', 'tutor-periscope' ); ?>
+				</button>
 			</div>
 		</form>
 	</div>
