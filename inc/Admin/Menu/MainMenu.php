@@ -158,6 +158,7 @@ class MainMenu {
 			'Assignment',
 			'BulkUser',
 			'EvaluationReport',
+			'QuarterlyReport',
 		);
 		$submenus = apply_filters( 'tp_submenus', $submenus );
 		// Register sub-menu by using factory class.

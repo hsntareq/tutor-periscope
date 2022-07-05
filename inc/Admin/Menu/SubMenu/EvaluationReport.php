@@ -24,7 +24,7 @@ class EvaluationReport implements SubMenuInterface {
 	 * @return string  page title
 	 */
 	public function page_title(): string {
-		return __( 'Evalution Report', 'tutor-periscope' );
+		return __( 'Evaluation Report', 'tutor-periscope' );
 	}
 
 	/**
@@ -35,7 +35,7 @@ class EvaluationReport implements SubMenuInterface {
 	 * @return string  menu title
 	 */
 	public function menu_title(): string {
-		return __( 'Evalution Report', 'tutor-periscope' );
+		return __( 'Evaluation Report', 'tutor-periscope' );
 	}
 
 	/**
@@ -57,7 +57,7 @@ class EvaluationReport implements SubMenuInterface {
 	 * @return string  slug
 	 */
 	public function slug(): string {
-		return 'tutor-periscope-evalution-report';
+		return 'tutor-periscope-evaluation-report';
 	}
 
 	/**
