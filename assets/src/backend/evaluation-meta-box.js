@@ -8,9 +8,6 @@ import addDynamicField, { removeElement } from "./form-controls";
 const { __ } = wp.i18n;
 document.addEventListener("DOMContentLoaded", function () {
     const addField = document.querySelector(".tp-add-field");
-    const formData = {
-        action: "test",
-    };
     if (addField) {
         addField.onclick = (event) => {
             const html = `

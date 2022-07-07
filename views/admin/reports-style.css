@@ -1,49 +1,49 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .container{
-    max-width: 1170px;
-    margin-inline: auto;
+	max-width: 1170px;
+	margin-inline: auto;
 }
 
 .report_template{
-    font-size: 1em;
-    line-height: 1.5;
+	font-size: 1em;
+	line-height: 1.5;
 }
 
 .report_template ol.comments_list,
 .report_template .comments_list li ol{
-    padding-left: 20px;
+	padding-left: 20px;
 }
 .report_template ol.comments_list li{
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 .report_template .comments_list li span {
-    position: relative;
-    left: 10px;
+	position: relative;
+	left: 10px;
 }
 
 /* evaluation_summary */
 
 .evaluation_summary .header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 30px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	margin-bottom: 30px;
 }
 
 .evaluation_summary .logo{
-    max-width: 250px;
+	max-width: 250px;
 }
 
 .evaluation_summary .logo img{
-    width: 100%;
+	width: 100%;
 }
 .evaluation_summary .pdf_body p{
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .evaluation_summary{
@@ -51,12 +51,12 @@
 }
 .evaluation_summary .pdf_title{
 	text-align:center;
-    margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 .evaluation_summary table{
 	width:100%;
 	margin-bottom: 30px;
-    border-collapse: collapse;
+	border-collapse: collapse;
 }
 .evaluation_summary table tr td:first-child{
 	width:50%;
@@ -74,22 +74,22 @@ table:not('no-border') td {
 }
 
 .evaluation_summary .pdf_item_group{
-    display: flex;
-    gap: 20px;
+	display: flex;
+	gap: 20px;
 }
 .evaluation_summary hr{
-    margin-top: 20px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid black;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid black;
 }
 .evaluation_summary ol.comments_list li ol{
-    list-style-type: lower-alpha;
+	list-style-type: lower-alpha;
 }
 
 .evaluation_summary .bold_italic{
-    font-weight: bold;
-    text-align: center;
-    margin-block: 20px;
+	font-weight: bold;
+	text-align: center;
+	margin-block: 20px;
 }
 
 .evaluation_report{
@@ -101,29 +101,29 @@ table:not('no-border') td {
 .evaluation_report table{
 	width:100%;
 	margin-bottom: 30px;
-    border-collapse: collapse;
+	border-collapse: collapse;
 }
 .evaluation_report table tr td:first-child{
-    width:50%;
+	width:50%;
 }
 
 .evaluation_report table th{
-    text-align: center;
+	text-align: center;
 }
 .evaluation_report table th,
 .evaluation_report table td {
-    padding: 10px;
-    border: 1px solid transparent;
+	padding: 10px;
+	border: 1px solid transparent;
 }
 
 .evaluation_report p{
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 .evaluation_report .pdf_title{
-    margin-bottom: 40px;
-    text-decoration: underline;
+	margin-bottom: 40px;
+	text-decoration: underline;
 }
 
 .evaluation_report .header{
-    margin-bottom: 30px;
+	margin-bottom: 30px;
 }

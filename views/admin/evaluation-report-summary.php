@@ -1,12 +1,11 @@
+<?php ob_start();?>
 <style>
-
-<?php include TUTOR_PERISCOPE_DIR_PATH .'views/admin/reports-style.css'; ?>
-
+<?php include( trailingslashit( TUTOR_PERISCOPE_VIEWS . 'admin' ) . 'reports-style.css' ); ?>
 </style>
 <?php
-
 //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
+use Tutor_Periscope\EvaluationReport\Report;
 use Tutor_Periscope\FormBuilder\FormBuilder;
 
 $form_id   = $_GET['form-id'] ?? 0;
@@ -31,6 +30,7 @@ if ( ! $form_id || ! $course_id ) {
 	$course_date   = date( 'd M, Y', strtotime( $course->post_date ) );
 	$total_enroll  = tutor_utils()->count_enrolled_users_by_course( $course_id );
 	$provider_name = tutor_utils()->get_option( 'periscope_provider_name' );
+	$job_titles    = Report::get_user_job_titles( $course_id );
 }
 ?>
 <div class="report_template evaluation_summary container">
@@ -54,35 +54,46 @@ if ( ! $form_id || ! $course_id ) {
 		<p><strong>Course Title: </strong> <span><?php echo esc_html( $course->post_title ); ?></span></p>
 		<p><strong>Speaker: </strong>
 		<span>
+		<?php if ( is_array( $instructors ) && count( $instructors ) ) : ?>
 			<?php
-				$instructors = tutor_utils()->get_instructors_by_course( $course_id );
-				if ( is_array( $instructors ) && count( $instructors ) ) :
-			?>
-				<?php
 				$instructor_string = '';
 				$last_elem         = end( $instructors );
-				foreach ( $instructors as $instructor ) :
-					$comma = ', ';
-					if ( ! isset( $instructor->display_name ) || ! isset( $instructor->ID ) ) {
-						continue;
-					}
-					if ( $instructor === $last_elem ) {
-						$comma = '';
-					}
-					echo esc_html( $instructor->display_name . $comma );
-					?>
-					<?php endforeach; ?>
-				<?php endif; ?>
-		</span>
+			foreach ( $instructors as $instructor ) :
+				$comma = ', ';
+				if ( ! isset( $instructor->display_name ) || ! isset( $instructor->ID ) ) {
+					continue;
+				}
+				if ( $instructor === $last_elem ) {
+					$comma = '';
+				}
+				echo esc_html( $instructor->display_name . $comma );
+				?>
+			<?php endforeach; ?>
+		<?php endif; ?>
+	</p>
+	<p><strong>Course Date: </strong> <?php echo esc_html( $course_date ); ?></p>
+	<p><strong>Course Location: </strong> Online</p>
+	<p>
+		<strong>Total Participants: </strong>
+		<?php echo esc_html( $total_enroll ); ?>
+	</p>
 		</p>
 		<p><strong>Course Date: </strong> <span> <?php echo esc_html( $course_date ); ?></span></p>
 		<p><strong>Course Location: </strong> Online</p>
 		<p><strong>Total # of participants: </strong><span><?php echo esc_html( $total_enroll ); ?></span></p>
 		<div class="pdf_item_group">
-			<p><strong>Total # of PTs: </strong> Online</p>
-			<p><strong>Total # of PTAs: </strong> Online</p>
-			<p><strong>Total # of SPTs: </strong> Online</p>
-			<p><strong>Total # of Other: </strong> Online</p>
+			<?php if ( is_array( $job_titles ) && count( $job_titles ) ) : ?>
+				<?php
+				$titles = explode( ',', $job_titles[0]->title ); // Make array of titles.
+				$titles = array_count_values( $titles );
+				?>
+				<?php foreach ( $titles as $key => $value ) : ?>
+				<p>
+					<strong>Total # of <?php echo esc_html( $key . ': ' ); ?></strong>
+					<?php echo esc_html( $value ); ?>
+				</p>
+					<?php endforeach; ?>
+				<?php endif; ?>
 		</div>
 		<p><strong>Specify designation(s) of other: </strong> Online</p>
 

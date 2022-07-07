@@ -1,10 +1,10 @@
+<?php ob_start();?>
 <style>
-<?php include TUTOR_PERISCOPE_DIR_PATH .'views/admin/reports-style.css'; ?>
+<?php include( trailingslashit( TUTOR_PERISCOPE_VIEWS . 'admin' ) . 'reports-style.css' ); ?>
 </style>
 <?php
 
 use Tutor_Periscope\EvaluationReport\Report;
-
 //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 $form_id   = $_GET['form-id'] ?? 0;
 $course_id = $_GET['course-id'] ?? 0;
@@ -31,7 +31,7 @@ if ( ! $form_id || ! $course_id ) {
 				?>
 				<?php
 				$instructor_string = '';
-				$last_elem = end( $instructors );
+				$last_elem         = end( $instructors );
 				foreach ( $instructors as $instructor ) :
 					$comma = ', ';
 					if ( ! isset( $instructor->display_name ) || ! isset( $instructor->ID ) ) {
@@ -107,16 +107,12 @@ if ( ! $form_id || ! $course_id ) {
 					<td><?php echo esc_html( $statistic->field_label ); ?></td>
 					<?php if ( is_array( $vote_counts ) && count( $vote_counts ) ) : ?>
 						<?php foreach ( $vote_counts as $count ) : ?>
-							<td align="center">
-								<?php echo esc_html( $count ); ?>
-							</td>
+							<td align="center"><?php echo esc_html( $count ); ?></td>
 						<?php endforeach; ?>
 					<?php endif; ?>
 				</tr>
 			<?php endforeach; ?>
-		<?php endif; ?>
-
-	</table>
+		<?php endif; ?></table>
 
 	<p><strong>Comments:</strong></p>
 	<?php
@@ -133,7 +129,7 @@ if ( ! $form_id || ! $course_id ) {
 				foreach ( $arr_comment as $value ) :
 					?>
 				<li>
-					<span><?php echo esc_textarea( $value ); ?></span>
+					<span><?php return esc_textarea( wp_unslash( $value ) ); ?></span>
 				</li>
 				<li><span> Be visible the whole time (unable to see speaker 1st half)</span></li>
 				<li><span> Could have included more specific research findings, but evidence was very useful.</span></li>
