@@ -31,6 +31,7 @@ if ( ! $form_id || ! $course_id ) {
 	$total_enroll  = tutor_utils()->count_enrolled_users_by_course( $course_id );
 	$provider_name = tutor_utils()->get_option( 'periscope_provider_name' );
 	$job_titles    = Report::get_user_job_titles( $course_id );
+
 }
 ?>
 <div class="report_template evaluation_summary container">

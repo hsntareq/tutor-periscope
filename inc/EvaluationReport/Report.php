@@ -202,7 +202,7 @@ class Report {
 				"SELECT
 					course.ID,
 					GROUP_CONCAT(enroll.id SEPARATOR ',') AS enroll_id,
-					GROUP_CONCAT(meta.meta_value SEPARATOR ',') AS title
+					GROUP_CONCAT(meta.meta_value SEPARATOR ',') AS title,
 					COUNT(meta1.meta_key) AS others
 
 					FROM {$course_table} AS course
