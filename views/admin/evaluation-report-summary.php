@@ -95,7 +95,9 @@ if ( ! $form_id || ! $course_id ) {
 					<?php endforeach; ?>
 				<?php endif; ?>
 		</div>
-		<p><strong>Specify designation(s) of other: </strong> Online</p>
+		<p><strong>Specify designation(s) of other: </strong>
+			<?php echo esc_html( $job_titles[0]->others ); ?>
+		</p>
 
 		<hr/>
 

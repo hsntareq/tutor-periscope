@@ -140,7 +140,7 @@ class Report {
 		$action    = $_GET['action'] ?? '';
 		$course_id = $_GET['course-id'] ?? 0;
 		if ( ! $course_id ) {
-			die( esc_html_e( 'Invalid course id', 'tutor-periscope' ) );
+			return;
 		}
 		$course_id       = sanitize_text_field( $course_id );
 		$should_download = false;
@@ -203,6 +203,7 @@ class Report {
 					course.ID,
 					GROUP_CONCAT(enroll.id SEPARATOR ',') AS enroll_id,
 					GROUP_CONCAT(meta.meta_value SEPARATOR ',') AS title
+					COUNT(meta1.meta_key) AS others
 
 					FROM {$course_table} AS course
 
@@ -211,9 +212,14 @@ class Report {
 						AND enroll.post_type = 'tutor_enrolled'
 						AND enroll.post_status = 'completed'
 
-					INNER JOIN {$usermeta_table} AS meta
+					LEFT JOIN {$usermeta_table} AS meta
 						ON meta.user_id = enroll.post_author
 						AND meta.meta_key = '__title'
+
+					LEFT JOIN {$usermeta_table} AS meta1
+						ON meta1.user_id = enroll.post_author
+						AND meta.meta_key = '__title'
+						AND meta.meta_value IS NULL
 
 					WHERE course.ID = %d
 
