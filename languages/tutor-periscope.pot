@@ -317,31 +317,31 @@ msgstr ""
 msgid "Tutor periscope nonce verification failed"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:33
+#: templates/backend/evaluation-form.php:39
 msgid "Upload Media"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:45, templates/backend/evaluation-form.php:94
+#: templates/backend/evaluation-form.php:52, templates/backend/evaluation-form.php:101
 msgid "Remove"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:63
+#: templates/backend/evaluation-form.php:70
 msgid "+ Add Field"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:81
+#: templates/backend/evaluation-form.php:88
 msgid "Add field label"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:84
+#: templates/backend/evaluation-form.php:91
 msgid "Field type"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:86
+#: templates/backend/evaluation-form.php:93
 msgid "Compare"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:89
+#: templates/backend/evaluation-form.php:96
 msgid "Vote"
 msgstr ""
 
@@ -597,7 +597,7 @@ msgstr ""
 msgid "Download PDF"
 msgstr ""
 
-#: views/admin/evaluation-report.php:17
+#: views/admin/evaluation-report.php:17, views/admin/quarterly-report.php:13, inc/Admin/Menu/SubMenu/EvaluationReport.php:27, inc/Admin/Menu/SubMenu/EvaluationReport.php:38
 msgid "Evaluation Report"
 msgstr ""
 
@@ -627,6 +627,10 @@ msgstr ""
 
 #: views/admin/evaluation-report.php:65
 msgid "Evaluation Summary"
+msgstr ""
+
+#: views/admin/quarterly-report.php:16
+msgid "Coming soon..."
 msgstr ""
 
 #: views/admin/users-list.php:39
@@ -741,36 +745,28 @@ msgstr ""
 msgid "Bulk User"
 msgstr ""
 
-#: inc/Admin/Menu/SubMenu/EvaluationReport.php:27, inc/Admin/Menu/SubMenu/EvaluationReport.php:38
-msgid "Evalution Report"
+#: inc/Admin/Menu/SubMenu/QuarterlyReport.php:27, inc/Admin/Menu/SubMenu/QuarterlyReport.php:38
+msgid "Quarterly Report"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Add new label"
+msgid "__("Compare", "tutor-periscope""
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Field type"
+msgid "__("Vote", "tutor-periscope""
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Compare"
+msgid "__("Remove", "tutor-periscope""
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Vote"
+msgid "__("Select or Upload Media", "tutor-periscope""
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Remove"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Select or Upload Media"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "Use this media"
+msgid "__("Use this media", "tutor-periscope""
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1

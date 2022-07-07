@@ -1,0 +1,129 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.container{
+	max-width: 1170px;
+	margin-inline: auto;
+}
+
+.report_template{
+	font-size: 1em;
+	line-height: 1.5;
+}
+
+.report_template ol.comments_list,
+.report_template .comments_list li ol{
+	padding-left: 20px;
+}
+.report_template ol.comments_list li{
+	margin-bottom: 10px;
+}
+.report_template .comments_list li span {
+	position: relative;
+	left: 10px;
+}
+
+/* evaluation_summary */
+
+.evaluation_summary .header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	margin-bottom: 30px;
+}
+
+.evaluation_summary .logo{
+	max-width: 250px;
+}
+
+.evaluation_summary .logo img{
+	width: 100%;
+}
+.evaluation_summary .pdf_body p{
+	margin-bottom: 10px;
+}
+
+.evaluation_summary{
+	padding: 10px 50px;
+}
+.evaluation_summary .pdf_title{
+	text-align:center;
+	margin-bottom: 30px;
+}
+.evaluation_summary table{
+	width:100%;
+	margin-bottom: 30px;
+	border-collapse: collapse;
+}
+.evaluation_summary table tr td:first-child{
+	width:50%;
+}
+table:not('no-border') td {
+	border: 1px solid;
+	border-collapse: collapse;
+	text-align: center;
+}
+.image-con-ed-wrapper {
+	display: inline-block;
+}
+.image-con-ed-wrapper strong {
+	float: right;
+}
+
+.evaluation_summary .pdf_item_group{
+	display: flex;
+	gap: 20px;
+}
+.evaluation_summary hr{
+	margin-top: 20px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid black;
+}
+.evaluation_summary ol.comments_list li ol{
+	list-style-type: lower-alpha;
+}
+
+.evaluation_summary .bold_italic{
+	font-weight: bold;
+	text-align: center;
+	margin-block: 20px;
+}
+
+.evaluation_report{
+	padding: 10px 50px;
+}
+.evaluation_report .pdf_title{
+	text-align:center;
+}
+.evaluation_report table{
+	width:100%;
+	margin-bottom: 30px;
+	border-collapse: collapse;
+}
+.evaluation_report table tr td:first-child{
+	width:50%;
+}
+
+.evaluation_report table th{
+	text-align: center;
+}
+.evaluation_report table th,
+.evaluation_report table td {
+	padding: 10px;
+	border: 1px solid transparent;
+}
+
+.evaluation_report p{
+	margin-bottom: 10px;
+}
+.evaluation_report .pdf_title{
+	margin-bottom: 40px;
+	text-decoration: underline;
+}
+
+.evaluation_report .header{
+	margin-bottom: 30px;
+}

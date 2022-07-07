@@ -45,6 +45,13 @@ class PDFManager {
 		// Render the HTML as PDF.
 		$dompdf->render();
 		// Output the generated PDF to Browser.
+		$f;
+		$l;
+		if(headers_sent($f,$l))
+		{
+			echo $f,'<br/>',$l,'<br/>';
+			die('now detect line');
+		}
 		if ( false === $download ) {
 			$dompdf->stream( $file_name, array( 'Attachment' => 0 ) );
 		} else {

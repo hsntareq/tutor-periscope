@@ -1,34 +1,8 @@
+<?php ob_start();?>
 <style>
-.evaluation_report * {
-	line-height: 1em;
-}
-.evaluation_report{
-	padding: 10px 50px;
-}
-.evaluation_report .pdf_title{
-	text-align:center;
-}
-.evaluation_report table{
-	width:100%;
-	margin-bottom: 30px;
-}
-.evaluation_report table tr td:first-child{
-	width:50%;
-}
-table:not('no-border') td {
-	border: 1px solid;
-	border-collapse: collapse;
-	text-align: center;
-}
-.image-con-ed-wrapper {
-	display: inline-block;
-}
-.image-con-ed-wrapper strong {
-	float: right;
-}
+<?php include( trailingslashit( TUTOR_PERISCOPE_VIEWS . 'admin' ) . 'reports-style.css' ); ?>
 </style>
 <?php
-
 //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 use Tutor_Periscope\EvaluationReport\Report;
@@ -59,47 +33,41 @@ if ( ! $form_id || ! $course_id ) {
 	$job_titles    = Report::get_user_job_titles( $course_id );
 }
 ?>
-<div class="report_template evaluation_report">
-	<table class="no-border">
-		<tr>
-			<td>
-				<?php if ( '' !== $image_url ) : ?>
-					<img src="<?php echo esc_url( $image_url ); ?>">
-				<?php endif; ?>
-			</td>
-			<td style="text-align:right">
-				<strong>
-					<?php echo esc_html( $con_ed ); ?>
-				</strong>
-			</td>
-		</tr>
-	</table>
+<div class="report_template evaluation_summary container">
+	<div class="header">
+		<div class="logo">
+			<?php if ( '' !== $image_url ) : ?>
+				<img src="<?php echo esc_url( $image_url ); ?>">
+			<?php endif; ?>
+		</div>
+		<div class="sub-text">
+			<p>
+				<?php echo esc_html( $con_ed ); ?>
+			</p>
+		</div>
+	</div>
 	<h2 class="pdf_title">
 		<?php echo esc_html( $heading ); ?>
 	</h2>
-	<p>
-		<strong>Provider Name: </strong>
-		<?php echo esc_html( $provider_name ); ?>
-	</p>
-	<p><strong>Course Title: </strong> <?php echo esc_html( $course->post_title ); ?></p>
-	<p><strong>Speaker: </strong>
-	<?php
-		$instructors = tutor_utils()->get_instructors_by_course( $course_id );
-	if ( is_array( $instructors ) && count( $instructors ) ) :
-		?>
-		<?php
-		$instructor_string = '';
-		$last_elem         = end( $instructors );
-		foreach ( $instructors as $instructor ) :
-			$comma = ', ';
-			if ( ! isset( $instructor->display_name ) || ! isset( $instructor->ID ) ) {
-				continue;
-			}
-			if ( $instructor === $last_elem ) {
-				$comma = '';
-			}
-			echo esc_html( $instructor->display_name . $comma );
-			?>
+	<div class="pdf_body">
+		<p><strong>Provider Name: </strong><span><?php echo esc_html( $provider_name ); ?></span></p>
+		<p><strong>Course Title: </strong> <span><?php echo esc_html( $course->post_title ); ?></span></p>
+		<p><strong>Speaker: </strong>
+		<span>
+		<?php if ( is_array( $instructors ) && count( $instructors ) ) : ?>
+			<?php
+				$instructor_string = '';
+				$last_elem         = end( $instructors );
+			foreach ( $instructors as $instructor ) :
+				$comma = ', ';
+				if ( ! isset( $instructor->display_name ) || ! isset( $instructor->ID ) ) {
+					continue;
+				}
+				if ( $instructor === $last_elem ) {
+					$comma = '';
+				}
+				echo esc_html( $instructor->display_name . $comma );
+				?>
 			<?php endforeach; ?>
 		<?php endif; ?>
 	</p>
@@ -109,16 +77,45 @@ if ( ! $form_id || ! $course_id ) {
 		<strong>Total Participants: </strong>
 		<?php echo esc_html( $total_enroll ); ?>
 	</p>
-	<?php if ( is_array( $job_titles ) && count( $job_titles ) ) : ?>
-		<?php
-			$titles = explode( ',', $job_titles[0]->title ); // Make array of titles.
-			$titles = array_count_values( $titles );
-		?>
-		<?php foreach ( $titles as $key => $value ) : ?>
-			<p>
-				<strong>Total # of <?php echo esc_html( $key . ': ' ); ?></strong>
-				<?php echo esc_html( $value ); ?>
-			</p>
-		<?php endforeach; ?>
-	<?php endif; ?>
+		</p>
+		<p><strong>Course Date: </strong> <span> <?php echo esc_html( $course_date ); ?></span></p>
+		<p><strong>Course Location: </strong> Online</p>
+		<p><strong>Total # of participants: </strong><span><?php echo esc_html( $total_enroll ); ?></span></p>
+		<div class="pdf_item_group">
+			<?php if ( is_array( $job_titles ) && count( $job_titles ) ) : ?>
+				<?php
+				$titles = explode( ',', $job_titles[0]->title ); // Make array of titles.
+				$titles = array_count_values( $titles );
+				?>
+				<?php foreach ( $titles as $key => $value ) : ?>
+				<p>
+					<strong>Total # of <?php echo esc_html( $key . ': ' ); ?></strong>
+					<?php echo esc_html( $value ); ?>
+				</p>
+					<?php endforeach; ?>
+				<?php endif; ?>
+		</div>
+		<p><strong>Specify designation(s) of other: </strong> Online</p>
+
+		<hr/>
+
+		<h2 class="pdf_title">Instructions for Submitting your Summary of Evaluations</h2>
+		<ol class="comments_list">
+			<li>
+				<span>Summaries should be submitted as follows:</span>
+				<ol>
+					<li><span>Within 30 days after the completion of each live course (both face-to-face courses and webinars), including courses held outside of California. Please submit one course date per Summary of Evaluations.</span></li>
+					<li><span>On a quarterly basis during your approval period for self-study courses, within 30 days of the completion of each quarter. For example, if your course is approved from January 1 to January 1, your approval period would be broken into 4 periods ending in March 31, June 30, September 30, and December 31. Your Summaries would be due by April 30, July 31, October 31, and January 31</span></li>
+				</ol>
+			</li>
+			<li><span>Complete the top portion of this form. Be sure the Approval Number is correct for the course your are submitting</span></li>
+			<li><span>Tally the results from the completed evaluations and provide an aggregate count of the answers. Do not average, summarize or provide percentage breakdowns. Do not send a copy of each evaluation to CPTA. Evaluation results should include all participants’ answers, not exclusively PTs or PTAs.</span></li>
+			<li><span>Compile comments from all open-ended questions into one document.</span></li>
+			<li><span>Submit your Summary of Evaluations including this cover sheet, evaluation tallies, and comments</span></li>
+		</ol>
+		<div>Your summary should include ALL questions that were submitted with your approved application. Omitting questions from your administered evaluation could result in revocation of your approval status.</div>
+		<div class="bold_italic">
+			<em>Failure to submit these summaries may result in future courses not being approved</em>
+		</div>
+	</div>
 </div>

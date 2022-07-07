@@ -70,12 +70,12 @@ class Report {
 				SEPARATOR
 				','
 			) AS total_count,
-			
+
 			GROUP_CONCAT(
 				CAST(
 					IFNULL(
 						(
-							SELECT COUNT(*) * 100 / 
+							SELECT COUNT(*) * 100 /
 							(
 								SELECT COUNT(*)
 								FROM {$feedback_table}
@@ -103,7 +103,7 @@ class Report {
 						ON feedback.field_id = fields.id
 					WHERE form.id = $form_id
 			) AS comments
-			
+
 			FROM {$field_table} AS fields
 
 			INNER JOIN {$field_options_table} AS options
@@ -113,11 +113,11 @@ class Report {
 				ON form.id = fields.form_id
 
 			WHERE form.id = %d
-			
+
 			GROUP BY fields.id
 
 			ORDER BY fields.id
-			
+
 		";
 
 		$response = $wpdb->get_results(
