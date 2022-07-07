@@ -69,12 +69,12 @@ class Report {
 				SEPARATOR
 				','
 			) AS total_count,
-			
+
 			GROUP_CONCAT(
 				CAST(
 					IFNULL(
 						(
-							SELECT COUNT(*) * 100 / 
+							SELECT COUNT(*) * 100 /
 							(
 								SELECT COUNT(*)
 								FROM {$feedback_table}
@@ -102,7 +102,7 @@ class Report {
 						ON feedback.field_id = fields.id
 					WHERE form.id = $form_id
 			) AS comments
-			
+
 			FROM {$field_table} AS fields
 
 			INNER JOIN {$field_options_table} AS options
@@ -112,11 +112,11 @@ class Report {
 				ON form.id = fields.form_id
 
 			WHERE form.id = %d
-			
+
 			GROUP BY fields.id
 
 			ORDER BY fields.id
-			
+
 		";
 
 		$response = $wpdb->get_results(
@@ -162,6 +162,7 @@ class Report {
 			tutor_load_template_from_custom_path(
 				$view
 			);
+
 			$content       = apply_filters( 'tutor_periscope_evaluation_statistics', ob_get_clean() );
 			$pdf_file_name = 'periscope-evaluation-report.pdf';
 			PDFManager::render( $content, $pdf_file_name, $should_download );
