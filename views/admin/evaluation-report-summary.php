@@ -1,12 +1,13 @@
-<?php ob_start();?>
+<?php ob_start(); ?>
 <style>
-<?php include( trailingslashit( TUTOR_PERISCOPE_VIEWS . 'admin' ) . 'reports-style.css' ); ?>
+<?php require trailingslashit( TUTOR_PERISCOPE_VIEWS . 'admin' ) . 'reports-style.css'; ?>
 </style>
 <?php
 //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 use Tutor_Periscope\EvaluationReport\Report;
 use Tutor_Periscope\FormBuilder\FormBuilder;
+use Tutor_Periscope\Users\Users;
 
 $form_id   = $_GET['form-id'] ?? 0;
 $course_id = $_GET['course-id'] ?? 0;
@@ -30,8 +31,12 @@ if ( ! $form_id || ! $course_id ) {
 	$course_date   = date( 'd M, Y', strtotime( $course->post_date ) );
 	$total_enroll  = tutor_utils()->count_enrolled_users_by_course( $course_id );
 	$provider_name = tutor_utils()->get_option( 'periscope_provider_name' );
-	$job_titles    = Report::get_user_job_titles( $course_id );
+	$job_titles    = '';
 
+	$enrolled_users = Users::get_enrolled_users_id( $course_id );
+	if ( is_object( $enrolled_users ) ) {
+		$job_titles = Report::get_user_job_titles( $enrolled_users->enroll_ids );
+	}
 }
 ?>
 <div class="report_template evaluation_summary container">
@@ -83,21 +88,35 @@ if ( ! $form_id || ! $course_id ) {
 		<p><strong>Course Location: </strong> Online</p>
 		<p><strong>Total # of participants: </strong><span><?php echo esc_html( $total_enroll ); ?></span></p>
 		<div class="pdf_item_group">
-			<?php if ( is_array( $job_titles ) && count( $job_titles ) ) : ?>
-				<?php
-				$titles = explode( ',', $job_titles[0]->title ); // Make array of titles.
-				$titles = array_count_values( $titles );
+			<?php
+			$pt     = 0;
+			$pta    = 0;
+			$spt    = 0;
+			$others = 0;
+			if ( is_array( $job_titles ) && count( $job_titles ) ) :
 				?>
-				<?php foreach ( $titles as $key => $value ) : ?>
-				<p>
-					<strong>Total # of <?php echo esc_html( $key . ': ' ); ?></strong>
-					<?php echo esc_html( $value ); ?>
-				</p>
-					<?php endforeach; ?>
-				<?php endif; ?>
+				<?php
+					$pt     = isset( $job_titles[0] ) ? $job_titles[0]->counted : 0;
+					$pta    = isset( $job_titles[1] ) ? $job_titles[1]->counted : 0;
+					$spt    = isset( $job_titles[2] ) ? $job_titles[2]->counted : 0;
+					$others = isset( $job_titles[3] ) ? $job_titles[3]->counted : 0;
+				?>
+			<?php endif; ?>
+			<p>
+				<strong>Total # of PT: </strong>
+				<?php echo esc_html( $pt ); ?>
+			</p>
+			<p>
+				<strong>Total # of PTA: </strong>
+				<?php echo esc_html( $pta ); ?>
+			</p>
+			<p>
+				<strong>Total # of SPT: </strong>
+				<?php echo esc_html( $spt ); ?>
+			</p>
 		</div>
 		<p><strong>Specify designation(s) of other: </strong>
-			<?php echo esc_html( $job_titles[0]->others ); ?>
+			<?php echo esc_html( $others ); ?>
 		</p>
 
 		<hr/>

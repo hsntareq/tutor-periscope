@@ -177,56 +177,55 @@ class Report {
 	}
 
 	/**
-	 * Get job titles by course id
+	 * Get number of counted job titles by enrolled ids
 	 *
 	 * It will return all the job titles that a enroll student have
 	 * on a particular course.
 	 *
 	 * @since v2.0.0
 	 *
-	 * @param int $course_id   tutor course id.
+	 * @param int $enroll_ids  comma separated values
+	 * like: (1,2,3).
 	 *
 	 * @return mixed  wpdb::get_results
-	 * response details:
-	 * https://developer.wordpress.org/reference/classes/wpdb/get_results/
+	 * response details: array(pt,pta,spt,others)
 	 */
-	public static function get_user_job_titles( int $course_id ) {
+	public static function get_user_job_titles( string $enroll_ids ) {
 		global $wpdb;
-		$course_id      = sanitize_text_field( $course_id );
-		$course_table   = $wpdb->posts;
-		$enroll_table   = $wpdb->posts;
+		$enroll_ids = sanitize_text_field( $enroll_ids );
 		$usermeta_table = $wpdb->usermeta;
 
 		return $wpdb->get_results(
-			$wpdb->prepare(
-				"SELECT
-					course.ID,
-					GROUP_CONCAT(enroll.id SEPARATOR ',') AS enroll_id,
-					GROUP_CONCAT(meta.meta_value SEPARATOR ',') AS title,
-					COUNT(meta1.meta_key) AS others
-
-					FROM {$course_table} AS course
-
-					INNER JOIN {$enroll_table} AS enroll
-						ON enroll.post_parent = course.ID
-						AND enroll.post_type = 'tutor_enrolled'
-						AND enroll.post_status = 'completed'
-
-					LEFT JOIN {$usermeta_table} AS meta
-						ON meta.user_id = enroll.post_author
-						AND meta.meta_key = '__title'
-
-					LEFT JOIN {$usermeta_table} AS meta1
-						ON meta1.user_id = enroll.post_author
-						AND meta.meta_key = '__title'
-						AND meta.meta_value IS NULL
-
-					WHERE course.ID = %d
-
-					GROUP BY course.ID
-				",
-				$course_id
-			)
+			"SELECT COUNT(*) AS counted
+				FROM {$usermeta_table} 
+				WHERE user_id IN ( $enroll_ids )
+					AND meta_key = '__short_title'
+					AND meta_value = 'PT'
+				
+			UNION ALL
+			
+			SELECT COUNT(*) AS counted
+				FROM {$usermeta_table} 
+				WHERE user_id IN ( $enroll_ids )
+					AND meta_key = '__short_title'
+					AND meta_value = 'PTA'
+				
+			UNION ALL
+			
+			SELECT COUNT(*) AS counted
+				FROM {$usermeta_table} 
+				WHERE user_id IN ( $enroll_ids )
+					AND meta_key = '__short_title'
+					AND meta_value = 'SPT'
+				
+			UNION ALL
+			
+			SELECT COUNT(*) AS counted
+				FROM {$usermeta_table} 
+				WHERE user_id IN ( $enroll_ids )
+					AND meta_key = '__short_title'
+					AND meta_value NOT IN ('PT','PTA','SPT')			
+			"
 		);
 	}
 }

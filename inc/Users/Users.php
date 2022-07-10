@@ -138,5 +138,34 @@ class Users {
 			return $views;
 		}
 	}
+
+	/**
+	 * Get all enrolled user's id
+	 *
+	 * Comma separated values like: (1,2,3)
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param int $course_id  tutor course id.
+	 *
+	 * @return mixed wpdb::get_row response
+	 */
+	public static function get_enrolled_users_id( int $course_id ) {
+		global $wpdb;
+		$course_id  = sanitize_text_field( $course_id );
+		$post_table = $wpdb->posts;
+		return $wpdb->get_row(
+			$wpdb->prepare(
+				"SELECT
+					GROUP_CONCAT( post_author SEPARATOR ',') enroll_ids
+				FROM {$post_table}
+				WHERE post_parent = %d
+					AND post_type = 'tutor_enrolled'
+					AND post_status = 'completed'
+				",
+				$course_id
+			)
+		);
+	}
 }
 
