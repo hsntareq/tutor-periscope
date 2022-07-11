@@ -61,11 +61,21 @@ class Assessment {
 			if ( ! is_wp_error( $user_id ) ) {
 
 				foreach ( $data_import['user_data'] as $meta_key => $user_additional ) {
+					/**
+					 * If it's title field & have PT, PTA, SPT
+					 * then insert sort_title key
+					 *
+					 * @since v2.0.0
+					 */
+					if ( 'title' === $meta_key ) {
+						$value_arr   = explode( ' ', $user_additional );
+						$short_title = is_array( $value_arr ) ? $value_arr[0] : '';
+						add_user_meta( $user_id, '__short_title', $short_title );
+					}
 					add_user_meta( $user_id, '__' . $meta_key, $user_additional );
 				}
 
 				$users[] = $user_id;
-
 			}
 		}
 
