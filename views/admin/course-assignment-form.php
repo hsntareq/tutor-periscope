@@ -1,7 +1,7 @@
 <div class="wrap">
 	<?php
 
-use Tutor_Periscope\Users\Users;
+	use Tutor_Periscope\Users\Users;
 
 		$_get = $_GET;
 		$tab  = isset( $_get['tab'] ) ? $_get['tab'] : '';
@@ -25,18 +25,7 @@ use Tutor_Periscope\Users\Users;
 			admin_url( 'admin.php' )
 		);
 		?>
-		" class="<?php echo 'assignment' == $tab ? 'current' : ''; ?>">Assignment Form </a></li> |
-		<li class="publish"><a href="
-		<?php
-		echo add_query_arg(
-			array(
-				'page' => 'tutor-periscope',
-				'tab'  => 'bulk-user',
-			),
-			admin_url( 'admin.php' )
-		);
-		?>
-		" class="<?php echo 'bulk-user' == $tab ? 'current' : ''; ?>">Bulk User import</a></li>
+		" class="<?php echo 'assignment' == $tab ? 'current' : ''; ?>">Assignment Form </a></li>
 	</ul>
 	<div style="clear:both" id="poststuff">
 	<div>
