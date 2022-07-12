@@ -10,7 +10,7 @@
 use Tutor_Periscope\Users\Users;
 $user_per_page = Users::$number;
 $list_paged    = isset( $_GET['paged'] ) ? sanitize_text_field( $_GET['paged'] ) : 1;
-$offset        = $list_paged - 1;
+$offset        = ( $list_paged * $user_per_page ) - $user_per_page;
 $user_search   = isset( $_POST['search'] ) ? sanitize_text_field( $_POST['search'] ) : '';
 
 $args = array(
@@ -88,14 +88,13 @@ $total_count = $users_list->total_count;
 <?php if ( $total_count > $user_per_page ) : ?>
 	<div class="tutor-periscope-users-list tablenav-pages" style="margin-top: 20px;">
 		<?php
-			$big           = 9999999999;
-			$paginate_args = array(
-				'base'    => str_replace( $big, '%#%', html_entity_decode( get_pagenum_link( $big ) ) ),
-				'format'  => '&paged=%#%',
-				'current' => $list_paged,
-				'total'   => $total_count,
+			$pagination_data     = array(
+				'total_items' => $total_count,
+				'per_page'    => $user_per_page,
+				'paged'       => $list_paged,
 			);
-			echo paginate_links( $paginate_args );
+			$pagination_template = tutor()->path . 'views/elements/pagination.php';
+			tutor_load_template_from_custom_path( $pagination_template, $pagination_data );
 			?>
 	</div>
 <?php endif; ?>
