@@ -131,7 +131,7 @@ if ( ! $form_id || ! $course_id ) {
 				<li>
 					<span><?php return esc_textarea( wp_unslash( $value ) ); ?></span>
 				</li>
-				<li><span> Be visible the whole time (unable to see speaker 1st half)</span></li>
+				<!-- <li><span> Be visible the whole time (unable to see speaker 1st half)</span></li>
 				<li><span> Could have included more specific research findings, but evidence was very useful.</span></li>
 				<li><span> Course objectives weren't stated.</span></li>
 				<li><span> Course provided good information in each section. Info is inspiring, useful, enhancing knowledge base & practice techniques.</span></li>
@@ -139,7 +139,7 @@ if ( ! $form_id || ! $course_id ) {
 				<li><span> Difficult to see details in slides.</span></li>
 				<li><span> Do not talk 2 hours without letting people stand up to stretch!</span></li>
 				<li><span> End of session before lunch was too much of just a listing of disorders. Better to go more into details of evaluation or a specific disorder. </span></li>
-				<li><span> Excellent! </span></li>
+				<li><span> Excellent! </span></li> -->
 				<?php endforeach; ?>
 
 			<?php endforeach; ?>
