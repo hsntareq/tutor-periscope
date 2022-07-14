@@ -34,7 +34,7 @@ if ( ! $form_id || ! $course_id ) {
 	$job_titles    = '';
 
 	$enrolled_users = Users::get_enrolled_users_id( $course_id );
-	if ( is_object( $enrolled_users ) ) {
+	if ( is_object( $enrolled_users && null !== $enrolled_users->enroll_ids ) ) {
 		$job_titles = Report::get_user_job_titles( $enrolled_users->enroll_ids );
 	}
 }
@@ -121,7 +121,7 @@ if ( ! $form_id || ! $course_id ) {
 
 		<hr/>
 
-		<h2 class="pdf_title">Instructions for Submitting your Summary of Evaluations</h2>
+		<!-- <h2 class="pdf_title">Instructions for Submitting your Summary of Evaluations</h2>
 		<ol class="comments_list">
 			<li>
 				<span>Summaries should be submitted as follows:</span>
@@ -135,7 +135,7 @@ if ( ! $form_id || ! $course_id ) {
 			<li><span>Compile comments from all open-ended questions into one document.</span></li>
 			<li><span>Submit your Summary of Evaluations including this cover sheet, evaluation tallies, and comments</span></li>
 		</ol>
-		<div>Your summary should include ALL questions that were submitted with your approved application. Omitting questions from your administered evaluation could result in revocation of your approval status.</div>
+		<div>Your summary should include ALL questions that were submitted with your approved application. Omitting questions from your administered evaluation could result in revocation of your approval status.</div> -->
 		<div class="bold_italic">
 			<em>Failure to submit these summaries may result in future courses not being approved</em>
 		</div>
