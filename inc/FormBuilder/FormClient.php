@@ -8,6 +8,7 @@
 
 namespace Tutor_Periscope\FormBuilder;
 
+use Tutor_Periscope\Query\QueryHelper;
 use Tutor_Periscope\Utilities\Utilities;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -70,12 +71,28 @@ class FormClient {
 		 * then wpdb::update may provide false and then this method will not
 		 * proceed for form fields.
 		 */
-		$form_id = 0;
+		$form_id               = 0;
+		$already_submitted_ids = array();
 		if ( isset( $form_data['id'] ) ) {
 			$form->update( $form_data, $form_data['id'] );
 			$form_id = $form_data['id'];
+
+			// Check if field has submitted data.
+			$fields_id = $_POST['ep_ef_fields_id'];
+			$fields_id = is_array( $fields_id ) && count( $fields_id ) ? implode( ',', $fields_id ) : '';
+
+			$already_submitted_ids = $form_field_builder->get_all_feedback_id( $fields_id );
+			$already_submitted_ids = array_column( $already_submitted_ids, 'field_id' );
+
 			// Delete form fields since it's going to be updated.
-			FormField::delete_all_fields_by_form( $form_id );
+			$already_submitted_ids_string = is_array( $already_submitted_ids ) && count( $already_submitted_ids ) ? implode( ',', $already_submitted_ids ) : '';
+
+			// Delete fields that don't has data, to prevent duplicate entries.
+			if ( '' !== $already_submitted_ids_string ) {
+				FormField::delete_none_submitted_fields( $already_submitted_ids_string );
+			} else {
+				FormField::delete_all_fields_by_form( $form_id );
+			}
 		} else {
 			$form_id = $form->create( $form_data );
 		}
@@ -87,6 +104,7 @@ class FormClient {
 					if ( '' === $field ) {
 						continue;
 					}
+
 					$data = array(
 						'form_id'         => $form_id,
 						'tutor_course_id' => $post_id,
@@ -103,7 +121,10 @@ class FormClient {
 					'field_type'      => 'comment',
 				);
 				array_push( $field_data, $comment );
-				$form_field_builder->create( $field_data );
+
+				if ( count( $field_data ) ) {
+					$form_field_builder->create( $field_data );
+				}
 			}
 		}
 
@@ -123,12 +144,20 @@ class FormClient {
 		$course_id    = sanitize_text_field( $course_id );
 		$form_table   = ( new Form() )->get_table();
 		$fields_table = ( new FormField() )->get_table();
+		$feedback_table = ( new Feedback() )->get_table();
 		$response     = $wpdb->get_results(
 			$wpdb->prepare(
-				" SELECT form.*, field.id AS field_id, field_label, field_type
+				" SELECT
+				form.*,
+				field.id AS field_id,
+				field_label,
+				field_type,
+				feedback.id AS feedback_id
 					FROM {$form_table} AS form
 						LEFT JOIN {$fields_table} AS field
 							ON field.form_id = form.id
+						LEFT JOIN {$feedback_table} AS feedback
+							ON feedback.field_id = field.id
 					WHERE form.tutor_course_id = %d
 				",
 				$course_id

@@ -126,6 +126,35 @@ class QueryHelper {
 	}
 
 	/**
+	 * Delete from table where id not in
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param string $table   table name.
+	 * @param string $in  comma separated values.
+	 *
+	 * @return bool
+	 */
+	public static function delete_where_id_not_in( string $table, string $in ): bool {
+		global $wpdb;
+		if ( '' === $table || '' === $in ) {
+			return false;
+		}
+		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$delete = $wpdb->query(
+			$wpdb->prepare(
+				"DELETE
+					FROM {$table}
+					WHERE id NOT IN ($in)
+						AND 1 = %d
+				",
+				1
+			)
+		);
+		return $delete ? true : false;
+	}
+
+	/**
 	 * Clean everything from table
 	 *
 	 * @since v2.0.0
@@ -192,5 +221,38 @@ class QueryHelper {
 			$column_values = '';
 		}
 		return $wpdb->query( $sql );
+	}
+
+	/**
+	 * Select with where in condition
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param string $table   table name.
+	 * @param string $column_keys  comma separated values
+	 * for ex: a,b,c.
+	 * @param string $where   column name for where clause.
+	 * @param string $in  comma separated values as $column_keys.
+	 *
+	 * @return array  wpdb::get_results response
+	 */
+	public static function select_all_where_in( string $table, string $column_keys, string $where, string $in ): array {
+		$response = array();
+		if ( '' === $table || '' === $column_keys || '' === $where || '' === $in ) {
+			return $response;
+		}
+		global $wpdb;
+		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		return $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT
+					{$column_keys}
+					FROM {$table}
+					WHERE $where IN ($in)
+						AND 1 = %d
+				",
+				1
+			)
+		);
 	}
 }

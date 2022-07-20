@@ -25,6 +25,7 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 	$media_url        = $form_fields[0]->media_url;
 	$con_ed_no        = $form_fields[0]->con_ed;
 	$heading          = $form_fields[0]->heading;
+
 }
 $img_display = '' === $media_url ? 'display: none;' : '';
 ?>
@@ -75,12 +76,14 @@ $img_display = '' === $media_url ? 'display: none;' : '';
 					<?php
 					foreach ( $form_fields as $field ) :
 						// Don't need to show comment field.
-						if ( 'comment' === $field->field_type ) {
-							continue;
-						}
+						// if ( 'comment' === $field->field_type ) {
+						// 	continue;
+						// }
 						?>
+						<input type="hidden" name="ep_ef_fields_id[]" value="<?php echo esc_attr( $field->field_id ); ?>">
 						<div class="tutor-col-12 tutor-mb-24 tp-remove-able-wrapper tutor-d-flex tutor-justify-between">
-							<input type="text" name="tp_ef_fields[]" class="tutor-form-control tutor-mr-24" placeholder="<?php esc_html_e( 'Add field label', 'tutor-periscope' ); ?>" value="<?php echo esc_attr( $field->field_label ); ?>">
+							<input type="text" name="tp_ef_fields[]" class="tutor-form-control tutor-mr-24" placeholder="<?php esc_html_e( 'Add field label', 'tutor-periscope' ); ?>" value="<?php echo esc_attr( $field->field_label ); ?>" <?php echo ! is_null( $field->feedback_id ) ? 'disabled' : ''; ?>>
+							<?php if ( is_null( $field->feedback_id ) ) : ?>
 							<div class="tp-action-btn-wrapper tutor-d-flex">
 								<div class="form-control">
 									<select name="tp_ef_field_type[]" class="tutor-mr-12" title="<?php esc_attr_e( 'Field type', 'tutor-periscope' ); ?>">
@@ -96,6 +99,9 @@ $img_display = '' === $media_url ? 'display: none;' : '';
 								<?php esc_html_e( 'Remove', 'tutor-periscope' ); ?>
 								</button>
 							</div>
+							<?php else: ?>
+								<button>Hide</button>
+							<?php endif; ?>
 						</div>
 					<?php endforeach; ?>
 				<?php endif; ?>

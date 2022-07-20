@@ -77,4 +77,36 @@ class FormField implements FormInterface {
 			array( 'form_id' => $form_id )
 		);
 	}
+
+	/**
+	 * Delete all form fields by form id
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param string $submitted_ids  comma separated values.
+	 *
+	 * @return bool
+	 */
+	public static function delete_none_submitted_fields( string $submitted_ids ): bool {
+		return QueryHelper::delete_where_id_not_in(
+			( new FormField() )->get_table(),
+			$submitted_ids
+		);
+	}
+
+	/**
+	 * Get all feedback id
+	 *
+	 * @param string $field_ids  comma separated ids.
+	 *
+	 * @return array
+	 */
+	public function get_all_feedback_id( string $field_ids ): array {
+		return QueryHelper::select_all_where_in(
+			( new Feedback() )->get_table(),
+			'field_id',
+			'field_id',
+			$field_ids
+		);
+	}
 }
