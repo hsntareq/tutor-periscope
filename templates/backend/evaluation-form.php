@@ -100,12 +100,12 @@ $img_display = '' === $media_url ? 'display: none;' : '';
 								</button>
 							</div>
 							<?php else : ?>
-								<div class="tutor-d-flex tutor-justify-between align-items-center" style="gap: 2px;">
+								<!-- <div class="tutor-d-flex tutor-justify-between align-items-center" style="gap: 2px;">
 									<label for="tp_ef_hide_field">
-										<?php esc_html_e( 'Hide', 'tutor-periscope' ); ?>
+										<?php// esc_html_e( 'Hide', 'tutor-periscope' ); ?>
 									</label>
-									<input type="checkbox" id="tp_ef_hide_field" class="tutor-form-check-input" name="tp_ef_hide_field[]" value="<?php echo esc_attr( $field->field_id ); ?>">
-								</div>
+									<input type="checkbox" id="tp_ef_hide_field" class="tutor-form-check-input" name="tp_ef_hide_field[]" value="<?php// echo esc_attr( $field->field_id ); ?>">
+								</div> -->
 							<?php endif; ?>
 						</div>
 					<?php endforeach; ?>
