@@ -59,7 +59,7 @@ class Assignment implements SubMenuInterface {
 	 * @return string  slug
 	 */
 	public function slug(): string {
-		return ( new MainMenu( false ) )->slug();
+		return 'tutor-periscope-assignment';
 	}
 
 	/**
@@ -70,6 +70,9 @@ class Assignment implements SubMenuInterface {
 	 * @return void
 	 */
 	public function view() {
-
+		$template = TUTOR_PERISCOPE_DIR_PATH . 'views/admin/course-assignment-form.php';
+		if ( file_exists( $template ) ) {
+			include $template;
+		}
 	}
 }

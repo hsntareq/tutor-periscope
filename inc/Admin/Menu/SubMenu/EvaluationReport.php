@@ -11,6 +11,8 @@
 
 namespace Tutor_Periscope\Admin\Menu\SubMenu;
 
+use Tutor_Periscope\Admin\Menu\MainMenu;
+
 /**
  * EvaluationReport sub menu
  */
@@ -57,7 +59,7 @@ class EvaluationReport implements SubMenuInterface {
 	 * @return string  slug
 	 */
 	public function slug(): string {
-		return 'tutor-periscope-evaluation-report';
+		return ( new MainMenu( false ) )->slug();
 	}
 
 	/**
