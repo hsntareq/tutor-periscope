@@ -77,7 +77,7 @@ $img_display = '' === $media_url ? 'display: none;' : '';
 					foreach ( $form_fields as $field ) :
 						// Don't need to show comment field.
 						// if ( 'comment' === $field->field_type ) {
-						// 	continue;
+						// continue;
 						// }
 						?>
 						<input type="hidden" name="ep_ef_fields_id[]" value="<?php echo esc_attr( $field->field_id ); ?>">
@@ -99,8 +99,13 @@ $img_display = '' === $media_url ? 'display: none;' : '';
 								<?php esc_html_e( 'Remove', 'tutor-periscope' ); ?>
 								</button>
 							</div>
-							<?php else: ?>
-								<button>Hide</button>
+							<?php else : ?>
+								<div class="tutor-d-flex tutor-justify-between align-items-center" style="gap: 2px;">
+									<label for="tp_ef_hide_field">
+										<?php esc_html_e( 'Hide', 'tutor-periscope' ); ?>
+									</label>
+									<input type="checkbox" id="tp_ef_hide_field" class="tutor-form-check-input" name="tp_ef_hide_field[]" value="<?php echo esc_attr( $field->field_id ); ?>">
+								</div>
 							<?php endif; ?>
 						</div>
 					<?php endforeach; ?>
