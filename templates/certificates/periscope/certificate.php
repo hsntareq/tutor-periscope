@@ -78,8 +78,8 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 					   <span>
 						   State:
 						   <span class="course-info">
-								<?php echo esc_html( $student_state ?: '' ); ?>
-								<?php echo esc_html( $student_other_states ?: '' ); ?>
+								<?php echo isset($student_state) ? esc_html( $student_state ) : ''; ?>
+								<?php echo isset($student_other_states) ? esc_html( $student_other_states ) : ''; ?>
 						   </span>
 					   </span>
 				   </p>
