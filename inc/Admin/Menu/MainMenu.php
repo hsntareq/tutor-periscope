@@ -11,8 +11,8 @@
 
 namespace Tutor_Periscope\Admin\Menu;
 
+use Tutor_Periscope\Admin\Menu\SubMenu\EvaluationReport;
 use Tutor_Periscope\Admin\Menu\SubMenu\SubMenuFactory;
-use Tutor_Periscope\Utilities\Utilities;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -116,21 +116,7 @@ class MainMenu {
 	 * @return void
 	 */
 	public function view() {
-		$action = isset( $action ) ? $action : '';
-		switch ( $action ) {
-
-			case 'list':
-				$template = TUTOR_PERISCOPE_DIR_PATH . 'views/admin/course-assignment-list.php';
-				break;
-
-			default:
-				$template = TUTOR_PERISCOPE_DIR_PATH . 'views/admin/course-assignment-form.php';
-				break;
-		}
-
-		if ( file_exists( $template ) ) {
-			include $template;
-		}
+		( new EvaluationReport() )->view();
 	}
 
 	/**
@@ -155,10 +141,10 @@ class MainMenu {
 		do_action( 'tp_after_main_menu_register' );
 		// Available sub-menu.
 		$submenus = array(
-			'Assignment',
-			'BulkUser',
 			'EvaluationReport',
 			'QuarterlyReport',
+			'Assignment',
+			'BulkUser',
 		);
 		$submenus = apply_filters( 'tp_submenus', $submenus );
 		// Register sub-menu by using factory class.

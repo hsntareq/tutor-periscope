@@ -14,19 +14,7 @@
 		delete_transient( 'action_message' );
 	}
 	?>
-	<ul class="subsubsub">
-		<li class="mine"><a href="
-		<?php
-		echo add_query_arg(
-			array(
-				'page' => 'tutor-periscope',
-				'tab'  => 'assignment',
-			),
-			admin_url( 'admin.php' )
-		);
-		?>
-		" class="<?php echo 'assignment' == $tab ? 'current' : ''; ?>">Assignment Form </a></li>
-	</ul>
+
 	<div style="clear:both" id="poststuff">
 	<div>
 		<?php

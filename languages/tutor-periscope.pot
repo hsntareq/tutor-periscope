@@ -469,23 +469,23 @@ msgstr ""
 msgid "Attempt Details"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:43
+#: views/admin/course-assignment-form.php:31
 msgid "Label"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:44, views/metabox/instructor.php:32
+#: views/admin/course-assignment-form.php:32, views/metabox/instructor.php:32
 msgid "Select"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:49
+#: views/admin/course-assignment-form.php:37
 msgid "Select a course to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:64
+#: views/admin/course-assignment-form.php:52
 msgid "Select User(s) to assign:"
 msgstr ""
 
-#: views/admin/course-assignment-form.php:83
+#: views/admin/course-assignment-form.php:71
 msgid "Assign Course"
 msgstr ""
 
@@ -597,7 +597,7 @@ msgstr ""
 msgid "Download PDF"
 msgstr ""
 
-#: views/admin/evaluation-report.php:17, views/admin/quarterly-report.php:13, inc/Admin/Menu/SubMenu/EvaluationReport.php:27, inc/Admin/Menu/SubMenu/EvaluationReport.php:38
+#: views/admin/evaluation-report.php:17, views/admin/quarterly-report.php:13, inc/Admin/Menu/SubMenu/EvaluationReport.php:29, inc/Admin/Menu/SubMenu/EvaluationReport.php:40
 msgid "Evaluation Report"
 msgstr ""
 

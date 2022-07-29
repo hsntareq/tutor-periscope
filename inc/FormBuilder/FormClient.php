@@ -141,11 +141,11 @@ class FormClient {
 	 */
 	public static function get_form_fields( int $course_id ) {
 		global $wpdb;
-		$course_id    = sanitize_text_field( $course_id );
-		$form_table   = ( new Form() )->get_table();
-		$fields_table = ( new FormField() )->get_table();
+		$course_id      = sanitize_text_field( $course_id );
+		$form_table     = ( new Form() )->get_table();
+		$fields_table   = ( new FormField() )->get_table();
 		$feedback_table = ( new Feedback() )->get_table();
-		$response     = $wpdb->get_results(
+		$response       = $wpdb->get_results(
 			$wpdb->prepare(
 				" SELECT
 				form.*,
