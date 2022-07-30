@@ -148,16 +148,20 @@ class FormClient {
 		$response       = $wpdb->get_results(
 			$wpdb->prepare(
 				" SELECT
-				form.*,
-				field.id AS field_id,
-				field_label,
-				field_type,
-				feedback.id AS feedback_id
+					form.*,
+					field.id AS field_id,
+					field_label,
+					field_type,
+				(
+					SELECT
+						id
+					FROM {$feedback_table}
+					WHERE field_id = field.id
+					LIMIT 1
+				) AS feedback_id
 					FROM {$form_table} AS form
 						LEFT JOIN {$fields_table} AS field
 							ON field.form_id = form.id
-						LEFT JOIN {$feedback_table} AS feedback
-							ON feedback.field_id = field.id
 					WHERE form.tutor_course_id = %d
 				",
 				$course_id
