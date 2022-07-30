@@ -129,7 +129,7 @@ if ( ! $form_id || ! $course_id ) {
 				foreach ( $arr_comment as $value ) :
 					?>
 				<li>
-					<span><?php return esc_textarea( wp_unslash( $value ) ); ?></span>
+					<span><?php echo esc_textarea( wp_unslash( $value ) ); ?></span>
 				</li>
 				<!-- <li><span> Be visible the whole time (unable to see speaker 1st half)</span></li>
 				<li><span> Could have included more specific research findings, but evidence was very useful.</span></li>
