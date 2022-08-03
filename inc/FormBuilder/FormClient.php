@@ -8,6 +8,7 @@
 
 namespace Tutor_Periscope\FormBuilder;
 
+use Tutor_Periscope\Database\EvaluationFormFields;
 use Tutor_Periscope\Query\QueryHelper;
 use Tutor_Periscope\Utilities\Utilities;
 
@@ -113,17 +114,33 @@ class FormClient {
 					);
 					array_push( $field_data, $data );
 				}
-				// Static comment field.
-				$comment = array(
-					'form_id'         => $form_id,
-					'tutor_course_id' => $post_id,
-					'field_label'     => 'Comments',
-					'field_type'      => 'comment',
+				/**
+				 * Static comment field
+				 *
+				 * Insert comment field if not exists
+				 */
+				global $wpdb;
+				$has_comment_field = QueryHelper::get_one(
+					$wpdb->prefix . EvaluationFormFields::get_table(),
+					array( 'form_id' => $form_id, 'field_type' => 'comment' )
 				);
-				array_push( $field_data, $comment );
+		
+				if ( ! $has_comment_field ) {
+					$comment = array(
+						'form_id'         => $form_id,
+						'tutor_course_id' => $post_id,
+						'field_label'     => 'Comments',
+						'field_type'      => 'comment',
+					);
+					array_push( $field_data, $comment );
+				}
 
-				if ( count( $field_data ) ) {
-					$form_field_builder->create( $field_data );
+				if ( count( $field_data ) > 1 ) {
+					$form_field_builder->create_multiple( $field_data );
+				} else {
+					if ( count( $field_data ) ) {
+						$form_field_builder->create( $field_data[0] );
+					}
 				}
 			}
 		}
@@ -148,16 +165,20 @@ class FormClient {
 		$response       = $wpdb->get_results(
 			$wpdb->prepare(
 				" SELECT
-				form.*,
-				field.id AS field_id,
-				field_label,
-				field_type,
-				feedback.id AS feedback_id
+					form.*,
+					field.id AS field_id,
+					field_label,
+					field_type,
+				(
+					SELECT
+						id
+					FROM {$feedback_table}
+					WHERE field_id = field.id
+					LIMIT 1
+				) AS feedback_id
 					FROM {$form_table} AS form
 						LEFT JOIN {$fields_table} AS field
 							ON field.form_id = form.id
-						LEFT JOIN {$feedback_table} AS feedback
-							ON feedback.field_id = field.id
 					WHERE form.tutor_course_id = %d
 				",
 				$course_id

@@ -41,8 +41,21 @@ class FormField implements FormInterface {
 	 *
 	 * @return mixed wpdb query response
 	 */
-	public function create( array $request ) {
+	public function create_multiple( array $request ) {
 		return QueryHelper::insert_multiple_rows( $this->get_table(), $request );
+	}
+
+	/**
+	 * Add form field
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param array $request  form data.
+	 *
+	 * @return mixed wpdb query response
+	 */
+	public function create( array $request, array $format = array() ) {
+		return QueryHelper::insert( $this->get_table(), $request, $format );
 	}
 
 	public function get_one( int $id ) {

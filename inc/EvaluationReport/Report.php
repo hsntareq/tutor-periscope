@@ -94,7 +94,7 @@ class Report {
 				','
 			) AS percent,
 			(
-				SELECT GROUP_CONCAT(feedback.feedback SEPARATOR ' _ ')
+				SELECT GROUP_CONCAT(feedback.feedback SEPARATOR '_')
 					FROM {$form_table} AS form
 					INNER JOIN {$field_table} AS fields
 						ON fields.form_id = form.id
@@ -142,6 +142,15 @@ class Report {
 		if ( ! $course_id ) {
 			return;
 		}
+		
+		$form_id   = $_GET['form-id'] ?? 0;
+		$course_id = $_GET['course-id'] ?? 0;
+		if ( ! $form_id || ! $course_id ) {
+			die( 'Invalid Form or Course ID' );
+		} else {
+			$statistics = Report::get_statistics( $form_id );
+		}
+		
 		$course_id       = sanitize_text_field( $course_id );
 		$should_download = false;
 		if ( 'tp-evaluation-report-download' === $action ) {

@@ -23,24 +23,41 @@ class QueryHelper {
 	 * @see https://developer.wordpress.org/reference/classes/wpdb/#select-a-row
 	 *
 	 * @param string $table   table name.
-	 * @param string $where   key value pair, 1 dimensional array.
-	 * ex: array('id' => 10).
+	 * @param array  $where   key value pair, 1 dimensional array.
+	 *  ex: array('id' => 10).
 	 * @param string $output  return type.
 	 *
 	 * @return mixed   wpdb::get_row() response
 	 */
 	public static function get_one( string $table, array $where = array(), $output = 'OBJECT' ) {
 		global $wpdb;
-		$key    = sanitize_text_field( array_keys( $where )[0] );
-		$value  = sanitize_text_field( array_values( $where )[0] );
+		$where = array_map(
+			function( $value ) {
+				return sanitize_text_field( $value );
+			},
+			$where
+		);
+
+		$where_clause = '';
+		// Prepare where clause.
+		foreach ( $where as $key => $value ) {
+			if ( array_key_first( $where ) === $key ) {
+				$where_clause .= "WHERE $key = '$value' ";
+			} else {
+				$where_clause .= "AND $key = '$value' ";
+			}
+		}
+
 		$output = sanitize_text_field( $output );
+		// @codingStandardsIgnoreStart
 		return $wpdb->get_row(
 			"SELECT *
 				FROM {$table}
-				WHERE $key = '$value'
+				{$where_clause}
 			",
 			$output
 		);
+		// @codingStandardsIgnoreEnd
 	}
 
 	/**
@@ -48,24 +65,18 @@ class QueryHelper {
 	 *
 	 * @param string $table  table name.
 	 * @param array  $data | data to insert in the table.
+	 * @param array  $format  format like: %s, %d.
 	 *
 	 * @return int, inserted id.
 	 *
 	 * @since v1.0.0
 	 */
-	public static function insert( string $table, array $data ): int {
+	public static function insert( string $table, array $data, $format = array() ): int {
 		global $wpdb;
-		// Sanitize text field.
-		$data = array_map(
-			function( $value ) {
-				return sanitize_text_field( $value );
-			},
-			$data
-		);
-
 		$insert = $wpdb->insert(
 			$table,
-			$data
+			$data,
+			$format
 		);
 		return $insert ? $wpdb->insert_id : 0;
 	}
@@ -176,6 +187,8 @@ class QueryHelper {
 		);
 		return $delete ? true : false;
 	}
+
+
 
 	/**
 	 * Insert multiple rows without knowing key value
