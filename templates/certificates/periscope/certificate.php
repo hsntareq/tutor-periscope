@@ -5,7 +5,7 @@
  * @package TutorPeriscopeCertificate
  */
 
-use Tutor_Periscope\Certificates\DownloadApproval;
+// use Tutor_Periscope\Certificates\DownloadApproval;
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,7 +68,7 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 					   <span>
 						   Profession:
 						   <span class="course-info">
-								<?php echo esc_html( $student_profession ? $student_profession : '' ); ?>
+								<?php echo isset($student_profession) ? esc_html( $student_profession ):''; ?>
 						   </span>
 					   </span>
 				   </p>
@@ -89,12 +89,12 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 					   <span>
 						   License:
 						   <span class="course-info">
-								<?php echo ( $student_license_number ?: '' ); ?>
+								<?php echo isset($student_license_number) ? $student_license_number : ''; ?>
 						   </span>
 					   </span>
 				   </p>
 				<?php endif; ?>
-				   <p><span>Date Completed: </span> <span class="course-info"><?php ( $completed_date ); ?></span></p>
+				   <p><span>Date Completed: </span> <span class="course-info"><?php echo isset($completed_date) ? $completed_date : '' ; ?></span></p>
 				   <p>
 					   <?php
 							$duration = get_tutor_course_duration_context( $course->ID );
@@ -168,10 +168,12 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 				   <h4>Signature</h4>
 			   </section>
 			   <?php
-				$periscope_owner_name    = get_tutor_option( 'periscope_owner_name' ) ?: '';
-				$periscope_owner_title   = get_tutor_option( 'periscope_owner_title' ) ?: '';
-				$periscope_owner_address = get_tutor_option( 'periscope_owner_address' ) ?: '';
-				$periscope_owner_email   = get_tutor_option( 'periscope_owner_email' ) ?: '';
+				$periscope_owner_name    = get_tutor_option( 'periscope_owner_name' );
+				$periscope_owner_title   = get_tutor_option( 'periscope_owner_title' );
+				$periscope_owner_address = get_tutor_option( 'periscope_owner_address' );
+				$periscope_owner_email   = get_tutor_option( 'periscope_owner_email' );
+
+
 				$owner_data              = array( $periscope_owner_name, $periscope_owner_title, $periscope_owner_address );
 				?>
 				<section class="medbridge">
@@ -185,7 +187,7 @@ use Tutor_Periscope\Certificates\DownloadApproval;
 						endif;
 					endforeach;
 					?>
-					<p class="medbridge-info"><a href="mailto:<?php echo $periscope_owner_email; ?>"><?php echo $periscope_owner_email; ?></a></p>
+					<p class="medbridge-info"><?php echo isset($periscope_owner_email) ? $periscope_owner_email : ''; ?></p>
 			   </section>
 
 			   <section class="medbridge">
