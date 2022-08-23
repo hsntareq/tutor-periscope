@@ -40,7 +40,7 @@ class Reviewer extends AbstractRole {
 	 * @return void
 	 */
 	public function __construct() {
-		add_action( 'init', array( $this, 'add_role' ) );
+		// add_action( 'init', array( $this, 'add_role' ) );
 	}
 
 	/**

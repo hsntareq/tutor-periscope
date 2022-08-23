@@ -30,6 +30,7 @@ if ( ! $form_id || ! $course_id ) {
 	}
 	$course_date   = date( 'd M, Y', strtotime( $course->post_date ) );
 	$total_enroll  = tutor_utils()->count_enrolled_users_by_course( $course_id );
+	$total_enroll  = 0;
 
 	$provider_name = tutor_utils()->get_option( 'periscope_provider_name' );
 	$job_titles    = '';

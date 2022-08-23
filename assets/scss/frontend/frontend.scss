@@ -14,3 +14,14 @@ body {
     background: #ffffff;
 }
 
+.layout-2 .tutor-avatar{
+    height: 27px;
+    width: 27px;
+}
+.layout-2 .course-info ul li{
+    vertical-align: middle;
+}
+.layout-2 .course-info ul li a{
+    display: flex;
+    gap: 10px;
+}

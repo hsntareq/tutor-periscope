@@ -4,7 +4,7 @@
  *
  * @package Tutor_Periscope\Admin\Menu
  *
- * @author Shewa <shewa12kpi@gmail.com>
+ * @author Hasan Tareq <hsntareq@gmail.com>
  *
  * @since v1.0.0
  */
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @package Tutor_Periscope\Admin
  *
- * @author Shewa <shewa12kpi@gmail.com>
+ * @author Hasan Tareq <hsntareq@gmail.com>
  *
  * @since v1.0.0
  */

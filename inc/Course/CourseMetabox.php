@@ -33,7 +33,6 @@ class CourseMetabox extends MetaboxFactory {
 		add_action( 'add_meta_boxes', array( $this, 'register_meta_box' ) );
 		add_action( 'save_post_courses', array( __CLASS__, 'update_linear_meta' ), 10, 1 );
 	}
-
 	/**
 	 * Create meta box
 	 *
@@ -42,7 +41,7 @@ class CourseMetabox extends MetaboxFactory {
 	public function create_meta_box(): MetaboxInterface {
 		return new Metabox(
 			'tutor-periscope-linear-path',
-			__( 'Video fast forwarding', 'tutor-periscope' ),
+			__( 'Linear Path', 'tutor-periscope' ),
 			tutor()->course_post_type,
 			'side'
 		);
@@ -58,7 +57,7 @@ class CourseMetabox extends MetaboxFactory {
 		?>
 		<div class="tutor-periscope-form-group">
 			<label>
-				<?php esc_html_e( 'Allow' ); ?>
+				<?php esc_html_e( 'Activate the Linear Path: ' ); ?>
 				<input type="checkbox" name="tp-linear-status" <?php echo $status ? 'checked' : ''; ?>>
 			</label>
 		</div>

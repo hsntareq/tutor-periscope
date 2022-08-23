@@ -49,3 +49,7 @@ table.wp-list-table.students tbody input[type=number] {
 .tutor-option-field-row textarea {
   max-width: 100%;
 }
+
+#tutor-periscope-additional-data .tutor-option-field {
+  margin: 0;
+}

@@ -140,7 +140,7 @@
 							?>
 								<p>
 								<?php echo esc_html( '' !== $job_title ? $instructor->display_name . ',' : $instructor->display_name ); ?>
-								<?php echo esc_html( $job_title ); ?>
+								<small>(<?php echo esc_html( $job_title ); ?>)</small>
 								</p>
 								<p style="margin-left: 40px">
 								<?php echo wp_kses_post( get_user_meta( $instructor->ID, '_tutor_profile_bio', true ) ); ?>
@@ -190,20 +190,20 @@
 					<p class="medbridge-info"><?php echo isset($periscope_owner_email) ? $periscope_owner_email : ''; ?></p>
 			   </section>
 
-			   <section class="medbridge">
-				   <h4>Continuing Education Approval</h4>
 				   <?php
-					if ( is_array( $approver_state_content ) && count( $approver_state_content ) ) :
+					/* if ( is_array( $approver_state_content ) && count( $approver_state_content ) ) :
 						?>
+						<section class="medbridge">
+							<h4>Continuing Education Approval</h4>
+							<?php
+							foreach ( $approver_state_content as $k => $instructor ) :
+								?>
+								<p class="medbridge-info"><?php echo esc_textarea( $instructor['state_approver'] ); ?></p>
+							<?php endforeach; ?>
+						</section>
 						<?php
-						foreach ( $approver_state_content as $k => $instructor ) :
-							?>
-							<p class="medbridge-info"><?php echo esc_textarea( $instructor['state_approver'] ); ?></p>
-						<?php endforeach; ?>
-						<?php
-					endif;
+					endif; */
 					?>
-			   </section>
 
 			   <section class="certificate-before-footer">
 					<p>Some state licensing boards do not require course pre-approval. Participant is responsible for understanding their requirements.</p>

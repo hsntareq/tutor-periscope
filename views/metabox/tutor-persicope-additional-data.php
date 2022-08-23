@@ -57,7 +57,7 @@ do_action( 'tutor_periscope_course_metabox_before_additional_data' ); ?>
 <!-- <div class="tutor-option-field-row">
 	<div class="tutor-option-field-label">
 		<label for="course_endorsements">
-			<?php esc_html_e( 'Profession', 'tutor-periscope' ); ?> <br />
+			<?php //esc_html_e( 'Profession', 'tutor-periscope' ); ?> <br />
 		</label>
 	</div>
 	<div class="tutor-option-field tutor-option-tooltip">

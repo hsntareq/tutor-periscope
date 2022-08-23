@@ -125,8 +125,8 @@ msgstr ""
 msgid "Approve failed, please try again."
 msgstr ""
 
-#: inc/Course/CourseMetabox.php:45
-msgid "Video fast forwarding"
+#: inc/Course/CourseMetabox.php:44
+msgid "Linear Path"
 msgstr ""
 
 #: inc/Email/CourseEnrollmentEmail.php:40
@@ -341,7 +341,7 @@ msgstr ""
 msgid "Vote"
 msgstr ""
 
-#: templates/backend/evaluation-form.php:111
+#: templates/backend/evaluation-form.php:116
 msgid "+ Add Field"
 msgstr ""
 
@@ -699,10 +699,6 @@ msgstr ""
 
 #: views/metabox/tutor-persicope-additional-data.php:46
 msgid "Education Approval"
-msgstr ""
-
-#: views/metabox/tutor-persicope-additional-data.php:60
-msgid "Profession"
 msgstr ""
 
 #: views/metabox/tutor-persicope-additional-data.php:92

@@ -44,6 +44,14 @@ class Options {
 							'default'     => 'off',
 							'desc'        => __( 'Enable this to show free text under course enrollment button of single course item.', 'tutor' ),
 						),
+						/* array(
+							'key'         => 'tp_remove_instructor',
+							'type'        => 'toggle_switch',
+							'label'       => __( 'Remove course instructor', 'tutor' ),
+							'label_title' => '',
+							'default'     => 'off',
+							'desc'        => __( 'Enable this to allow removing course instructor', 'tutor' ),
+						), */
 					),
 				),
 				array(

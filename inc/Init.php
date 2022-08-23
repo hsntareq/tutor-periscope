@@ -17,7 +17,7 @@ use Tutor_Periscope\Instructors\ManageInstructors;
 use Tutor_Periscope\Metabox\EvaluationMetabox;
 use Tutor_Periscope\Metabox\MetaboxInit;
 use Tutor_Periscope\UserRole\FilterDashboardMenu;
-use Tutor_Periscope\UserRole\Reviewer;
+// use Tutor_Periscope\UserRole\Reviewer;
 use Tutor_Periscope\Users\UserMetaFields;
 use Tutor_Periscope\Users\Users;
 use Tutor_Periscope\Utilities\Utilities;
@@ -48,7 +48,7 @@ final class Init {
 			Email\AttemptEmail::class,
 			Lesson\LessonAdjustment::class,
 			Lesson\LessonProgress::class,
-			Reviewer::class,
+			// Reviewer::class,
 			FilterDashboardMenu::class,
 			DownloadApproval::class,
 			Email\CourseEnrollmentEmail::class,
