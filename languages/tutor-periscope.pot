@@ -597,11 +597,11 @@ msgstr ""
 msgid "Download PDF"
 msgstr ""
 
-#: views/admin/evaluation-report.php:17, views/admin/quarterly-report.php:13, inc/Admin/Menu/SubMenu/EvaluationReport.php:29, inc/Admin/Menu/SubMenu/EvaluationReport.php:40
+#: views/admin/evaluation-report.php:17, inc/Admin/Menu/SubMenu/EvaluationReport.php:29, inc/Admin/Menu/SubMenu/EvaluationReport.php:40
 msgid "Evaluation Report"
 msgstr ""
 
-#: views/admin/evaluation-report.php:22
+#: views/admin/evaluation-report.php:22, views/admin/quarterly-report.php:23
 msgid "Course"
 msgstr ""
 
@@ -621,7 +621,7 @@ msgstr ""
 msgid "Summary"
 msgstr ""
 
-#: views/admin/evaluation-report.php:73
+#: views/admin/evaluation-report.php:73, views/admin/quarterly-report.php:83
 msgid "No records found."
 msgstr ""
 
@@ -629,8 +629,28 @@ msgstr ""
 msgid "Evaluation Summary"
 msgstr ""
 
-#: views/admin/quarterly-report.php:16
-msgid "Coming soon..."
+#: views/admin/quarterly-report.php:18, inc/Admin/Menu/SubMenu/QuarterlyReport.php:27, inc/Admin/Menu/SubMenu/QuarterlyReport.php:38
+msgid "Quarterly Report"
+msgstr ""
+
+#: views/admin/quarterly-report.php:26
+msgid "1st Quarter"
+msgstr ""
+
+#: views/admin/quarterly-report.php:29
+msgid "2nd Quarter"
+msgstr ""
+
+#: views/admin/quarterly-report.php:32
+msgid "3rd Quarter"
+msgstr ""
+
+#: views/admin/quarterly-report.php:35
+msgid "4th Quarter"
+msgstr ""
+
+#: views/admin/quarterly-report.php:38
+msgid "Actions"
 msgstr ""
 
 #: views/admin/users-list.php:39
@@ -739,10 +759,6 @@ msgstr ""
 
 #: inc/Admin/Menu/SubMenu/BulkUser.php:29, inc/Admin/Menu/SubMenu/BulkUser.php:40, inc/Admin/Menu/SubMenu/BulkUser.php:78
 msgid "Bulk User"
-msgstr ""
-
-#: inc/Admin/Menu/SubMenu/QuarterlyReport.php:27, inc/Admin/Menu/SubMenu/QuarterlyReport.php:38
-msgid "Quarterly Report"
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1

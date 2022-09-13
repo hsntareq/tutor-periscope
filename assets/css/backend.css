@@ -53,3 +53,30 @@ table.wp-list-table.students tbody input[type=number] {
 #tutor-periscope-additional-data .tutor-option-field {
   margin: 0;
 }
+
+#tutor-periscope-additional-data .tutor-option-field-row {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
+.mce-widget.mce-notification.mce-notification-error {
+  display: none;
+}
+
+@media all and (max-width: 1170px) {
+  .tutor-option-field-row {
+    display: block !important;
+  }
+  .tutor-option-field-row .tutor-option-field-label {
+    width: 100%;
+    float: none;
+    margin-bottom: 10px;
+  }
+  .tutor-option-field-row .tutor-option-field textarea {
+    display: block;
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=backend.css.map */

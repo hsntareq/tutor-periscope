@@ -31,6 +31,20 @@ class Options {
 			'icon'     => 'tutor-icon-gear',
 			'blocks'   => array(
 				array(
+					'slug'       => 'certificate_options_page',
+					'label'      => __( 'Certificate Options', 'tutor-pro' ),
+					'block_type' => 'uniform',
+					'desc'       => __( 'Enable Disable Option to on/off notification on various event', 'tutor-pro' ),
+					'fields'     => array(
+						array(
+							'key'         => 'periscope_certificate_logo',
+							'type'        => 'upload_full',
+							'label'       => __( 'Add Certificate Logo', 'tutor' ),
+							'desc'        => __( 'Upload logo for periscope certificate only.', 'tutor' ),
+						),
+					),
+				),
+				array(
 					'slug'       => 'course_single_page',
 					'label'      => __( 'Course Single Page', 'tutor-pro' ),
 					'block_type' => 'uniform',
@@ -44,14 +58,6 @@ class Options {
 							'default'     => 'off',
 							'desc'        => __( 'Enable this to show free text under course enrollment button of single course item.', 'tutor' ),
 						),
-						/* array(
-							'key'         => 'tp_remove_instructor',
-							'type'        => 'toggle_switch',
-							'label'       => __( 'Remove course instructor', 'tutor' ),
-							'label_title' => '',
-							'default'     => 'off',
-							'desc'        => __( 'Enable this to allow removing course instructor', 'tutor' ),
-						), */
 					),
 				),
 				array(

@@ -52,7 +52,8 @@ removeAbles.forEach((elem) => {
 });
 
 export async function removeElement(elem) {
-    if (elem.hasAttribute('data-tp-ajax')) {
+    if ('undefined' !== elem && elem.hasAttribute('data-tp-ajax')) {
+console.log(typeof elem);
         const formData = elem.dataset.tpAjax;
         const response = await ajaxRequest(formData);
         if (response.success) {
@@ -87,8 +88,9 @@ addDeleteButtonToMainAuthor();
 
 
 const availableInstructors = document.querySelector('.add_instructor_to_course_btn');
+if(null !== availableInstructors && typeof availableInstructors != 'undefined'){
 availableInstructors.onclick = (e) => {
     setTimeout(() => {
         addDeleteButtonToMainAuthor();
     }, 1000);
-}
+}}

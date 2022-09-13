@@ -37,9 +37,11 @@
 					$min_text  = $durationMinutes . ' ';
 					$min_text .= ( $durationMinutes > 1 ) ? __( 'minutes', 'tutor-periscope' ) : __( 'minute', 'tutor-periscope' );
 				}
-				$duration_text       = $hour_text . ' ' . $min_text;
-				$default_sinature_id = tutor_utils()->get_option( 'tutor_cert_signature_image_id' );
-				$signature_url       = isset( $default_sinature_id ) ? wp_get_attachment_url( $default_sinature_id ) : '';
+				$duration_text              = $hour_text . ' ' . $min_text;
+				$default_sinature_id        = tutor_utils()->get_option( 'tutor_cert_signature_image_id' );
+				$periscope_certificate_logo = tutor_utils()->get_option( 'periscope_certificate_logo' );
+				$periscope_certificate_logo = isset( $periscope_certificate_logo ) ? wp_get_attachment_url( $periscope_certificate_logo ) : '';
+				$signature_url              = isset( $default_sinature_id ) ? wp_get_attachment_url( $default_sinature_id ) : '';
 
 
 				$approver_id   = get_post_meta( $course->ID, '_tp_certificate_approver', true );
@@ -54,7 +56,11 @@
 				?>
 				<section class="certificate-header">
 					<header class="certificate-logo">
-						<img src="<?php echo esc_url( TUTOR_PERISCOPE_DIR_URL . 'assets/images/periscope-logo-text.png' ); ?>" alt="Periscope Logo" />
+						<?php if ( ! empty( $periscope_certificate_logo ) ) : ?>
+							<img src="<?php echo esc_url( $periscope_certificate_logo ); ?>" alt="Periscope Logo" />
+						<?php else : ?>
+							<img src="<?php echo esc_url( TUTOR_PERISCOPE_DIR_URL . 'assets/images/periscope-logo-text.png' ); ?>" alt="Periscope Logo" />
+						<?php endif; ?>
 					</header>
 				   </section>
 				   <section class="certificate-details">
@@ -68,7 +74,7 @@
 					   <span>
 						   Profession:
 						   <span class="course-info">
-								<?php echo isset($student_profession) ? esc_html( $student_profession ):''; ?>
+								<?php echo isset( $student_profession ) ? esc_html( $student_profession ) : ''; ?>
 						   </span>
 					   </span>
 				   </p>
@@ -78,8 +84,8 @@
 					   <span>
 						   State:
 						   <span class="course-info">
-								<?php echo isset($student_state) ? esc_html( $student_state ) : ''; ?>
-								<?php echo isset($student_other_states) ? esc_html( $student_other_states ) : ''; ?>
+								<?php echo isset( $student_state ) ? esc_html( $student_state ) : ''; ?>
+								<?php echo isset( $student_other_states ) ? esc_html( $student_other_states ) : ''; ?>
 						   </span>
 					   </span>
 				   </p>
@@ -89,12 +95,12 @@
 					   <span>
 						   License:
 						   <span class="course-info">
-								<?php echo isset($student_license_number) ? $student_license_number : ''; ?>
+								<?php echo isset( $student_license_number ) ? $student_license_number : ''; ?>
 						   </span>
 					   </span>
 				   </p>
 				<?php endif; ?>
-				   <p><span>Date Completed: </span> <span class="course-info"><?php echo isset($completed_date) ? $completed_date : '' ; ?></span></p>
+				   <p><span>Date Completed: </span> <span class="course-info"><?php echo isset( $completed_date ) ? $completed_date : ''; ?></span></p>
 				   <p>
 					   <?php
 							$duration = get_tutor_course_duration_context( $course->ID );
@@ -174,7 +180,7 @@
 				$periscope_owner_email   = get_tutor_option( 'periscope_owner_email' );
 
 
-				$owner_data              = array( $periscope_owner_name, $periscope_owner_title, $periscope_owner_address );
+				$owner_data = array( $periscope_owner_name, $periscope_owner_title, $periscope_owner_address );
 				?>
 				<section class="medbridge">
 					<img src="<?php echo esc_url( $signature_url ); ?>" style="max-width: 200px" alt="signature" />
@@ -187,11 +193,12 @@
 						endif;
 					endforeach;
 					?>
-					<p class="medbridge-info"><?php echo isset($periscope_owner_email) ? $periscope_owner_email : ''; ?></p>
+					<p class="medbridge-info"><?php echo isset( $periscope_owner_email ) ? $periscope_owner_email : ''; ?></p>
 			   </section>
 
 				   <?php
-					/* if ( is_array( $approver_state_content ) && count( $approver_state_content ) ) :
+
+					 if ( is_array( $approver_state_content ) && count( $approver_state_content ) ) :
 						?>
 						<section class="medbridge">
 							<h4>Continuing Education Approval</h4>
@@ -202,7 +209,7 @@
 							<?php endforeach; ?>
 						</section>
 						<?php
-					endif; */
+					endif;
 					?>
 
 			   <section class="certificate-before-footer">

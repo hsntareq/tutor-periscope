@@ -1,4 +1,5 @@
 @import '../common/loader';
+
 .single-evaluation-wrapper {
     h2 {
         font-size: 24px;
@@ -13,16 +14,48 @@
 table.wp-list-table.students {
     tbody {
         input[type=number] {
-            width:100px;
+            width: 100px;
             text-align: center;
         }
     }
 }
+
 .tutor-option-field-row {
-    textarea{
+    textarea {
         max-width: 100%;
     }
 }
-#tutor-periscope-additional-data .tutor-option-field {
-    margin: 0;
+
+#tutor-periscope-additional-data {
+    .tutor-option-field {
+        margin: 0;
+    }
+
+    .tutor-option-field-row {
+        justify-content: start;
+    }
+}
+
+.mce-widget.mce-notification.mce-notification-error {
+    display: none;
+}
+
+
+@media all and (max-width:1170px) {
+    .tutor-option-field-row {
+        display: block !important;
+
+        .tutor-option-field-label {
+            width: 100%;
+            float: none;
+            margin-bottom: 10px;
+        }
+
+        .tutor-option-field {
+            textarea {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
 }
