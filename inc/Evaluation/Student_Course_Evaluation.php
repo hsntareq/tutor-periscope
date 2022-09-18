@@ -108,8 +108,17 @@ class Student_Course_Evaluation extends DB_Query {
 			);
 			array_push( $form_data, $arr );
 		}
+
 		// Create instance of form builder.
-		$form_builder  = FormBuilder::create( 'Feedback' );
+		$form_builder = FormBuilder::create( 'Feedback' );
+
+		// Save default comment input value.
+		$comments           = $post['comments'];
+		$form_field_builder = FormBuilder::create( 'FormField' );
+		foreach ( $form_data as $key => $data ) {
+			$form_field_builder->update_default_input( $data['field_id'], $comments[ $key ] );
+		}
+
 		$save_feedback = $form_builder->create( $form_data );
 		if ( $save_feedback ) {
 			// store a identifier that user evaluated course.
