@@ -6,7 +6,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-09-18 09:07+0000\n"
+"Content-Transfer-Econdig: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"MIME-Version: 1.0\n"
+"Project-Id-Version: Tutor Periscope\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -250,16 +253,12 @@ msgstr ""
 msgid "N/A"
 msgstr ""
 
-#: inc/FormBuilder/FormField.php:135, templates/backend/evaluation-form.php:91
+#: inc/FormBuilder/FormField.php:162, templates/backend/evaluation-form.php:91
 msgid "Compare"
 msgstr ""
 
-#: inc/FormBuilder/FormField.php:139, templates/backend/evaluation-form.php:94
+#: inc/FormBuilder/FormField.php:166, templates/backend/evaluation-form.php:94
 msgid "Vote"
-msgstr ""
-
-#: inc/FormBuilder/FormField.php:143
-msgid "Input"
 msgstr ""
 
 #: inc/Instructors/ManageInstructors.php:136
@@ -402,7 +401,11 @@ msgstr ""
 msgid "Data not set"
 msgstr ""
 
-#: templates/frontend/evaluation-form-view.php:95
+#: templates/frontend/evaluation-form-view.php:85
+msgid "You comments"
+msgstr ""
+
+#: templates/frontend/evaluation-form-view.php:91
 msgid "Submit"
 msgstr ""
 
@@ -760,14 +763,6 @@ msgstr ""
 
 #: inc/Admin/Menu/SubMenu/BulkUser.php:29, inc/Admin/Menu/SubMenu/BulkUser.php:40, inc/Admin/Menu/SubMenu/BulkUser.php:78
 msgid "Bulk User"
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "__("Compare", "tutor-periscope""
-msgstr ""
-
-#: assets/js/frontend.js:1, assets/js/backend.js:1
-msgid "__("Vote", "tutor-periscope""
 msgstr ""
 
 #: assets/js/frontend.js:1, assets/js/backend.js:1
