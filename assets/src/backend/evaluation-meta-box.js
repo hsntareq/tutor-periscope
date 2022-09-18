@@ -8,6 +8,15 @@ import addDynamicField, { removeElement } from "./form-controls";
 const { __ } = wp.i18n;
 document.addEventListener("DOMContentLoaded", function () {
     const addField = document.querySelector(".tp-add-field");
+    const fieldTypes = tp_data.field_types;
+    let fieldTypesHTML = '';
+    for ( let type of fieldTypes) {
+        fieldTypesHTML += `
+        <option value="${type.key}">
+        ${type.value}
+        </option>
+        `;
+    }
     if (addField) {
         addField.onclick = (event) => {
             const html = `
@@ -22,12 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         "Field type",
                         "tutor-periscope",
                     )}">
-                        <option value="compare">
-                            ${__("Compare", "tutor-periscope")}
-                        </option>
-                        <option value="vote">
-                            ${__("Vote", "tutor-periscope")}
-                        </option>
+                        ${fieldTypesHTML}
                     </select>
                 </div>
                 <button type="button" class="tp-remove-able tutor-btn tutor-btn-outline-primary tutor-btn-sm">

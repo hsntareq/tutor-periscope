@@ -122,4 +122,26 @@ class FormField implements FormInterface {
 			$field_ids
 		);
 	}
+
+	/**
+	 * Get available field types
+	 *
+	 * @return array
+	 */
+	public static function field_types(): array {
+		$types = array(
+			array(
+				'key'   => 'compare',
+				'value' => __( 'Compare', 'tutor-periscope' ),
+			),
+			array(
+				'key'   => 'vote',
+				'value' => __( 'Vote', 'tutor-periscope' ),
+			),
+		);
+		return apply_filters(
+			'tutor_periscope_field_types',
+			$types
+		);
+	}
 }

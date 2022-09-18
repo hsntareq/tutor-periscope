@@ -9,6 +9,7 @@ namespace Tutor_Periscope\Assets;
 
 use Tutor_Periscope\Attempt\AttemptManagement;
 use Tutor_Periscope\Course\CourseMetabox;
+use Tutor_Periscope\FormBuilder\FormField;
 use Tutor_Periscope\Lesson\LessonProgress;
 
 defined( 'ABSPATH' ) || exit;
@@ -106,6 +107,7 @@ class Enqueue {
 		}
 		$admin_page       = isset( $_GET['page'] ) && is_admin() ? $_GET['page'] : '';
 		$user_attempts    = AttemptManagement::attempt_details( $user_id );
+
 		$has_quiz_attempt = isset( $user_attempts['remaining'] ) && (int) $user_attempts['remaining'] > 0 ? true : false;
 
 		$data = array(
@@ -119,6 +121,7 @@ class Enqueue {
 			'linear_path'                 => CourseMetabox::linear_path_status( $tutor_course_id ),
 			'admin_page'                  => $admin_page,
 			'has_quiz_attempt'            => (bool) $has_quiz_attempt,
+			'field_types'                 => FormField::field_types(),
 		);
 
 		/**
