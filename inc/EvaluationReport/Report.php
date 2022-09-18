@@ -94,14 +94,10 @@ class Report {
 				','
 			) AS percent,
 			(
-				SELECT GROUP_CONCAT(feedback.feedback SEPARATOR '_')
-					FROM {$form_table} AS form
-					INNER JOIN {$field_table} AS fields
-						ON fields.form_id = form.id
-						AND fields.field_type = 'comment'
-					INNER JOIN {$feedback_table} AS feedback
-						ON feedback.field_id = fields.id
-					WHERE form.id = $form_id
+				SELECT GROUP_CONCAT(meta.meta_value SEPARATOR '_')
+					FROM {$wpdb->postmeta} AS meta
+					WHERE meta.post_id = fields.id
+					AND meta.meta_key = 'tutor_periscope_default_input'
 			) AS comments
 
 			FROM {$field_table} AS fields

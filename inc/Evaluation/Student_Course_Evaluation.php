@@ -116,7 +116,12 @@ class Student_Course_Evaluation extends DB_Query {
 		$comments           = $post['comments'];
 		$form_field_builder = FormBuilder::create( 'FormField' );
 		foreach ( $form_data as $key => $data ) {
-			$form_field_builder->update_default_input( $data['field_id'], $comments[ $key ] );
+			if ( '' !== $comments[ $key ] ) {
+				// Get previous comments then concat new comment with under_score(_).
+				$existing_comments = get_post_meta( $data['field_id'], $form_field_builder->input_meta_key, true );
+				$update_comments   = $existing_comments . '_' . $comments[ $key ];
+				$form_field_builder->update_default_input( $data['field_id'], $update_comments );
+			}
 		}
 
 		$save_feedback = $form_builder->create( $form_data );

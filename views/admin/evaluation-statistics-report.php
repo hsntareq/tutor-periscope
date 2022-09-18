@@ -13,6 +13,7 @@ if ( ! $form_id || ! $course_id ) {
 } else {
 	$statistics = Report::get_statistics( $form_id );
 }
+
 ?>
 <div class="report_template evaluation_report container">
 	<h2 class="pdf_title">
@@ -83,6 +84,21 @@ if ( ! $form_id || ! $course_id ) {
 						<?php endforeach; ?>
 					<?php endif; ?>
 				</tr>
+				<tr>
+					<?php
+						$user_comments = explode( '_', $statistic->comments );
+						$user_comments = array_unique( $user_comments );
+					?>
+					<?php if ( is_array( $user_comments ) && count( $user_comments ) ) : ?>
+						<ol>
+						<?php foreach ( $user_comments as $uc ) : ?>
+							<li>
+								<?php echo esc_html( $uc ); ?>
+							</li>
+						<?php endforeach; ?>
+						</ol>
+					<?php endif; ?>
+				</tr>
 			<?php endforeach; ?>
 		<?php endif; ?>
 
@@ -111,6 +127,22 @@ if ( ! $form_id || ! $course_id ) {
 						<?php endforeach; ?>
 					<?php endif; ?>
 				</tr>
+				<tr>
+					<?php
+						$user_comments = explode( '_', $statistic->comments );
+						$user_comments = array_unique( $user_comments );
+					?>
+					<?php if ( is_array( $user_comments ) && count( $user_comments ) ) : ?>
+						<ol>
+						<?php foreach ( $user_comments as $uc ) : ?>
+							<li>
+								<?php echo esc_html( $uc ); ?>
+							</li>
+						<?php endforeach; ?>
+						</ol>
+					<?php endif; ?>
+				</tr>				
 			<?php endforeach; ?>
 		<?php endif; ?></table>
+
 </div>
