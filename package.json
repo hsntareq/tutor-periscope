@@ -4,7 +4,7 @@
     "description": "Tutor Periscope",
     "main": "index.js",
     "scripts": {
-        "build": "webpack --env=build --mode=production && _GULP_ENV='build' gulp build",
+        "build": "composer install && webpack --env=build --mode=production && _GULP_ENV='build' gulp build",
         "build-dev": "webpack --mode=development && gulp build",
         "css-watch": "gulp watch",
         "js-watch": "webpack --watch --mode=development",
