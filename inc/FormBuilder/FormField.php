@@ -21,6 +21,16 @@ use Tutor_Periscope\Query\QueryHelper;
 class FormField implements FormInterface {
 
 	/**
+	 * Default input field with question will be saved as
+	 * post meta
+	 *
+	 * @since v2.0.0
+	 *
+	 * @var string
+	 */
+	public $input_meta_key = 'tutor_periscope_default_input';
+
+	/**
 	 * Get table name
 	 *
 	 * @since v2.0.0
@@ -72,6 +82,23 @@ class FormField implements FormInterface {
 
 	public function delete( int $id ): bool {
 
+	}
+
+	/**
+	 * Get all fields by form id
+	 *
+	 * @param integer $form_id  form id.
+	 *
+	 * @return array
+	 */
+	public function get_all_fields_by_form_id( int $form_id ): array {
+		$fields = QueryHelper::select_all_where_in(
+			$this->get_table(),
+			'id',
+			'form_id',
+			$form_id
+		);
+		return $fields;
 	}
 
 	/**
@@ -142,6 +169,40 @@ class FormField implements FormInterface {
 		return apply_filters(
 			'tutor_periscope_field_types',
 			$types
+		);
+	}
+
+	/**
+	 * Create default input field for each question
+	 *
+	 * @param int $form_id  form id.
+	 *
+	 * @return void
+	 */
+	public function create_default_input_fields( int $form_id ) {
+		$fields = $this->get_all_fields_by_form_id( $form_id );
+		foreach ( $fields as $field ) {
+			$this->update_default_input( $field->id, '' );
+		}
+	}
+
+	/**
+	 * Create or update default input value for all questions
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param int    $field_id  question field id to link with input field.
+	 * It will treat as post id.
+	 *
+	 * @param string $meta_value  value for input field.
+	 *
+	 * @return void
+	 */
+	public function update_default_input( int $field_id, string $meta_value = '' ) {
+		update_post_meta(
+			$field_id,
+			$this->input_meta_key,
+			$meta_value
 		);
 	}
 }

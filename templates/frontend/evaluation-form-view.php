@@ -82,11 +82,7 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 								<?php endforeach; ?>
 							</select>
 							<?php endif; ?>
-							<?php if ( 'comment' === $field->field_type ) : ?>
-							<div class="tutor-form-group mb-3 clearfix">
-								<textarea name="feedback[]"></textarea>
-							</div>
-							<?php endif; ?>
+							<input type="text" name="comments[]" class="tutor-form-control tutor-mt-12" placeholder="<?php esc_html_e( 'You comments', 'tutor-periscope' ); ?>">
 						</div>
 					<?php endforeach; ?>
 				<?php endif; ?>

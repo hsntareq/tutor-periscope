@@ -114,32 +114,34 @@ class FormClient {
 					);
 					array_push( $field_data, $data );
 				}
-				/**
-				 * Static comment field
-				 *
-				 * Insert comment field if not exists
-				 */
-				global $wpdb;
-				$has_comment_field = QueryHelper::get_one(
-					$wpdb->prefix . EvaluationFormFields::get_table(),
-					array( 'form_id' => $form_id, 'field_type' => 'comment' )
-				);
+				// /**
+				//  * Static comment field
+				//  *
+				//  * Insert comment field if not exists
+				//  */
+				// global $wpdb;
+				// $has_comment_field = QueryHelper::get_one(
+				// 	$wpdb->prefix . EvaluationFormFields::get_table(),
+				// 	array( 'form_id' => $form_id, 'field_type' => 'comment' )
+				// );
 		
-				if ( ! $has_comment_field ) {
-					$comment = array(
-						'form_id'         => $form_id,
-						'tutor_course_id' => $post_id,
-						'field_label'     => 'Comments',
-						'field_type'      => 'comment',
-					);
-					array_push( $field_data, $comment );
-				}
+				// if ( ! $has_comment_field ) {
+				// 	$comment = array(
+				// 		'form_id'         => $form_id,
+				// 		'tutor_course_id' => $post_id,
+				// 		'field_label'     => 'Comments',
+				// 		'field_type'      => 'comment',
+				// 	);
+				// 	array_push( $field_data, $comment );
+				// }
 
 				if ( count( $field_data ) > 1 ) {
 					$form_field_builder->create_multiple( $field_data );
+					$form_field_builder->create_default_input_fields( $form_id );
 				} else {
 					if ( count( $field_data ) ) {
 						$form_field_builder->create( $field_data[0] );
+						do_action( 'tutor_periscope_after_single_question_create', $form_id, $field_data );
 					}
 				}
 			}
