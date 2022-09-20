@@ -90,14 +90,18 @@ if ( ! $form_id || ! $course_id ) {
 							$user_comments = array_unique( $user_comments );
 						?>
 						<?php if ( is_array( $user_comments ) && count( $user_comments ) ) : ?>
-							<ol>
-							<?php foreach ( $user_comments as $uc ) : ?>
-								<li>
-									<?php echo esc_html( $uc ); ?>
-								</li>
-							<?php endforeach; ?>
-							</ol>
-						<?php endif; ?>						
+							<div style="margin-left: 10px;">
+								<p style="margin-bottom: 0;">Comments:</p>
+								<ol style="margin-left:20px;">
+								<?php foreach ( $user_comments as $uc ) : ?>
+								<?php if(empty($uc)) continue;?>
+									<li>
+										<?php echo esc_html( $uc ); ?>
+									</li>
+								<?php endforeach; ?>
+								</ol>
+							</div>
+						<?php endif; ?>
 					<?php endif; ?>
 				</tr>
 			<?php endforeach; ?>
@@ -135,16 +139,20 @@ if ( ! $form_id || ! $course_id ) {
 						$user_comments = array_unique( $user_comments );
 						?>
 						<?php if ( is_array( $user_comments ) && count( $user_comments ) ) : ?>
-							<ol>
-							<?php foreach ( $user_comments as $uc ) : ?>
-								<li>
-									<?php echo esc_html( $uc ); ?>
-								</li>
-							<?php endforeach; ?>
-							</ol>
-						<?php endif; ?>						
+							<div style="margin-left: 10px;">
+								<p style="margin-bottom: 0;">Comments:</p>
+								<ol style="margin-left:20px;">
+								<?php foreach ( $user_comments as $uc ) : ?>
+								<?php if(empty($uc)) continue;?>
+									<li>
+										<?php echo esc_html( $uc ); ?>
+									</li>
+								<?php endforeach; ?>
+								</ol>
+							</div>
+						<?php endif; ?>
 					<?php endif; ?>
-				</tr>				
+				</tr>
 			<?php endforeach; ?>
 		<?php endif; ?></table>
 
