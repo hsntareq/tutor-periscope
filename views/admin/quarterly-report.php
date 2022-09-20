@@ -9,14 +9,31 @@
 use Tutor_Periscope\FormBuilder\FormBuilder;
 
 $form_builder = FormBuilder::create( 'Form' );
+$feedback     = FormBuilder::create( 'Feedback' );
+$years        = $feedback->feedback_years();
 $forms        = $form_builder->get_list();
 
-// pr($forms);
 ?>
 <div class="wrap evaluation-report-wrapper">
 	<h1>
 		<?php esc_html_e( 'Quarterly Report', 'tutor-periscope' ); ?>
 	</h1>
+
+	<div class="tutor-wp-dashboard-filter-item tutor-mb-12" style="max-width: 240px;">
+		<label class="tutor-form-label" for="feedback-year">
+			<?php echo esc_html_e( 'Select Year', 'tutor_periscope' ); ?>
+		</label>
+		<select type="text" class="tutor-form-select" name="feedback-year" id="feedback-year">
+			<?php if ( is_array( $years ) && count( $years ) ) : ?>
+				<?php foreach ( $years as $year ) : ?>
+					<option value="<?php echo esc_attr( $year->year ); ?>">
+						<?php echo esc_html( $year->year ); ?>
+					</option>
+				<?php endforeach; ?>
+			<?php endif; ?>
+		</select>
+	</div>
+	
 	<table class="wp-list-table widefat striped table-view-list">
 		<thead>
 			<th>

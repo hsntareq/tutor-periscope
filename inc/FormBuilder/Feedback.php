@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Tutor_Periscope\Database\EvaluationFieldOptions;
+use Tutor_Periscope\Database\EvaluationForm;
+use Tutor_Periscope\Database\EvaluationFormFields;
 use Tutor_Periscope\FormBuilder\FormInterface;
 use Tutor_Periscope\Query\QueryHelper;
 
@@ -59,6 +62,36 @@ class Feedback implements FormInterface {
 
 	public function delete( int $id ): bool {
 
+	}
+
+	/**
+	 * Get unique years that has feedback
+	 *
+	 * @return array
+	 */
+	public function feedback_years() {
+		global $wpdb;
+		$form_table     = $wpdb->prefix . EvaluationForm::get_table();
+		$fields_table   = $wpdb->prefix . EvaluationFormFields::get_table();
+		$feedback_table = $this->get_table();
+		$years          = $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT
+					DISTINCT( DATE(forms.created_at) ) AS year
+				
+					FROM {$form_table} AS forms
+				
+					INNER JOIN {$fields_table} AS fields
+						ON fields.form_id = forms.id
+					
+					INNER JOIN {$feedback_table} AS feedback
+						ON feedback.field_id = fields.id
+					WHERE 1 = %d
+				",
+				1
+			)
+		);
+		return $years;
 	}
 
 }
