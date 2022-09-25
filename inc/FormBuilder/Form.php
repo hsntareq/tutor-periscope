@@ -72,7 +72,7 @@ class Form implements FormInterface {
 	 *
 	 * @return array  wpdb results
 	 */
-	public function get_list( $offset = 0, $limit = 10, $year = '' ): array {
+	public function get_list( $offset = 0, $limit = 10, $year = '', $search = '' ): array {
 		global $wpdb;
 		$forms_table    = $this->get_table();
 		$fields_table   = $wpdb->prefix . EvaluationFormFields::get_table();
@@ -89,6 +89,8 @@ class Form implements FormInterface {
 				)
 			";
 		}
+
+		$search_term = '%' . $wpdb->esc_like( $search ) . '%';
 
 		$results = $wpdb->get_results(
 			$wpdb->prepare(
@@ -105,12 +107,13 @@ class Form implements FormInterface {
 							ON course.ID = form.tutor_course_id
 							AND course.post_type = 'courses'
 					WHERE 1 = %d
-		
+					AND ( course.post_title LIKE %s )
 					{$year_clause}
 
 					LIMIT %d, %d
 				",
 				1,
+				$search_term,
 				$offset,
 				$limit
 			)
@@ -125,7 +128,7 @@ class Form implements FormInterface {
 	 *
 	 * @return mixed  wpdb count value
 	 */
-	public function total_evaluation_count( $year ) {
+	public function total_evaluation_count( $year = '', $search = '' ) {
 		global $wpdb;
 		$forms_table    = $this->get_table();
 		$fields_table   = $wpdb->prefix . EvaluationFormFields::get_table();
@@ -142,7 +145,8 @@ class Form implements FormInterface {
 				)
 			";
 		}
-
+		$search_term = '%' . $wpdb->esc_like( $search ) . '%';
+	
 		$count = $wpdb->get_var(
 			$wpdb->prepare(
 				"SELECT COUNT(form.id)
@@ -153,9 +157,11 @@ class Form implements FormInterface {
 						AND course.post_type = 'courses'
 
 					WHERE 1 = %d 
+					AND ( course.post_title LIKE %s )
 					{$year_clause}
 				",
-				1
+				1,
+				$search_term
 			)
 		);
 		return $count;
