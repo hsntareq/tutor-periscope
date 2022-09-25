@@ -43,7 +43,7 @@ class Report {
 	 *
 	 * @return array wpdb::get_results
 	 */
-	public static function get_statistics( int $form_id ) {
+	public static function get_statistics( int $form_id, $quarter = '' ) {
 		global $wpdb;
 		$form_id             = sanitize_text_field( $form_id );
 		$prefix              = $wpdb->prefix;
@@ -51,6 +51,25 @@ class Report {
 		$field_table         = $prefix . EvaluationFormFields::get_table();
 		$feedback_table      = $prefix . EvaluationFormFeedback::get_table();
 		$field_options_table = $prefix . EvaluationFieldOptions::get_table();
+
+		$quarter_clause = '';
+		if ( '' !== $quarter ) {
+			$month_from = 1;
+			$month_to   = 3;
+			if ( 'apr-jun' === $quarter ) {
+				$month_from = 4;
+				$month_to   = 6;
+			} elseif ( 'jul-sep' === $quarter ) {
+				$month_from = 7;
+				$month_to   = 9;
+			} elseif ( 'nov-dec' === $quarter ) {
+				$month_from = 10;
+				$month_to   = 12;
+			}
+			$quarter_clause = "INNER JOIN {$feedback_table} AS f
+			ON f.field_id = fields.id
+			AND (MONTH (f.created_at) BETWEEN {$month_from} AND {$month_to})";
+		}
 
 		$query = "SELECT
 			form.form_title,
@@ -108,6 +127,8 @@ class Report {
 			INNER JOIN {$form_table} AS form
 				ON form.id = fields.form_id
 
+			{$quarter_clause}
+
 			WHERE form.id = %d
 
 			GROUP BY fields.id
@@ -115,6 +136,7 @@ class Report {
 			ORDER BY fields.id
 
 		";
+		tutor_log($query);
 
 		$response = $wpdb->get_results(
 			$wpdb->prepare(
@@ -143,10 +165,7 @@ class Report {
 		$course_id = $_GET['course-id'] ?? 0;
 		if ( ! $form_id || ! $course_id ) {
 			die( 'Invalid Form or Course ID' );
-		} else {
-			$statistics = Report::get_statistics( $form_id );
 		}
-		
 		$course_id       = sanitize_text_field( $course_id );
 		$should_download = false;
 		if ( 'tp-evaluation-report-download' === $action ) {

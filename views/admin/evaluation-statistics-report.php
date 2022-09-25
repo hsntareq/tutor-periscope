@@ -4,6 +4,7 @@
 </style>
 <?php
 
+use TUTOR\Input;
 use Tutor_Periscope\EvaluationReport\Report;
 //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 $form_id   = $_GET['form-id'] ?? 0;
@@ -11,7 +12,13 @@ $course_id = $_GET['course-id'] ?? 0;
 if ( ! $form_id || ! $course_id ) {
 	die( 'Invalid Form or Course ID' );
 } else {
-	$statistics = Report::get_statistics( $form_id );
+	$quarter    = Input::get( 'quarter', '' );
+	$statistics = Report::get_statistics( $form_id, $quarter );
+	if ( ! $statistics || ! count( $statistics ) ) {
+		$url = admin_url() . 'admin.php?page=tutor-periscope-quarterly-report';
+		echo "<p style='padding: 20px;'>No record available</p>";
+		return;
+	}
 }
 ?>
 <div class="report_template evaluation_report container">

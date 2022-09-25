@@ -92,10 +92,37 @@ $total_count   = $form_builder->total_evaluation_count( $selected_year, $search 
 						$disabled            = 'disabled';
 						$report_view_url     = 'javascript:void(0)';
 						$report_download_url = 'javascript:void(0)';
+
+						$quarter_jan_mar_view_url     = '';
+						$quarter_jan_mar_download_url = '';
+
+						$quarter_apr_jun_view_url     = '';
+						$quarter_apr_jun_download_url = '';
+
+						$quarter_jul_sep_view_url     = '';
+						$quarter_jul_sep_download_url = '';
+
+						$quarter_nov_dec_view_url     = '';
+						$quarter_nov_dec_download_url = '';
+
 						if ( $total_submission ) {
-							$disabled            = '';
-							$report_view_url     = get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id;
-							$report_download_url = get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id;
+							$disabled = '';
+
+							$quarter_jan_mar_view_url = get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=jan-mar';
+
+							$quarter_jan_mar_download_url = get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=jan-mar';
+
+							$quarter_apr_jun_view_url = get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=apr-jun';
+
+							$quarter_apr_jun_download_url = get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=apr-jun';
+
+							$quarter_jul_sep_view_url = get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=jul-sep';
+
+							$quarter_jul_sep_download_url = get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=jul-sep';
+
+							$quarter_oct_dec_view_url = get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=oct-dec';
+
+							$quarter_oct_dec_download_url = get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=oct-dec';
 						}
 						?>
 					<tr>
@@ -104,11 +131,11 @@ $total_count   = $form_builder->total_evaluation_count( $selected_year, $search 
 						</td>
 						<td>
 							<span class="button-group">
-								<a href="<?php echo esc_url( $report_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_jan_mar_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php echo esc_html_e( 'View', 'tutor-periscope' ); ?>
 								</a>
-								<a href="<?php echo esc_url( $report_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_jan_mar_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
 								</a>
@@ -116,11 +143,11 @@ $total_count   = $form_builder->total_evaluation_count( $selected_year, $search 
 						</td>
 						<td>
 							<span class="button-group">
-								<a href="<?php echo esc_url( $report_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_apr_jun_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php echo esc_html_e( 'View', 'tutor-periscope' ); ?>
 								</a>
-								<a href="<?php echo esc_url( $report_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_apr_jun_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
 								</a>
@@ -128,11 +155,11 @@ $total_count   = $form_builder->total_evaluation_count( $selected_year, $search 
 						</td>
 						<td>
 							<span class="button-group">
-								<a href="<?php echo esc_url( $report_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_jul_sep_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php echo esc_html_e( 'View', 'tutor-periscope' ); ?>
 								</a>
-								<a href="<?php echo esc_url( $report_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_jul_sep_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
 								</a>
@@ -140,11 +167,11 @@ $total_count   = $form_builder->total_evaluation_count( $selected_year, $search 
 						</td>
 						<td>
 							<span class="button-group">
-								<a href="<?php echo esc_url( $report_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_oct_dec_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php echo esc_html_e( 'View', 'tutor-periscope' ); ?>
 								</a>
-								<a href="<?php echo esc_url( $report_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_oct_dec_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
 								</a>
