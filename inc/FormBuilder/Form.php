@@ -72,11 +72,23 @@ class Form implements FormInterface {
 	 *
 	 * @return array  wpdb results
 	 */
-	public function get_list(): array {
+	public function get_list( $offset = 0, $limit = 10, $year = '' ): array {
 		global $wpdb;
 		$forms_table    = $this->get_table();
 		$fields_table   = $wpdb->prefix . EvaluationFormFields::get_table();
 		$feedback_table = $wpdb->prefix . EvaluationFormFeedback::get_table();
+
+		$year_clause = '';
+		if ( '' !== $year ) {
+			$year_clause = "AND $year = ( 
+				SELECT YEAR(feedback.created_at) AS year
+					FROM 
+					{$feedback_table} AS feedback
+					HAVING year = $year
+					LIMIT 1
+				)
+			";
+		}
 
 		$results = $wpdb->get_results(
 			$wpdb->prepare(
@@ -87,16 +99,66 @@ class Form implements FormInterface {
 								ON feedback.field_id = field.id
 						WHERE field.form_id = form.id
 				) AS total_submission
+
 					FROM {$forms_table} AS form
 						INNER JOIN {$wpdb->posts} AS course
 							ON course.ID = form.tutor_course_id
 							AND course.post_type = 'courses'
 					WHERE 1 = %d
+		
+					{$year_clause}
+
+					LIMIT %d, %d
+				",
+				1,
+				$offset,
+				$limit
+			)
+		);
+		return is_array( $results ) && count( $results ) ? $results : array();
+	}
+
+	/**
+	 * Count total evaluation form
+	 *
+	 * @since v2.0.0
+	 *
+	 * @return mixed  wpdb count value
+	 */
+	public function total_evaluation_count( $year ) {
+		global $wpdb;
+		$forms_table    = $this->get_table();
+		$fields_table   = $wpdb->prefix . EvaluationFormFields::get_table();
+		$feedback_table = $wpdb->prefix . EvaluationFormFeedback::get_table();
+
+		$year_clause = '';
+		if ( '' !== $year ) {
+			$year_clause = "AND $year = ( 
+				SELECT YEAR(feedback.created_at) AS year
+					FROM 
+					{$feedback_table} AS feedback
+					HAVING year = $year
+					LIMIT 1
+				)
+			";
+		}
+
+		$count = $wpdb->get_var(
+			$wpdb->prepare(
+				"SELECT COUNT(form.id)
+					FROM {$forms_table} AS form
+
+					INNER JOIN {$wpdb->posts} AS course
+						ON course.ID = form.tutor_course_id
+						AND course.post_type = 'courses'
+
+					WHERE 1 = %d 
+					{$year_clause}
 				",
 				1
 			)
 		);
-		return is_array( $results ) && count( $results ) ? $results : array();
+		return $count;
 	}
 
 	/**

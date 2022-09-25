@@ -6,13 +6,20 @@
  *
  * @package TutorPeriscope\Admin\Page
  */
+
+use TUTOR\Input;
 use Tutor_Periscope\FormBuilder\FormBuilder;
 
 $form_builder = FormBuilder::create( 'Form' );
 $feedback     = FormBuilder::create( 'Feedback' );
 $years        = $feedback->feedback_years();
-$forms        = $form_builder->get_list();
 
+$selected_year = Input::get( 'year', '' );
+$paged_filter  = Input::get( 'paged', 1, Input::TYPE_INT );
+$limit         = tutor_utils()->get_option( 'pagination_per_page' );
+$offset        = ( $limit * $paged_filter ) - $limit;
+$forms         = $form_builder->get_list( $offset, $limit, $selected_year );
+$total_count   = $form_builder->total_evaluation_count( $selected_year );
 ?>
 <div class="wrap evaluation-report-wrapper">
 	<h1>
@@ -58,45 +65,71 @@ $forms        = $form_builder->get_list();
 			<th>
 				<?php esc_html_e( '4th Quarter', 'tutor-periscope' ); ?><br> <small>1st November to 31st December</small>
 			</th>
-			<th>
-				<?php esc_html_e( 'Actions', 'tutor-periscope' ); ?><br> <small>Caution to take actions</small>
-			</th>
 		</thead>
 		<tbody>
 			<?php if ( is_array( $forms ) && count( $forms ) ) : ?>
 				<?php foreach ( $forms as $form ) : ?>
+					<?php
+					$total_submission    = $form->total_submission;
+					$disabled            = 'disabled';
+					$report_view_url     = 'javascript:void(0)';
+					$report_download_url = 'javascript:void(0)';
+					if ( $total_submission ) {
+						$disabled            = '';
+						$report_view_url     = get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id;
+						$report_download_url = get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id;
+					}
+					?>
 				<tr>
 					<td>
 						<?php echo esc_html( $form->course ); ?>
 					</td>
 					<td>
 						<span class="button-group">
-							<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id ); ?>" class="button" value="left">View</a>
-							<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id ); ?>" class="button" value="right">Download</a>
+							<a href="<?php echo esc_url( $report_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+							target="_blank">
+								<?php echo esc_html_e( 'View', 'tutor-periscope' ); ?>
+							</a>
+							<a href="<?php echo esc_url( $report_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+							target="_blank">
+								<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
+							</a>
 						</span>
 					</td>
 					<td>
 						<span class="button-group">
-							<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id ); ?>" class="button" value="left">View</a>
-							<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id ); ?>" class="button" value="right">Download</a>
+							<a href="<?php echo esc_url( $report_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+							target="_blank">
+								<?php echo esc_html_e( 'View', 'tutor-periscope' ); ?>
+							</a>
+							<a href="<?php echo esc_url( $report_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+							target="_blank">
+								<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
+							</a>
 						</span>
 					</td>
 					<td>
 						<span class="button-group">
-							<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id ); ?>" class="button" value="left">View</a>
-							<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id ); ?>" class="button" value="right">Download</a>
+							<a href="<?php echo esc_url( $report_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+							target="_blank">
+								<?php echo esc_html_e( 'View', 'tutor-periscope' ); ?>
+							</a>
+							<a href="<?php echo esc_url( $report_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+							target="_blank">
+								<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
+							</a>
 						</span>
 					</td>
 					<td>
 						<span class="button-group">
-							<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id ); ?>" class="button" value="left">View</a>
-							<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id ); ?>" class="button" value="right">Download</a>
-						</span>
-					</td>
-					<td>
-						<span class="button-group">
-							<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id ); ?>" class="button" value="left">Edit</a>
-							<a href="<?php echo esc_url( get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id ); ?>" class="button" value="right">Delete</a>
+							<a href="<?php echo esc_url( $report_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+							 target="_blank">
+								<?php echo esc_html_e( 'View', 'tutor-periscope' ); ?>
+							</a>
+							<a href="<?php echo esc_url( $report_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+							target="_blank">
+								<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
+							</a>
 						</span>
 					</td>
 				</tr>
@@ -110,4 +143,20 @@ $forms        = $form_builder->get_list();
 			<?php endif; ?>
 		</tbody>
 	</table>
+	<div class="tutor-admin-page-pagination-wrapper tutor-mt-32">
+			<?php
+			/**
+			 * Prepare pagination data & load template
+			 */
+			if($total_count > $limit) {
+				$pagination_data     = array(
+					'total_items' => $total_count,
+					'per_page'    => $limit,
+					'paged'       => $paged_filter,
+				);
+				$pagination_template = tutor()->path . 'views/elements/pagination.php';
+				tutor_load_template_from_custom_path( $pagination_template, $pagination_data );
+			}
+			?>
+		</div>	
 </div>

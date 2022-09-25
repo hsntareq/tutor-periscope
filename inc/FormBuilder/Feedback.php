@@ -82,6 +82,8 @@ class Feedback implements FormInterface {
 					FROM {$feedback_table} AS feedback
 
 					WHERE 1 = %d
+
+					ORDER BY year DESC
 				",
 				1
 			)
