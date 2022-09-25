@@ -61,7 +61,7 @@ $total_count   = $form_builder->total_evaluation_count( $selected_year, $search 
 			</div>
 			<div class="tutor-wp-dashboard-filter-item tutor-mb-12">
 				<button class="tutor-btn tutor-btn-outline-primary">
-					<?php esc_html_e( 'Submit', 'tutor-periscope' ); ?>
+					<?php esc_html_e( 'Apply', 'tutor-periscope' ); ?>
 				</button>
 			</div>
 		</form>
