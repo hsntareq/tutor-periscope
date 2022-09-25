@@ -23,15 +23,22 @@ $forms        = $form_builder->get_list();
 		<label class="tutor-form-label" for="feedback-year">
 			<?php echo esc_html_e( 'Select Year', 'tutor_periscope' ); ?>
 		</label>
-		<select type="text" class="tutor-form-select" name="feedback-year" id="feedback-year">
-			<?php if ( is_array( $years ) && count( $years ) ) : ?>
-				<?php foreach ( $years as $year ) : ?>
-					<option value="<?php echo esc_attr( $year->year ); ?>">
-						<?php echo esc_html( $year->year ); ?>
+		<?php if ( is_array( $years ) && count( $years ) ) : ?>
+			<select type="text" class="tutor-form-select" name="feedback-year" id="feedback-year">
+				<option value="">
+					<?php echo esc_html_e( 'Select Year', 'tutor-periscope' ); ?>
+				</option>
+				<?php foreach ( $years as $feedback_year ) : ?>
+					<option value="<?php echo esc_attr( $feedback_year->year ); ?>">
+						<?php echo esc_html( $feedback_year->year ); ?>
 					</option>
 				<?php endforeach; ?>
-			<?php endif; ?>
-		</select>
+			</select>
+		<?php else : ?>
+			<p>
+				<?php echo esc_html_e( 'No submission found', 'tutor-periscope' ); ?>
+			</p>
+		<?php endif; ?>
 	</div>
 	
 	<table class="wp-list-table widefat striped table-view-list">

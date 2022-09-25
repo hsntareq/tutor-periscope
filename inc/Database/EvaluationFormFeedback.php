@@ -51,6 +51,7 @@ class EvaluationFormFeedback extends DatabaseTable {
 		$table_name      = $wpdb->prefix . self::$table_name;
 		$sql             = "CREATE TABLE $table_name (
         id INT(9) unsigned NOT NULL AUTO_INCREMENT,
+		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 		field_id INT(9) unsigned NOT NULL,
 
         FOREIGN KEY (field_id)
