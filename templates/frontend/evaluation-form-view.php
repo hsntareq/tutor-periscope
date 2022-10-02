@@ -82,12 +82,14 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 								<?php endforeach; ?>
 							</select>
 							<?php endif; ?>
-							<input type="text" name="comments[]" class="tutor-form-control tutor-mt-12" placeholder="<?php esc_html_e( 'You comments', 'tutor-periscope' ); ?>">
+							<?php if ( 'text' === $field->field_type ) : ?>
+								<input type="text" name="feedback[]" class="tutor-form-control tutor-mt-12" placeholder="<?php esc_html_e( 'Write...', 'tutor-periscope' ); ?>">
+							<?php endif; ?>
 						</div>
 					<?php endforeach; ?>
 				<?php endif; ?>
 				<div class="tutor-form-group mb-3 clearfix">
-					<button class="tutor-periscope-evaluation-submit-button tutor-button">
+					<button class="tutor-periscope-evaluation-submit-button tutor-btn tutor-btn-primary">
 						<?php esc_html_e( 'Submit', 'tutor-periscope' ); ?>
 					</button>
 				</div>

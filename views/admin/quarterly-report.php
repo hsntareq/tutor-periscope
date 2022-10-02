@@ -81,7 +81,7 @@ $total_count   = $form_builder->total_evaluation_count( $selected_year, $search 
 					<?php esc_html_e( '3rd Quarter', 'tutor-periscope' ); ?><br> <small>1st July to 30th September</small>
 				</th>
 				<th>
-					<?php esc_html_e( '4th Quarter', 'tutor-periscope' ); ?><br> <small>1st November to 31st December</small>
+					<?php esc_html_e( '4th Quarter', 'tutor-periscope' ); ?><br> <small>1st October to 31st December</small>
 				</th>
 			</thead>
 			<tbody>

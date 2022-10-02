@@ -165,6 +165,10 @@ class FormField implements FormInterface {
 				'key'   => 'vote',
 				'value' => __( 'Vote', 'tutor-periscope' ),
 			),
+			array(
+				'key'   => 'text',
+				'value' => __( 'Text', 'tutor-periscope' ),
+			),
 		);
 		return apply_filters(
 			'tutor_periscope_field_types',

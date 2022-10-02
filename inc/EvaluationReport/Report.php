@@ -62,7 +62,7 @@ class Report {
 			} elseif ( 'jul-sep' === $quarter ) {
 				$month_from = 7;
 				$month_to   = 9;
-			} elseif ( 'nov-dec' === $quarter ) {
+			} elseif ( 'oct-dec' === $quarter ) {
 				$month_from = 10;
 				$month_to   = 12;
 			}
@@ -76,7 +76,7 @@ class Report {
 			form.form_description,
 			fields.field_label,
 			fields.field_type,
-			GROUP_CONCAT(options.option_name) AS option_name,
+			GROUP_CONCAT(DISTINCT options.option_name) AS option_name,
 			GROUP_CONCAT(
 				IFNULL(
 					( SELECT COUNT(*)
@@ -100,7 +100,6 @@ class Report {
 								FROM {$feedback_table}
 									WHERE field_id = fields.id
 							)
-
 									FROM {$feedback_table}
 									WHERE feedback = options.option_name
 										AND field_id = fields.id
@@ -113,15 +112,15 @@ class Report {
 				','
 			) AS percent,
 			(
-				SELECT GROUP_CONCAT(meta.meta_value SEPARATOR '_')
-					FROM {$wpdb->postmeta} AS meta
-					WHERE meta.post_id = fields.id
-					AND meta.meta_key = 'tutor_periscope_default_input'
+				SELECT GROUP_CONCAT(f.feedback SEPARATOR '_')
+					FROM {$feedback_table} AS f
+					WHERE fields.id = f.field_id
+					AND fields.field_type = 'text'
 			) AS comments
 
 			FROM {$field_table} AS fields
 
-			INNER JOIN {$field_options_table} AS options
+			LEFT JOIN {$field_options_table} AS options
 				ON options.field_type = fields.field_type
 
 			INNER JOIN {$form_table} AS form
@@ -135,9 +134,9 @@ class Report {
 
 			ORDER BY fields.id
 
-		";
-		tutor_log($query);
 
+		";
+		tutor_log( $query );
 		$response = $wpdb->get_results(
 			$wpdb->prepare(
 				$query,

@@ -1,6 +1,6 @@
-<?php ob_start();?>
+<?php ob_start(); ?>
 <style>
-<?php include( trailingslashit( TUTOR_PERISCOPE_VIEWS . 'admin' ) . 'reports-style.css' ); ?>
+<?php require trailingslashit( TUTOR_PERISCOPE_VIEWS . 'admin' ) . 'reports-style.css'; ?>
 </style>
 <?php
 
@@ -19,6 +19,7 @@ if ( ! $form_id || ! $course_id ) {
 		echo "<p style='padding: 20px;'>No record available</p>";
 		return;
 	}
+
 }
 ?>
 <div class="report_template evaluation_report container">
@@ -75,7 +76,7 @@ if ( ! $form_id || ! $course_id ) {
 		<?php if ( is_array( $statistics ) && count( $statistics ) ) : ?>
 			<?php
 			foreach ( $statistics as $statistic ) :
-				if ( 'vote' === $statistic->field_type ) {
+				if ( 'vote' === $statistic->field_type || 'text' === $statistic->field_type ) {
 					continue;
 				}
 				$total_counts = explode( ',', $statistic->total_count );
@@ -88,27 +89,6 @@ if ( ! $form_id || ! $course_id ) {
 								<?php echo esc_html( $count ); ?>
 							</td>
 						<?php endforeach; ?>
-					<?php endif; ?>
-				</tr>
-				<tr>
-					<?php if ( '' !== $statistic->comments && ! is_null( $statistic->comments ) ) : ?>
-						<?php
-							$user_comments = explode( '_', $statistic->comments );
-							$user_comments = array_unique( $user_comments );
-						?>
-						<?php if ( is_array( $user_comments ) && count( $user_comments ) ) : ?>
-							<div style="margin-left: 10px;">
-								<p style="margin-bottom: 0;">Comments:</p>
-								<ol style="margin-left:20px;">
-								<?php foreach ( $user_comments as $uc ) : ?>
-								<?php if(empty($uc)) continue;?>
-									<li>
-										<?php echo esc_html( $uc ); ?>
-									</li>
-								<?php endforeach; ?>
-								</ol>
-							</div>
-						<?php endif; ?>
 					<?php endif; ?>
 				</tr>
 			<?php endforeach; ?>
@@ -126,7 +106,7 @@ if ( ! $form_id || ! $course_id ) {
 		<?php if ( is_array( $statistics ) && count( $statistics ) ) : ?>
 			<?php
 			foreach ( $statistics as $statistic ) :
-				if ( 'compare' === $statistic->field_type ) {
+				if ( 'compare' === $statistic->field_type || 'text' === $statistic->field_type ) {
 					continue;
 				}
 				$vote_counts = explode( ',', $statistic->total_count );
@@ -139,28 +119,34 @@ if ( ! $form_id || ! $course_id ) {
 						<?php endforeach; ?>
 					<?php endif; ?>
 				</tr>
-				<tr>
-					<?php if ( '' !== $statistic->comments && ! is_null( $statistic->comments ) ) : ?>
-						<?php
-						$user_comments = explode( '_', $statistic->comments );
-						$user_comments = array_unique( $user_comments );
-						?>
-						<?php if ( is_array( $user_comments ) && count( $user_comments ) ) : ?>
-							<div style="margin-left: 10px;">
-								<p style="margin-bottom: 0;">Comments:</p>
-								<ol style="margin-left:20px;">
-								<?php foreach ( $user_comments as $uc ) : ?>
-								<?php if(empty($uc)) continue;?>
-									<li>
-										<?php echo esc_html( $uc ); ?>
-									</li>
-								<?php endforeach; ?>
-								</ol>
-							</div>
-						<?php endif; ?>
-					<?php endif; ?>
-				</tr>
 			<?php endforeach; ?>
-		<?php endif; ?></table>
+		<?php endif; ?>
+		<tr>
+			<?php if ( '' !== $statistic->comments && ! is_null( $statistic->comments ) ) : ?>
+				<?php
+				$user_comments = explode( '_', $statistic->comments );
+				$user_comments = array_unique( $user_comments );
+				?>
+				<?php if ( is_array( $user_comments ) && count( $user_comments ) ) : ?>
+					<div style="margin-left: 10px;">
+						<p style="margin-bottom: 0;">
+							<?php echo esc_html( $statistic->field_label ); ?>
+						</p>
+						<ol style="margin-left:20px;">
+						<?php foreach ( $user_comments as $uc ) : ?>
+							<?php
+							if ( empty( $uc ) ) {
+								continue;}
+							?>
+							<li>
+								<?php echo esc_html( $uc ); ?>
+							</li>
+						<?php endforeach; ?>
+						</ol>
+					</div>
+				<?php endif; ?>
+			<?php endif; ?>
+		</tr>
+	</table>
 
 </div>

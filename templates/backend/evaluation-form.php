@@ -7,6 +7,7 @@
  */
 
 use Tutor_Periscope\FormBuilder\FormClient;
+use Tutor_Periscope\FormBuilder\FormField;
 use Tutor_Periscope\Utilities\Utilities;
 
 $form_fields      = FormClient::get_form_fields( get_the_ID() );
@@ -75,10 +76,6 @@ $img_display = '' === $media_url ? 'display: none;' : '';
 				<?php if ( is_array( $form_fields ) && count( $form_fields ) ) : ?>
 					<?php
 					foreach ( $form_fields as $field ) :
-						// Don't need to show comment field.
-						// if ( 'comment' === $field->field_type ) {
-						// continue;
-						// }
 						?>
 						<input type="hidden" name="ep_ef_fields_id[]" value="<?php echo esc_attr( $field->field_id ); ?>">
 						<div class="tutor-col-12 tutor-mb-24 tp-remove-able-wrapper tutor-d-flex tutor-justify-between">
@@ -87,12 +84,11 @@ $img_display = '' === $media_url ? 'display: none;' : '';
 							<div class="tp-action-btn-wrapper tutor-d-flex">
 								<div class="form-control">
 									<select name="tp_ef_field_type[]" class="tutor-mr-12" title="<?php esc_attr_e( 'Field type', 'tutor-periscope' ); ?>">
-										<option value="compare" <?php selected( $field->field_type, 'compare' ); ?>>
-										<?php esc_html_e( 'Compare', 'tutor-periscope' ); ?>
-										</option>
-										<option value="vote" <?php selected( $field->field_type, 'vote' ); ?>>
-										<?php esc_html_e( 'Vote', 'tutor-periscope' ); ?>
-										</option>
+										<?php foreach ( FormField::field_types() as $field_type ) : ?>
+											<option value="<?php echo esc_attr( $field_type['key'] ); ?>" <?php selected( $field->field_type, $field_type['key'] ); ?>>
+											<?php echo esc_html( $field_type['value'] ); ?>
+											</option>
+										<?php endforeach; ?>
 									</select>
 								</div>
 								<button type="button" class="tp-remove-able tutor-btn tutor-btn-outline-primary tutor-btn-sm">
@@ -100,12 +96,6 @@ $img_display = '' === $media_url ? 'display: none;' : '';
 								</button>
 							</div>
 							<?php else : ?>
-								<!-- <div class="tutor-d-flex tutor-justify-between align-items-center" style="gap: 2px;">
-									<label for="tp_ef_hide_field">
-										<?php// esc_html_e( 'Hide', 'tutor-periscope' ); ?>
-									</label>
-									<input type="checkbox" id="tp_ef_hide_field" class="tutor-form-check-input" name="tp_ef_hide_field[]" value="<?php// echo esc_attr( $field->field_id ); ?>">
-								</div> -->
 							<?php endif; ?>
 						</div>
 					<?php endforeach; ?>
