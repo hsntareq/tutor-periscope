@@ -49,6 +49,7 @@ assets/js/frontend.js.map
 assets/js/backend.js.map
 .prettierignore
 tutor-periscope.json
+languages/tutor-periscope.pot
 
 # ignore log files and databases
 *.log
