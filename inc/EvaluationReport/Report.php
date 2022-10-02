@@ -76,7 +76,7 @@ class Report {
 			form.form_description,
 			fields.field_label,
 			fields.field_type,
-			GROUP_CONCAT(options.option_name) AS option_name,
+			GROUP_CONCAT(DISTINCT options.option_name) AS option_name,
 			GROUP_CONCAT(
 				IFNULL(
 					( SELECT COUNT(*)
@@ -133,6 +133,7 @@ class Report {
 			GROUP BY fields.id
 
 			ORDER BY fields.id
+
 
 		";
 		tutor_log( $query );

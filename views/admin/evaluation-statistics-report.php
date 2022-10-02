@@ -19,6 +19,7 @@ if ( ! $form_id || ! $course_id ) {
 		echo "<p style='padding: 20px;'>No record available</p>";
 		return;
 	}
+
 }
 ?>
 <div class="report_template evaluation_report container">
