@@ -56,9 +56,9 @@ if ( is_array( $form_fields ) && count( $form_fields ) ) {
 									}
 									?>
 									>
-										<?php echo esc_html( $option['label'] ); ?>
+										<?php //echo esc_html( $option['label'] ); ?>
 										<?php if ( '' !== $option['help_text'] ) : ?>
-											(<?php echo esc_html( $option['help_text'] ); ?>)
+											<?php echo esc_html( $option['help_text'] ); ?>
 										<?php endif; ?>
 									</option>
 								<?php endforeach; ?>
