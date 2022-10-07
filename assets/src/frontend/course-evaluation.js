@@ -26,8 +26,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     const reviewForm = document.getElementById("tutor-periscope-evaluation-form");
-    const submitButton = document.querySelector(".tutor-periscope-evaluation-submit-button.tutor-button");
-console.log(submitButton);
+    const submitButton = document.querySelector(".tutor-periscope-evaluation-submit-button.tutor-btn");
     if (submitButton) {
         submitButton.onclick = async (event) => {
             event.preventDefault();
