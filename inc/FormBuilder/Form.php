@@ -94,13 +94,35 @@ class Form implements FormInterface {
 
 		$results = $wpdb->get_results(
 			$wpdb->prepare(
-				"SELECT form.*, course.post_title AS course, (
+				"SELECT
+				form.*,
+				course.post_title AS course,
+				(
 					SELECT COUNT(DISTINCT feedback.user_id)
-						FROM {$fields_table} AS field
-							INNER JOIN {$feedback_table} AS feedback
-								ON feedback.field_id = field.id
-						WHERE field.form_id = form.id
-				) AS total_submission
+					FROM {$fields_table} AS field
+						INNER JOIN {$feedback_table} AS feedback
+							ON feedback.field_id = field.id
+					WHERE field.form_id = form.id
+				) AS total_submission,
+				(
+					SELECT MONTH(feedback.created_at)
+					FROM {$fields_table} AS field
+						INNER JOIN {$feedback_table} AS feedback
+							ON feedback.field_id = field.id
+					WHERE field.form_id = form.id
+					ORDER BY feedback.id ASC	
+					LIMIT 1
+						
+				) AS from_month,
+				(
+					SELECT MONTH(feedback.created_at)
+					FROM {$fields_table} AS field
+						INNER JOIN {$feedback_table} AS feedback
+							ON feedback.field_id = field.id
+					WHERE field.form_id = form.id
+					ORDER BY feedback.id DESC	
+					LIMIT 1
+				) AS to_month
 
 					FROM {$forms_table} AS form
 						INNER JOIN {$wpdb->posts} AS course

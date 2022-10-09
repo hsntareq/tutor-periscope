@@ -66,75 +66,37 @@ class Report {
 				$month_from = 10;
 				$month_to   = 12;
 			}
-			$quarter_clause = "INNER JOIN {$feedback_table} AS f
-			ON f.field_id = fields.id
-			AND (MONTH (f.created_at) BETWEEN {$month_from} AND {$month_to})";
+			$quarter_clause = "AND (MONTH (f.created_at) BETWEEN {$month_from} AND {$month_to})";
 		}
 
 		$query = "SELECT
-			form.form_title,
-			form.form_description,
-			fields.field_label,
-			fields.field_type,
-			GROUP_CONCAT(DISTINCT options.option_name) AS option_name,
-			GROUP_CONCAT(
-				IFNULL(
-					( SELECT COUNT(*)
-							FROM {$feedback_table}
-							WHERE feedback = options.option_name
-								AND field_id = fields.id
-							GROUP BY feedback
-					), 0
-				)
-				SEPARATOR
-				','
-			) AS total_count,
+					fields.id AS field_id,
+					form.form_title,
+					form.form_description,
+					fields.field_label,
+					fields.field_type,
+					(
+						SELECT GROUP_CONCAT(f.feedback SEPARATOR '_')
+							FROM {$feedback_table} AS f
+							WHERE fields.id = f.field_id
+							AND fields.field_type = 'text'
+					) AS comments
 
-			GROUP_CONCAT(
-				CAST(
-					IFNULL(
-						(
-							SELECT COUNT(*) * 100 /
-							(
-								SELECT COUNT(*)
-								FROM {$feedback_table}
-									WHERE field_id = fields.id
-							)
-									FROM {$feedback_table}
-									WHERE feedback = options.option_name
-										AND field_id = fields.id
-									GROUP BY feedback
+					FROM {$field_table} AS fields
 
-						), 0
-					) AS decimal (6,2)
-				)
-				SEPARATOR
-				','
-			) AS percent,
-			(
-				SELECT GROUP_CONCAT(f.feedback SEPARATOR '_')
-					FROM {$feedback_table} AS f
-					WHERE fields.id = f.field_id
-					AND fields.field_type = 'text'
-			) AS comments
+					INNER JOIN {$form_table} AS form
+						ON form.id = fields.form_id
 
-			FROM {$field_table} AS fields
+					INNER JOIN {$feedback_table} AS f
+					ON f.field_id = fields.id
 
-			LEFT JOIN {$field_options_table} AS options
-				ON options.field_type = fields.field_type
+					{$quarter_clause}
 
-			INNER JOIN {$form_table} AS form
-				ON form.id = fields.form_id
+					WHERE form.id = %d
 
-			{$quarter_clause}
+					GROUP BY fields.id
 
-			WHERE form.id = %d
-
-			GROUP BY fields.id
-
-			ORDER BY fields.id
-
-
+					ORDER BY fields.id
 		";
 		tutor_log( $query );
 		$response = $wpdb->get_results(
@@ -144,6 +106,52 @@ class Report {
 			)
 		);
 		return $response;
+	}
+
+	/**
+	 * Count feedback for a field
+	 *
+	 * @since v2.0.0
+	 *
+	 * @param integer $field_id  field id.
+	 * @param string $field_type  field type.
+	 *
+	 * @return array
+	 */
+	public static function feedback_count( int $field_id, string $field_type ): array {
+		global $wpdb;
+		$field_id   = sanitize_text_field( $field_id );
+		$field_type = sanitize_text_field( $field_type );
+
+		$prefix              = $wpdb->prefix;
+		$field_table         = $prefix . EvaluationFormFields::get_table();
+		$feedback_table      = $prefix . EvaluationFormFeedback::get_table();
+		$field_options_table = $prefix . EvaluationFieldOptions::get_table();
+
+		$query   = $wpdb->prepare(
+			"SELECT
+					fields.field_label,
+					options.option_name,
+					(
+						SELECT
+							COUNT(*)
+						FROM {$feedback_table} AS f
+						WHERE f.field_id = fields.id
+							AND f.feedback = options.option_name 
+					) AS total_count
+
+				FROM {$field_table} AS fields
+
+				INNER JOIN {$field_options_table} AS options
+				ON options.field_type = %s
+
+				WHERE fields.id = %d
+				",
+			$field_type,
+			$field_id
+		);
+		$results = $wpdb->get_results( $query );
+		return is_array( $results ) ? $results : array();
 	}
 
 	/**
@@ -159,7 +167,7 @@ class Report {
 		if ( ! $course_id ) {
 			return;
 		}
-		
+
 		$form_id   = $_GET['form-id'] ?? 0;
 		$course_id = $_GET['course-id'] ?? 0;
 		if ( ! $form_id || ! $course_id ) {
@@ -215,7 +223,7 @@ class Report {
 	 */
 	public static function get_user_job_titles( string $enroll_ids ) {
 		global $wpdb;
-		$enroll_ids = sanitize_text_field( $enroll_ids );
+		$enroll_ids     = sanitize_text_field( $enroll_ids );
 		$usermeta_table = $wpdb->usermeta;
 
 		return $wpdb->get_results(

@@ -19,7 +19,6 @@ if ( ! $form_id || ! $course_id ) {
 		echo "<p style='padding: 20px;'>No record available</p>";
 		return;
 	}
-
 }
 ?>
 <div class="report_template evaluation_report container">
@@ -79,14 +78,14 @@ if ( ! $form_id || ! $course_id ) {
 				if ( 'vote' === $statistic->field_type || 'text' === $statistic->field_type ) {
 					continue;
 				}
-				$total_counts = explode( ',', $statistic->total_count );
+				$total_counts = Report::feedback_count( $statistic->field_id, $statistic->field_type );
 				?>
 				<tr>
 					<td><?php echo esc_html( $statistic->field_label ); ?></td>
 					<?php if ( is_array( $total_counts ) && count( $total_counts ) ) : ?>
 						<?php foreach ( $total_counts as $count ) : ?>
 							<td align="center">
-								<?php echo esc_html( $count ); ?>
+								<?php echo esc_html( $count->total_count ); ?>
 							</td>
 						<?php endforeach; ?>
 					<?php endif; ?>
@@ -109,13 +108,13 @@ if ( ! $form_id || ! $course_id ) {
 				if ( 'compare' === $statistic->field_type || 'text' === $statistic->field_type ) {
 					continue;
 				}
-				$vote_counts = explode( ',', $statistic->total_count );
+				$vote_counts = Report::feedback_count( $statistic->field_id, $statistic->field_type );
 				?>
 				<tr>
 					<td><?php echo esc_html( $statistic->field_label ); ?></td>
 					<?php if ( is_array( $vote_counts ) && count( $vote_counts ) ) : ?>
 						<?php foreach ( $vote_counts as $count ) : ?>
-							<td align="center"><?php echo esc_html( $count ); ?></td>
+							<td align="center"><?php echo esc_html( $count->total_count ); ?></td>
 						<?php endforeach; ?>
 					<?php endif; ?>
 				</tr>
