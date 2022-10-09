@@ -15,12 +15,12 @@ $feedback     = FormBuilder::create( 'Feedback' );
 $years        = $feedback->feedback_years();
 
 $selected_year = Input::get( 'year', '' );
-$search        = Input::get( 'search', '' );
+$search_term   = Input::get( 'search', '' );
 $paged_filter  = Input::get( 'paged', 1, Input::TYPE_INT );
 $limit         = tutor_utils()->get_option( 'pagination_per_page' );
 $offset        = ( $limit * $paged_filter ) - $limit;
-$forms         = $form_builder->get_list( $offset, $limit, $selected_year, $search );
-$total_count   = $form_builder->total_evaluation_count( $selected_year, $search );
+$forms         = $form_builder->get_list( $offset, $limit, $selected_year, $search_term );
+$total_count   = $form_builder->total_evaluation_count( $selected_year, $search_term );
 ?>
 <div class="wrap evaluation-report-wrapper tutor-admin-wrap">
 	<div class="tutor-admin-body">
@@ -56,7 +56,7 @@ $total_count   = $form_builder->total_evaluation_count( $selected_year, $search 
 				</label>
 				<div class="tutor-form-wrap">
 					<span class="tutor-form-icon"><span class="tutor-icon-search" area-hidden="true"></span></span>
-					<input type="search" class="tutor-form-control" id="tutor-backend-filter-search" name="search" placeholder="Search..." value="<?php echo esc_html( $search ); ?>">
+					<input type="search" class="tutor-form-control" id="tutor-backend-filter-search" name="search" placeholder="Search..." value="<?php echo esc_html( $search_term ); ?>">
 				</div>
 			</div>
 			<div class="tutor-wp-dashboard-filter-item tutor-mb-12">
@@ -93,6 +93,12 @@ $total_count   = $form_builder->total_evaluation_count( $selected_year, $search 
 						$report_view_url     = 'javascript:void(0)';
 						$report_download_url = 'javascript:void(0)';
 
+						$feedback_date = array( $form->from_month, $form->to_month );
+						$jan_to_mar    = array( 1, 2, 3 );
+						$apr_to_jun    = array( 4, 5, 6 );
+						$jul_to_sep    = array( 7, 8, 9 );
+						$oct_to_dec    = array( 10, 11, 12 );
+
 						$quarter_jan_mar_view_url     = '';
 						$quarter_jan_mar_download_url = '';
 
@@ -124,18 +130,23 @@ $total_count   = $form_builder->total_evaluation_count( $selected_year, $search 
 
 							$quarter_oct_dec_download_url = get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=oct-dec';
 						}
+						$has_jan_to_mar = array_intersect( $feedback_date, $jan_to_mar );
+						$has_apr_to_jun = array_intersect( $feedback_date, $apr_to_jun );
+						$has_jul_to_sep = array_intersect( $feedback_date, $jul_to_sep );
+						$has_oct_to_dec = array_intersect( $feedback_date, $oct_to_dec );
 						?>
 					<tr>
 						<td>
 							<?php echo esc_html( $form->course ); ?>
+							<?php var_dump( in_array( $feedback_date, $jan_to_mar ) ); ?>
 						</td>
 						<td>
 							<span class="button-group">
-								<a href="<?php echo esc_url( $quarter_jan_mar_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_jan_mar_view_url ); ?>" class="button" value="left" <?php echo esc_attr( ! $has_jan_to_mar ? 'disabled' : '' ); ?> <?php echo ( ! $has_jan_to_mar ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php echo esc_html_e( 'View', 'tutor-periscope' ); ?>
 								</a>
-								<a href="<?php echo esc_url( $quarter_jan_mar_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_jan_mar_download_url ); ?>" class="button" value="right" <?php echo esc_attr( ! $has_jan_to_mar ? 'disabled' : '' ); ?> <?php echo ( ! $has_jan_to_mar ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
 								</a>
@@ -143,11 +154,11 @@ $total_count   = $form_builder->total_evaluation_count( $selected_year, $search 
 						</td>
 						<td>
 							<span class="button-group">
-								<a href="<?php echo esc_url( $quarter_apr_jun_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_apr_jun_view_url ); ?>" class="button" value="left" <?php echo esc_attr( ! $has_apr_to_jun ? 'disabled' : '' ); ?> <?php echo ( ! $has_apr_to_jun ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php echo esc_html_e( 'View', 'tutor-periscope' ); ?>
 								</a>
-								<a href="<?php echo esc_url( $quarter_apr_jun_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_apr_jun_download_url ); ?>" class="button" value="right" <?php echo esc_attr( ! $has_apr_to_jun ? 'disabled' : '' ); ?> <?php echo ( ! $has_apr_to_jun ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
 								</a>
@@ -155,11 +166,11 @@ $total_count   = $form_builder->total_evaluation_count( $selected_year, $search 
 						</td>
 						<td>
 							<span class="button-group">
-								<a href="<?php echo esc_url( $quarter_jul_sep_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_jul_sep_view_url ); ?>" class="button" value="left" <?php echo esc_attr( ! $has_jul_to_sep ? 'disabled' : '' ); ?> <?php echo ( ! $has_jul_to_sep ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php echo esc_html_e( 'View', 'tutor-periscope' ); ?>
 								</a>
-								<a href="<?php echo esc_url( $quarter_jul_sep_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_jul_sep_download_url ); ?>" class="button" value="right" <?php echo esc_attr( ! $has_jul_to_sep ? 'disabled' : '' ); ?> <?php echo ( ! $has_jul_to_sep ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
 								</a>
@@ -167,11 +178,11 @@ $total_count   = $form_builder->total_evaluation_count( $selected_year, $search 
 						</td>
 						<td>
 							<span class="button-group">
-								<a href="<?php echo esc_url( $quarter_oct_dec_view_url ); ?>" class="button" value="left" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_oct_dec_view_url ); ?>" class="button" value="left" <?php echo esc_attr( ! $has_oct_to_dec ? 'disabled' : '' ); ?> <?php echo ( ! $has_oct_to_dec ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php echo esc_html_e( 'View', 'tutor-periscope' ); ?>
 								</a>
-								<a href="<?php echo esc_url( $quarter_oct_dec_download_url ); ?>" class="button" value="right" <?php echo esc_attr( $disabled ); ?> <?php echo ( '' !== $disabled ) ? 'onclick="return false;"' : ''; ?>
+								<a href="<?php echo esc_url( $quarter_oct_dec_download_url ); ?>" class="button" value="right" <?php echo esc_attr( ! $has_oct_to_dec ? 'disabled' : '' ); ?> <?php echo ( ! $oct_to_dec ) ? 'onclick="return false;"' : ''; ?>
 								target="_blank">
 									<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
 								</a>
