@@ -66,9 +66,7 @@ class Report {
 				$month_from = 10;
 				$month_to   = 12;
 			}
-			$quarter_clause = "INNER JOIN {$feedback_table} AS f
-			ON f.field_id = fields.id
-			AND (MONTH (f.created_at) BETWEEN {$month_from} AND {$month_to})";
+			$quarter_clause = "AND (MONTH (f.created_at) BETWEEN {$month_from} AND {$month_to})";
 		}
 
 		$query = "SELECT
