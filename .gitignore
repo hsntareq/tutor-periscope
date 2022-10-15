@@ -39,14 +39,16 @@ Thumbs.db
 # ignore build folder
 build/
 # ignore build .js files
-assets/js/backend.js
+assets/js/
+# assets/js/backend.j
 # ignore map files
-assets/css/frontend.css.map
-assets/css/frontend.min.css.map
-assets/css/backend.css.map
-assets/css/backend.min.css.map
-assets/js/frontend.js.map
-assets/js/backend.js.map
+assets/css/
+# assets/css/frontend.css.map
+# assets/css/frontend.min.css.map
+# assets/css/backend.css.map
+# assets/css/backend.min.css.map
+# assets/js/frontend.js.map
+# assets/js/backend.js.map
 .prettierignore
 tutor-periscope.json
 languages/tutor-periscope.pot
