@@ -138,7 +138,6 @@ $total_count   = $form_builder->total_evaluation_count( $selected_year, $search_
 					<tr>
 						<td>
 							<?php echo esc_html( $form->course ); ?>
-							<?php var_dump( in_array( $feedback_date, $jan_to_mar ) ); ?>
 						</td>
 						<td>
 							<span class="button-group">

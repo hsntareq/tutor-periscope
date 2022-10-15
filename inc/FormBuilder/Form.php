@@ -212,4 +212,26 @@ class Form implements FormInterface {
 	public function delete( int $id ): bool {
 
 	}
+
+	/**
+	 * Check if a course has evaluation form
+	 *
+	 * @param int $course_id  tutor course id.
+	 *
+	 * @return bool
+	 */
+	public static function course_has_form( int $course_id ): bool {
+		global $wpdb;
+		$table = ( new self() )->get_table();
+		$query = $wpdb->prepare(
+			"SELECT
+				COUNT(*)
+			FROM {$table}
+			WHERE tutor_course_id = %d
+			",
+			$course_id
+		);
+		$result = $wpdb->get_var( $query );
+		return $result ? true : false;
+	}
 }

@@ -9,6 +9,7 @@ namespace Tutor_Periscope\Assets;
 
 use Tutor_Periscope\Attempt\AttemptManagement;
 use Tutor_Periscope\Course\CourseMetabox;
+use Tutor_Periscope\FormBuilder\Form;
 use Tutor_Periscope\FormBuilder\FormField;
 use Tutor_Periscope\Lesson\LessonProgress;
 
@@ -94,7 +95,7 @@ class Enqueue {
 					'tp_user_evaluated_course_' . $course->ID,
 					true
 				);
-				if ( $earned_percentage >= $passing_grade && ! $already_evaluated ) {
+				if ( $earned_percentage >= $passing_grade && ! $already_evaluated && Form::course_has_form( $tutor_course_id ) ) {
 					$should_show_evaluation_form = true;
 				}
 			}
