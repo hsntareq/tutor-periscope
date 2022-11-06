@@ -1,0 +1,870 @@
+# Copyright (C) 2022 Tutor Periscope
+# This file is distributed under the same license as the Tutor Periscope package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Tutor Periscope\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Econdig: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"MIME-Version: 1.0\n"
+"Project-Id-Version: Tutor Periscope\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: inc/Functions.php:33
+msgid "Quiz Feedback Mode Extended"
+msgstr ""
+
+#: inc/Functions.php:41
+msgid "Strict"
+msgstr ""
+
+#: inc/Functions.php:42
+msgid "Answers shown only after 90% mark is achieved"
+msgstr ""
+
+#: inc/Functions.php:81
+msgid "No Course Name provided."
+msgstr ""
+
+#: inc/Functions.php:84
+msgid "No Course Code provided."
+msgstr ""
+
+#: inc/Functions.php:87
+msgid "No Course content matched the session description: provided."
+msgstr ""
+
+#: inc/Functions.php:90
+msgid "No The learning outcomes were met: provided."
+msgstr ""
+
+#: inc/Functions.php:93
+msgid "No Current evidence was cited for specific content: provided."
+msgstr ""
+
+#: inc/Functions.php:96
+msgid "No Instructional activities added value to my learning experience provided."
+msgstr ""
+
+#: inc/Functions.php:99
+msgid "No Course content was effectively delivered provided."
+msgstr ""
+
+#: inc/Functions.php:102
+msgid "No Overall, the course was valuable: provided."
+msgstr ""
+
+#: inc/Functions.php:105
+msgid "No Promotion of a product or service was NOT presented provided."
+msgstr ""
+
+#: inc/Functions.php:108
+msgid "No The environment was supportive of my learning experience provided."
+msgstr ""
+
+#: inc/Functions.php:111
+msgid "No Number of hours it took to complete - ONLY for Online Courses provided."
+msgstr ""
+
+#: inc/Functions.php:114
+msgid "No Agree - How will you apply this in your practice provided."
+msgstr ""
+
+#: inc/Assessment/Assessment.php:95, inc/Evaluation/Course_Evaluation.php:67
+msgid "Are you cheating?"
+msgstr ""
+
+#: inc/Assessment/Assessment.php:98, inc/Evaluation/Course_Evaluation.php:71
+msgid "Permission Denied!"
+msgstr ""
+
+#: inc/Assessment/Assessment.php:103
+msgid "Please select course"
+msgstr ""
+
+#: inc/Assessment/Assessment.php:110
+msgid "Please select user"
+msgstr ""
+
+#: inc/Attempt/AttemptManagement.php:104, inc/Attempt/AttemptManagement.php:128, inc/Certificates/DownloadApproval.php:105, inc/UserRole/FilterDashboardMenu.php:159
+msgid "Nonce verification failed"
+msgstr ""
+
+#: inc/Attempt/AttemptManagement.php:101
+msgid "Invalid user"
+msgstr ""
+
+#: inc/Attempt/AttemptManagement.php:187
+msgid "A student is out of attempt"
+msgstr ""
+
+#: inc/Certificates/Certificates.php:38
+msgid "Periscope"
+msgstr ""
+
+#: inc/Certificates/Certificates.php:54, inc/Certificates/Certificates.php:79
+msgid "Tutor Periscope Additional Fields"
+msgstr ""
+
+#: inc/Certificates/Certificates.php:147, inc/Certificates/Certificates.php:149
+msgid "License Number"
+msgstr ""
+
+#: inc/Certificates/DownloadApproval.php:78
+msgid "Waiting for approval to get the certificate"
+msgstr ""
+
+#: inc/Certificates/DownloadApproval.php:103
+msgid "Approve failed, please try again."
+msgstr ""
+
+#: inc/Course/CourseMetabox.php:44
+msgid "Linear Path"
+msgstr ""
+
+#: inc/Email/CourseEnrollmentEmail.php:40
+msgid "Enrollment Success"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation.php:93
+msgid "Error: Course Name is required"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation.php:97
+msgid "Error: Course Code is required"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation.php:101
+msgid "Error: Course content matched the session description: is required"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation.php:105
+msgid "Error: The learning outcomes were met: is required"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation.php:109
+msgid "Error: Current evidence was cited for specific content: is required"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation.php:113
+msgid "Error: Instructional activities added value to my learning experience is required"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation.php:117
+msgid "Error: Course content was effectively delivered is required"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation.php:121
+msgid "Error: Overall, the course was valuable: is required"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation.php:125
+msgid "Error: Promotion of a product or service was NOT presented is required"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation.php:129
+msgid "Error: The environment was supportive of my learning experience is required"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation.php:133
+msgid "Error: Number of hours it took to complete - ONLY for Online Courses is required"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation.php:137
+msgid "Error: Agree - How will you apply this in your practice is required"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation_List_Table.php:36
+msgid "No course evaluations found"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation_List_Table.php:63, inc/Evaluation/Course_Evaluation_List_Table.php:83, templates/frontend/quiz-attempts.php:64, templates/frontend/quiz-attempts.php:136
+msgid "Details"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation_List_Table.php:63
+msgid "View Details"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation_List_Table.php:80
+msgid "Course Title"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation_List_Table.php:81, views/admin/course-evaluation-edit.php:30, views/admin/course-evaluation-new.php:28
+msgid "Course Code"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation_List_Table.php:82
+msgid "Evaluation Date"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation_List_Table.php:100
+msgid "View this item"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation_List_Table.php:100, views/admin/evaluation-report.php:31, views/admin/evaluation-report.php:55, views/admin/quarterly-report.php:146, views/admin/quarterly-report.php:158, views/admin/quarterly-report.php:170, views/admin/quarterly-report.php:182
+msgid "View"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation_List_Table.php:101
+msgid "Edit this item"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation_List_Table.php:101
+msgid "Edit"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation_List_Table.php:102
+msgid "Delete this item"
+msgstr ""
+
+#: inc/Evaluation/Course_Evaluation_List_Table.php:102, inc/Evaluation/Course_Evaluation_List_Table.php:127
+msgid "Delete"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:34
+msgid "Strongly Disagree"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:41, templates/frontend/course-evaluation.php:8, templates/frontend/course-evaluation.php:18, templates/frontend/course-evaluation.php:28, templates/frontend/course-evaluation.php:38, templates/frontend/course-evaluation.php:48, templates/frontend/course-evaluation.php:58, templates/frontend/course-evaluation.php:68, templates/frontend/course-evaluation.php:78, templates/frontend/course-evaluation.php:88, templates/frontend/course-evaluation.php:98, views/admin/course-evaluation-edit.php:44, views/admin/course-evaluation-edit.php:56, views/admin/course-evaluation-edit.php:68, views/admin/course-evaluation-edit.php:80, views/admin/course-evaluation-edit.php:92, views/admin/course-evaluation-edit.php:104, views/admin/course-evaluation-edit.php:116, views/admin/course-evaluation-edit.php:128, views/admin/course-evaluation-new.php:42, views/admin/course-evaluation-new.php:54, views/admin/course-evaluation-new.php:66, views/admin/course-evaluation-new.php:78, views/admin/course-evaluation-new.php:90, views/admin/course-evaluation-new.php:102, views/admin/course-evaluation-new.php:114, views/admin/course-evaluation-new.php:126
+msgid "Disagree"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:48, templates/frontend/course-evaluation.php:9, templates/frontend/course-evaluation.php:19, templates/frontend/course-evaluation.php:29, templates/frontend/course-evaluation.php:39, templates/frontend/course-evaluation.php:49, templates/frontend/course-evaluation.php:59, templates/frontend/course-evaluation.php:69, templates/frontend/course-evaluation.php:79, templates/frontend/course-evaluation.php:89, templates/frontend/course-evaluation.php:99, views/admin/course-evaluation-edit.php:43, views/admin/course-evaluation-edit.php:55, views/admin/course-evaluation-edit.php:67, views/admin/course-evaluation-edit.php:79, views/admin/course-evaluation-edit.php:91, views/admin/course-evaluation-edit.php:103, views/admin/course-evaluation-edit.php:115, views/admin/course-evaluation-edit.php:127, views/admin/course-evaluation-new.php:41, views/admin/course-evaluation-new.php:53, views/admin/course-evaluation-new.php:65, views/admin/course-evaluation-new.php:77, views/admin/course-evaluation-new.php:89, views/admin/course-evaluation-new.php:101, views/admin/course-evaluation-new.php:113, views/admin/course-evaluation-new.php:125
+msgid "Neutral"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:55, templates/frontend/course-evaluation.php:7, templates/frontend/course-evaluation.php:17, templates/frontend/course-evaluation.php:27, templates/frontend/course-evaluation.php:37, templates/frontend/course-evaluation.php:47, templates/frontend/course-evaluation.php:57, templates/frontend/course-evaluation.php:67, templates/frontend/course-evaluation.php:77, templates/frontend/course-evaluation.php:87, templates/frontend/course-evaluation.php:97, views/admin/course-evaluation-edit.php:42, views/admin/course-evaluation-edit.php:54, views/admin/course-evaluation-edit.php:66, views/admin/course-evaluation-edit.php:78, views/admin/course-evaluation-edit.php:90, views/admin/course-evaluation-edit.php:102, views/admin/course-evaluation-edit.php:114, views/admin/course-evaluation-edit.php:126, views/admin/course-evaluation-new.php:40, views/admin/course-evaluation-new.php:52, views/admin/course-evaluation-new.php:64, views/admin/course-evaluation-new.php:76, views/admin/course-evaluation-new.php:88, views/admin/course-evaluation-new.php:100, views/admin/course-evaluation-new.php:112, views/admin/course-evaluation-new.php:124
+msgid "Agree"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:62
+msgid "Strongly Agree"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:68
+msgid "Not Apply"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:91
+msgid "Yes"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:98
+msgid "No"
+msgstr ""
+
+#: inc/FormBuilder/FieldOptions.php:105
+msgid "N/A"
+msgstr ""
+
+#: inc/FormBuilder/FormField.php:162
+msgid "Compare"
+msgstr ""
+
+#: inc/FormBuilder/FormField.php:166
+msgid "Vote"
+msgstr ""
+
+#: inc/FormBuilder/FormField.php:170
+msgid "Text"
+msgstr ""
+
+#: inc/Instructors/ManageInstructors.php:136
+msgid "Permission denied"
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:58, inc/Lesson/LessonProgress.php:76
+msgid "Nonce verification failed."
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:55
+msgid "Invalid lesson id."
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:160
+msgid "Nonce verify failed"
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:150
+msgid "Invalid lesson id"
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:147
+msgid "Invalid post"
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:134
+msgid "Lesson is not completed"
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:132
+msgid "Lesson is completed"
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:143
+msgid "Quiz attempt not taken"
+msgstr ""
+
+#: inc/Lesson/LessonProgress.php:141
+msgid "Quiz attempt taken"
+msgstr ""
+
+#: inc/Metabox/EvaluationMetabox.php:41
+msgid "Create Evaluation Form"
+msgstr ""
+
+#: inc/UserRole/FilterDashboardMenu.php:81
+msgid "Pending Approvals"
+msgstr ""
+
+#: inc/Users/UserMetaFields.php:45, inc/Admin/Menu/MainMenu.php:74
+msgid "Tutor Periscope"
+msgstr ""
+
+#: inc/Users/UserMetaFields.php:51, views/admin/users-list.php:53
+msgid "Other State"
+msgstr ""
+
+#: inc/Users/UserMetaFields.php:57
+msgid "Separate each state by semicolon (;)"
+msgstr ""
+
+#: inc/Utilities/Utilities.php:42, inc/Utilities/Utilities.php:55
+msgid "Tutor periscope nonce verification failed"
+msgstr ""
+
+#: templates/backend/evaluation-form.php:41
+msgid "Upload Media"
+msgstr ""
+
+#: templates/backend/evaluation-form.php:54, templates/backend/evaluation-form.php:95
+msgid "Remove"
+msgstr ""
+
+#: templates/backend/evaluation-form.php:82
+msgid "Add field label"
+msgstr ""
+
+#: templates/backend/evaluation-form.php:86
+msgid "Field type"
+msgstr ""
+
+#: templates/backend/evaluation-form.php:106
+msgid "+ Add Field"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:4
+msgid "Course content matched the session description"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:14
+msgid "The learning outcome were met"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:24
+msgid "Current evidence was cited for specific content"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:34, views/admin/course-evaluation-edit.php:74, views/admin/course-evaluation-new.php:72
+msgid "Instructional activities added value to my learning experience"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:44, views/admin/course-evaluation-edit.php:86, views/admin/course-evaluation-new.php:84
+msgid "Course content was effectively delivered"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:54
+msgid "Overall course was valuable"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:64
+msgid "Promotion of a product or service was not present"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:74, views/admin/course-evaluation-edit.php:122, views/admin/course-evaluation-new.php:120
+msgid "The environment was supportive of my learning experience"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:84
+msgid "Numbers of hours it took to complete- ONLY online for online courses"
+msgstr ""
+
+#: templates/frontend/course-evaluation.php:94
+msgid "How will you apply this in your practice"
+msgstr ""
+
+#: templates/frontend/evaluation-form-view.php:12
+msgid "Data not set"
+msgstr ""
+
+#: templates/frontend/evaluation-form-view.php:86
+msgid "Write..."
+msgstr ""
+
+#: templates/frontend/evaluation-form-view.php:93
+msgid "Submit"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:21
+msgid "Pending Approvals for Downloading Certificate"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:163
+msgid "No quiz attempt yet."
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:58
+msgid "Course Info"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:59
+msgid "Student"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:60
+msgid "Correct Answer"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:61
+msgid "Incorrect Answer"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:62
+msgid "Earned Mark"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:63
+msgid "Result"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:65, views/admin/users-list.php:55
+msgid "Action"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:88
+msgid "Question: "
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:89
+msgid "Total Marks: "
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:131
+msgid "Pass"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:132
+msgid "Fail"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:128
+msgid "Under Review"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:140
+msgid "Allow user to download certificate"
+msgstr ""
+
+#: templates/frontend/quiz-attempts.php:172
+msgid "Attempt Details"
+msgstr ""
+
+#: views/admin/course-assignment-form.php:31
+msgid "Label"
+msgstr ""
+
+#: views/admin/course-assignment-form.php:32, views/metabox/instructor.php:32
+msgid "Select"
+msgstr ""
+
+#: views/admin/course-assignment-form.php:37
+msgid "Select a course to assign:"
+msgstr ""
+
+#: views/admin/course-assignment-form.php:52
+msgid "Select User(s) to assign:"
+msgstr ""
+
+#: views/admin/course-assignment-form.php:71
+msgid "Assign Course"
+msgstr ""
+
+#: views/admin/course-evaluation-edit.php:10, views/admin/course-evaluation-list.php:11, views/admin/course-evaluation-new.php:10
+msgid "Course Evaluations"
+msgstr ""
+
+#: views/admin/course-evaluation-edit.php:20, views/admin/course-evaluation-new.php:18
+msgid "Course Name"
+msgstr ""
+
+#: views/admin/course-evaluation-edit.php:38, views/admin/course-evaluation-new.php:36
+msgid "Course content matched the session description:"
+msgstr ""
+
+#: views/admin/course-evaluation-edit.php:50, views/admin/course-evaluation-new.php:48
+msgid "The learning outcomes were met:"
+msgstr ""
+
+#: views/admin/course-evaluation-edit.php:62, views/admin/course-evaluation-new.php:60
+msgid "Current evidence was cited for specific content:"
+msgstr ""
+
+#: views/admin/course-evaluation-edit.php:98, views/admin/course-evaluation-new.php:96
+msgid "Overall, the course was valuable:"
+msgstr ""
+
+#: views/admin/course-evaluation-edit.php:110, views/admin/course-evaluation-new.php:108
+msgid "Promotion of a product or service was NOT presented"
+msgstr ""
+
+#: views/admin/course-evaluation-edit.php:134, views/admin/course-evaluation-new.php:132
+msgid "Number of hours it took to complete - ONLY for Online Courses"
+msgstr ""
+
+#: views/admin/course-evaluation-edit.php:142, views/admin/course-evaluation-new.php:140
+msgid "Agree - How will you apply this in your practice"
+msgstr ""
+
+#: views/admin/course-evaluation-edit.php:154
+msgid "Update Evaluation"
+msgstr ""
+
+#: views/admin/course-evaluation-list.php:11
+msgid "Add New"
+msgstr ""
+
+#: views/admin/course-evaluation-new.php:152
+msgid "Add New Evaluation"
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:15, views/admin/course-evaluation-single.php:32
+msgid "Course Title: "
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:16, views/admin/course-evaluation-single.php:33
+msgid "Course Code: "
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:17, views/admin/course-evaluation-single.php:34
+msgid "APTA Evaluation"
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:18, views/admin/course-evaluation-single.php:35
+msgid "1. Course content matched the session description: "
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:19, views/admin/course-evaluation-single.php:36
+msgid "2. The learning outcomes were met: "
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:20, views/admin/course-evaluation-single.php:37
+msgid "3. Current evidence was cited for specific content: "
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:21, views/admin/course-evaluation-single.php:38
+msgid "4. Instructional activities added value to my learning experience: "
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:22, views/admin/course-evaluation-single.php:39
+msgid "5. Course content was effectively delivered: "
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:23, views/admin/course-evaluation-single.php:40
+msgid "6. Overall, the course was valuable: "
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:24, views/admin/course-evaluation-single.php:41
+msgid "7. Promotion of a product or service was NOT presented: "
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:25, views/admin/course-evaluation-single.php:42
+msgid "8. The environment was supportive of my learning experience: "
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:26, views/admin/course-evaluation-single.php:43
+msgid "9. Number of hours it took to complete - ONLY for Online Courses: "
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:27, views/admin/course-evaluation-single.php:44
+msgid "10. Agree - How will you apply this in your practice? "
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:49
+msgid "Print"
+msgstr ""
+
+#: views/admin/course-evaluation-single.php:50
+msgid "Download PDF"
+msgstr ""
+
+#: views/admin/evaluation-report.php:17, inc/Admin/Menu/SubMenu/EvaluationReport.php:29, inc/Admin/Menu/SubMenu/EvaluationReport.php:40
+msgid "Evaluation Report"
+msgstr ""
+
+#: views/admin/evaluation-report.php:22, views/admin/quarterly-report.php:72
+msgid "Course"
+msgstr ""
+
+#: views/admin/evaluation-report.php:25
+msgid "Form Title"
+msgstr ""
+
+#: views/admin/evaluation-report.php:28
+msgid "Total Submission"
+msgstr ""
+
+#: views/admin/evaluation-report.php:34, views/admin/evaluation-report.php:60, views/admin/quarterly-report.php:150, views/admin/quarterly-report.php:162, views/admin/quarterly-report.php:174, views/admin/quarterly-report.php:186
+msgid "Download"
+msgstr ""
+
+#: views/admin/evaluation-report.php:37
+msgid "Summary"
+msgstr ""
+
+#: views/admin/evaluation-report.php:73, views/admin/quarterly-report.php:195
+msgid "No records found."
+msgstr ""
+
+#: views/admin/evaluation-report.php:65
+msgid "Evaluation Summary"
+msgstr ""
+
+#: views/admin/quarterly-report.php:28, inc/Admin/Menu/SubMenu/QuarterlyReport.php:27, inc/Admin/Menu/SubMenu/QuarterlyReport.php:38
+msgid "Quarterly Report"
+msgstr ""
+
+#: views/admin/quarterly-report.php:49
+msgid "No submission found"
+msgstr ""
+
+#: views/admin/quarterly-report.php:39
+msgid "Select Year"
+msgstr ""
+
+#: views/admin/quarterly-report.php:55, views/admin/users-list.php:39
+msgid "Search"
+msgstr ""
+
+#: views/admin/quarterly-report.php:64
+msgid "Apply"
+msgstr ""
+
+#: views/admin/quarterly-report.php:75
+msgid "1st Quarter"
+msgstr ""
+
+#: views/admin/quarterly-report.php:78
+msgid "2nd Quarter"
+msgstr ""
+
+#: views/admin/quarterly-report.php:81
+msgid "3rd Quarter"
+msgstr ""
+
+#: views/admin/quarterly-report.php:84
+msgid "4th Quarter"
+msgstr ""
+
+#: views/admin/users-list.php:48
+msgid "ID"
+msgstr ""
+
+#: views/admin/users-list.php:49
+msgid "Username"
+msgstr ""
+
+#: views/admin/users-list.php:50
+msgid "Email"
+msgstr ""
+
+#: views/admin/users-list.php:51
+msgid "Role"
+msgstr ""
+
+#: views/admin/users-list.php:52
+msgid "Primary State"
+msgstr ""
+
+#: views/admin/users-list.php:54
+msgid "License"
+msgstr ""
+
+#: views/admin/users-list.php:81
+msgid "No record found"
+msgstr ""
+
+#: views/metabox/instructor.php:11
+msgid "Invalid instructor list"
+msgstr ""
+
+#: views/metabox/instructor.php:18
+msgid "Main author not found"
+msgstr ""
+
+#: views/metabox/instructor.php:24
+msgid "Update main author of this course"
+msgstr ""
+
+#: views/metabox/instructor.php:28
+msgid "Update Author"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:19
+msgid "Learning Objectives"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:25
+msgid "List the learning objectives here. (One per line)"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:32
+msgid "Endorsements"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:39, views/metabox/tutor-persicope-additional-data.php:53
+msgid "Endorsements or special instructions. (One per line)"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:46
+msgid "Education Approval"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:92
+msgid "Approval State"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:94
+msgid "+ Add"
+msgstr ""
+
+#: views/metabox/tutor-persicope-additional-data.php:100, views/metabox/tutor-persicope-additional-data.php:111
+msgid "State Approver"
+msgstr ""
+
+#: inc/Admin/Menu/MainMenu.php:65
+msgid "Tutor Periscope - Users List "
+msgstr ""
+
+#: templates/certificates/periscope/certificate.php:33
+msgid "hours"
+msgstr ""
+
+#: templates/certificates/periscope/certificate.php:33
+msgid "hour"
+msgstr ""
+
+#: templates/certificates/periscope/certificate.php:38
+msgid "minutes"
+msgstr ""
+
+#: templates/certificates/periscope/certificate.php:38
+msgid "minute"
+msgstr ""
+
+#: inc/Admin/Menu/SubMenu/Assignment.php:29, inc/Admin/Menu/SubMenu/Assignment.php:40
+msgid "Assignment"
+msgstr ""
+
+#: inc/Admin/Menu/SubMenu/BulkUser.php:29, inc/Admin/Menu/SubMenu/BulkUser.php:40, inc/Admin/Menu/SubMenu/BulkUser.php:78
+msgid "Bulk User"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "__("Remove", "tutor-periscope""
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "__("Select or Upload Media", "tutor-periscope""
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "__("Use this media", "tutor-periscope""
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Success"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Failed"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "State Approver"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Assigned Attempt"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Attempt Taken"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Remaining Attempt"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "tutor-periscope"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Do you want to update the Instructor?"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Something went wrong, please try again."
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Certificate Download Approval Success!"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Certificate Download Approval Failed!"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Invalid certificate no"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "__("Please wait...""
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "__("Thank you for evaluating""
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "__("Evaluate submission failed", "tutor-periscope""
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Please complete current lesson/quiz first to go the next content."
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Fail"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Please complete previous lesson first!"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Previous content status check failed!"
+msgstr ""
+
+#: assets/js/frontend.js:1, assets/js/backend.js:1
+msgid "Lesson activity tracking failed"
+msgstr ""
