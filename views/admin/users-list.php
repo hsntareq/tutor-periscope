@@ -28,9 +28,14 @@ if ( ' ' !== $user_search ) {
 
 $users_list  = Users::get( $args );
 $total_count = $users_list->total_count;
+
 ?>
+
 <div class="wp-list-table widefat striped table-view-list" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
 	<input type="file" id="bulk_user_import">
+	<div><a href="/wp-admin/admin.php?page=tutor-periscope-bulk-user&add-student" style="padding: 5px 10px;
+    background: #87e62a;
+    margin-left: 0px;">Add single user</a></div>
 	<div>
 		<form method="post">
 			<div class="form-group">
@@ -66,10 +71,10 @@ $total_count = $users_list->total_count;
 				<td><?php echo esc_html( $user->user_login ); ?></td>
 				<td><?php echo esc_html( $user->user_email ); ?></td>
 				<td><?php echo esc_html( $roles ); ?></td>
-				<td><?php echo esc_html( get_user_meta( $user->ID, '__primary_state', true ) ); ?></td>
-				<td><?php echo esc_html( get_user_meta( $user->ID, '__other_states', true ) ); ?></td>
+				<td><?php echo esc_html( get_user_meta( $user->ID, 'primary_state', true ) ); ?></td>
+				<td><?php echo esc_html( get_user_meta( $user->ID, 'other_states', true ) ); ?></td>
 
-				<td><?php echo esc_html( get_user_meta( $user->ID, '__license_number', true ) ); ?></td>
+				<td><?php echo esc_html( get_user_meta( $user->ID, 'license_number', true ) ); ?></td>
 				<td>
 					<a href="<?php echo esc_url( get_edit_user_link( $user->ID ) ); ?>">Edit</a>
 				</td>
