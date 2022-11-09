@@ -26,7 +26,7 @@ class Bulkuser implements SubMenuInterface {
 	 * @return string  page title
 	 */
 	public function page_title(): string {
-		return __( 'Bulk User', 'tutor-periscope' );
+		return __( 'Bulk Student', 'tutor-periscope' );
 	}
 
 	/**
@@ -37,7 +37,7 @@ class Bulkuser implements SubMenuInterface {
 	 * @return string  menu title
 	 */
 	public function menu_title(): string {
-		return __( 'Bulk User', 'tutor-periscope' );
+		return __( 'Bulk Student', 'tutor-periscope' );
 	}
 
 	/**
@@ -73,12 +73,21 @@ class Bulkuser implements SubMenuInterface {
 		?>
 		<div class="wrap">
 			<?php
+			if(isset($_GET['add-student'])){
+					// @codingStandardsIgnoreStart
+					echo '<h1 class="wp-heading-inline">
+					' . __( 'Add Student', 'tutor-periscope' ) . '
+				</h1>';
+				// @codingStandardsIgnoreEnd
+				Users::user_add(true );
+			}else{
 				// @codingStandardsIgnoreStart
 					echo '<h1 class="wp-heading-inline">
-					' . __( 'Bulk User', 'tutor-periscope' ) . '
+					' . __( 'Bulk Student', 'tutor-periscope' ) . '
 				</h1>';
 				// @codingStandardsIgnoreEnd
 				Users::users_list( true );
+			}
 			?>
 		</div>
 		<?php

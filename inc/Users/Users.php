@@ -138,6 +138,27 @@ class Users {
 			return $views;
 		}
 	}
+	/**
+	 * Users add view
+	 *
+	 * @param  bool $echo  echo or return.
+	 *
+	 * @return string  if echo then echo out otherwise return string.
+	 */
+	public static function user_add( bool $echo = true ) {
+		ob_start();
+		$view_file = TUTOR_PERISCOPE_VIEWS . 'admin/user-add.php';
+		if ( file_exists( $view_file ) ) {
+			include $view_file;
+		}
+		$views = apply_filters( 'tutor_perisocpe_user_add_views', ob_get_clean() );
+
+		if ( $echo ) {
+			echo $views; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		} else {
+			return $views;
+		}
+	}
 
 	/**
 	 * Get all enrolled user's id
