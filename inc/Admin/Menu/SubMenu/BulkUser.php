@@ -73,14 +73,22 @@ class Bulkuser implements SubMenuInterface {
 		?>
 		<div class="wrap">
 			<?php
-			if(isset($_GET['add-student'])){
+			if(isset($_GET['add'])){
 					// @codingStandardsIgnoreStart
 					echo '<h1 class="wp-heading-inline">
 					' . __( 'Add Student', 'tutor-periscope' ) . '
 				</h1>';
 				// @codingStandardsIgnoreEnd
 				Users::user_add(true );
-			}else{
+			}
+			elseif(isset($_GET['edit'])){
+				// @codingStandardsIgnoreStart
+				echo '<h1 class="wp-heading-inline">
+				' . __( 'Edit Student', 'tutor-periscope' ) . '
+			</h1>';
+			// @codingStandardsIgnoreEnd
+			Users::user_edit(true );
+		}else{
 				// @codingStandardsIgnoreStart
 					echo '<h1 class="wp-heading-inline">
 					' . __( 'Bulk Student', 'tutor-periscope' ) . '

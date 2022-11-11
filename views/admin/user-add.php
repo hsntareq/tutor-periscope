@@ -72,7 +72,7 @@ else{
 		<td><input name="other_states" type="text" id="other_states" value=""></td>
 	</tr>
     <tr class="form-field">
-		<th scope="row"><label for="license_number">license_number </label></th>
+		<th scope="row"><label for="license_number">license number </label></th>
 		<td><input name="license_number" type="text" id="license_number" value=""></td>
 	</tr>
 		
