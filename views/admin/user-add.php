@@ -1,4 +1,4 @@
-<?php 
+<?php
 if(isset($_POST['register'])){
 global $wpdb;
 $username= ($_POST['user_login']);
@@ -35,10 +35,10 @@ else{
 
 <form action="#" method="post">
   <div class="container">
-   
+
     <p>Please fill in this form to create an user.</p>
     <hr>
-    <table class="form-table" role="presentation">
+    <table class="form-table periscope_table" role="presentation">
 	<tbody><tr class="form-field form-required">
 		<th scope="row"><label for="user_login">Username <span class="description">(required)</span></label></th>
 		<td><input name="user_login" type="text" id="user_login" value="" aria-required="true" autocapitalize="none" autocorrect="off" autocomplete="off" maxlength="60"></td>
@@ -75,8 +75,8 @@ else{
 		<th scope="row"><label for="license_number">license number </label></th>
 		<td><input name="license_number" type="text" id="license_number" value=""></td>
 	</tr>
-		
-	
+
+
 
 
 		</td>

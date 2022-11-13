@@ -22,9 +22,9 @@ if(isset($_POST['register'])){
         'other_states'=> $osate,
         'license_number'=> $license_number,
     );
-    
+
     $result = wp_update_user($user_data);
-    
+
     if(!is_wp_error($result)){
         echo 'User updated ID: '.$result;
         update_user_meta($result,'primary_state',$psate);
@@ -44,10 +44,10 @@ if(isset($_POST['register'])){
 ?>
 <form action="#" method="post">
   <div class="container">
-   
+
     <p>Please fill in this form to update an user.</p>
     <hr>
-    <table class="form-table" role="presentation">
+    <table class="form-table periscope_table" role="presentation">
 	<tbody><tr class="form-field form-required">
 		<th scope="row"><label for="user_login">Username <span class="description">(required)</span></label></th>
 		<td><input name="user_login" type="text" id="user_login" value="<?php echo $author_obj->user_login;?>" aria-required="true" autocapitalize="none" autocorrect="off" autocomplete="off" maxlength="60"></td>
@@ -56,7 +56,7 @@ if(isset($_POST['register'])){
 		<th scope="row"><label for="email">Email <span class="description">(required)</span></label></th>
 		<td><input name="email" type="email" id="email" value="<?php echo $author_obj->user_email;?>"></td>
 	</tr>
-    
+
 		<tr class="form-field">
 		<th scope="row"><label for="first_name">First Name </label></th>
 		<td><input name="first_name" type="text" id="first_name" value="<?php echo $author_obj->first_name;?>"></td>
@@ -82,8 +82,8 @@ if(isset($_POST['register'])){
 		<th scope="row"><label for="license_number">license number </label></th>
 		<td><input name="license_number" type="text" id="license_number" value="<?php echo $author_obj->license_number;?>"></td>
 	</tr>
-		
-	
+
+
 
 
 		</td>
