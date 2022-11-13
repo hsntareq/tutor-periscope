@@ -41,6 +41,16 @@ table.wp-list-table.students {
 }
 
 
+@media all and (min-width:991px) {
+    .periscope_table {
+        .form-field {
+            input {
+                width: 50%;
+            }
+        }
+    }
+}
+
 @media all and (max-width:1170px) {
     .tutor-option-field-row {
         display: block !important;
