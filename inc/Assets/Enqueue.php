@@ -120,6 +120,7 @@ class Enqueue {
 			'current_post_id'             => $id,
 			'current_post_type'           => $post_type,
 			'linear_path'                 => CourseMetabox::linear_path_status( $tutor_course_id ),
+			'login_req'                 => CourseMetabox::req_login_status( $tutor_course_id ),
 			'admin_page'                  => $admin_page,
 			'has_quiz_attempt'            => (bool) $has_quiz_attempt,
 			'field_types'                 => FormField::field_types(),
@@ -135,6 +136,15 @@ class Enqueue {
 					display: none;
 			}';
 			wp_add_inline_style( 'tutor-periscope-frontend', $custom_css );
+		}
+		if ( $data['login_req'] ) {
+			if ( !is_user_logged_in() ) {
+			$custom_css = '
+			.tutor-single-course-sidebar{
+					display: none;
+			}';
+			wp_add_inline_style( 'tutor-periscope-frontend', $custom_css );
+		}
 		}
 		return apply_filters( 'tutor_periscope_inline_style_data', $data );
 	}
