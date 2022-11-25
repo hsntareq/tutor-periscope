@@ -42,7 +42,7 @@ class CourseMetabox extends MetaboxFactory {
 	public function create_meta_box(): MetaboxInterface {
 		return new Metabox(
 			'tutor-periscope-linear-path',
-			__( 'Linear Path', 'tutor-periscope' ),
+			__( 'LMS Settings', 'tutor-periscope' ),
 			tutor()->course_post_type,
 			'side'
 		);
@@ -63,15 +63,15 @@ class CourseMetabox extends MetaboxFactory {
 		$status = self::linear_path_status();
 		$reqstatus = self::req_login_status();
 		?>
-		<div class="tutor-periscope-form-group">
+		<div class="tutor-periscope-form-group tutor-mt-12">
 			<label>
-				<?php esc_html_e( 'Activate the Linear Path: ' ); ?>
+				<?php esc_html_e( 'Stop Fast Forwarding: ' ); ?>
 				<input type="checkbox" name="tp-linear-status" <?php echo $status ? 'checked' : ''; ?>>
 			</label>
 		</div>
-		<div class="tutor-periscope-form-group">
+		<div class="tutor-periscope-form-group tutor-mt-12">
 			<label>
-				<?php esc_html_e( 'Activate for enrollment login required: ' ); ?>
+				<?php esc_html_e( 'Stop Public Access: ' ); ?>
 				<input type="checkbox" name="tp-reqlogin-status" <?php echo $reqstatus ? 'checked' : ''; ?>>
 			</label>
 		</div>
