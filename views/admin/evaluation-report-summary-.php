@@ -83,11 +83,13 @@ if ( ! $form_id || ! $course_id ) {
 	<p><strong>Speaker: </strong>
 	<?php
 		$instructors = tutor_utils()->get_instructors_by_course( $course_id );
+
 	if ( is_array( $instructors ) && count( $instructors ) ) :
 		?>
 		<?php
 		$instructor_string = '';
 		$last_elem         = end( $instructors );
+
 		foreach ( $instructors as $instructor ) :
 			$comma = ', ';
 			if ( ! isset( $instructor->display_name ) || ! isset( $instructor->ID ) ) {

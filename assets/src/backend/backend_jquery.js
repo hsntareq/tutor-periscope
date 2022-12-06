@@ -3,4 +3,6 @@ jQuery(function () {
         placeholder: 'Select an option',
         width: '400px'
     });
+
+    jQuery('input.daterangepick').daterangepicker();
 })

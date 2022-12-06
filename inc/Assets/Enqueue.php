@@ -55,16 +55,22 @@ class Enqueue
 	 */
 	public function enqueue_backend_assets()
 	{
-		wp_enqueue_style('tutor-periscope-backend', TUTOR_PERISCOPE_DIR_URL . '/assets/css/backend.min.css', null, TUTOR_PERISCOPE_VERSION, 'all');
+		wp_enqueue_style('tutor-periscope-backend', TUTOR_PERISCOPE_DIR_URL . 'assets/css/backend.min.css', null, TUTOR_PERISCOPE_VERSION, 'all');
 
-		wp_enqueue_script('tutor-periscope-backend', TUTOR_PERISCOPE_DIR_URL . '/assets/js/backend.js', array('jquery', 'wp-i18n'), TUTOR_PERISCOPE_VERSION, true);
+		wp_enqueue_script('tutor-periscope-backend', TUTOR_PERISCOPE_DIR_URL . 'assets/js/backend.js', array('jquery', 'wp-i18n'), TUTOR_PERISCOPE_VERSION, true);
 
-		wp_enqueue_style('select2css', TUTOR_PERISCOPE_DIR_URL . '/assets/css/select2.min.css', true, '1.0', 'all');
+		wp_enqueue_style('select2css', TUTOR_PERISCOPE_DIR_URL . 'assets/css/select2.min.css', true, '1.0', 'all');
 
-		wp_enqueue_script('select2js', TUTOR_PERISCOPE_DIR_URL . '/assets/js/select2.min.js', array('jquery'), '1.0', true);
+		wp_enqueue_script('select2js', TUTOR_PERISCOPE_DIR_URL . 'assets/js/select2.min.js', array('jquery'), '1.0', true);
 
 		// add data to use in js files.
 		wp_add_inline_script('tutor-periscope-backend', 'const tp_data = ' . json_encode($this->inline_script_data()), 'before');
+
+		if (isset($_GET['page']) && $_GET['page'] == 'tutor-periscope-custom-report') {
+			wp_enqueue_script('moment.js', TUTOR_PERISCOPE_DIR_URL . 'assets/js/moment.min.js', array('jquery'), TUTOR_PERISCOPE_VERSION, true);
+			wp_enqueue_script('daterangepicker.js', TUTOR_PERISCOPE_DIR_URL . 'assets/js/daterangepicker.min.js', array('jquery'), TUTOR_PERISCOPE_VERSION, true);
+			wp_enqueue_style('daterangepicker.css', TUTOR_PERISCOPE_DIR_URL . 'assets/css/daterangepicker.min.css', true, '1.0', 'all');
+		}
 	}
 
 	/**
