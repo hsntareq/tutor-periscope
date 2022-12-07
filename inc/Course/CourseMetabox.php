@@ -71,7 +71,7 @@ class CourseMetabox extends MetaboxFactory {
 		</div>
 		<div class="tutor-periscope-form-group tutor-mt-12">
 			<label>
-				<?php esc_html_e( 'Stop Public Access: ' ); ?>
+				<?php esc_html_e( 'Internal Users Only: ' ); ?>
 				<input type="checkbox" name="tp-reqlogin-status" <?php echo $reqstatus ? 'checked' : ''; ?>>
 			</label>
 		</div>
