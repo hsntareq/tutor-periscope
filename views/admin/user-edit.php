@@ -68,7 +68,7 @@ if (isset($user_id) && !empty($user_id)) :
 
           <tr class="form-field">
             <th scope="row"><label for="user_pass">Password </label></th>
-            <td><input name="user_pass" type="text" id="user_pass" value="<?php echo $author_obj->user_pass; ?>"></td>
+            <td><input name="user_pass" type="text" id="user_pass" value=""></td>
           </tr>
           <tr class="form-field">
             <th scope="row"><label for="primary_state">Primary Sate </label></th>

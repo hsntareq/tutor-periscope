@@ -6,3 +6,11 @@ Hook name: tutor_periscope_before_instructor_meta_box
 Hook path: tutor/views/metabox/instructors-metabox.php:38
 
 code: <?php do_action( 'tutor_periscope_before_instructor_meta_box' ); ?>
+
+wp-content/themes/skillate/tutor/single-course.php:273
+273: add: <?php $tp_req_login = apply_filters('tp_stop_public_access', get_the_ID());?>
+274: <?php if (!is_user_logged_in() && $tp_req_login) { ?>
+        <p><?php _e('Login is essential to enroll this course.', 'skillate') ?></p>
+    <?php } ?>
+
+next line: update: <?php if (!is_user_logged_in() && !$is_privileged_user && $tp_req_login) { ?>
