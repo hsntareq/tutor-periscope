@@ -3,4 +3,8 @@ jQuery(function () {
         placeholder: 'Select an option',
         width: '400px'
     });
+
+    if (jQuery('input.daterangepick').length > 0) {
+        jQuery('input.daterangepick').daterangepicker();
+    }
 })

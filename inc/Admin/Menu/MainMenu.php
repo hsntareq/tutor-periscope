@@ -142,6 +142,7 @@ class MainMenu {
 		// Available sub-menu.
 		$submenus = array(
 			'EvaluationReport',
+			'CustomReport',
 			'QuarterlyReport',
 			'Assignment',
 			'BulkUser',

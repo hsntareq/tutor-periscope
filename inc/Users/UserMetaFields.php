@@ -39,7 +39,7 @@ class UserMetaFields {
 		if ( ! $user_data ) {
 			return;
 		}
-		$other_state = get_user_meta( $user_data->ID, '__other_states' );
+		$other_state = get_user_meta( $user_data->ID, 'other_states' );
 		?>
 		<h2>
 			<?php echo esc_html_e( 'Tutor Periscope', 'tutor-periscope' ); ?>
@@ -73,6 +73,6 @@ class UserMetaFields {
 		if ( ! current_user_can( 'edit_user', $user_id ) ) {
 			return;
 		}
-		update_user_meta( $user_id, '__other_states', $_REQUEST['tp-other-state'] );
+		update_user_meta( $user_id, 'other_states', $_REQUEST['tp-other-state'] );
 	}
 }

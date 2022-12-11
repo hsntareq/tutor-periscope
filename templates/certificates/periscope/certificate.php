@@ -49,8 +49,8 @@
 
 
 				$student_profession     = get_user_meta( $user->ID, '__title', true );
-				$student_state          = get_user_meta( $user->ID, '__primary_state', true );
-				$student_license_number = get_user_meta( $user->ID, '__license_number', true );
+				$student_state          = get_user_meta( $user->ID, 'primary_state', true );
+				$student_license_number = get_user_meta( $user->ID, 'license_number', true );
 				$approver_state_content = unserialize( get_post_meta( $course_id, '_tp_education_approver', true ) );
 
 				?>

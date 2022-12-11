@@ -39,10 +39,15 @@ Thumbs.db
 # ignore build folder
 build/
 # ignore build .js files
-assets/js/
+assets/js/*
+!assets/js/select2.min.js
+!assets/js/moment.min.js
+!assets/js/daterangepicker.min.js
 # assets/js/backend.j
 # ignore map files
-assets/css/
+assets/css/*
+!assets/css/select2.min.css
+!assets/css/daterangepicker.min.css
 # assets/css/frontend.css.map
 # assets/css/frontend.min.css.map
 # assets/css/backend.css.map

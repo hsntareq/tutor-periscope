@@ -4,7 +4,7 @@
  * Plugin URI: https://www.periscope365.com/
  * Description: This plugin is to add <code><em>Custom Certificate</em></code>, <code>Complaints process</code>, <code>Attendance collection</code>, <code>Assessment method</code>, <code>Faculty selecting criteria</code>, <code>Refund policy deployment</code> for <a href="//periscope365.com">periscope365.com</a>
  * Author: Hasan Tareq
- * Version: 1.0.0
+ * Version: 2.0.2
  * Author URI: https://hsntareq.github.io/
  * Requires at least: 5.3
  * Tested up to: 5.8
@@ -15,7 +15,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Plugin specific definitions.
-define( 'TUTOR_PERISCOPE_VERSION', '1.0.0' );
+define( 'TUTOR_PERISCOPE_VERSION', '2.0.2' );
 define( 'TUTOR_PERISCOPE_DIR_URL', plugin_dir_url( __FILE__ ) );
 define( 'TUTOR_PERISCOPE_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TUTOR_PERISCOPE_TEMPLATES', trailingslashit( plugin_dir_path( __FILE__ ) . 'templates' ) );
