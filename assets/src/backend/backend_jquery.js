@@ -4,5 +4,7 @@ jQuery(function () {
         width: '400px'
     });
 
-    jQuery('input.daterangepick').daterangepicker();
+    if (jQuery('input.daterangepick').length > 0) {
+        jQuery('input.daterangepick').daterangepicker();
+    }
 })

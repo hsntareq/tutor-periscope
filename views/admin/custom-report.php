@@ -28,37 +28,13 @@ $total_count   = $form_builder->total_evaluation_count($selected_year, $search_t
 		</h1>
 
 		<form action="<?php echo esc_url(admin_url() . 'admin.php?page=tutor-periscope-quarterly-report'); ?>" method="get" class="tutor-d-flex tutor-align-end" style="gap: 20px;" id="tp-evaluation-form-sorting">
-			<div class="tutor-wp-dashboard-filter-item tutor-mb-12" style="flex-grow: .5;">
+			<div class="tutor-wp-dashboard-filter-item tutor-mb-12" style="flex-grow: .10;">
 				<label for="tutor-backend-filter-search" class="tutor-form-label">
-					<?php esc_html_e('Search', 'tutor-periscope'); ?>
+					<?php esc_html_e('Select the daterange', 'tutor-periscope'); ?>
 				</label>
 				<div class="tutor-form-wrap">
 					<input type="text" name="daterange" class="tutor-form-control daterangepick">
 				</div>
-			</div>
-			<div class="tutor-wp-dashboard-filter-item tutor-mb-12" style="flex-grow: .25;">
-				<label class="tutor-form-label" for="feedback-year">
-					<?php echo esc_html_e('Select Year', 'tutor_periscope'); ?>
-				</label>
-
-				<?php if (is_array($forms) && count($forms)) : ?>
-					<select type="text" class="tutor-form-select" name="year" id="feedback-year">
-						<option value="">
-							<?php echo esc_html_e('Select Course', 'tutor-periscope'); ?>
-						</option>
-						<?php if (is_array($forms) && count($forms)) : ?>
-							<?php foreach ($forms as $form) : ?>
-								<option value="" <?php //selected($selected_year, $feedback_year->year); ?>>
-									<?php echo esc_html($form->course); ?>
-								</option>
-							<?php endforeach; ?>
-						<?php endif; ?>
-					</select>
-				<?php else : ?>
-					<p>
-						<?php echo esc_html_e('No submission found', 'tutor-periscope'); ?>
-					</p>
-				<?php endif; ?>
 			</div>
 			<div class="tutor-wp-dashboard-filter-item tutor-mb-12">
 				<button class="tutor-btn tutor-btn-outline-primary">
@@ -70,7 +46,7 @@ $total_count   = $form_builder->total_evaluation_count($selected_year, $search_t
 		<table class="wp-list-table widefat striped table-view-list">
 			<thead>
 				<th>
-					<?php esc_html_e('Course', 'tutor-periscope'); ?>
+					<?php esc_html_e('Courses', 'tutor-periscope'); ?>
 				</th>
 				<th>
 					<?php esc_html_e('Evaluation Report', 'tutor-periscope'); ?><br> <small>View or Download Evaluation Report</small>
