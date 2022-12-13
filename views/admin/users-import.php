@@ -32,6 +32,7 @@ $total_count = $users_list->total_count;
 ?>
 
 <div class="wp-list-table widefat striped table-view-list" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+	<input type="file" id="bulk_user_import">
 	<div>
 		<form method="post">
 			<div class="form-group">

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BulkUser Concrete class
  *
@@ -16,7 +17,8 @@ use Tutor_Periscope\Users\Users;
 /**
  * BulkUser sub menu
  */
-class Bulkuser implements SubMenuInterface {
+class Bulkuser implements SubMenuInterface
+{
 
 	/**
 	 * Page title
@@ -25,8 +27,9 @@ class Bulkuser implements SubMenuInterface {
 	 *
 	 * @return string  page title
 	 */
-	public function page_title(): string {
-		return __( 'Bulk Student', 'tutor-periscope' );
+	public function page_title(): string
+	{
+		return __('LMS Students', 'tutor-periscope');
 	}
 
 	/**
@@ -36,8 +39,9 @@ class Bulkuser implements SubMenuInterface {
 	 *
 	 * @return string  menu title
 	 */
-	public function menu_title(): string {
-		return __( 'Bulk Student', 'tutor-periscope' );
+	public function menu_title(): string
+	{
+		return __('LMS Students', 'tutor-periscope');
 	}
 
 	/**
@@ -47,7 +51,8 @@ class Bulkuser implements SubMenuInterface {
 	 *
 	 * @return string  capability
 	 */
-	public function capability(): string {
+	public function capability(): string
+	{
 		return 'manage_options';
 	}
 
@@ -58,8 +63,9 @@ class Bulkuser implements SubMenuInterface {
 	 *
 	 * @return string  slug
 	 */
-	public function slug(): string {
-		return 'tutor-periscope-bulk-user';
+	public function slug(): string
+	{
+		return 'tutor-periscope-students';
 	}
 
 	/**
@@ -69,27 +75,43 @@ class Bulkuser implements SubMenuInterface {
 	 *
 	 * @return void
 	 */
-	public function view() {
-		?>
+	public function view()
+	{
+?>
 		<div class="wrap">
 			<?php
-			if(isset($_GET['add-student'])){
-					// @codingStandardsIgnoreStart
-					echo '<h1 class="wp-heading-inline">
-					' . __( 'Add Student', 'tutor-periscope' ) . '
-				</h1>';
-				// @codingStandardsIgnoreEnd
-				Users::user_add(true );
-			}else{
+			if (isset($_GET['add'])) {
 				// @codingStandardsIgnoreStart
-					echo '<h1 class="wp-heading-inline">
-					' . __( 'Bulk Student', 'tutor-periscope' ) . '
-				</h1>';
+				echo '<h1 class="wp-heading-inline">
+					' . __('Add Student', 'tutor-periscope') . '
+				</h1> <a href="' . admin_url('admin.php?page=tutor-periscope-students&import') . '" class="page-title-action">Bulk Import</a><hr class="wp-header-end">';
 				// @codingStandardsIgnoreEnd
-				Users::users_list( true );
+				Users::user_add(true);
+			} elseif (isset($_GET['edit'])) {
+				// @codingStandardsIgnoreStart
+				echo '<h1 class="wp-heading-inline">
+				' . __('Edit Student', 'tutor-periscope') . '
+			</h1> <a href="' . admin_url('admin.php?page=tutor-periscope-students&add') . '" class="page-title-action">Add a Student</a><a href="' . admin_url('admin.php?page=tutor-periscope-students&import') . '" class="page-title-action">Bulk Import</a><hr class="wp-header-end">';
+				// @codingStandardsIgnoreEnd
+				Users::user_edit(true);
+			} elseif (isset($_GET['import'])) {
+				// @codingStandardsIgnoreStart
+				echo '<h1 class="wp-heading-inline">
+				' . __('Import Student', 'tutor-periscope') . '
+			</h1> <a href="' . admin_url('admin.php?page=tutor-periscope-students&add') . '" class="page-title-action">Add a Student</a><hr class="wp-header-end">';
+				// @codingStandardsIgnoreEnd
+				Users::user_import(true);
+			} else {
+				// @codingStandardsIgnoreStart <h1 class="wp-heading-inline">
+
+				echo '<h1 class="wp-heading-inline">
+					' . __('LMS Students', 'tutor-periscope') . '
+				</h1> <a href="' . admin_url('admin.php?page=tutor-periscope-students&add') . '" class="page-title-action">Add a Student</a><a href="' . admin_url('admin.php?page=tutor-periscope-students&import') . '" class="page-title-action">Bulk Import</a><hr class="wp-header-end">';
+				// @codingStandardsIgnoreEnd
+				Users::users_list(true);
 			}
 			?>
 		</div>
-		<?php
+<?php
 	}
 }
