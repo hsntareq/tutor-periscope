@@ -5,6 +5,10 @@ jQuery(function () {
     });
 
     if (jQuery('input.daterangepick').length > 0) {
-        jQuery('input.daterangepick').daterangepicker();
+        jQuery('input.daterangepick').daterangepicker(
+            {
+                autoUpdateInput: false,
+            }
+        );
     }
 })
