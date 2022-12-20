@@ -68,13 +68,13 @@ $total_count = $form_builder->total_evaluation_count( $selected_year, $search_te
 						<?php
 						$total_submission = $form->total_submission;
 
-						$evaluation_url = get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id;
+						$evaluation_url = get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&from_date=' . $from_date . '&to_date=' . $to_date;
 
-						$evaluation_download_url = get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id;
+						$evaluation_download_url = get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&from_date=' . $from_date . '&to_date=' . $to_date;
 
-						$summary_url = get_home_url() . '/?action=tp-evaluation-report-summary&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id;
+						$summary_url = get_home_url() . '/?action=tp-evaluation-report-summary&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&from_date=' . $from_date . '&to_date=' . $to_date;
 
-						$summary_download_url = get_home_url() . '/?action=tp-evaluation-report-summary-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id;
+						$summary_download_url = get_home_url() . '/?action=tp-evaluation-report-summary-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&from_date=' . $from_date . '&to_date=' . $to_date;
 						?>
 						<tr>
 							<td>

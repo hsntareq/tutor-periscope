@@ -76,4 +76,25 @@ class Utilities {
 			}
 		}
 	}
+
+	/**
+	 * Show date range on custom report PDF
+	 *
+	 * @return void
+	 */
+	public static function custom_report_date_range() {
+		$from_date = isset( $_GET['from_date'] ) ? $_GET['from_date'] : '';
+		$to_date   = isset( $_GET['to_date'] ) ? $_GET['to_date'] : '';
+		if ( '' !== $from_date && '' !== $to_date ) {
+			$from_date = gmdate( 'd M, Y', strtotime( $from_date ) );
+			$to_date   = gmdate( 'd M, Y', strtotime( $to_date ) );
+			?>
+				<p>
+				<?php
+					echo "From <b>{$from_date}</b> to <b>{$to_date}</b>";
+				?>
+				</p>
+				<?php
+		}
+	}
 }

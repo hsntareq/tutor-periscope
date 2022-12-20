@@ -6,6 +6,8 @@
 
 use TUTOR\Input;
 use Tutor_Periscope\EvaluationReport\Report;
+use Tutor_Periscope\Utilities\Utilities;
+
 //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 $form_id   = $_GET['form-id'] ?? 0;
 $course_id = $_GET['course-id'] ?? 0;
@@ -48,6 +50,9 @@ if ( ! $form_id || ! $course_id ) {
 				<?php endforeach; ?>
 			<?php endif; ?>
 		</p>
+		<?php
+			Utilities::custom_report_date_range();
+		?>
 		<br/>
 		<p>We are eager to hear your opinion. Please use the scale below to grade the following areas: </p>
 
