@@ -19,13 +19,12 @@ $paged_filter  = Input::get( 'paged', 1, Input::TYPE_INT );
 $limit         = tutor_utils()->get_option( 'pagination_per_page' );
 $offset        = ( $limit * $paged_filter ) - $limit;
 
-$date_range = isset( $_GET['date_range'] ) ? explode( '-', $_GET['daterange'] ) : null;
+$date_range = isset( $_GET['daterange'] ) ? explode( '-', $_GET['daterange'] ) : null;
 
 $from_date   = ! is_null( $date_range ) ? date( 'Y-m-d', strtotime( $date_range[0] ) ) : '';
 $to_date     = ! is_null( $date_range ) ? date( 'Y-m-d', strtotime( $date_range[1] ) ) : '';
 $forms       = $form_builder->get_list( $offset, $limit, $selected_year, $search_term, $from_date, $to_date );
 $total_count = $form_builder->total_evaluation_count( $selected_year, $search_term, $from_date, $to_date );
-
 
 ?>
 <div class="wrap evaluation-report-wrapper tutor-admin-wrap">
