@@ -90,6 +90,9 @@ $total_count = $form_builder->total_evaluation_count( $selected_year, $search_te
 						$quarter_nov_dec_view_url     = '';
 						$quarter_nov_dec_download_url = '';
 
+						$quarter_oct_dec_view_url     = '';
+						$quarter_oct_dec_download_url = '';
+
 						if ( $total_submission ) {
 							$disabled = '';
 
