@@ -8,6 +8,7 @@
 use Tutor_Periscope\EvaluationReport\Report;
 use Tutor_Periscope\FormBuilder\FormBuilder;
 use Tutor_Periscope\Users\Users;
+use Tutor_Periscope\Utilities\Utilities;
 
 $form_id   = $_GET['form-id'] ?? 0;
 $course_id = $_GET['course-id'] ?? 0;
@@ -84,6 +85,9 @@ if (!$form_id || !$course_id) {
 				<?php endif; ?>
 		</p>
 		<p><strong>Course Date: </strong> <?php echo esc_html($course_date); ?></p>
+		<?php
+			Utilities::custom_report_date_range();
+		?>
 		<p><strong>Course Location: </strong> Online</p>
 		<p>
 			<strong>Total Participants: </strong>

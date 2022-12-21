@@ -175,7 +175,7 @@ class Report {
 		}
 		$course_id       = sanitize_text_field( $course_id );
 		$should_download = false;
-		if ( 'tp-evaluation-report-download' === $action ) {
+		if ( 'tp-evaluation-report-download' === $action || 'tp-evaluation-report-summary-download' === $action ) {
 			$should_download = true;
 		}
 
@@ -186,7 +186,7 @@ class Report {
 			$view          = trailingslashit( TUTOR_PERISCOPE_VIEWS . 'admin' ) . 'evaluation-statistics-report.php';
 			$pdf_file_name = $pdf_file_name . '-evaluation-statistics-report';
 		}
-		if ( 'tp-evaluation-report-summary' === $action ) {
+		if ( 'tp-evaluation-report-summary' === $action || 'tp-evaluation-report-summary-download' === $action ) {
 			$view          = trailingslashit( TUTOR_PERISCOPE_VIEWS . 'admin' ) . 'evaluation-report-summary.php';
 			$pdf_file_name = $pdf_file_name . '-evaluation-summary-report';
 		}

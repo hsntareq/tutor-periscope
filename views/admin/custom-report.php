@@ -19,13 +19,12 @@ $paged_filter  = Input::get( 'paged', 1, Input::TYPE_INT );
 $limit         = tutor_utils()->get_option( 'pagination_per_page' );
 $offset        = ( $limit * $paged_filter ) - $limit;
 
-$date_range  = isset( $_GET['date_range'] ) ? explode( '-', $_GET['daterange'] ) : null;
+$date_range = isset( $_GET['daterange'] ) ? explode( '-', $_GET['daterange'] ) : null;
 
 $from_date   = ! is_null( $date_range ) ? date( 'Y-m-d', strtotime( $date_range[0] ) ) : '';
 $to_date     = ! is_null( $date_range ) ? date( 'Y-m-d', strtotime( $date_range[1] ) ) : '';
 $forms       = $form_builder->get_list( $offset, $limit, $selected_year, $search_term, $from_date, $to_date );
 $total_count = $form_builder->total_evaluation_count( $selected_year, $search_term, $from_date, $to_date );
-
 
 ?>
 <div class="wrap evaluation-report-wrapper tutor-admin-wrap">
@@ -41,7 +40,7 @@ $total_count = $form_builder->total_evaluation_count( $selected_year, $search_te
 					<?php esc_html_e( 'Select the daterange', 'tutor-periscope' ); ?>
 				</label>
 				<div class="tutor-form-wrap">
-					<input type="text" name="daterange" class="tutor-form-control daterangepick">
+					<input type="text" name="daterange" class="tutor-form-control daterangepick" placeholder="<?php esc_html_e( 'Select date', 'tutor-periscope' ); ?>">
 				</div>
 			</div>
 			<div class="tutor-wp-dashboard-filter-item tutor-mb-12">
@@ -67,52 +66,15 @@ $total_count = $form_builder->total_evaluation_count( $selected_year, $search_te
 				<?php if ( is_array( $forms ) && count( $forms ) ) : ?>
 					<?php foreach ( $forms as $form ) : ?>
 						<?php
-						$total_submission    = $form->total_submission;
-						$disabled            = 'disabled';
-						$report_view_url     = 'javascript:void(0)';
-						$report_download_url = 'javascript:void(0)';
+						$total_submission = $form->total_submission;
 
-						$feedback_date = array( $form->from_month, $form->to_month );
-						$jan_to_mar    = array( 1, 2, 3 );
-						$apr_to_jun    = array( 4, 5, 6 );
-						$jul_to_sep    = array( 7, 8, 9 );
-						$oct_to_dec    = array( 10, 11, 12 );
+						$evaluation_url = get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&from_date=' . $from_date . '&to_date=' . $to_date;
 
-						$quarter_jan_mar_view_url     = '';
-						$quarter_jan_mar_download_url = '';
+						$evaluation_download_url = get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&from_date=' . $from_date . '&to_date=' . $to_date;
 
-						$quarter_apr_jun_view_url     = '';
-						$quarter_apr_jun_download_url = '';
+						$summary_url = get_home_url() . '/?action=tp-evaluation-report-summary&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&from_date=' . $from_date . '&to_date=' . $to_date;
 
-						$quarter_jul_sep_view_url     = '';
-						$quarter_jul_sep_download_url = '';
-
-						$quarter_nov_dec_view_url     = '';
-						$quarter_nov_dec_download_url = '';
-
-						if ( $total_submission ) {
-							$disabled = '';
-
-							$quarter_jan_mar_view_url = get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=jan-mar';
-
-							$quarter_jan_mar_download_url = get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=jan-mar';
-
-							$quarter_apr_jun_view_url = get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=apr-jun';
-
-							$quarter_apr_jun_download_url = get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=apr-jun';
-
-							$quarter_jul_sep_view_url = get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=jul-sep';
-
-							$quarter_jul_sep_download_url = get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=jul-sep';
-
-							$quarter_oct_dec_view_url = get_home_url() . '/?action=tp-evaluation-report-view&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=oct-dec';
-
-							$quarter_oct_dec_download_url = get_home_url() . '/?action=tp-evaluation-report-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&quarter=oct-dec';
-						}
-						$has_jan_to_mar = array_intersect( $feedback_date, $jan_to_mar );
-						$has_apr_to_jun = array_intersect( $feedback_date, $apr_to_jun );
-						$has_jul_to_sep = array_intersect( $feedback_date, $jul_to_sep );
-						$has_oct_to_dec = array_intersect( $feedback_date, $oct_to_dec );
+						$summary_download_url = get_home_url() . '/?action=tp-evaluation-report-summary-download&form-id=' . $form->id . '&course-id=' . $form->tutor_course_id . '&from_date=' . $from_date . '&to_date=' . $to_date;
 						?>
 						<tr>
 							<td>
@@ -120,20 +82,20 @@ $total_count = $form_builder->total_evaluation_count( $selected_year, $search_te
 							</td>
 							<td>
 								<span class="button-group">
-									<a href="<?php echo esc_url( $quarter_jul_sep_view_url ); ?>" class="button" value="left" <?php echo esc_attr( ! $has_jul_to_sep ? 'disabled' : '' ); ?> <?php echo ( ! $has_jul_to_sep ) ? 'onclick="return false;"' : ''; ?> target="_blank">
+									<a href="<?php echo esc_url( $evaluation_url ); ?>" class="button" value="left" target="_blank">
 										<?php echo esc_html_e( 'View', 'tutor-periscope' ); ?>
 									</a>
-									<a href="<?php echo esc_url( $quarter_jul_sep_download_url ); ?>" class="button" value="right" <?php echo esc_attr( ! $has_jul_to_sep ? 'disabled' : '' ); ?> <?php echo ( ! $has_jul_to_sep ) ? 'onclick="return false;"' : ''; ?> target="_blank">
+									<a href="<?php echo esc_url( $evaluation_download_url ); ?>" class="button" value="right" target="_blank">
 										<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
 									</a>
 								</span>
 							</td>
 							<td>
 								<span class="button-group">
-									<a href="<?php echo esc_url( $quarter_oct_dec_view_url ); ?>" class="button" value="left" <?php echo esc_attr( ! $has_oct_to_dec ? 'disabled' : '' ); ?> <?php echo ( ! $has_oct_to_dec ) ? 'onclick="return false;"' : ''; ?> target="_blank">
+									<a href="<?php echo esc_url( $summary_url ); ?>" class="button" value="left" target="_blank">
 										<?php echo esc_html_e( 'View', 'tutor-periscope' ); ?>
 									</a>
-									<a href="<?php echo esc_url( $quarter_oct_dec_download_url ); ?>" class="button" value="right" <?php echo esc_attr( ! $has_oct_to_dec ? 'disabled' : '' ); ?> <?php echo ( ! $oct_to_dec ) ? 'onclick="return false;"' : ''; ?> target="_blank">
+									<a href="<?php echo esc_url( $summary_download_url ); ?>" class="button" value="right" target="_blank">
 										<?php esc_html_e( 'Download', 'tutor-periscope' ); ?>
 									</a>
 								</span>
