@@ -18,6 +18,7 @@ $media_name       = '';
 $media_url        = '';
 $con_ed_no        = '';
 $heading          = '';
+
 if ( is_array( $form_fields ) && count( $form_fields ) ) {
 	$form_id          = $form_fields[0]->id;
 	$form_title       = $form_fields[0]->form_title;
@@ -76,6 +77,7 @@ $img_display = '' === $media_url ? 'display: none;' : '';
 				<?php if ( is_array( $form_fields ) && count( $form_fields ) ) : ?>
 					<?php
 					foreach ( $form_fields as $field ) :
+						
 						?>
 						<input type="hidden" name="ep_ef_fields_id[]" value="<?php echo esc_attr( $field->field_id ); ?>">
 						<div class="tutor-col-12 tutor-mb-24 tp-remove-able-wrapper tutor-d-flex tutor-justify-between">
