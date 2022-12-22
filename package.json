@@ -52,6 +52,7 @@
     },
     "dependencies": {
         "@wordpress/media-utils": "^3.0.1",
+        "daterangepicker": "^3.1.0",
         "html2pdf.js": "^0.10.1",
         "mini-css-extract-plugin": "^2.3.0",
         "webpack-dev-server": "^4.3.1"

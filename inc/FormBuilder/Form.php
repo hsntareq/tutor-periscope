@@ -72,7 +72,7 @@ class Form implements FormInterface {
 	 *
 	 * @return array  wpdb results
 	 */
-	public function get_list( $offset = 0, $limit = 10, $year = '', $search = '' ): array {
+	public function get_list( $offset = 0, $limit = 10, $year = '', $search = '', $from_date = '', $to_date = '' ): array {
 		global $wpdb;
 		$forms_table    = $this->get_table();
 		$fields_table   = $wpdb->prefix . EvaluationFormFields::get_table();
@@ -87,6 +87,20 @@ class Form implements FormInterface {
 					HAVING year = $year
 					LIMIT 1
 				)
+			";
+		}
+		$date_range = '';
+		if ( '' !== $from_date && '' !== $to_date ) {
+			$date_range = "AND true = ( 
+				SELECT EXISTS (
+					SELECT feedback.id
+					FROM 
+					{$feedback_table} AS feedback
+					WHERE DATE(feedback.created_at) 
+						BETWEEN DATE('$from_date') AND DATE('$to_date')
+					LIMIT 1
+				)
+			)
 			";
 		}
 
@@ -131,7 +145,7 @@ class Form implements FormInterface {
 					WHERE 1 = %d
 					AND ( course.post_title LIKE %s )
 					{$year_clause}
-
+					{$date_range}
 					LIMIT %d, %d
 				",
 				1,
@@ -150,7 +164,7 @@ class Form implements FormInterface {
 	 *
 	 * @return mixed  wpdb count value
 	 */
-	public function total_evaluation_count( $year = '', $search = '' ) {
+	public function total_evaluation_count( $year = '', $search = '', $from_date = '', $to_date = '' ) {
 		global $wpdb;
 		$forms_table    = $this->get_table();
 		$fields_table   = $wpdb->prefix . EvaluationFormFields::get_table();
@@ -167,6 +181,22 @@ class Form implements FormInterface {
 				)
 			";
 		}
+
+		$date_range = '';
+		if ( '' !== $from_date && '' !== $to_date ) {
+			$date_range = "AND true = ( 
+				SELECT EXISTS (
+					SELECT feedback.id
+					FROM 
+					{$feedback_table} AS feedback
+					WHERE DATE(feedback.created_at) 
+						BETWEEN DATE('$from_date') AND DATE('$to_date')
+					LIMIT 1
+				)
+			)
+			";
+		}
+
 		$search_term = '%' . $wpdb->esc_like( $search ) . '%';
 	
 		$count = $wpdb->get_var(
@@ -181,6 +211,7 @@ class Form implements FormInterface {
 					WHERE 1 = %d 
 					AND ( course.post_title LIKE %s )
 					{$year_clause}
+					{$date_range}
 				",
 				1,
 				$search_term
