@@ -8,6 +8,7 @@
 
 namespace Tutor_Periscope\FormBuilder;
 
+use Tutor_Periscope\Database\EvaluationForm;
 use Tutor_Periscope\Database\EvaluationFormFields;
 use Tutor_Periscope\Query\QueryHelper;
 use Tutor_Periscope\Utilities\Utilities;
@@ -48,6 +49,8 @@ class FormClient {
 	 */
 	public static function manage_form( int $post_id ) {
 		Utilities::verify_nonce();
+		global $wpdb;
+
 		$form               = FormBuilder::create( 'Form' );
 		$form_field_builder = FormBuilder::create( 'FormField' );
 		$post               = $_POST;
@@ -64,6 +67,17 @@ class FormClient {
 
 		if ( isset( $post['tp_ef_id'] ) && (int) $post['tp_ef_id'] ) {
 			$form_data['id'] = (int) $post['tp_ef_id'];
+		} else {
+			// Check DB if this post has form to prevent duplicate form.
+			$get_form = QueryHelper::get_one(
+				$wpdb->prefix . EvaluationForm::get_table(),
+				array(
+					'tutor_course_id' => $post_id
+				)
+			);
+			if ( $get_form ) {
+				$form_data['id'] = $get_form->id;
+			}
 		}
 
 		/**
@@ -159,7 +173,7 @@ class FormClient {
 					LIMIT 1
 				) AS feedback_id
 					FROM {$form_table} AS form
-						LEFT JOIN {$fields_table} AS field
+						INNER JOIN {$fields_table} AS field
 							ON field.form_id = form.id
 					WHERE form.tutor_course_id = %d
 				",

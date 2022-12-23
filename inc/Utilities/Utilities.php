@@ -83,18 +83,27 @@ class Utilities {
 	 * @return void
 	 */
 	public static function custom_report_date_range() {
-		$from_date = isset( $_GET['from_date'] ) ? $_GET['from_date'] : '';
-		$to_date   = isset( $_GET['to_date'] ) ? $_GET['to_date'] : '';
+		$from_date       = isset( $_GET['from_date'] ) ? $_GET['from_date'] : '';
+		$to_date         = isset( $_GET['to_date'] ) ? $_GET['to_date'] : '';
+		$course_id       = (int) isset( $_GET['course-id'] ) ? $_GET['course-id'] : 0;
+		$date_range_text = '';
 		if ( '' !== $from_date && '' !== $to_date ) {
-			$from_date = gmdate( 'd M, Y', strtotime( $from_date ) );
-			$to_date   = gmdate( 'd M, Y', strtotime( $to_date ) );
+			$from_date       = gmdate( 'd M, Y', strtotime( $from_date ) );
+			$to_date         = gmdate( 'd M, Y', strtotime( $to_date ) );
+			$date_range_text = "From <b>{$from_date}</b> to <b>{$to_date}</b>";
+		} else {
+			$course_date = $course_id ? get_the_date( 'd M, Y', $course_id ) : '';
+			$today       = gmdate( 'd M, Y', time() );
+			if ( '' !== $course_date ) {
+				$date_range_text = "From <b>{$course_date}</b> to <b>{$today}</b>";
+			}
+		}
+		if ( '' !== $date_range_text ) {
 			?>
-				<p>
-				<?php
-					echo "From <b>{$from_date}</b> to <b>{$to_date}</b>";
-				?>
-				</p>
-				<?php
+			<p>
+				<?php echo $date_range_text; //phpcs:ignore ?>
+			</p>
+			<?php
 		}
 	}
 }
