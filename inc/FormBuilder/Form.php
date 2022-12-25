@@ -145,7 +145,6 @@ class Form implements FormInterface {
 					WHERE 1 = %d
 					AND ( course.post_title LIKE %s )
 					{$year_clause}
-					{$date_range}
 					LIMIT %d, %d
 				",
 				1,

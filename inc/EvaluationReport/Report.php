@@ -69,7 +69,14 @@ class Report {
 			$quarter_clause = "AND (MONTH (f.created_at) BETWEEN {$month_from} AND {$month_to})";
 		}
 
-		$query = "SELECT
+		$date_range_clause = '';
+		$from_date         = sanitize_text_field( wp_unslash( $_GET['from_date'] ) );
+		$to_date           = sanitize_text_field( wp_unslash( $_GET['to_date'] ) );
+		if ( '' != $from_date && '' !== $to_date ) {
+			$date_range_clause = "AND f.created_at BETWEEN DATE('$from_date') AND DATE('$to_date') ";
+		}
+
+		$query    = "SELECT
 					fields.id AS field_id,
 					form.form_title,
 					form.form_description,
@@ -89,9 +96,9 @@ class Report {
 
 					INNER JOIN {$feedback_table} AS f
 					ON f.field_id = fields.id
-
 					{$quarter_clause}
-
+					{$date_range_clause}
+				
 					WHERE form.id = %d
 
 					GROUP BY fields.id
@@ -114,7 +121,7 @@ class Report {
 	 * @since v2.0.0
 	 *
 	 * @param integer $field_id  field id.
-	 * @param string $field_type  field type.
+	 * @param string  $field_type  field type.
 	 *
 	 * @return array
 	 */
