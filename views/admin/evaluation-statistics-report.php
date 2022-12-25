@@ -18,6 +18,7 @@ if ( ! $form_id || ! $course_id ) {
 	$statistics = Report::get_statistics( $form_id, $quarter );
 
 }
+
 ?>
 <div class="report_template evaluation_report container">
 	<h2 class="pdf_title">
