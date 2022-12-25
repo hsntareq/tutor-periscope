@@ -40,7 +40,7 @@ $total_count = $form_builder->total_evaluation_count( $selected_year, $search_te
 					<?php esc_html_e( 'Select the daterange', 'tutor-periscope' ); ?>
 				</label>
 				<div class="tutor-form-wrap">
-					<input type="text" name="daterange" class="tutor-form-control daterangepick" placeholder="<?php esc_html_e( 'Select date', 'tutor-periscope' ); ?>">
+					<input type="text" autocomplete="off" name="daterange" class="tutor-form-control daterangepick" placeholder="<?php esc_html_e( 'Select date', 'tutor-periscope' ); ?>">
 				</div>
 			</div>
 			<div class="tutor-wp-dashboard-filter-item tutor-mb-12">
