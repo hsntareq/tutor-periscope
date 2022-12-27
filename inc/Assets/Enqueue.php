@@ -147,10 +147,14 @@ class Enqueue
 		 * Add inline css for video player
 		 * if linear path on the hide video progress control.
 		 */
-		if ($data['linear_path']) {
+
+		$meta_key = '_tutor_completed_lesson_id_' . $id;
+		$lesson_status = get_user_meta($user_id, $meta_key, true);
+
+		if ($data['linear_path'] && !$lesson_status) {
 			$custom_css = '
 			.plyr__progress{
-					display: none;
+				pointer-events: none;
 			}';
 			wp_add_inline_style('tutor-periscope-frontend', $custom_css);
 		}
