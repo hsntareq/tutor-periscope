@@ -248,20 +248,21 @@ class Form implements FormInterface {
 	 *
 	 * @param int $course_id  tutor course id.
 	 *
-	 * @return bool
+	 * @return form id, false if form not exists
 	 */
-	public static function course_has_form( int $course_id ): bool {
+	public static function course_has_form( int $course_id ) {
 		global $wpdb;
 		$table = ( new self() )->get_table();
 		$query = $wpdb->prepare(
 			"SELECT
-				COUNT(*)
+				id
 			FROM {$table}
 			WHERE tutor_course_id = %d
+			LIMIT 1
 			",
 			$course_id
 		);
 		$result = $wpdb->get_var( $query );
-		return $result ? true : false;
+		return $result ? $result : false;
 	}
 }
