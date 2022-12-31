@@ -7,6 +7,7 @@
 use TUTOR\Input;
 use Tutor_Periscope\EvaluationReport\Report;
 use Tutor_Periscope\Utilities\Utilities;
+use Tutor_Periscope\FormBuilder\FormBuilder;
 
 //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 $form_id   = $_GET['form-id'] ?? 0;
@@ -16,9 +17,9 @@ if ( ! $form_id || ! $course_id ) {
 } else {
 	$quarter    = Input::get( 'quarter', '' );
 	$statistics = Report::get_statistics( $form_id, $quarter );
-
 }
-
+$form      = FormBuilder::create('Form');
+$details   = $form->get_one($form_id);
 ?>
 <div class="report_template evaluation_report container">
 	<h2 class="pdf_title">
@@ -27,7 +28,7 @@ if ( ! $form_id || ! $course_id ) {
 	<div class="header">
 		<p>
 			<strong>Title:</strong>
-			<?php echo esc_html( get_the_title( $course_id ) ); ?>
+			<?php echo esc_html( get_the_title( $course_id ) ); ?> <?php echo esc_html($details->con_ed ?? '') ?>
 		</p>
 		<p style="margin-bottom: 20px">
 			<strong>Presenter: </strong>
