@@ -7,6 +7,7 @@
  * @package TutorPeriscope\Users
  */
 
+use Tutor_Periscope\Attempt\AttemptManagement;
 use Tutor_Periscope\Users\Users;
 $user_per_page = Users::$number;
 $list_paged    = isset( $_GET['paged'] ) ? sanitize_text_field( $_GET['paged'] ) : 1;
@@ -48,7 +49,7 @@ $total_count = tutor_utils()->get_total_enrolments( '', $user_search );
 			<th>
 				<?php esc_html_e( 'Enroll Date', 'tutor-periscope' ); ?>
 			</th>
-            <th>
+			<th>
 				<?php esc_html_e( 'Course', 'tutor-periscope' ); ?>
 			</th>
 			<th>
@@ -70,14 +71,21 @@ $total_count = tutor_utils()->get_total_enrolments( '', $user_search );
 	<tbody>
 		<?php if ( is_array( $users_list ) && count( $users_list ) ) : ?>
 			<?php foreach ( $users_list as $key => $user ) : ?>
+				<?php
+				$assigned_attempt  = (int) get_user_meta( $user->student_id, AttemptManagement::ASSIGNED_ATTEMPT_KEY . "_{$user->course_id}", true );
+				$attempt_taken     = (int) get_user_meta( $user->student_id, AttemptManagement::ATTEMPT_TAKEN_KEY . "_{$user->course_id}", true );
+				$remaining_attempt = $assigned_attempt - $attempt_taken;
+				?>
 			<tr>
 				<td><?php echo esc_html( tutor_i18n_get_formated_date( $user->enrol_date ) ); ?></td>
 				<td><?php echo esc_html( get_the_title( $user->course_id ) ); ?></td>
 				<td><?php echo esc_html( $user->user_nicename ); ?></td>
 				<td><?php echo esc_html( $user->user_email ); ?></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>
+					<input type="number" class="tp-assigned-attempt" data-course-id="<?php echo esc_attr( $user->course_id ); ?>" data-email="<?php echo esc_attr( $user->user_email ); ?>" value="<?php echo esc_html( $assigned_attempt ); ?>">
+				</td>
+				<td><?php echo esc_html( $attempt_taken ); ?></td>
+				<td><?php echo esc_html( $remaining_attempt ); ?></td>
 			</tr>
 			<?php endforeach; ?>
 		<?php else : ?>

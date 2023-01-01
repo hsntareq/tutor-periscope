@@ -123,7 +123,7 @@ class Enqueue {
 			$tutor_course_id = $course->ID;
 		}
 		$admin_page    = isset( $_GET['page'] ) && is_admin() ? $_GET['page'] : '';
-		$user_attempts = AttemptManagement::attempt_details( $user_id );
+		$user_attempts = AttemptManagement::attempt_details( $user_id, $tutor_course_id );
 
 		$has_quiz_attempt = isset( $user_attempts['remaining'] ) && (int) $user_attempts['remaining'] > 0 ? true : false;
 

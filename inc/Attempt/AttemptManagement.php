@@ -31,14 +31,14 @@ class AttemptManagement {
 	 *
 	 * @const ASSIGNED_ATTEMPT_KEY
 	 */
-	const  ASSIGNED_ATTEMPT_KEY = 'tutor_periscope_student_allow_attempt';
+	const  ASSIGNED_ATTEMPT_KEY = 'tutor_periscope_student_allow_attempt__';
 
 	/**
 	 * User attempt taken key
 	 *
 	 * @const ATTEMPT_TAKEN_KEY
 	 */
-	const  ATTEMPT_TAKEN_KEY = 'tutor_periscope_student_attempt_taken';
+	const  ATTEMPT_TAKEN_KEY = 'tutor_periscope_student_attempt_taken__';
 
 	/**
 	 * Register hooks
@@ -48,7 +48,7 @@ class AttemptManagement {
 	public function __construct() {
 		add_action( 'wp_ajax_tutor_periscope_update_attempt', array( __CLASS__, 'tutor_periscope_update_attempt' ) );
 
-		add_action( 'wp_ajax_tutor_periscope_all_student_attempts', array( __CLASS__, 'all_student_attempts' ) );
+		//add_action( 'wp_ajax_tutor_periscope_all_student_attempts', array( __CLASS__, 'all_student_attempts' ) );
 
 		/**
 		 * Add action after quiz attempt
@@ -84,16 +84,18 @@ class AttemptManagement {
 			},
 			$_POST
 		);
+		$course_id = $post['course_id'];
 		if ( wp_verify_nonce( $post['nonce'], 'tp_nonce' ) ) {
 			$user_data = get_user_by( 'email', $post['user_email'] );
 			if ( $user_data ) {
 				$update = update_user_meta(
 					$user_data->ID,
-					self::ASSIGNED_ATTEMPT_KEY,
+					self::ASSIGNED_ATTEMPT_KEY . "_{$course_id}",
 					$post['attempt']
 				);
 				if ( $update ) {
-					wp_send_json_success();
+					$response = self::attempt_details( $user_data->ID, $course_id );
+					wp_send_json_success( $response );
 				} else {
 					wp_send_json_error();
 				}
@@ -133,17 +135,18 @@ class AttemptManagement {
 	 * Get attempt details
 	 *
 	 * @param int $user_id | user id to get details.
+	 * @param int $course_id | course id to get details.
 	 *
 	 * @return array | details on success, empty array if invalid user.
 	 *
 	 * @since v1.0.0
 	 */
-	public static function attempt_details( int $user_id ): array {
+	public static function attempt_details( int $user_id, int $course_id ): array {
 		$user_id = sanitize_text_field( $user_id );
 		$user    = get_userdata( $user_id );
 		if ( $user ) {
-			$assigned_attempt = (int) get_user_meta( $user->ID, self::ASSIGNED_ATTEMPT_KEY, true );
-			$attempt_taken    = (int) get_user_meta( $user->ID, self::ATTEMPT_TAKEN_KEY, true );
+			$assigned_attempt = (int) get_user_meta( $user->ID, self::ASSIGNED_ATTEMPT_KEY . "_{$course_id}", true );
+			$attempt_taken    = (int) get_user_meta( $user->ID, self::ATTEMPT_TAKEN_KEY . "_{$course_id}", true );
 			return array(
 				'assigned'  => $assigned_attempt,
 				'taken'     => $attempt_taken,
@@ -166,8 +169,8 @@ class AttemptManagement {
 	 * @since v1.0.0
 	 */
 	public static function update_attempt_taken( $attempt_id, $course_id, $user_id ) {
-		$taken_attempt = (int) get_user_meta( $user_id, self::ATTEMPT_TAKEN_KEY, true );
-		update_user_meta( $user_id, self::ATTEMPT_TAKEN_KEY, $taken_attempt + 1 );
+		$taken_attempt = (int) get_user_meta( $user_id, self::ATTEMPT_TAKEN_KEY . "_{$course_id}", true );
+		update_user_meta( $user_id, self::ATTEMPT_TAKEN_KEY . "_{$course_id}", $taken_attempt + 1 );
 	}
 
 	/**
@@ -179,7 +182,7 @@ class AttemptManagement {
 	 * @since v1.0.0
 	 */
 	public static function email_notification( $attempt_id, $course_id, $user_id ) {
-		$user_attempt      = self::attempt_details( $user_id );
+		$user_attempt      = self::attempt_details( $user_id, $course_id );
 		$remaining_attempt = $user_attempt['assigned'] - $user_attempt['taken'];
 		$user_data         = get_userdata( $user_id );
 		if ( 1 > $remaining_attempt && $user_data ) {
@@ -237,7 +240,7 @@ class AttemptManagement {
 	public static function assign_default_attempt( int $course_id, int $user_id, int $is_enrolled ) : bool {
 		$assigned = update_user_meta(
 			$user_id,
-			self::ASSIGNED_ATTEMPT_KEY,
+			self::ASSIGNED_ATTEMPT_KEY . "_{$course_id}",
 			self::$default_attempt
 		);
 		return $assigned ? true : false;
