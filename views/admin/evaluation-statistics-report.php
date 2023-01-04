@@ -20,8 +20,14 @@ if ( ! $form_id || ! $course_id ) {
 }
 $form      = FormBuilder::create('Form');
 $details   = $form->get_one($form_id);
+
+$tp_course_logo   = !empty($details->media_url) ? $details->media_url : get_theme_mod('logo', get_parent_theme_file_uri() . '/images/logo.svg');
+
 ?>
 <div class="report_template evaluation_report container">
+	<div style="margin-bottom: 20px;">
+		<img width="150" src="<?php echo esc_url($tp_course_logo) ?>">
+	</div>
 	<h2 class="pdf_title">
 		Periscope Evaluation Statistics Report
 	</h2>

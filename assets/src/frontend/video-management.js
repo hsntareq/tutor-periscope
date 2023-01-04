@@ -1,13 +1,12 @@
 import ajaxRequest from "./ajax";
-
 /**
  * Video interaction hook. Tract user's interaction with video.
  * On video pause and end trigger wp hook to store info.
  *
  * @since v1.0.0
  */
-const {__} = wp.i18n;
-document.addEventListener('DOMContentLoaded', function(){
+const { __ } = wp.i18n;
+document.addEventListener('DOMContentLoaded', function () {
     const lessonSidebar = document.getElementById('tutor-lesson-sidebar-tab-content');
     const progressClasses = document.getElementsByClassName('plyr__progress__container');
     const progressBar = progressClasses[0];
@@ -26,9 +25,9 @@ document.addEventListener('DOMContentLoaded', function(){
             }
             if (clickedTag.hasAttribute('data-lesson-id')) {
                 //wait for content loading, after ready then reload page. so that video event can work
-                setTimeout(()=> {
+                setTimeout(() => {
                     window.location.reload();
-                },2000)
+                }, 2000)
 
             }
         }
@@ -39,34 +38,45 @@ document.addEventListener('DOMContentLoaded', function(){
      * And do required operation
      */
     function manageVideoAction() {
-        var video = document.getElementById('tutorPlayer');
-        if (video) {
-            // if has pause time then start from there
-            var supposedCurrentTime = tp_data.has_lesson_time ? Number(tp_data.has_lesson_time) : 0;
-            video.addEventListener('timeupdate', function() {
-                if (!video.seeking) {
-                    supposedCurrentTime = video.currentTime;
-                }
-            });
-            // prevent user from seeking
-            video.addEventListener('seeking', function() {
-                // user seeks, seeking is fired, currentTime is modified, seeking is fired, current time is modified, ....
-                var delta = video.currentTime - supposedCurrentTime;
-                // delta = Math.abs(delta); // disable seeking previous content if you want
-                if (delta > 0.01) {
-                    video.currentTime = supposedCurrentTime;
-                }
-            });
-            video.addEventListener('ended', function() {
-                // reset state in order to allow for rewind
-               supposedCurrentTime = 0;
-                tractVideoProgress();
-            });
+        // var video = document.getElementById('tutorPlayer');
+        var videos = document.querySelectorAll('.tutor-video-player');
 
-            video.addEventListener('pause', function(){
-                tractVideoProgress(video.currentTime);
-            });
-        }
+        videos.forEach((video) => {
+            if (video) {
+                // if has pause time then start from there
+                var supposedCurrentTime = tp_data.has_lesson_time ? Number(tp_data.has_lesson_time) : 0;
+
+                video.addEventListener('timeupdate', function () {
+                    if (!video.seeking) {
+                        supposedCurrentTime = video.currentTime;
+                    }
+
+                });
+                // prevent user from seeking
+                video.addEventListener('seeking', function () {
+
+                    // user seeks, seeking is fired, currentTime is modified, seeking is fired, current time is modified, ....
+                    var delta = video.currentTime - supposedCurrentTime;
+                    // delta = Math.abs(delta); // disable seeking previous content if you want
+                    if (delta > 0.01) {
+                        video.currentTime = supposedCurrentTime;
+                    }
+                });
+                video.addEventListener('ended', function () {
+                    // reset state in order to allow for rewind
+                    supposedCurrentTime = 0;
+                    tractVideoProgress();
+                });
+
+                video.addEventListener('pause', function () {
+                    tractVideoProgress(video.currentTime);
+                });
+            }
+
+        })
+
+
+
     }
 
     /**
@@ -88,14 +98,14 @@ document.addEventListener('DOMContentLoaded', function(){
                 //time in sec
                 formData.set('time', currentTime);
             }
-            formData.set('lesson_id' , lessonId);
+            formData.set('lesson_id', lessonId);
             formData.set('nonce', tp_data.nonce);
 
             //make ajax request
             const response = await ajaxRequest(formData);
             //if response false
             if (!response) {
-                alert(__( 'Lesson activity tracking failed', 'tutor-periscope' ) );
+                alert(__('Lesson activity tracking failed', 'tutor-periscope'));
             }
         }
     }

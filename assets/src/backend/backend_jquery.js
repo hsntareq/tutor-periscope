@@ -28,4 +28,6 @@ jQuery(function () {
             jQuery('input.daterangepick').daterangepicker({ startDate: daterange[0], endDate: daterange[1] });
         }
     }
+
+
 })
